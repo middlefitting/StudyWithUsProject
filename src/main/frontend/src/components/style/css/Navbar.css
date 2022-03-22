@@ -30,7 +30,13 @@ a {
     border-radius: 15px;
 }
 
-.navbar_links {
+.navbar_signin {
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+}
+
+.navbar_signup {
     list-style: none;
     display: flex;
     padding-left: 0;
@@ -61,7 +67,13 @@ a {
         text-align: center;
     }
 
-    .navbar_links {
+    .navbar_signin {
+        /*display: none;*/
+        justify-content: center;
+        width: 100%;
+    }
+
+    .navbar_signup {
         /*display: none;*/
         justify-content: center;
         width: 100%;
