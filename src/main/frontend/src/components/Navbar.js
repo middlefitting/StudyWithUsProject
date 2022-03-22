@@ -27,10 +27,10 @@ const Navbar = () => {
                 </div>
 
                 <ul className="navbar_menu" >
-                    <li><a href="/">공지사항</a></li>
-                    <li><a href="/">게시판</a></li>
-                    <li><a href="/">스터디</a></li>
-                    <li><a href="/">강좌</a></li>
+                    <li><Link to ="/">공지사항</Link></li>
+                    <li><Link to="/">게시판</Link></li>
+                    <li><Link to="/">스터디</Link></li>
+                    <li><Link to="/">강좌</Link></li>
                 </ul>
 
                 <ul className="navbar_links">
