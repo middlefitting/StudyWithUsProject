@@ -1,0 +1,146 @@
+
+.container{
+    display: flex;
+    height: auto;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+
+
+.Header{
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    color: black;
+    background-color: paleturquoise;
+    align-items:center;
+    justify-content:center;
+    font-size: 20px;
+}
+.mid_container{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.page_name{
+    display: flex;
+    flex-direction: row;
+    padding: 0 500px 0 0px;
+    font-weight: bold;
+    font-size: 35px;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#w_button{
+    right: 0;
+    position: absolute;
+    margin: 20px 70px 0px 0px;
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+    border: 0 none;
+    background-color: #c6c5e8;
+    color: white;
+    font-size: 16px;
+    font-weight: 100;
+    cursor: pointer;
+    transition: opacity, color 0.1s ease-in;
+
+}
+
+
+.cont_container{
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    color: black;
+    overflow: hidden;
+    justify-content: flex-start;
+    padding: 10px 40px 0px 40px;
+
+
+}
+
+
+
+#main_board{
+    height: auto;
+    width: 1000px;
+    min-width: 1000px;
+    text-align: center;
+    border-collapse: collapse;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#board_head{
+    background-color: #a2a6ef;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    border: none;
+}
+
+#board_body{
+    background-color: white;
+    border: solid 1px #d9d2d2;
+    border-left: none;
+    border-right: none;
+}
+
+#tbody_body:hover{
+    cursor: pointer;
+}
+
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100px;
+    background-color: paleturquoise;
+    bottom: 0;
+    color: black;
+    float:left;
+    font-size:20px;
+    align-items:center;
+    justify-content:center;
+}
+
+
+
+
+@media screen and (min-width: 1200px) {
+    .page_name{
+        font-size: 35px;
+    }
+
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1199px) {
+    .container{
+        width: 100%;
+    }
+
+}
+
+@media screen and (min-width: 800px) and (max-width: 999px) {
+    .container{
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 799px) {
+    .container{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 599px) {
+    .container{
+        width: 100%;
+    }
+}
+

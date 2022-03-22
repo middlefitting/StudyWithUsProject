@@ -1,0 +1,104 @@
+legend{
+    font-size: 25px;
+    font-family: 'Armata', sans-serif;
+    align-content: center;
+    padding: 30px;
+    background-color: white;
+}
+
+fieldset {
+    width: 520px;
+    margin: 0;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+
+}
+
+
+ul{
+    margin:0;
+    padding: 0;
+}
+li{
+    display: grid;
+    align-items: center;
+    margin: 10px;
+}
+
+label{
+    font-size: 20px;
+}
+
+#title_txt{
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#context_txt{
+    resize: none;
+    width: 500px;
+    height: 300px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.button_section{
+    display: flex;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+#image_table {
+    text-align: center;
+}
+
+#s_button{
+    margin: 10px;
+    height: 30px;
+    width : 100px;
+    border-color: #a2a6ef;
+    color: #a2a6ef;
+    border-radius: 6px;
+    font-weight: bold;
+    background-color: white;
+
+}
+
+ #c_button{
+     background-color: white;
+     margin: 10px;
+     height: 30px;
+     width : 100px;
+     border-radius: 6px;
+ }
+
+ .Write_input_file{
+     margin-top:10px;
+     padding: 6px 12px;
+     border: #a2a6ef;
+     color: black;
+ }
+
+ #image_box{
+     padding: 10px 50px 10px 50px;
+     width: 400px;
+     height: 400px;
+
+ }
+
+ #d_button{
+     background-color: white;
+     height: 30px;
+     width : 100px;
+     border-radius: 6px;
+
+ }
