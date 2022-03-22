@@ -13,7 +13,7 @@ import javax.persistence.Id;
 public class Member {
     @Id
     @GeneratedValue
-    @Column(name = "mem_id")
+//    @Column(name = "mem_id")
     private Long id;
 
     @Column(unique = true)
@@ -26,5 +26,20 @@ public class Member {
     private String bornDate;
 
     public Member() {
+    }
+
+    public Member Member(Member member){
+        this.email = member.getEmail();
+        this.nickname = member.getNickname();
+        this.password = member.getPassword();
+        this.bornDate = member.getBornDate();
+        return member;
+    }
+
+    public Member(String email, String nickname, String password, String bornDate) {
+        this.email = email;
+        this.nickname = nickname;
+        this.password = password;
+        this.bornDate = bornDate;
     }
 }
