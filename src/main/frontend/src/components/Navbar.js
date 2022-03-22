@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import './Navbar.css';
+import './style/css/Navbar.css';
+import Navbar_HorizontoalLine from "./Navbar_HorizontoalLine";
 
 /*
 const navToogleBtn = document.querySelector('.navbar_toogleBtn');
@@ -27,7 +28,7 @@ const Navbar = () => {
                 </div>
 
                 <ul className="navbar_menu" >
-                    <li><Link to ="/">공지사항</Link></li>
+                    <li><Link to ="/" >공지사항</Link></li>
                     <li><Link to="/">게시판</Link></li>
                     <li><Link to="/">스터디</Link></li>
                     <li><Link to="/">강좌</Link></li>
@@ -46,6 +47,8 @@ const Navbar = () => {
                 </a>*/}
 
             </nav>
+
+            <Navbar_HorizontoalLine text="Study With Us " />
         </>
     );
 };
