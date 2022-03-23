@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import '../styles/css/Navbar.css';
-import {BrowserRouter as Router, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 
 const Navbar = () => {
@@ -15,7 +15,7 @@ const Navbar = () => {
         // 토글러 아이콘
         toggleIcon === 'nav_toggler'
         ? setToggleIcon('nav_toggler toggle')
-        : setToggleIcon('nav_toggler')
+        : setToggleIcon('nav_toggler');
     };
 
     return (
@@ -26,13 +26,13 @@ const Navbar = () => {
                 <li className="nav_item2"><Link to = "#" className="nav_link">게시판</Link></li>
                 <li className="nav_item3"><Link to = "#" className="nav_link">스터디</Link></li>
                 <li className="nav_item4"><Link to = "#" className="nav_link">강좌</Link></li>
-                <Link to = "/aa"><button className="btn_login">sign in</button></Link>
-                <Link to = "#"><button className="btn_account">sign up</button></Link>
+                <Link to = "/signin"><button className="btn_login">sign in</button></Link>
+                <Link to = "/signup"><button className="btn_account">sign up</button></Link>
             </ul>
             <div onClick={navToggle} className={toggleIcon}>
-                <div className="line1"></div>
-                <div className="line2"></div>
-                <div className="line3"></div>
+                <div className="line1"/>
+                <div className="line2"/>
+                <div className="line3"/>
             </div>
         </nav>
     );
