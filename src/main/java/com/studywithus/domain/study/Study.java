@@ -7,13 +7,13 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 public class Study {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long study_id; // 아이디(pk)
+    private Long study_id;
 
     @Column(length = 50)
     private String study_name;
