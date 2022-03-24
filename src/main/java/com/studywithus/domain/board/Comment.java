@@ -18,11 +18,11 @@ public class Comment extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long comment_id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
     private Post post_id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mem_id")
     private Member mem_id;
 
