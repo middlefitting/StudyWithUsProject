@@ -1,14 +1,14 @@
-package com.studywithus.repository.board;
+package com.studywithus.repository.study;
 
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
-public class C_likeRepositoryImpl extends QuerydslRepositorySupport implements C_likeRepositoryCustom {
+public class StudyRepositoryCustomImpl extends QuerydslRepositorySupport implements StudyRepositoryCustom {
     /**
      * Creates a new {@link QuerydslRepositorySupport} instance for the given domain type.
      *
      * @param domainClass must not be {@literal null}.
      */
-    public C_likeRepositoryImpl(Class<?> domainClass) {
+    public StudyRepositoryCustomImpl(Class<?> domainClass) {
         super(domainClass);
     }
 }
