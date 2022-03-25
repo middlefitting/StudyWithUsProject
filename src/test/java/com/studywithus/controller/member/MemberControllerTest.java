@@ -1,6 +1,5 @@
 package com.studywithus.controller.member;
 
-import com.studywithus.domain.member.Member;
 import com.studywithus.dto.member.CreateMemberRequestDto;
 import com.studywithus.repository.member.MemberJpaRepository;
 import com.studywithus.service.member.MemberService;
