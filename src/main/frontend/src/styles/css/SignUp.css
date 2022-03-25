@@ -16,6 +16,12 @@ form {
     border-bottom: 1px solid rgb(79, 98, 148);
 }*/
 
+h3 {
+    text-align: center;
+    color: darkorange;
+    padding: 20px;
+}
+
 
 .form {
     background: #0e101c;
