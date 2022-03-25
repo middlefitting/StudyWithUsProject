@@ -1,4 +1,4 @@
-package com.studywithus.dto.member;
+package com.studywithus.controller.member.dto;
 
 import lombok.Data;
 

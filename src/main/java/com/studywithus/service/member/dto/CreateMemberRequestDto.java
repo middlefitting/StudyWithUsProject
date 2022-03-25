@@ -1,12 +1,12 @@
-package com.studywithus.dto.member;
+package com.studywithus.service.member.dto;
 
+import com.studywithus.domain.member.Member;
 import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 
 @Data
-@Builder
 public class CreateMemberRequestDto {
     @NotEmpty
     private String email;
@@ -21,12 +21,20 @@ public class CreateMemberRequestDto {
 
     public CreateMemberRequestDto(){
     }
-
+    @Builder
     public CreateMemberRequestDto(String email, String nickname, String password, String bornDate) {
         this.email = email;
         this.nickname = nickname;
         this.password = password;
         this.bornDate = bornDate;
+    }
+
+    public Member toEntity(){
+        return Member.builder()
+                .email(email)
+                .nickname(nickname)
+                .password(password)
+                .bornDate(bornDate).build();
     }
 
 

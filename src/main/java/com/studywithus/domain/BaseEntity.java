@@ -13,8 +13,7 @@ import java.time.LocalDateTime;
 
 @MappedSuperclass // 해당 어노테이션이 적용된 클래스는 테이블로 생성되지 않는다. (실제 테이블은 해당 이 클래스를 상속한 엔티티의 클래스로 DB 테이블이 생성됨)
 @EntityListeners(value = {AuditingEntityListener.class})   // AuditingEntityListener : JPA 내부에서 엔티티 객체가 생성/변경되는 것을 감지하는 역할.
-                                                                // 이를 통해 regDate, modDate에 적절한 값이 지정됨
-                                                                // 활성화 시키기 위해서는 프로젝트에 @EnableJpaAuditing 설정을 추가해야함
+                                                                // 이를 통해 regDate, modDate에 적절한 값이 지정됨// 활성화 시키기 위해서는 프로젝트에 @EnableJpaAuditing 설정을 추가해야함
 @Getter
 public class BaseEntity {
     

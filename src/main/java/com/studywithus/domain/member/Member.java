@@ -1,24 +1,20 @@
 package com.studywithus.domain.member;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.studywithus.domain.BaseConstructorEntity;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.tomcat.jni.Local;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
 
 @Entity
 @Getter @Setter
-public class Member {
+public class Member extends BaseConstructorEntity {
     @Id
     @GeneratedValue
-//    @Column(name = "mem_id")
+    @Column(name = "member_id")
     private Long id;
 
     @Column(unique = true)
@@ -42,7 +38,16 @@ public class Member {
         this.bornDate = member.getBornDate();
     }
 
+    @Builder
     public Member(String email, String nickname, String password, String bornDate) {
+        this.email = email;
+        this.nickname = nickname;
+        this.password = password;
+        this.bornDate = bornDate;
+    }
+
+    public Member(Long id, String email, String nickname, String password, String bornDate) {
+        this.id = id;
         this.email = email;
         this.nickname = nickname;
         this.password = password;
