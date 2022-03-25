@@ -3,6 +3,7 @@ package com.studywithus.service.member;
 import com.studywithus.domain.member.Member;
 import com.studywithus.dto.member.CreateMemberRequestDto;
 import com.studywithus.repository.member.MemberRepository;
+import com.sun.istack.Nullable;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
