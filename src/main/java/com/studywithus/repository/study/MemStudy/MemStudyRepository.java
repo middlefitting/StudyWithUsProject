@@ -1,4 +1,4 @@
-package com.studywithus.repository.study;
+package com.studywithus.repository.study.MemStudy;
 
 import com.studywithus.domain.study.MemStudy;
 

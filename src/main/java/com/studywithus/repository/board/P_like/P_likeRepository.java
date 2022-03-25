@@ -1,4 +1,4 @@
-package com.studywithus.repository.board;
+package com.studywithus.repository.board.P_like;
 
 import com.studywithus.domain.board.P_like;
 

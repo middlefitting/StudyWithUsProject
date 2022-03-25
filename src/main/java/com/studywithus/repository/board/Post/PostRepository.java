@@ -1,4 +1,4 @@
-package com.studywithus.repository.board;
+package com.studywithus.repository.board.Post;
 
 import com.studywithus.domain.board.Post;
 

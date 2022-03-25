@@ -1,4 +1,4 @@
-package com.studywithus.repository.study;
+package com.studywithus.repository.study.Study;
 
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 

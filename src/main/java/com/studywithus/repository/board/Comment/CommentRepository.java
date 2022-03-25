@@ -1,4 +1,4 @@
-package com.studywithus.repository.board;
+package com.studywithus.repository.board.Comment;
 
 import com.studywithus.domain.board.Comment;
 

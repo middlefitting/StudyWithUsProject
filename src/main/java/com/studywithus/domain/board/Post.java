@@ -18,7 +18,7 @@ public class Post extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long post_id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY) // Test 할 때 @Transactional 추가해줘야 함
     @JoinColumn(name = "mem_id")
     private Member mem_id;
 

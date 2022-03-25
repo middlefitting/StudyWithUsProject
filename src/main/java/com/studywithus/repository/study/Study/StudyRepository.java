@@ -1,4 +1,4 @@
-package com.studywithus.repository.study;
+package com.studywithus.repository.study.Study;
 
 import com.studywithus.domain.study.Study;
 
