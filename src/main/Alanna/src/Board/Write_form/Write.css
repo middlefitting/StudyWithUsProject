@@ -6,7 +6,7 @@ legend{
     background-color: white;
 }
 
-fieldset {
+.form_field {
     width: 520px;
     margin: 0;
     background-color: white;
@@ -14,6 +14,13 @@ fieldset {
     border-radius: 5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
 
+}
+
+.mid_con{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
 }
 
 
@@ -31,19 +38,21 @@ label{
     font-size: 20px;
 }
 
-#title_txt{
+.inputTitle{
     padding: 5px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    outline-color: #ddd;
 }
 
-#context_txt{
+.inputContent{
     resize: none;
     width: 500px;
     height: 300px;
     padding: 5px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    outline-color: #ddd;
 }
 
 .button_section{

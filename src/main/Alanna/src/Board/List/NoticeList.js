@@ -1,15 +1,15 @@
 import {Link} from "react-router-dom";
-import  "../App.css";
-import Header from "../Components/Header";
-import Footer from "../Components/Footer";
-import Side_Tab from "../Tabs/Side_Tab";
-import Notice_Board from "./Notice_Board";
-import Free_Board from "./Free_Board";
-import QNA_Board from "./QNA_Board";
-import TabContents from "../Tabs/Tab_Contents";
+import  "../../App.css";
+import Header from "../../Components/Header";
+import Footer from "../../Components/Footer";
+import Side_Tab from "../../Tabs/Side_Tab";
+import Notice_Board from "../BoardComponent/Notice_Board";
+import Free_Board from "../BoardComponent/Free_Board";
+import QNA_Board from "../BoardComponent/QNA_Board";
+import TabContents from "../../Tabs/Tab_Contents";
 import {useState} from "react";
 
-function BoardList(){
+function NoticeList(){
 
 
         const [activeTab, setActiveTab] = useState("tab1");
@@ -18,21 +18,27 @@ function BoardList(){
 
     return(
         <div className="container">
-        <Header> </Header>
+
             <div className="mid_container">
                 <div className="page_name">
                     <TabContents id="tab1" activeTab={activeTab}>
                         공지사항
+                        <Link to='/Notice_Write'>
+                            <button type="submit" id="w_button" value="글씨기">글쓰기</button>
+                        </Link>
                     </TabContents>
                     <TabContents id="tab2" activeTab={activeTab}>
                         자유게시판
+                        <Link to='/Free_Write'>
+                            <button type="submit" id="w_button" value="글씨기">글쓰기</button>
+                        </Link>
                     </TabContents>
                     <TabContents id="tab3" activeTab={activeTab}>
                         질문게시판
+                        <Link to='/QNA_Write'>
+                            <button type="submit" id="w_button" value="글씨기">글쓰기</button>
+                        </Link>
                     </TabContents>
-                    <Link to='/Write'>
-                        <button type="submit" id="w_button" value="글씨기">글쓰기</button>
-                    </Link>
                 </div>
                 <div className="cont_container">
                     <div className="Side_Tab">
@@ -56,10 +62,10 @@ function BoardList(){
                 </div>
             </div>
 
-            <Footer> </Footer>
+
         </div>
 
 
     );
 }
-export default BoardList;
+export default NoticeList;
