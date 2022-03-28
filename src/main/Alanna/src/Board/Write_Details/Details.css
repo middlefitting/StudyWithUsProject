@@ -100,6 +100,14 @@ hr{
     justify-content: space-between;
 }
 
+.user_bottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 40px;
+    width: auto;
+}
+
 .views{
     font-size: 10px;
     padding: 21px 0px 0px 0px;
@@ -122,6 +130,27 @@ hr{
 
 
 
+.comment_button_bottom {
+    width: 80px;
+    height: 27px;
+    background-color: white;
+    border-radius: 12px;
+    margin:12px 0px 0px 15px;
+}
+
+
+.heart_img_bottom{
+    width: auto;
+    height: 27px;
+    background-color: white;
+    border-radius: 12px;
+    margin:12px 0px 0px 15px;
+}
+
+
+
+
+
 
 .comm_img{
     width: 20px;
@@ -129,6 +158,16 @@ hr{
     float: left;
     padding: 5px 8px;
 }
+
+.comm_img_bottom{
+    width: 20px;
+    height: 20px;
+    float: left;
+   margin: 10px 3px 0px 0px;
+}
+
+
+
 .comment{
     color: #a2a6ef;
     font-weight: bold;
@@ -137,6 +176,21 @@ hr{
     padding: 7px 13px 0px 0px;
 }
 
+.comment_bottom{
+    color: #a2a6ef;
+    font-weight: bold;
+    font-size: 10px;
+    float: right;
+    padding: 13px 15px 0px 0px;
+}
+
+.like_bottom{
+    color: #a2a6ef;
+    font-weight: bold;
+    font-size: 10px;
+    float: right;
+    padding: 14px 31px 0px 7px;
+}
 
 .comment_division{
     margin: 10px;
@@ -146,6 +200,13 @@ hr{
     width: 20px;
     height: 20px;
     padding: 18px 22px 0px 0px;
+    cursor: pointer;
+}
+
+.heart_bottom{
+    width: 20px;
+    height: 20px;
+    padding: 11px 0px 0px 0px;
     cursor: pointer;
 }
 

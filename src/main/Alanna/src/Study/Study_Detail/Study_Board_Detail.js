@@ -62,6 +62,11 @@ function Study_Board_Detail(){
         setPosts(posts.filter((post)=>post.id !==id));
     };
 
+    //=================================================================================
+    //좋아요 누르기(추후에 수정해야함)
+    const[num, plusNum] = useState(0);
+    const ClickLike=()=>plusNum(num+1);
+
 
 
     return(
@@ -93,7 +98,6 @@ function Study_Board_Detail(){
                                 <img className="comm_img" alt="com_img" src="img/comment.png"/>
                                 <div className="comment">댓글</div>
                             </div>
-                            <img id="empty_heart" className="heart" alt="heart" src="img/empty_heart.png"/>
 
                         </div>
                     </div>
@@ -102,6 +106,19 @@ function Study_Board_Detail(){
 
                     <div className="content_field">
                         여기는 스터디 게시판 본문
+                    </div>
+                    <div className="user_bottom">
+                        <div className="comment_button_bottom" >
+                            <img className="comm_img_bottom" alt="com_img" src="img/comment.png"/>
+                            <div className="comment_bottom">댓글 수</div>
+                        </div>
+                        <div className="heart_img_bottom">
+                            <img id="empty_heart" className="heart_bottom" alt="heart"
+                                 src="img/empty_heart.png" onClick={ClickLike}/>
+                            <div className="like_bottom" >좋아요 {num}</div>
+                        </div>
+
+
                     </div>
                     <hr />
                     <div className="reply_input" ref={ref1}>

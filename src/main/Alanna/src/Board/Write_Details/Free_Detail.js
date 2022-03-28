@@ -69,6 +69,11 @@ function Free_Detail(props){
 
 
 
+    //좋아요 누르기(추후에 수정해야함)
+    const[num, plusNum] = useState(0);
+    const ClickLike=()=>plusNum(num+1);
+
+
     return(
         <div className="Free_Detail">
 
@@ -90,17 +95,16 @@ function Free_Detail(props){
                             <div className="detail_id">여기는 아이디</div>
                             <div className="detail_time">{nowTime}</div>
                         </div>
-                            <div className="user_right">
-                                <div className="views">
-                                    <div className="view_num">조회수</div>
-                                </div>
-                                <div className="comment_button" onClick={() => scrollTo(ref1)}>
-                                    <img className="comm_img" alt="com_img" src="img/comment.png"/>
-                                    <div className="comment">댓글</div>
-                                </div>
-                                <img id="empty_heart" className="heart" alt="heart" src="img/empty_heart.png"/>
-
+                        <div className="user_right">
+                            <div className="views">
+                                <div className="view_num">조회수</div>
                             </div>
+                            <div className="comment_button" onClick={() => scrollTo(ref1)}>
+                                <img className="comm_img" alt="com_img" src="img/comment.png"/>
+                                <div className="comment">댓글</div>
+                            </div>
+
+                        </div>
                         </div>
 
                     <hr />
@@ -108,6 +112,20 @@ function Free_Detail(props){
                     <div className="content_field">
                         여기는 본문
                     </div>
+
+                    <div className="user_bottom">
+                        <div className="comment_button_bottom" >
+                            <img className="comm_img_bottom" alt="com_img" src="img/comment.png"/>
+                            <div className="comment_bottom">댓글 수</div>
+                        </div>
+                        <div className="heart_img_bottom">
+                            <img id="empty_heart" className="heart_bottom" alt="heart"
+                                 src="img/empty_heart.png" onClick={ClickLike}/>
+                            <div className="like_bottom" >좋아요 {num}</div>
+                        </div>
+                    </div>
+
+
                     <hr />
                     <div className="reply_input" ref={ref1}>
                         <div className="reply_id">

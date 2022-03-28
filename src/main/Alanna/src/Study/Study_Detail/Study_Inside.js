@@ -1,15 +1,19 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import '../Css/Study_Detail.css';
+import '../../Board/Write_Details/Details.css';
 import Study_Info from "./Study_Info";
 import StudyBoardDetail from "./Study_Board_Detail";
 
 function Study_Inside(){
+
+    const history = useHistory();
     return (
         <div className="Study_Detail">
             <div className="container_top">
                 <Study_Info />
                 <div className="studyBoard_con">
+                    <div className="go_back" onClick={()=> history.push('/Study_List')}>스터디목록 > </div>
                     <div className="board_con_top">
                         <div className="top_txt">
                             게시글
