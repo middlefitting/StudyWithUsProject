@@ -4,7 +4,9 @@ import Free_Write from "./Board/Write_form/Free_Write";
 import {BrowserRouter, Link, Route, Router, Switch} from "react-router-dom";
 import QNA_Write from "./Board/Write_form/QNA_Write";
 import Notice_Write from "./Board/Write_form/Notice_Write";
+import QNA_Detail from "./Board/Write_Details/QNA_Detail";
 import Free_Detail from "./Board/Write_Details/Free_Detail";
+import Notice_Detail from "./Board/Write_Details/Notice_Detail";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Update_Detail from "./Board/Update/Update_Detail";
@@ -31,11 +33,17 @@ function App() {
             <Route path="/NoticeList" component={NoticeList} exact/>
             <Route path="/BoardList" component={BoardList} exact />
             <Route path="/QNAList" component={QNAList} exact />
+
+            <Route path="/Free_Detail" component={Free_Detail} exact />
+            <Route path="/Notice_Detail" component={Notice_Detail} exact />
+            <Route path="/Update_Detail" component={Update_Detail} exact />
+            <Route path="/QNA_Detail" component={QNA_Detail} exact />
+
             <Route path="/Free_Write" component={Free_Write} exact/>
             <Route path="/QNA_Write" component={QNA_Write}  exact/>
             <Route path="/Notice_Write" component={Notice_Write}  exact/>
-            <Route path="/Free_Detail" component={Free_Detail} exact />
-            <Route path="/Update_Detail" component={Update_Detail} exact />
+
+
             <Route path="/Study_List" component={Study_List} exact />
             <Route path="/Study_Make" component={Study_Make} exact />
             <Route path="/Study_Inside" component={Study_Inside} exact />

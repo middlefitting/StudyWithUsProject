@@ -18,7 +18,9 @@ function  QNA_Board(){
                 <tbody>
                 <tr id="board_body">
                     <td width="10%">1</td>
+                    <Link to ="/QNA_Detail" className="link">
                     <td width="50%%">질문게시판입니다</td>
+                    </Link>
                     <td width="15%">김아무개</td>
                     <td width="15%">2022-03-18</td>
                     <td width="10%">3</td>

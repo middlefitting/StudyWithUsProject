@@ -7,7 +7,7 @@ import React, {useState} from "react";
 
 
 
-function Free_Detail(props){
+function QNA_Detail(props){
 
 /*    let history = useHistory();
 
@@ -41,7 +41,7 @@ function Free_Detail(props){
     })
 
     const[posts, setPosts]= useState([
-        {id:1, content:"나는 첫번째 댓글~"}
+        {id:1, content:"질문있어요~"}
     ]);
 
     const handleWrite = () => {
@@ -75,13 +75,13 @@ function Free_Detail(props){
             <div className="mid_con">
                 <fieldset className="detail_field">
                     <div className="buttons_field">
-                    <div className="go_back" onClick={()=> history.push('/BoardList')}>자유게시판 > </div>
+                    <div className="go_back" onClick={()=> history.push('/QNAList')}>질문게시판 > </div>
                         <div className="detail_delete">삭제</div>
                         <Link to ="/Update_Detail" className="link">
                             <div className="detail_update">수정</div>
                         </Link>
                     </div>
-                    <p className="detail_title">여기는 제목</p>
+                    <p className="detail_title">여기는 질문하기 제목</p>
                     <div className="user_con">
                         <span className="circle">
                              <img className="default_img" alt="default" src="img/default.png" />
@@ -106,7 +106,7 @@ function Free_Detail(props){
                     <hr />
 
                     <div className="content_field">
-                        여기는 본문
+                        여기는 질문하기 본문
                     </div>
                     <hr />
                     <div className="reply_input" ref={ref1}>
@@ -160,4 +160,4 @@ function Free_Detail(props){
     );
 }
 
-export default Free_Detail;
+export default QNA_Detail;

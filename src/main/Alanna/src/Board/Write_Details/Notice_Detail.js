@@ -7,7 +7,7 @@ import React, {useState} from "react";
 
 
 
-function Free_Detail(props){
+function Notice_Detail(props){
 
 /*    let history = useHistory();
 
@@ -75,7 +75,7 @@ function Free_Detail(props){
             <div className="mid_con">
                 <fieldset className="detail_field">
                     <div className="buttons_field">
-                    <div className="go_back" onClick={()=> history.push('/BoardList')}>자유게시판 > </div>
+                    <div className="go_back" onClick={()=> history.push('/NoticeList')}>공지사항 > </div>
                         <div className="detail_delete">삭제</div>
                         <Link to ="/Update_Detail" className="link">
                             <div className="detail_update">수정</div>
@@ -160,4 +160,4 @@ function Free_Detail(props){
     );
 }
 
-export default Free_Detail;
+export default Notice_Detail;
