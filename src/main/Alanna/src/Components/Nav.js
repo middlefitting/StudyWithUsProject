@@ -15,7 +15,10 @@ function Nav(){
             <Link to ="/Study_List" className="link">
                 <div className="study_nav">스터디</div>
             </Link>
-             <div className="class_nav">강좌</div>
+            <Link to ="/Classes" className="link">
+                <div className="class_nav">강좌</div>
+            </Link>
+
 
         </div>
     );

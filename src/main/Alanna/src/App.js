@@ -19,6 +19,7 @@ import Study_Board_Update from "./Study/Study_Detail/Study_Board_Update";
 import Study_Write from "./Study/Study_Write";
 import BoardList from "./Board/List/BoardList";
 import QNAList from "./Board/List/QNAList";
+import Classes from "./Classes/Classes";
 
 function App() {
 
@@ -50,6 +51,8 @@ function App() {
             <Route path="/Study_Board_Detail" component={Study_Board_Detail} exact/>
             <Route path="/Study_Board_Update" component={Study_Board_Update} exact />
             <Route path="/Study_Write" component={Study_Write} exact />
+
+            <Route path="/Classes" component={Classes} exact />
 
             </Switch>
         </BrowserRouter>

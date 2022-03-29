@@ -18,7 +18,6 @@ function NoticeList(){
 
     return(
         <div className="container">
-
             <div className="mid_container">
                 <div className="page_name">
                     <TabContents id="tab1" activeTab={activeTab}>
