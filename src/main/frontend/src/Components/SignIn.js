@@ -1,24 +1,28 @@
-import React, {useRef} from 'react';
+import React, {useEffect} from 'react';
 import {useForm} from "react-hook-form";
-import AxiosURL from "../services/AxiosURL";
 import {useHistory} from "react-router-dom";
+import AxiosURL from "../services/AxiosURL";
 
 const SignIn = () => {
+
+    useEffect(() => {
+        if(localStorage.getItem('user-info'))
+        {
+            history.push("/")
+        }
+    }, []);
 
     const { watch, register, formState: {errors}, handleSubmit } = useForm({mode:"onChange"});
 
 
-    // axios DB 연동
-    const onSubmit = (data) => {
-        console.log('data',data);
-    }
-
     // 페이지 이동 submit
     const history = useHistory();
 
-    //console.log(watch("email"));
-    //console.log(watch("password"));
-    //console.log(watch("password_confirm")); // 정확값이 적히고 있는지 눈으로 볼려고 넣어둔 것
+    // axios DB 연동
+    const onSubmit = (data) => {
+        console.log('data',data);
+
+    }
 
 
     return (

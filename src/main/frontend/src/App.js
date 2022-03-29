@@ -1,18 +1,24 @@
 import React from "react";
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import Navbar from "./components/Navbar";
-import SignIn from "./components/SignIn";
-import SignUp from "./components/SignUp";
+import {BrowserRouter as Router, Route, Switch, NavLink, Link} from "react-router-dom";
+import Navbar from "./Components/Navbar";
+import SignIn from "./Components/SignIn";
+import SignUp from "./Components/SignUp";
 
 function App() {
 
+  //
   return (
       <Router>
-        <Navbar/>
+          <div className="header">
+            <Navbar/>
+          </div>
+          <div className="content">
             <Switch>
-                <Route exact path="/signin" component={SignIn} />
+                <Route exact path="/"/>
+                <Route path="/signin" component={SignIn} />
                 <Route path="/signup" component={SignUp} />
             </Switch>
+          </div>
       </Router>
 
   );
