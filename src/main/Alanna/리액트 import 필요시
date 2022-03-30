@@ -1,8 +1,0 @@
-라우터 5 :
-yarn add react-router-dom@5 --save
-
-axios :
-yarn add axios --save
-
-부트스트랩 :
-npm install bootstrap react-bootstrap --save
