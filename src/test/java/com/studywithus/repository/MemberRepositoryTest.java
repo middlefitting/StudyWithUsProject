@@ -28,8 +28,8 @@ public class MemberRepositoryTest {
             memberRepository.save(member);
         });
 
-        List<Member> result = memberRepository.findByEmailPassword("user2@aaa.com", "1234");
-        System.out.println("---------------------------");
-        System.out.println(result);
+//        List<Member> result = memberRepository.findByEmailPassword("user2@aaa.com", "1234");
+//        System.out.println("---------------------------");
+//        System.out.println(result);
     }
 }

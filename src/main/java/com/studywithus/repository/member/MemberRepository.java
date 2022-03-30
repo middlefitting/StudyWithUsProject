@@ -10,38 +10,8 @@ import java.util.List;
 
 @Repository
 //@RequiredArgsConstructor
-public interface MemberRepository extends JpaRepository<Member, Long>, MemberRepositoryCustom {
-//    private final EntityManager em;
-//
-//    public void save(Member member) {
-//        em.persist(member);
-//    }
-//
-//    public Member findById(Long id){
-//        return em.find(Member.class, id);
-//    }
-//
-//    //password 반환 조심
-//    public Member findByEmailPassword(String email, String password){
-//        return em.createQuery("select m from Member m where m.email= :email and m.password= :password", Member.class)
-//                .setParameter("email", email)
-//                .setParameter("password", password)
-//                .getSingleResult();
-//    }
-//
-//    //password 반환 조심
-//    public Member findByEmail(String email){
-//        return em.createQuery("select m from Member m where m.email = :email", Member.class)
-//                .setParameter("email", email)
-//                .getSingleResult();
-//    }
-//
-//    //password 반환 조심
-//    public List<Member> findAll(){
-//        return em.createQuery("select m from Member m", Member.class)
-//                .getResultList();
-//    }
-
-
+public interface MemberRepository extends JpaRepository<Member, Long> {  //MemberRepositoryCustom
+    //    List<Member> findByUsernameAndAgeGreaterThan(String username, int age);
+//    List<Member> findByUsername(@Param("username") String username); //: jpql 있으면 네임드 어노테이션 파람이 넘어가야 한다
 
 }
