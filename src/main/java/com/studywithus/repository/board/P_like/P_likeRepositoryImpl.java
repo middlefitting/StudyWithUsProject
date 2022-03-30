@@ -1,14 +1,11 @@
 package com.studywithus.repository.board.P_like;
 
+import com.studywithus.domain.board.P_like;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
 public class P_likeRepositoryImpl extends QuerydslRepositorySupport implements P_likeRepositoryCustom {
-    /**
-     * Creates a new {@link QuerydslRepositorySupport} instance for the given domain type.
-     *
-     * @param domainClass must not be {@literal null}.
-     */
-    public P_likeRepositoryImpl(Class<?> domainClass) {
-        super(domainClass);
+
+    public P_likeRepositoryImpl() {
+        super(P_like.class);
     }
 }
