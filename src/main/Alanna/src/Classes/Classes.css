@@ -1,0 +1,158 @@
+.class_container{
+    display: flex;
+    flex-direction: row;
+    height: auto;
+}
+
+.class_content_wrap{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+}
+
+.detail_wrap{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: auto;
+    margin-top: 20px;
+    margin-left: 45px;
+}
+
+
+.class_wrap{
+    width: 1250px;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 0rem 0rem 16rem;
+    margin-top: 20px;
+
+}
+
+.detail_wrap h3{
+    font-weight: bold;
+    font-size: 35px;
+    margin: 10px 10px 0px 10px;
+}
+
+.detail_wrap p{
+    font-size: 15px;
+    margin: 7px;
+}
+
+.class_desc{
+    margin: 15px 10px 13px 0px;
+}
+
+.class_desc span{
+    font-size: 15px;
+    margin: 13px 10px 13px 20px;
+    padding: 5px;
+    background-color: #a2a6ef;
+    color: white;
+}
+
+
+
+.boxes{
+    background-color: white;
+    height: 270px;
+    width: 300px;
+    margin: 20px 20px 20px 20px;
+    border-radius: 20px;
+    box-shadow: 1px 3px 10px rgba(155, 154, 154, 0.55);
+    padding: 30px;
+}
+
+.boxes_content{
+    width: 100%;
+/*    overflow-x: hidden;*/
+}
+
+.boxes_content span{
+    background-color: #a2a6ef;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 0.5rem 0.75rem;
+    border-radius: 1rem;
+    text-transform: uppercase;
+}
+
+.boxes_content h3 {
+    margin: 2rem 0 0.5rem 0;
+}
+
+.boxes_content p{
+    height: 90px;
+    width: 100%;
+    font-size: 14px;
+    overflow: auto;
+}
+
+.classes_date{
+    font-size: 10px;
+    color: gray;
+}
+
+.boxes_content hr{
+    border: 0;
+    height: 1px;
+
+}
+
+.add_classes{
+    height: 45px;
+    width: 100%;
+    border: none;
+    border-radius: 15px;
+    background-color: #a2a6ef;
+    cursor: pointer;
+    color: white;
+    box-shadow: 1px 9px 10px rgba(155, 154, 154, 0.55);;
+
+}
+
+
+.add_classes:active{
+    position: relative;
+    box-shadow: 1px 5px 10px rgba(155, 154, 154, 0.55);
+    top: 2px;
+}
+
+.dot_wrapper{
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+}
+.dot{
+    width:10px;
+    height:10px;
+    margin: 0px 5px 0px 5px;
+    border-radius:100px;
+    background:#7f8c8d;
+    display:inline-block;
+    text-lign:center;
+    cursor:pointer;
+}
+
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+/*    background: #f1f1f1;*/
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+/*    background: rgb(162, 166, 239);*/
+    background: transparent;
+}
+
+
+
+

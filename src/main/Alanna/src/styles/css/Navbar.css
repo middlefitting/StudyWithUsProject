@@ -11,11 +11,11 @@ body {
     font-size: 2rem;
 }
 
-li {
+.nav>ul>li {
     list-style: none;
 }
 
-.brand {
+.nav>.brand {
     text-transform: uppercase;
     text-decoration: none;
     color: snow;
@@ -57,22 +57,22 @@ li {
     display: none;
 }
 
-.nav_item1:hover {
+.nav>ul>.nav_item1:hover {
     background-color: rgb(255, 187, 0);
     border-radius: 80px 80px 80px 80px;
 }
 
-.nav_item2:hover {
+.nav>ul>.nav_item2:hover {
     background-color: rgb(255, 187, 0);
     border-radius: 80px 80px 80px 80px;
 }
 
-.nav_item3:hover {
+.nav>ul>.nav_item3:hover {
     background-color: rgb(255, 187, 0);
     border-radius: 80px 80px 80px 80px;
 }
 
-.nav_item4:hover {
+.nav>ul>.nav_item4:hover {
     background-color: rgb(255, 187, 0);
     border-radius: 80px 80px 80px 80px;
 }

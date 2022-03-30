@@ -81,38 +81,38 @@ const SignUp = () => {
                        {...register("email",
                            {required:true, pattern: /^\S+@\S+$/i})}
                 />
-                {errors.email && <p>ex) studywithus@gmail.com</p>}
+                {errors.email && <p className="signupPont">ex) studywithus@gmail.com</p>}
 
                 <label>Nickname</label>
                 <input name="nickname"
                        placeholder="10자리 이내로만 가능합니다."
                        {...register("nickname",
                     {required: true, maxLength: 10})}/>
-                {errors.nickname && errors.nickname.type === "required" && <p>닉네임을 입력해주세요.</p>}
-                {errors.nickname && errors.nickname.type === "maxLength" && <p>닉네임은 10자 이내로만 가능합니다.</p>}
+                {errors.nickname && errors.nickname.type === "required" && <p className="signupPont">닉네임을 입력해주세요.</p>}
+                {errors.nickname && errors.nickname.type === "maxLength" && <p className="signupPont">닉네임은 10자 이내로만 가능합니다.</p>}
 
                 <label>BornDate</label>
                 <input name="bornDate"
                        placeholder="ex) 2022.04.15"
                        {...register("bornDate",
                     {required: true})}/>
-                {errors.birth && <p>ex) 2022.04.15</p>}
+                {errors.birth && <p className="signupPont">ex) 2022.04.15</p>}
 
                 <label>Password</label>
                 <input name="password"
                        type="password"
                        {...register("password",
                            {required: true, minLength: 8})}/>
-                {errors.password && errors.password.type === "required" && <p>비밀번호를 입력해주세요.</p>}
-                {errors.password && errors.password.type === "minLength" && <p>비밀번호는 8글자 이상으로 가능합니다.</p>}
+                {errors.password && errors.password.type === "required" && <p className="signupPont">비밀번호를 입력해주세요.</p>}
+                {errors.password && errors.password.type === "minLength" && <p className="signupPont">비밀번호는 8글자 이상으로 가능합니다.</p>}
 
                 <label>Password Confirm</label>
                 <input name="password_confirm"
                        type="password"
                        {...register("password_confirm",
                            {required: true, validate: value => (value === checkPassword.current)  })}/>
-                {errors.password_confirm && errors.password_confirm.type === "required" && <p>비밀번호 한번 더 입력해주세요.</p>}
-                {errors.password_confirm && errors.password_confirm.type === "validate" &&<p>비밀번호가 맞지 않습니다.</p>}
+                {errors.password_confirm && errors.password_confirm.type === "required" && <p className="signupPont">비밀번호 한번 더 입력해주세요.</p>}
+                {errors.password_confirm && errors.password_confirm.type === "validate" &&<p className="signupPont">비밀번호가 맞지 않습니다.</p>}
 
                 <input
                     type="submit"

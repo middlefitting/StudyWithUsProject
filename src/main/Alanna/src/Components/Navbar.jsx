@@ -36,7 +36,7 @@ const Navbar = () => {
                     <>
                         <Link to = "/" className="brand">StudyWithUs</Link>
                         <ul className={active}>
-                            <li className="nav_item1"><Link to = "#" className="nav_link">공지사항</Link></li>
+                            <li className="nav_item1"><Link to = "/NoticeList" className="nav_link">공지사항</Link></li>
                             <li className="nav_item2"><Link to = "#" className="nav_link">게시판</Link></li>
                             <li className="nav_item3"><Link to = "#" className="nav_link">스터디</Link></li>
                             <li className="nav_item4"><Link to = "#" className="nav_link">강좌</Link></li>
