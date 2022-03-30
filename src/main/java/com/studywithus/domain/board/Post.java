@@ -22,6 +22,7 @@ public class Post extends BaseEntity {
     @JoinColumn(name = "mem_id")
     private Member mem_id;
 
+    @Enumerated(EnumType.STRING)
     private Category category;
 
     @Column(length = 50)

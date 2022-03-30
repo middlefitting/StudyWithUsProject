@@ -1,5 +1,9 @@
 package com.studywithus.repository.board.post;
 
+import com.studywithus.domain.board.Post;
+
+import java.util.List;
+
 public interface PostRepositoryCustom {
-    // 구현할 메서드 명세 작성
+    List<Post> findByAll();
 }
