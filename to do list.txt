@@ -1,14 +1,9 @@
 [할 일]
-(Entity 제약 조건)
-1. Comment - content : 길이
-2. Study - study_name : 길이 / study_explanation : 길이
-3. Post - title : 길이 / content : 길이
+(Project)
 
-(dto)
-1. 설계
-
-(repository)
-1. 구현
-
-[아이디어]
-1. 게시글 작성 시 카테고리 추가로 생성 가능
+(memo)
+1. Entity 제약조건(null, unique, 길이)
+2. 생성자 Access level 설정
+3. 성능 향상
+    1. 양방향 < 단방향
+    2. JpaRepository < QuerydslPredicateExecutor < QuerydslRepositorySupport
