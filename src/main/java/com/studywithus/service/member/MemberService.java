@@ -32,10 +32,15 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
+    public Optional<Member> selectById(Long id) {
+        Optional<Member> member = memberRepository.findById(id);
+        return Optional.of(member.orElseGet(Member::new));
+    }
+
 
     public void update(Long id, Member updateMember){
         Optional<Member> optionalMember = memberRepository.findById(id);
-        optionalMember.get().UpdateMember(updateMember);
+        return;
     }
 
 

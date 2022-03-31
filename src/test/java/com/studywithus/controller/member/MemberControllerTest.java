@@ -1,5 +1,6 @@
 package com.studywithus.controller.member;
 
+import com.studywithus.controller.member.dto.SelectMemberResponseDto;
 import com.studywithus.controller.member.dto.SelectMembersDto;
 import com.studywithus.domain.member.Member;
 import com.studywithus.service.member.dto.CreateMemberRequestDto;
@@ -16,6 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static com.studywithus.controller.member.MemberController.*;
@@ -39,7 +41,7 @@ class MemberControllerTest {
             new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), StandardCharsets.UTF_8);
 
     @Test
-    @DisplayName("회원가입 컨트롤러")
+    @DisplayName("회원가입 Controller")
     public void joinMemberPostContent() throws Exception{
         //given
         CreateMemberRequestDto requestDto = new CreateMemberRequestDto("wjdtmdcjf199@naver.com", "middleFitting", "@123middle","1996-06-25");
@@ -62,8 +64,8 @@ class MemberControllerTest {
     }
 
     @Test
-    @DisplayName("회원 전체 조회 컨트롤러")
-    public void selectMembersGetContent() throws Exception{
+    @DisplayName("회원 전체 조회 Controller")
+    public void selectAllMembersGetContent() throws Exception{
         //given
         List<Member> members = CreateMemberEntityList();
 
@@ -92,6 +94,43 @@ class MemberControllerTest {
                 .andExpect(jsonPath("$.data[1].bornDate").value(members.get(1).getBornDate()));
     }
 
+    @Test
+    @DisplayName("회원 단건 조회 Controller")
+    public void selectMemberGetContent() throws Exception{
+        //given
+        Long id = 1L;
+        Optional<Member> memberOptional = CreateMemberOptional();
+
+        given(memberService.selectById(any())).willReturn(memberOptional);
+
+        //when
+        Member member = memberService.selectById(id).get();
+
+        SelectMemberResponseDto returnDto = SelectMemberResponseDto.builder()
+                .email(member.getEmail())
+                .bornDate(member.getBornDate())
+                .nickname(member.getNickname())
+                .password(member.getPassword())
+                .build();
+
+        Long returnId = member.getId();
+        ResultWithId result = new ResultWithId(returnId, returnDto);
+
+        //then
+        mockMvc.perform(get("/member/1")
+                        .accept(MediaType.APPLICATION_JSON)
+                        .characterEncoding("UTF-8"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.id").value(1))
+                .andExpect(jsonPath("$.data.email").value(member.getEmail()))
+                .andExpect(jsonPath("$.data.nickname").value(member.getNickname()))
+                .andExpect(jsonPath("$.data.password").value(member.getPassword()))
+                .andExpect(jsonPath("$.data.bornDate").value(member.getBornDate()));
+    }
+
+
+
 
     private List<Member> CreateMemberEntityList(){
         List<Member> members = new ArrayList<>();
@@ -100,5 +139,15 @@ class MemberControllerTest {
         members.add(member1);
         members.add(member2);
         return members;
+    }
+
+    private Member CreateMemberEntity(){
+        Member member = new Member("wjdtmdcjf199@naver.com", "middleFitting","@123Middle", "1996-06-25");
+        return  member;
+    }
+
+    private Optional<Member> CreateMemberOptional(){
+        Member member = new Member(1L, "wjdtmdcjf199@naver.com", "middleFitting","@123Middle", "1996-06-25");
+        return Optional.of(member);
     }
 }
