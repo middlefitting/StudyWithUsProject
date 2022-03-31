@@ -34,7 +34,7 @@ li{
     margin: 10px;
 }
 
-label{
+.write_input_file{
     font-size: 20px;
 }
 
@@ -74,16 +74,18 @@ button:hover{
     margin: 10px;
     height: 30px;
     width : 100px;
-    border-color: #a2a6ef;
-    color: #a2a6ef;
+    border-color: rgb(242, 150, 97);
+    color: snow;
+    background-color: rgb(242, 150, 97);
     border-radius: 6px;
     font-weight: bold;
-    background-color: white;
 
 }
 
  #c_button{
-     background-color: white;
+     border-color: #FAED7D;
+     color: snow;
+     background-color: #FAED7D;
      margin: 10px;
      height: 30px;
      width : 100px;
@@ -91,9 +93,10 @@ button:hover{
  }
 
  .Write_input_file{
+     display: flex;
      margin-top:10px;
      padding: 6px 12px;
-     border: #a2a6ef;
+     border: rgb(242, 150, 97);
      color: black;
  }
 
@@ -105,9 +108,12 @@ button:hover{
  }
 
  #d_button{
-     background-color: white;
+     background-color: #F15F5F;
+     border-color: #F15F5F;
+     color: snow;
      height: 30px;
      width : 100px;
      border-radius: 6px;
+     margin: 0 23px;
 
  }

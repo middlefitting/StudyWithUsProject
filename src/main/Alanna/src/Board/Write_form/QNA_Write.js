@@ -1,11 +1,8 @@
 import './Write.css'
 import {Link, useHistory} from "react-router-dom";
-import {useState} from "react";
-import Header from "../../Components/Header";
-import Footer from "../../Components/Footer";
 import File_Upload from "./Upload/File_Upload";
 
-function Free_Write(){
+function QNAList(){
 
     const history = useHistory();
 
@@ -42,4 +39,4 @@ function Free_Write(){
 
     );
 }
-export default Free_Write;
+export default QNAList;

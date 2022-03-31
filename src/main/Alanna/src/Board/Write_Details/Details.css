@@ -27,7 +27,7 @@ hr{
 
 .go_back{
     font-size: 10px;
-    color: #a2a6ef;
+    color: rgb(242, 150, 97);
     font-weight: bold;
     padding: 10px;
     cursor: pointer;
@@ -36,7 +36,7 @@ hr{
 
 .detail_delete, .detail_update{
     font-size: 10px;
-    color: #a2a6ef;
+    color: rgb(242, 150, 97);
     font-weight: bold;
     padding: 10px;
     cursor: pointer;
@@ -44,7 +44,7 @@ hr{
 }
 
 .detail_title{
-   font-size: 30px;
+    font-size: 30px;
     padding: 0px 10px 10px;
     margin: 0px;
 }
@@ -78,7 +78,7 @@ hr{
     width: 18px;
     padding: 10px;
     margin: 0px;
-    background-color: #c6c5e8;
+    background-color: rgb(242, 150, 97);
     border-radius: 50%;
     display: inline-block;
     overflow:hidden;
@@ -148,10 +148,6 @@ hr{
 }
 
 
-
-
-
-
 .comm_img{
     width: 20px;
     height: 20px;
@@ -163,13 +159,13 @@ hr{
     width: 20px;
     height: 20px;
     float: left;
-   margin: 10px 3px 0px 0px;
+    margin: 10px 3px 0px 0px;
 }
 
 
 
 .comment{
-    color: #a2a6ef;
+    color: rgb(242, 150, 97);
     font-weight: bold;
     font-size: 10px;
     float: right;
@@ -177,7 +173,7 @@ hr{
 }
 
 .comment_bottom{
-    color: #a2a6ef;
+    color: rgb(242, 150, 97);
     font-weight: bold;
     font-size: 10px;
     float: right;
@@ -185,7 +181,7 @@ hr{
 }
 
 .like_bottom{
-    color: #a2a6ef;
+    color: rgb(242, 150, 97);
     font-weight: bold;
     font-size: 10px;
     float: right;

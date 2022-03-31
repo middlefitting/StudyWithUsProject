@@ -147,8 +147,8 @@ function QNA_Detail(props){
                     </div>
                     <ul className="comment_list">
                         <li className="comment_view">
-                            {posts.map((post)=>(
-                            <div className="comment_area">
+                            {posts.map((post,idx)=>(
+                            <div className="comment_area" key={idx}>
                                 <div className="comment_img">
                                     <span className="circle">
                                         <img className="default_img" alt="default" src="img/default.png" />

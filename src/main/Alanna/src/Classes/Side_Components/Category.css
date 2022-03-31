@@ -9,17 +9,18 @@
 
 .category_container{
     padding: 50px 0px 0px 0px;
+    margin: 30px 30px 0px 0px;
 }
 
-.tab_button{
+#tab_button{
     width: 200px;
     height: 80px;
-    background-color: rgba(168, 164, 164, 0.46);
-    color: black;
+    background-color: rgb(242, 150, 97);
+    color: snow;
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
-    text-align: left;
+    text-align: center;
     box-shadow: 1px 9px 10px rgba(155, 154, 154, 0.55);
     padding-left: 15px;
     border:none;
@@ -28,4 +29,7 @@
     transition-duration: 0.3s;
 }
 
-
+.SideContents{
+    width: 100%;
+    heigth: auto;
+}

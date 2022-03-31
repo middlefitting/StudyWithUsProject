@@ -8,8 +8,6 @@ function Free_Write(){
 
     const history = useHistory();
 
-
-
     return(
         <div className="write_form">
             <div className="mid_con">

@@ -48,14 +48,14 @@ function File_Upload(){
                 </tr>
                 </tbody>
             </table>
-            <label htmlFor="input-file" className="Write_input_file" onChange={saveImage}>
+            <div className="write_input_file" onChange={saveImage}>
                 <input  type="file" onClick={FileClicked}/>
 
+                <button id="d_button" onClick={()=> deleteImage()}>삭제</button>
 
 
+            </div>
 
-            </label>
-            <button id="d_button" onClick={()=> deleteImage()}>삭제</button>
         </div>
     );
 }

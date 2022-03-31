@@ -75,7 +75,9 @@ const SignUp = () => {
                <h3>회 원 가 입</h3>
                 &nbsp;
               <label>Email</label>
-                <input name="email"
+                <input
+                       className="signInput"
+                       name="email"
                        type="email"
                        placeholder="이메일 주소를 입력해주세요."
                        {...register("email",
@@ -84,7 +86,9 @@ const SignUp = () => {
                 {errors.email && <p className="signupPont">ex) studywithus@gmail.com</p>}
 
                 <label>Nickname</label>
-                <input name="nickname"
+                <input
+                       className="signInput"
+                       name="nickname"
                        placeholder="10자리 이내로만 가능합니다."
                        {...register("nickname",
                     {required: true, maxLength: 10})}/>
@@ -92,14 +96,19 @@ const SignUp = () => {
                 {errors.nickname && errors.nickname.type === "maxLength" && <p className="signupPont">닉네임은 10자 이내로만 가능합니다.</p>}
 
                 <label>BornDate</label>
-                <input name="bornDate"
-                       placeholder="ex) 2022.04.15"
+                <input
+                       className="signInput"
+                       name="bornDate"
+                       type="text"
+                       placeholder="ex) 2022-04-15"
                        {...register("bornDate",
                     {required: true})}/>
-                {errors.birth && <p className="signupPont">ex) 2022.04.15</p>}
+                {errors.birth && <p className="signupPont">ex) 2022-04-15</p>}
 
                 <label>Password</label>
-                <input name="password"
+                <input
+                       className="signInput"
+                       name="password"
                        type="password"
                        {...register("password",
                            {required: true, minLength: 8})}/>
@@ -107,7 +116,9 @@ const SignUp = () => {
                 {errors.password && errors.password.type === "minLength" && <p className="signupPont">비밀번호는 8글자 이상으로 가능합니다.</p>}
 
                 <label>Password Confirm</label>
-                <input name="password_confirm"
+                <input
+                       className="signInput"
+                       name="password_confirm"
                        type="password"
                        {...register("password_confirm",
                            {required: true, validate: value => (value === checkPassword.current)  })}/>
@@ -115,6 +126,7 @@ const SignUp = () => {
                 {errors.password_confirm && errors.password_confirm.type === "validate" &&<p className="signupPont">비밀번호가 맞지 않습니다.</p>}
 
                 <input
+                    className="signInput"
                     type="submit"
                     ></input>
             </form>
