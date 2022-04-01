@@ -12,15 +12,15 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = "mem_id")
+@ToString(exclude = "writer")
 public class Post extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long post_id;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) // Test 할 때 @Transactional 추가해줘야 함
-    @JoinColumn(name = "mem_id")
-    private Member mem_id;
+    @JoinColumn(name = "member_id")
+    private Member writer;
 
     private Category category;
 

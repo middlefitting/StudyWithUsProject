@@ -1,0 +1,191 @@
+*,*::after, *::before {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 2rem;
+}
+
+.nav>ul>li {
+    list-style: none;
+}
+
+.nav>.brand {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: snow;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+.nav_link {
+    font-weight: bold;
+    text-decoration: none;
+    color: snow;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 8vh;
+    background: rgb(242, 150, 97);
+}
+
+.nav_menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10rem;
+}
+
+.nav_toggler div{
+    width: 3rem;
+    height: 0.2rem;
+    margin: 0.4rem;
+    background: snow;
+    transition: 0.4s ease;
+}
+
+.nav_toggler {
+    cursor: pointer;
+    display: none;
+}
+
+.nav>ul>.nav_item1:hover {
+    background-color: rgb(255, 187, 0);
+    border-radius: 80px 80px 80px 80px;
+}
+
+.nav>ul>.nav_item2:hover {
+    background-color: rgb(255, 187, 0);
+    border-radius: 80px 80px 80px 80px;
+}
+
+.nav>ul>.nav_item3:hover {
+    background-color: rgb(255, 187, 0);
+    border-radius: 80px 80px 80px 80px;
+}
+
+.nav>ul>.nav_item4:hover {
+    background-color: rgb(255, 187, 0);
+    border-radius: 80px 80px 80px 80px;
+}
+
+.btn_login {
+    font-size: 20px;
+    padding: 9px 30px;
+    border: 3px solid gold;
+    background-color: transparent;
+    color: gold;
+    text-transform: uppercase;
+    font-weight: bold;
+    position: relative;
+    transition: all 0.4s;
+    overflow: hidden;
+    border-radius: 80px 80px 80px 80px;
+    font-family: sans-serif;
+
+}
+
+.btn_login:focus {
+    outline: none;
+}
+
+.btn_login::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: gold;
+    top: 100%;
+    left: 0;
+    transition: all 0.4s;
+    z-index: -1;
+}
+
+.btn_login:hover::before {
+    transform: translateY(-100%);
+}
+
+.btn_login:hover {
+    color: yellowgreen;
+}
+
+.btn_account {
+    font-size: 20px;
+    padding: 9px 30px;
+    border: 3px solid gold;
+    background-color: transparent;
+    color: gold;
+    text-transform: uppercase;
+    font-weight: bold;
+    position: relative;
+    transition: all 0.4s;
+    overflow: hidden;
+    border-radius: 80px 80px 80px 80px;
+    font-family: sans-serif;
+
+}
+
+.btn_account:focus {
+    outline: none;
+}
+
+.btn_account::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: gold;
+    top: 100%;
+    left: 0;
+    transition: all 0.4s;
+    z-index: -1;
+}
+
+.btn_account:hover::before {
+    transform: translateY(-100%);
+}
+
+.btn_account:hover {
+    color: rgb(241, 95, 95);
+}
+
+@media screen and (max-width: 768px){
+    .nav_toggler {
+        display: block;
+    }
+    .nav_menu {
+        position: fixed;
+        top: 7vh;
+        right: 0;
+        width: 50%;
+        height: 93vh;
+        background: rgb(242, 150, 97);
+        flex-direction: column;
+        transform: translateX(100%);
+        transition: 0.5s ease;
+    }
+}
+
+/* Nav Active Class */
+.nav_active {
+    transform: translateX(0);
+}
+
+/* Toggler Icon Animation */
+.toggle .line1{
+    transform: rotate(-45deg) translate(-4px, -5px);
+}
+.toggle .line2{
+    opacity: 0;
+}
+.toggle .line3{
+    transform: rotate(-45deg) translate(-4px, -5px);
+}

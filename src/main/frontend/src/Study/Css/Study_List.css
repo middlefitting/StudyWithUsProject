@@ -1,0 +1,56 @@
+
+.studyPage_con{
+    width: 1500px;
+    display: flex;
+    flex-direction: row;
+    padding: 0px 500px 0px 100px ;
+    overflow: hidden;
+}
+
+.studyPage_name{
+    font-weight: bold;
+    font-size: 35px;
+    justify-content: center;
+}
+
+#study_board{
+    height: auto;
+    width: 1350px;
+    min-width: 1000px;
+    text-align: center;
+    border-collapse: collapse;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#make{
+    right: 0;
+    position: absolute;
+    margin: 20px 70px 0px 30px;
+    width: 110px;
+    height: 30px;
+    border-radius: 10px;
+    border: 0 none;
+    background-color: #c6c5e8;
+    color: white;
+    font-size: 16px;
+    font-weight: 100;
+    cursor: pointer;
+    transition: opacity, color 0.1s ease-in;
+
+}
+
+.type_field{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.study_radio{
+    margin: 10px 10px 0px 0px;
+}
+
+.type_field span{
+    margin: 5px 10px 0px 0px;
+    font-size: 13px;
+}
