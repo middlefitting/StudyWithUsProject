@@ -4,7 +4,7 @@ import {useState} from "react";
 import File_Upload from "./Upload/File_Upload";
 
 
-function Free_Write(){
+function Notice_Write(){
 
     const history = useHistory();
 
@@ -29,7 +29,7 @@ function Free_Write(){
 
                         <div className="button_section">
                             <button type="submit" id="s_button" >등록하기</button>
-                            <button type="button"  id="c_button" onClick={()=> history.goBack()}>취소하기</button>
+                            <button type="button"  id="c_button" onClick={()=> history.push('/NoticeList')}>취소하기</button>
                         </div>
 
                     </fieldset>
@@ -42,4 +42,4 @@ function Free_Write(){
 
     );
 }
-export default Free_Write;
+export default Notice_Write;

@@ -33,12 +33,12 @@ h3 {
     font-size: 13px;
 }
 
-p::before {
+.signupPont::before {
     display: inline;
     content: "⚠ ";
 }
 
-input {
+.signInput {
     display: block;
     box-sizing: border-box;
     width: 100%;
@@ -50,19 +50,19 @@ input {
 }
 
 label {
-    line-height: 2;
+    line-height: 5rem;
     text-align: left;
     display: block;
     margin-bottom: 0px;
     margin-top: 0px;
     color: rgb(93, 93, 93);
-    font-size: 20px;
-    font-weight: 100;
+    font-size: 25px;
+    font-weight: bold;
 }
 
-button[type="submit"],
-input[type="submit"] {
-    background: yellowgreen;
+.signInput[type="submit"],
+.signInput[type="submit"] {
+    background: #FFC19E;
     color: white;
     text-transform: uppercase;
     border: none;
@@ -73,31 +73,31 @@ input[type="submit"] {
     letter-spacing: 10px;
 }
 
-button[type="submit"]:hover,
-input[type="submit"]:hover {
-    background: limegreen;
+.signInput[type="submit"]:hover,
+.signInput[type="submit"]:hover {
+    background: sandybrown;
 }
 
-button[type="submit"]:active,
-input[type="button"]:active,
-input[type="submit"]:active {
+.signInput[type="submit"]:active,
+.signInput[type="button"]:active,
+.signInput[type="submit"]:active {
     transition: 0.3s all;
     transform: translateY(3px);
     border: 1px solid transparent;
     opacity: 0.8;
 }
 
-input:disabled {
+.signInput:disabled {
     opacity: 0.4;
 }
 
-input[type="button"]:hover {
+.signInput[type="button"]:hover {
     transition: 0.3s all;
 }
 
-button[type="submit"],
-input[type="button"],
-input[type="submit"] {
+.signInput[type="submit"],
+.signInput[type="button"],
+.signInput[type="submit"] {
     -webkit-appearance: none;
 }
 
@@ -106,7 +106,7 @@ input[type="submit"] {
     margin: 0 auto;
 }
 
-button[type="button"] {
+.signInput[type="button"] {
     display: block;
     appearance: none;
     background: #333;
@@ -121,12 +121,9 @@ hr {
     margin-top: 30px;
 }
 
-button {
+.signInput {
     appearance: none;
-    margin-top: 20px;
-    border: 1px solid #333;
-    margin-bottom: 20px;
-    text-transform: uppercase;
+    border: 1px solid sandybrown;
     padding: 10px 20px;
     border-radius: 4px;
 }

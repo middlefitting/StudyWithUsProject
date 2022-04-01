@@ -7,14 +7,19 @@ function StudyInfo (){
                 <div className="studyName">스터디 이름</div>
                 <div className="studyInfo_section">
                     <table className="studyInfo_table">
-                        <tr>
-                            <th>매니저</th>
-                            <td>김아무개</td>
-                        </tr>
-                        <tr>
-                            <th>멤버수</th>
-                            <td>10</td>
-                        </tr>
+                        <thead>
+                            <tr>
+                                <th>매니저</th>
+                                <td>김아무개</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>멤버수</th>
+                                <td>10</td>
+                            </tr>
+
+                        </tbody>
                     </table>
                 </div>
             </div>
