@@ -7,6 +7,7 @@ import QNA_Board from "../BoardComponent/QNA_Board";
 import TabContents from "../../Tabs/Tab_Contents";
 import {useState} from "react";
 import Tab_Name from "../../Tabs/Tab_Name";
+import MyPage_Board from "../BoardComponent/MyPage_Board";
 
 const user = JSON.parse(localStorage.getItem('user-info'))
 
@@ -78,6 +79,9 @@ function NoticeList(){
                         <TabContents id="tab3" activeTab={activeTab}>
                             <QNA_Board />
                         </TabContents>
+                          <TabContents id="tab4" activeTab={activeTab}>
+                              <MyPage_Board />
+                          </TabContents>
                     </div>
                 </div>
 

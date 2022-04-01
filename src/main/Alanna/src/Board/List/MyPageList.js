@@ -76,6 +76,9 @@ function MyPageList(){
                         <TabContents id="tab3" activeTab={activeTab}>
                             <QNA_Board />
                         </TabContents>
+                        <TabContents id="tab4" activeTab={activeTab}>
+                            <MyPage_Board />
+                        </TabContents>
                     </div>
                 </div>
 
