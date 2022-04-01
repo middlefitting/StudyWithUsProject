@@ -1,5 +1,6 @@
 import './Side_Tab.css'
-function Side_Tab({id, title,activeTab, setActiveTab}){
+
+function Side_Tab({id, title, activeTab, setActiveTab}){
 
     const handleClick=()=>{
         setActiveTab(id);

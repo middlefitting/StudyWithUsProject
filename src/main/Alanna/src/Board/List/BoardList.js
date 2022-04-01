@@ -8,6 +8,8 @@ import TabContents from "../../Tabs/Tab_Contents";
 import {useState} from "react";
 import Tab_Name from "../../Tabs/Tab_Name";
 
+const user = JSON.parse(localStorage.getItem('user-info'))
+
 function NoticeList(){
 
 
@@ -19,11 +21,25 @@ function NoticeList(){
         <div className="container">
             <div className="cont_container">
                 <div className="Side_Tab">
-                    <ul className="nav_con">
-                        <Side_Tab title="공지사항" id="tab1" activeTab={activeTab} setActiveTab={setActiveTab}/>
-                        <Side_Tab title="자유게시판" id="tab2" activeTab={activeTab} setActiveTab={setActiveTab}/>
-                        <Side_Tab title="질문게시판" id="tab3" activeTab={activeTab} setActiveTab={setActiveTab}/>
-                    </ul>
+                    {localStorage.getItem('user-info') ?
+                    <>
+                        <ul className="nav_con">
+                            <Side_Tab title="공지사항" id="tab1" activeTab={activeTab} setActiveTab={setActiveTab}/>
+                            <Side_Tab title="자유게시판" id="tab2" activeTab={activeTab} setActiveTab={setActiveTab}/>
+                            <Side_Tab title="질문게시판" id="tab3" activeTab={activeTab} setActiveTab={setActiveTab}/>
+                            <Side_Tab title="내 글" id="tab4" activeTab={activeTab} setActiveTab={setActiveTab}/>
+                            <Side_Tab title="회원정보수정" id="tab5" activeTab={activeTab} setActiveTab={setActiveTab}/>
+                        </ul>
+                    </>
+                    :
+                    <>
+                        <ul className="nav_con">
+                            <Side_Tab title="공지사항" id="tab1" activeTab={activeTab} setActiveTab={setActiveTab}/>
+                            <Side_Tab title="자유게시판" id="tab2" activeTab={activeTab} setActiveTab={setActiveTab}/>
+                            <Side_Tab title="질문게시판" id="tab3" activeTab={activeTab} setActiveTab={setActiveTab}/>
+                        </ul>
+                    </>
+                    }
                 </div>
                     <div className="mid_container">
                         <div className="page_name">
@@ -44,6 +60,12 @@ function NoticeList(){
                                 <button type="submit" id="w_button" value="글씨기">
                                     <Link to='/QNA_Write' className="link">글쓰기</Link>
                                 </button>
+                            </Tab_Name>
+                            <Tab_Name id="tab4" activeTab={activeTab}>
+                                <span>{user.id}님의 글</span>
+                            </Tab_Name>
+                            <Tab_Name id="tab5" activeTab={activeTab}>
+                                <span>회원정보수정</span>
                             </Tab_Name>
                         </div>
                       <div className="mid_container">

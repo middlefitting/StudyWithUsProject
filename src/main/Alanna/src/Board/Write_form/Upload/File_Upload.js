@@ -5,98 +5,59 @@ import ImageUploading from 'react-images-uploading';
 
 function File_Upload(){
 
-   /* // 미리볼 사진 url 저장할 state
-    const[fileImage, setImage] = useState("");
 
-    //파일 저장
-    const saveImage = (e)=>{
-        setImage(URL.createObjectURL(e.target.files[0]));
-    };
-    {/!*           <input id="upload" ref="upload" type="file" accept="image/!*"
-                               onInput={(event)=> {
-                                   this.readFile(event)
-                               }}
-                               onClick={(event)=> {
-                                   event.target.value = null
-                               }}
-                        />*!/}
+    const [file, setFile] = useState([]);
 
-
-    // 같은 파일 재업로드 설정
-    const FileClicked=(e)=>{
-        e.target.value = null;
+    const uploadSingleFile=(e)=> {
+        let ImagesArray = Object.entries(e.target.files).map((e) =>
+            URL.createObjectURL(e[1])
+        );
+        console.log(ImagesArray);
+        setFile([...file, ...ImagesArray]);
+        console.log("file", file);
     }
 
-    //파일 삭제
-    const deleteImage=(e)=>{
-        URL.revokeObjectURL(fileImage);
-        setImage("");
-    };*/
+    /*    const upload=(e)=> {
+            e.preventDefault();
+            console.log(file);
+        }*/
 
-
-
-    const [images, setImages] = useState([]);
-    const maxNumber = 20;
-
-    const onChange = (imageList, addUpdateIndex) =>{
-        //data for submit
-        console.log(imageList, addUpdateIndex);
-        setImages(imageList);
+    const deleteFile=(e)=> {
+        const s = file.filter((item, index) => index !== e);
+        setFile(s);
+        console.log(s);
     }
 
     return(
         <div className="file">
-                <span>이미지 업로드</span>
-            <div className="write_input_file">
-                <ImageUploading
-                    multiple
-                    value={images}
-                    onChange={onChange}
-                    maxNumber={maxNumber}
-                    dataURLKey="data_url">
-                    {({
-                          imageList,
-                          onImageUpload,
-                          onImageRemoveAll,
-                          onImageUpdate,
-                          onImageRemove,
-                          isDragging,
-                          dragProps,
+            <span>이미지 업로드</span>
 
-                      }) => (
-                        <div className="upload_image_wrapper">
-                            <div className="upload_button_wrapper">
-                                <button
-                                    style={isDragging ? { color: 'red' } : undefined}
-                                    onClick={onImageUpload}
-                                    {...dragProps}
-                                >
-                                    사진 첨부하기
-                                </button>
-                                &nbsp;
-                                <button onClick={onImageRemoveAll}>사진 모두 삭제</button>
-                            </div>
-                            {imageList.map((image, index) => (
-                              <div className="image_item_boxes" key={index} >
+            <div className="upload_image_wrapper">
+                {file.length > 0 &&
+                    file.map((item, index) => {
+                        return (
+                            <div className="image_item_boxes"  key={item}>
                                 <div className="image_item">
-                                    <img src={image['data_url']} alt="" width="100" height="100" />
-                                    <div className="image-item_btn-wrapper">
-                                        <button className="upload_button" onClick={() => onImageUpdate(index)}>수정하기</button>
-                                        <button className="upload_button" onClick={() => onImageRemove(index)}>삭제</button>
-                                    </div>
+                                    <img src={item} alt="" width="100px" height="100px"/>
+                                    <button type="button" className="upload_button" onClick={() => deleteFile(index)}>
+                                        삭제
+                                    </button>
                                 </div>
-                                  <hr className="image_divider" />
-                              </div>
-                            ))}
-
-                        </div>
-
-
-                    )}
-
-                </ImageUploading>
-
+                                <hr className="image_divider" />
+                            </div>
+                        );
+                    })}
             </div>
-          </div>
+
+            <div className="form-group">
+                <input
+                    type="file"
+                    className="form-control"
+                    onChange={uploadSingleFile}
+                    multiple
+                />
+            </div>
+        </div>
+
     );
 } export default File_Upload;

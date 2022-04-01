@@ -21,6 +21,7 @@ import Study_Board_Detail from "./Study/Study_Detail/Study_Board_Detail";
 import Study_Board_Update from "./Study/Study_Detail/Study_Board_Update";
 import Study_Write from "./Study/Study_Write";
 import Classes_All from "./Classes/Classes_Index/Classes_All";
+import MyPageList from "./Board/List/MyPageList";
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
                 <Route path="/NoticeList" component={NoticeList} exact/>
                 <Route path="/BoardList" component={BoardList} exact />
                 <Route path="/QNAList" component={QNAList} exact />
+                <Route path="/MyPageList" component={MyPageList} exact />
 
                 <Route path="/Free_Detail" component={Free_Detail} exact />
                 <Route path="/Notice_Detail" component={Notice_Detail} exact />
@@ -57,6 +59,7 @@ function App() {
 
                 <Route path="/signin" component={SignIn} />
                 <Route path="/signup" component={SignUp} />
+
             </Switch>
           </div>
       </Router>

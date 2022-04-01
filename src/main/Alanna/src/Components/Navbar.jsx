@@ -13,7 +13,7 @@ const Contents = () => {
   // Function For Logout
   const _handleLogOut = () => {
     localStorage.clear();
-    history('/');
+    history.push("/");
     window.location.reload();
   };
 
@@ -25,7 +25,7 @@ const Contents = () => {
       <Link to='/Classes_All' className='nav_content'>강좌</Link>
       {localStorage.getItem('user-info') ?
         <>
-          <Link to='/' className='nav_btn green'>{user.id}</Link>
+          <Link to='/MyPageList' className='nav_btn green'>{user.id}</Link>
           <div className='nav_btn red' onClick={() => _handleLogOut()}>LOGOUT</div>
         </>
         :

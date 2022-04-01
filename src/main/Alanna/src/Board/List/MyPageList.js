@@ -4,17 +4,16 @@ import Side_Tab from "../../Tabs/Side_Tab";
 import Notice_Board from "../BoardComponent/Notice_Board";
 import Free_Board from "../BoardComponent/Free_Board";
 import QNA_Board from "../BoardComponent/QNA_Board";
+import MyPage_Board from "../BoardComponent/MyPage_Board";
 import TabContents from "../../Tabs/Tab_Contents";
 import {useState} from "react";
 import Tab_Name from "../../Tabs/Tab_Name";
 
-function NoticeList(){
+const user = JSON.parse(localStorage.getItem('user-info'))
 
-    const user = JSON.parse(localStorage.getItem('user-info'))
+function MyPageList(){
 
-    const [activeTab, setActiveTab] = useState("tab1");
-
-
+    const [activeTab, setActiveTab] = useState("tab4");
 
     return(
         <div className="container">
@@ -85,6 +84,7 @@ function NoticeList(){
 
         </div>
 
+
     );
 }
-export default NoticeList;
+export default MyPageList;
