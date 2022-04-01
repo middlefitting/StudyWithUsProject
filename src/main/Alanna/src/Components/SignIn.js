@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useForm} from "react-hook-form";
 import {useHistory} from "react-router-dom";
-import AxiosURL from "../services/AxiosURL";
+import AxiosURL from "../Services/AxiosURL";
 
 const SignIn = () => {
 

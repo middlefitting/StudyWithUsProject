@@ -2,7 +2,7 @@ import * as React from 'react';
 import {useForm} from "react-hook-form";
 import '../styles/css/SignUp.css'
 import {useEffect, useRef, useState} from "react";
-import AxiosURL from "../services/AxiosURL";
+import AxiosURL from "../Services/AxiosURL";
 import {Link, useHistory} from "react-router-dom";
 import bcrypt from 'bcryptjs';
 import {responsivePropType} from "react-bootstrap/createUtilityClasses";
