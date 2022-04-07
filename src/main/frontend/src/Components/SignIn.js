@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useForm} from "react-hook-form";
 import {useHistory} from "react-router-dom";
-import AxiosURL from "../services/AxiosURL";
+import AxiosURL from "../Services/AxiosURL";
 
 const SignIn = () => {
 
@@ -28,12 +28,14 @@ const SignIn = () => {
     return (
         <div>
             <br/><br/>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} >
 
                 <h3>로 그 인</h3>
                 &nbsp;
                 <label>Email</label>
-                <input name="email"
+                <input
+                       className="signInput"
+                       name="email"
                        type="email"
                        {...register("email",
                            {required:true, pattern: /^\S+@\S+$/i})}
@@ -42,7 +44,9 @@ const SignIn = () => {
 
 
                 <label>Password</label>
-                <input name="password"
+                <input
+                       className="signInput"
+                       name="password"
                        type="password"
                        {...register("password",
                            {required: true, minLength: 8})}/>
@@ -50,7 +54,7 @@ const SignIn = () => {
                 {errors.password && errors.password.type === "minLength" && <p>비밀번호는 8글자 이상으로 가능합니다.</p>}*/}
 
 
-                <input type="submit" onClick={()=> {history.push("/")}}></input>
+                <input type="submit" onClick={()=> {history.push("/")}} className="signInput"></input>
             </form>
 
         </div>

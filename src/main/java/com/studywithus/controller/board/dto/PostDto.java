@@ -3,6 +3,7 @@ package com.studywithus.controller.board.dto;
 import com.studywithus.domain.board.Category;
 import lombok.*;
 
+import javax.persistence.Column;
 import java.time.LocalDateTime;
 
 @Data

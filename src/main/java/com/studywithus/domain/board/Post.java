@@ -18,7 +18,7 @@ public class Post extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long post_id;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) // Test 할 때 @Transactional 추가해줘야 함
+    @ManyToOne(fetch = FetchType.LAZY) // Test 할 때 @Transactional 추가해줘야 함
     @JoinColumn(name = "member_id")
     private Member writer;
 
@@ -31,6 +31,5 @@ public class Post extends BaseEntity {
 
     private String file_dir;
 
-    @Column(columnDefinition = "varchar2(4000) default '0'")
     private Integer views;
 }

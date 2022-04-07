@@ -1,11 +1,17 @@
+
 .container{
+    margin-top: 30px;
     display: flex;
     height: auto;
     min-height: 100vh;
     flex-direction: column;
 }
 
+
+
 .Header{
+
+    width: 100%;
     display: flex;
     flex-direction: column;
     height: 150px;
@@ -14,50 +20,69 @@
     align-items:center;
     justify-content:center;
     font-size: 20px;
-    width: 1500px;
+
 }
 .mid_container{
-    margin: auto;
     display: flex;
     flex-direction: column;
-    padding: 10px;
-    width: 1500px;
+    padding: 10px 20px;
+    width: 100%;
 }
-.page_name{
+
+
+.TabContents{
+    width:100%;
+    display: flex;
+    left: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.Tab_Name{
+    width: 100%;
     display: flex;
     flex-direction: row;
-    padding: 0 500px 0 0px;
-    font-weight: bold;
-    font-size: 35px;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
     overflow: hidden;
-
+    font-size: 35px;
 }
 
 #w_button{
-    left: 740px;
-    position: relative;
-    margin: 0px 0px 0px 0px;
+    margin: 20px 30px 0px 0px;
+    width: 70px;
+    height: 30px;
     border-radius: 10px;
     border: 0 none;
-    background-color: #c6c5e8;
+    background-color: rgb(242, 150, 97);
     color: white;
     font-size: 16px;
     font-weight: 100;
     cursor: pointer;
-    transition: opacity, color 0.1s ease-in;
+    transition: 300ms;
 
+}
+
+
+
+#w_button:hover{
+    opacity: 0.7;
 }
 
 
 .cont_container{
     display: flex;
-    flex-direction: row;
     min-height: 100vh;
+    width: calc(100% - 80px);
+
     color: black;
     overflow: hidden;
     justify-content: flex-start;
-    padding: 10px 40px 0px 40px;
+        padding: 10px 40px;
 
 
 }
@@ -66,8 +91,7 @@
 
 #main_board{
     height: auto;
-    width: 1100px;
-    min-width: 1000px;
+    width: 100%;
     text-align: center;
     border-collapse: collapse;
     border-radius: 4px;
@@ -75,7 +99,7 @@
 }
 
 #board_head{
-    background-color: #a2a6ef;
+    background-color: rgb(242, 150, 97);
     font-weight: bold;
     font-size: 20px;
     color: white;
@@ -95,17 +119,17 @@
 
 
 .footer {
+
+    width: 100%;
     display: flex;
     flex-direction: column;
-    width: 1500px;
-    height: 100px;
-    background-color: paleturquoise;
-    bottom: 0;
+    height: 150px;
     color: black;
-    float:left;
-    font-size:20px;
+    background-color: paleturquoise;
     align-items:center;
     justify-content:center;
+    font-size: 20px;
+
 }
 
 .link{
@@ -113,15 +137,6 @@
     color: inherit;
 }
 
-.navigation_bar{
-    display: flex;
-    flex-direction: row;
-    background-color: #c6c5e8;
-    height: 40px;
-    width: 1500px;
-    justify-content: center;
-    margin: 0px 0px 5px 0px;
-}
 
 .notice_nav, .board_nav, .study_nav, .class_nav{
     margin: 5px 70px 0px;
@@ -141,28 +156,5 @@
 
 }
 
-@media screen and (min-width: 1000px) and (max-width: 1199px) {
-    .container{
-        width: 100%;
-    }
 
-}
-
-@media screen and (min-width: 800px) and (max-width: 999px) {
-    .container{
-        width: 100%;
-    }
-}
-
-@media screen and (min-width: 600px) and (max-width: 799px) {
-    .container{
-        width: 100%;
-    }
-}
-
-@media screen and (max-width: 599px) {
-    .container{
-        width: 100%;
-    }
-}
 

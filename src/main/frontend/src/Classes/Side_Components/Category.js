@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
 import'./Category.css';
+import {Link} from "react-router-dom";
+import CategoryTab from "./CategoryTab";
+import Category_Contents from "./Category_Contents";
 
 function Category()  {
 
-    /*const [style, setStyle] = useState("tab_button_before");
-    const changeStyle=()=>{
-        setStyle("tab_button_after")
-
-    }*/
 
     const [currentClick, setCurrentClick] = React.useState(null);
     const [prevClick, setPrevClick] = React.useState(null);
@@ -16,7 +14,6 @@ function Category()  {
     const GetClick=(e)=>{
         setCurrentClick(e.target.id);
     };
-
 
     React.useEffect((e)=>{
         if(currentClick !==null){
@@ -36,17 +33,28 @@ function Category()  {
     },[currentClick]
         );
 
-    const topics =['전체보기','프로그래밍 언어','웹 프론트엔드','데이터베이스 설계','모바일 개발'];
+
+
+
+
+
+    const topics =[
+        {type:'전체보기',link:'/Classes_All'},
+        {type:'프로그래밍 언어', link:'/Classes_Back'},
+        {type:'웹 프론트엔드', link:'/Classes_Front'},
+        {type:'데이터베이스 설계', link:'/Classes_Data'},
+        {type:'모바일 개발',link:'/Classes_Mobile'}
+        ];
         return (
         <div className="category">
             <div className="category_container">
 
                 {topics.map((topic, key)=>(
-                    <button type="button" className="tab_button" id={key} onClick={GetClick}>
-
-                            {topic}
-
-                    </button>
+                    <Link to={topic.link} className="link" key={topic.id}>
+                    <CategoryTab id={key} onClick={GetClick}>
+                            {topic.type}
+                    </CategoryTab>
+                    </Link>
 
                 ))}
 

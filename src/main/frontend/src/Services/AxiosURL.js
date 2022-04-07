@@ -8,6 +8,20 @@ class CommunityService {
         return axios.post(baseURL + "/member", data)
     }
 
+    savePost(data) {
+        return axios.post(baseURL + "/board/register", data)
+    }
+
+    getNoticeList(data) {
+        return axios.post(baseURL + "/board/notice", data)
+    }
+    getFreeList(data) {
+        return axios.post(baseURL + "/board/free", data)
+    }
+    getQuestionList(data) {
+        return axios.post(baseURL + "/board/question", data)
+    }
+
     /*loginMember(data) {
         return axios.post(baseURL + "/login", data)
     }

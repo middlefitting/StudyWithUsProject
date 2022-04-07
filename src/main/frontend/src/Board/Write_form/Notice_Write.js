@@ -1,13 +1,20 @@
 import './Write.css'
 import {Link, useHistory} from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import File_Upload from "./Upload/File_Upload";
+import AxiosURL from "../../Services/AxiosURL";
 
 
-function Free_Write(){
+function Notice_Write(){
 
     const history = useHistory();
 
+    useEffect(() => {
+        AxiosURL.getBoardList()
+            .then((response) => {
+                console.log(response.data)
+            })
+    })
 
     return(
         <div className="write_form">
@@ -29,7 +36,7 @@ function Free_Write(){
 
                         <div className="button_section">
                             <button type="submit" id="s_button" >등록하기</button>
-                            <button type="button"  id="c_button" onClick={()=> history.goBack()}>취소하기</button>
+                            <button type="button"  id="c_button" onClick={()=> history.push('/NoticeList')}>취소하기</button>
                         </div>
 
                     </fieldset>
@@ -42,4 +49,4 @@ function Free_Write(){
 
     );
 }
-export default Free_Write;
+export default Notice_Write;
