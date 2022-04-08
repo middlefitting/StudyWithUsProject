@@ -68,7 +68,7 @@ function Free_Write(){
                                     required />
                             </li>
                         </ul>
-                        <input type="text" name="writer_id" value={user.id}
+                        <input type="text" name="writer_id" value={user}
                             {...register("writer_id", {required: true})}/>
                         <File_Upload />
 

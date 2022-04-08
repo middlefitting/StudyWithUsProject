@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface PostService {
     Long register(PostDto dto);
+    PostDto get(Long post_id);
 
     PageResultDTO<PostDto, Object[]> getList(@Param("category") String category, PageRequestDTO pageRequestDTO);
 

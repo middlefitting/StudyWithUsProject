@@ -1,6 +1,7 @@
 package com.studywithus.web.controller.board.dto;
 
 import com.studywithus.domain.entity.board.Category;
+import com.studywithus.domain.entity.member.Member;
 import lombok.*;
 
 import java.time.LocalDateTime;

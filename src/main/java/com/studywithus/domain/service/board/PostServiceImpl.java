@@ -1,5 +1,6 @@
 package com.studywithus.domain.service.board;
 
+import com.querydsl.core.Tuple;
 import com.studywithus.web.controller.board.dto.PageRequestDTO;
 import com.studywithus.web.controller.board.dto.PageResultDTO;
 import com.studywithus.web.controller.board.dto.PostDto;
@@ -12,7 +13,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -31,13 +36,22 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
+    public PostDto get(Long post_id) {
+        Object result = repository.getPostByPostId(post_id);
+        Object[] arr = (Object[]) result;
+        return entityToDto((Post) arr[0], (Member) arr[1]);
+    }
+
+    @Override
     public PageResultDTO<PostDto, Object[]> getList(String category, PageRequestDTO pageRequestDTO) {
-        Function<Object[], PostDto> fn = (en -> entityToDto((Post)en[0],(Member) en[1]));
+        Function<Object[], PostDto> fn = (en -> entityToDto((Post)en[0], (Member) en[1]));
 
         Page<Object[]> result = repository.getPostsByCategory(
                 category,
                 pageRequestDTO.getPageable(Sort.by("regDate").descending())
         );
+        System.out.println("==================서비스 result============");
+        System.out.println(result);
         return new PageResultDTO<>(result, fn);
     }
 }

@@ -11,11 +11,14 @@ import com.studywithus.domain.entity.board.Post;
 import com.studywithus.domain.entity.board.QPost;
 import com.studywithus.domain.entity.member.QMember;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PostRepositoryImpl extends QuerydslRepositorySupport implements PostRepositoryCustom {
 
@@ -27,13 +30,17 @@ public class PostRepositoryImpl extends QuerydslRepositorySupport implements Pos
     QMember member = QMember.member;
 
     @Override
-    public List<Post> getPost() {
+    public List<Tuple> getPost() {
         JPQLQuery<Post> jpqlQuery = from(post);
         jpqlQuery.leftJoin(member).on(post.writer.eq(member));
-        jpqlQuery.select(post, member.nickname);
+        JPQLQuery<Tuple> tuple = jpqlQuery.select(post, member.nickname);
+        List<Tuple> result = tuple.fetch();
 
-        List<Post> result = jpqlQuery.fetch();
-
+        ////////////////////
+        for (Tuple tmp : result) {
+            System.out.println(tmp);
+        }
+        ////////////////////
         return result;
     }
 
@@ -41,8 +48,8 @@ public class PostRepositoryImpl extends QuerydslRepositorySupport implements Pos
     public Object getPostByPostId(Long post_id) {
         JPQLQuery<Post> jpqlQuery = from(post);
         jpqlQuery.leftJoin(member).on(post.writer.eq(member));
-        jpqlQuery.select(post, member.nickname, member.id).where(post.post_id.eq(post_id));
-        Object result = jpqlQuery.fetch();
+        JPQLQuery<Tuple> tuple = jpqlQuery.select(post, member).where(post.post_id.eq(post_id));
+        Object result = tuple.fetch();
 
         return result;
     }
@@ -52,7 +59,7 @@ public class PostRepositoryImpl extends QuerydslRepositorySupport implements Pos
         JPQLQuery<Post> jpqlQuery = from(post);
         jpqlQuery.leftJoin(member).on(post.writer.eq(member));
 
-        JPQLQuery<Tuple> tuple = jpqlQuery.select(post, member.nickname);
+        JPQLQuery<Tuple> tuple = jpqlQuery.select(post, member);
         tuple.where(post.category.eq(Category.valueOf(category)));
 
         // order by
@@ -72,10 +79,17 @@ public class PostRepositoryImpl extends QuerydslRepositorySupport implements Pos
         // fetch
         List<Tuple> result = tuple.fetch();
         ////////////////////
+        System.out.println("================레파지토리 getPostsByCategory=================");
+        System.out.println("전체");
+        System.out.println(result);
         for (Tuple tmp : result) {
             System.out.println(tmp);
         }
         /////////////////////
-        return null;
+        return new PageImpl<Object[]>(
+                result.stream().map(t -> t.toArray()).collect(Collectors.toList()),
+                pageable,
+                jpqlQuery.fetchCount()
+        );
     }
 }

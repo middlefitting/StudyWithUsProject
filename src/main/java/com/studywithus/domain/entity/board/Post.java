@@ -12,14 +12,14 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@ToString(exclude = "writer")
 public class Post extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long post_id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "mem_id")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "member_id")
     private Member writer;
 
     private Category category;
@@ -31,6 +31,5 @@ public class Post extends BaseEntity {
 
     private String file_dir;
 
-    @Column(columnDefinition = "varchar2(4000) default '0'")
     private Integer views;
 }
