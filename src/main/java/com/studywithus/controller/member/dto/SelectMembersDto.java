@@ -1,6 +1,6 @@
 package com.studywithus.controller.member.dto;
 
-import com.studywithus.domain.member.Member;
+import com.studywithus.domain.entity.member.Member;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;

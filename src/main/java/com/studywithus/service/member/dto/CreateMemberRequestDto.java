@@ -1,6 +1,6 @@
 package com.studywithus.service.member.dto;
 
-import com.studywithus.domain.member.Member;
+import com.studywithus.domain.entity.member.Member;
 import lombok.Builder;
 import lombok.Data;
 

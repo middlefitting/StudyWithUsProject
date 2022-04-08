@@ -4,7 +4,7 @@ import com.studywithus.controller.board.dto.PageRequestDTO;
 import com.studywithus.controller.board.dto.PageResultDTO;
 import com.studywithus.controller.board.dto.PostDto;
 import com.studywithus.domain.board.Post;
-import com.studywithus.domain.member.Member;
+import com.studywithus.domain.entity.member.Member;
 import com.studywithus.repository.board.Post.PostRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -32,7 +32,7 @@ public class PostServiceImpl implements PostService{
 
     @Override
     public PageResultDTO<PostDto, Object[]> getList(String category, PageRequestDTO pageRequestDTO) {
-        Function<Object[], PostDto> fn = (en -> entityToDto((Post)en[0],(Member)en[1]));
+        Function<Object[], PostDto> fn = (en -> entityToDto((Post)en[0],(Member) en[1]));
 
         Page<Object[]> result = repository.getPostsByCategory(
                 category,

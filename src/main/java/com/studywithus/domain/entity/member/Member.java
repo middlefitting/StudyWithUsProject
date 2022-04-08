@@ -62,7 +62,8 @@ public class Member extends BaseConstructorEntity {
     }
 
     @Builder
-    public Member(String email, String nickname, String password, String roles, String provider, String providerId, String bornDate) {
+    public Member(Long id, String email, String nickname, String password, String roles, String provider, String providerId, String bornDate) {
+        this.id = id;
         this.email = email;
         this.nickname = nickname;
         this.password = password;

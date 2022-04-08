@@ -5,7 +5,7 @@ import com.studywithus.controller.board.dto.PageResultDTO;
 import com.studywithus.controller.board.dto.PostDto;
 import com.studywithus.domain.board.Category;
 import com.studywithus.domain.board.Post;
-import com.studywithus.domain.member.Member;
+import com.studywithus.domain.entity.member.Member;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 

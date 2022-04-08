@@ -9,7 +9,7 @@ import com.studywithus.domain.board.Category;
 import com.studywithus.domain.board.Post;
 
 import com.studywithus.domain.board.QPost;
-import com.studywithus.domain.member.QMember;
+import com.studywithus.domain.entity.member.QMember;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;

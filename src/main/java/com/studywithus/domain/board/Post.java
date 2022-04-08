@@ -20,7 +20,7 @@ public class Post extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mem_id")
-    private Member mem_id;
+    private Member writer;
 
     private Category category;
 
