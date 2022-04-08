@@ -1,13 +1,13 @@
 package com.studywithus.domain.service.member;
 
+
 import com.studywithus.domain.entity.member.Member;
-import com.studywithus.domain.service.member.dto.CreateMemberRequestDto;
 import com.studywithus.domain.repository.member.MemberRepository;
+import com.studywithus.domain.service.member.dto.CreateMemberRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.text.html.Option;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
