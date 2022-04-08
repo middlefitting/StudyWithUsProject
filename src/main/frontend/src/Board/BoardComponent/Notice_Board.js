@@ -1,8 +1,17 @@
 import {Link} from "react-router-dom";
-import React from "react";
+import React, {useEffect} from "react";
 import  "../../App.css";
+import AxiosURL from "../../Services/AxiosURL";
 
 function  Notice_Board(){
+
+    // useEffect(() => {
+    //     AxiosURL.getBoardList()
+    //         .then((response) => {
+    //             console.log(response.data)
+    //         })
+    // })
+
     return(
 
                         <table id="main_board">

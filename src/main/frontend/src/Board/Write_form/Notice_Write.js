@@ -1,13 +1,20 @@
 import './Write.css'
 import {Link, useHistory} from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import File_Upload from "./Upload/File_Upload";
+import AxiosURL from "../../Services/AxiosURL";
 
 
 function Notice_Write(){
 
     const history = useHistory();
 
+    useEffect(() => {
+        AxiosURL.getBoardList()
+            .then((response) => {
+                console.log(response.data)
+            })
+    })
 
     return(
         <div className="write_form">

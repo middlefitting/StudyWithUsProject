@@ -8,9 +8,8 @@ import MyPage_Board from "../BoardComponent/MyPage_Board";
 import TabContents from "../../Tabs/Tab_Contents";
 import {useState} from "react";
 import Tab_Name from "../../Tabs/Tab_Name";
-import UserConfirm from "../BoardComponent/UserConfirm";
 
-/*const user = JSON.parse(localStorage.getItem('user-info'))*/
+const user = JSON.parse(localStorage.getItem('user-info'))
 
 function MyPageList(){
 
@@ -61,7 +60,7 @@ function MyPageList(){
                             </button>
                         </Tab_Name>
                         <Tab_Name id="tab4" activeTab={activeTab}>
-                            <span>님의 글</span>
+                            <span>{user}님의 글</span>
                         </Tab_Name>
                         <Tab_Name id="tab5" activeTab={activeTab}>
                             <span>회원정보수정</span>
@@ -79,9 +78,6 @@ function MyPageList(){
                         </TabContents>
                         <TabContents id="tab4" activeTab={activeTab}>
                             <MyPage_Board />
-                        </TabContents>
-                        <TabContents id="tab5" activeTab={activeTab}>
-                            <UserConfirm />
                         </TabContents>
                     </div>
                 </div>

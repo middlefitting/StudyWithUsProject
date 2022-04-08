@@ -9,7 +9,7 @@ const Contents = () => {
 
   const history = useHistory();
   const user = JSON.parse(localStorage.getItem('user-info'));
-  console.log(user)
+  const post = JSON.parse(localStorage.getItem('post-info'));
 
   // Function For Logout
   const _handleLogOut = () => {

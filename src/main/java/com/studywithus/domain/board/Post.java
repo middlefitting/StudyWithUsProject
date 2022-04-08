@@ -1,7 +1,7 @@
 package com.studywithus.domain.board;
 
 import com.studywithus.domain.BaseEntity;
-import com.studywithus.domain.member.Member;
+import com.studywithus.domain.entity.member.Member;
 
 import lombok.*;
 
@@ -20,7 +20,7 @@ public class Post extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mem_id")
-    private Member mem_id;
+    private Member writer;
 
     private Category category;
 

@@ -22,8 +22,6 @@ import Study_Board_Update from "./Study/Study_Detail/Study_Board_Update";
 import Study_Write from "./Study/Study_Write";
 import Classes_All from "./Classes/Classes_Index/Classes_All";
 import MyPageList from "./Board/List/MyPageList";
-import UserConfirm from "./Board/BoardComponent/UserConfirm";
-import UserUpdate from "./Board/BoardComponent/UserUpdate";
 
 function App() {
 
@@ -58,8 +56,6 @@ function App() {
                 <Route path="/Study_Write" component={Study_Write} exact />
 
                 <Route path="/Classes_All" component={Classes_All} exact />
-                <Route path="/UserConfirm" component={UserConfirm} exact />
-                <Route path="/UserUpdate" component={UserUpdate} exact />
 
                 <Route path="/signin" component={SignIn} />
                 <Route path="/signup" component={SignUp} />
