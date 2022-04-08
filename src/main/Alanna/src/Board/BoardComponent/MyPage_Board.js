@@ -24,7 +24,7 @@ function MyPage_Board(){
                     </Link>
                 </td>
                 <td width="15%">개발중</td>
-                <td width="15%">1818-18-18</td>
+                <td width="15%">1818-28-28</td>
                 <td width="10%">18</td>
             </tr>
             </tbody>

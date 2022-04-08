@@ -8,14 +8,20 @@ class CommunityService {
         return axios.post(baseURL + "/member", data)
     }
 
-    /*loginMember(data) {
+    loginMember(data) {
         return axios.post(baseURL + "/login", data)
     }
 
     userSession(config) {
         return axios.get(baseURL + "/user", config)
-    }*/
+    }
+
+    checkPassword(data) {
+        return axios.post(baseURL + "/checkPassword", data)
+    }
 
 }
+
+
 
 export default new CommunityService();

@@ -41,9 +41,18 @@ const SignUp = () => {
 
     // 회원가입 axios DB 연동
     const onSubmit = (data) => {
-        // console.log('data',data);
+        console.log('data', data);
 
-        AxiosURL.saveMember(data)
+        const register = {
+            email: data.email,
+            nickname: data.nickname,
+            password: data.password,
+            bornDate: data.bornDate
+        }
+
+        console.log('register', register);
+
+        AxiosURL.saveMember(register)
             .then((response) => {
             console.log(response.data) // id
             let result = response.data
@@ -91,7 +100,7 @@ const SignUp = () => {
                        name="nickname"
                        placeholder="10자리 이내로만 가능합니다."
                        {...register("nickname",
-                    {required: true, maxLength: 10})}/>
+                    {required: true, maxLength: 20, minLength:1})}/>
                 {errors.nickname && errors.nickname.type === "required" && <p className="signupPont">닉네임을 입력해주세요.</p>}
                 {errors.nickname && errors.nickname.type === "maxLength" && <p className="signupPont">닉네임은 10자 이내로만 가능합니다.</p>}
 
@@ -111,9 +120,10 @@ const SignUp = () => {
                        name="password"
                        type="password"
                        {...register("password",
-                           {required: true, minLength: 8})}/>
+                           {required: true, minLength: 8, maxLength:20})}/>
                 {errors.password && errors.password.type === "required" && <p className="signupPont">비밀번호를 입력해주세요.</p>}
                 {errors.password && errors.password.type === "minLength" && <p className="signupPont">비밀번호는 8글자 이상으로 가능합니다.</p>}
+                {errors.password && errors.password.type === "maxLength" && <p className="signupPont">비밀번호는 16글자 이하으로 가능합니다.</p>}
 
                 <label>Password Confirm</label>
                 <input

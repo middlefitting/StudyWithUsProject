@@ -9,7 +9,7 @@ import {useState} from "react";
 import Tab_Name from "../../Tabs/Tab_Name";
 import MyPage_Board from "../BoardComponent/MyPage_Board";
 
-const user = JSON.parse(localStorage.getItem('user-info'))
+/*const user = JSON.parse(localStorage.getItem('user-info'))*/
 
 function NoticeList(){
 
@@ -29,7 +29,6 @@ function NoticeList(){
                             <Side_Tab title="자유게시판" id="tab2" activeTab={activeTab} setActiveTab={setActiveTab}/>
                             <Side_Tab title="질문게시판" id="tab3" activeTab={activeTab} setActiveTab={setActiveTab}/>
                             <Side_Tab title="내 글" id="tab4" activeTab={activeTab} setActiveTab={setActiveTab}/>
-                            <Side_Tab title="회원정보수정" id="tab5" activeTab={activeTab} setActiveTab={setActiveTab}/>
                         </ul>
                     </>
                     :
@@ -63,10 +62,7 @@ function NoticeList(){
                                 </button>
                             </Tab_Name>
                             <Tab_Name id="tab4" activeTab={activeTab}>
-                                <span>{user.id}님의 글</span>
-                            </Tab_Name>
-                            <Tab_Name id="tab5" activeTab={activeTab}>
-                                <span>회원정보수정</span>
+                                <span>님의 글</span>
                             </Tab_Name>
                         </div>
                       <div className="mid_container">
