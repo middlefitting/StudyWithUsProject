@@ -1,6 +1,6 @@
 import {useState} from "react";
 import '../Write.css';
-import ImageUploading from 'react-images-uploading';
+/*import ImageUploading from 'react-images-uploading';*/
 
 
 function File_Upload(){
