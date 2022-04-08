@@ -1,6 +1,6 @@
 package com.studywithus.domain.entity.member;
 
-import com.studywithus.domain.BaseConstructorEntity;
+import com.studywithus.domain.entity.BaseConstructorEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

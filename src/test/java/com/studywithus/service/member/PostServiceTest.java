@@ -3,7 +3,7 @@
 //import com.studywithus.controller.board.dto.PageRequestDTO;
 //import com.studywithus.controller.board.dto.PageResultDTO;
 //import com.studywithus.controller.board.dto.PostDto;
-//import com.studywithus.domain.board.Category;
+//import com.studywithus.domain.entity.board.Category;
 //import com.studywithus.domain.member.Member;
 //import com.studywithus.repository.board.Post.PostRepository;
 //import com.studywithus.service.board.PostService;
