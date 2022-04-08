@@ -55,10 +55,10 @@ const SignUp = () => {
         AxiosURL.saveMember(register)
             .then((response) => {
             console.log(response.data) // id
-            let result = response.data
-            localStorage.setItem("user-info",JSON.stringify(result))
+            /*let result = response.data
+            localStorage.setItem("user-info",JSON.stringify(result))*/
             alert(JSON.stringify(" 회원가입이 완료되었습니다. ")) // 나중에 모달창으로 교체예정
-            history.push("/")
+            history.push("/signin")
             window.location.reload()
         }).catch(error => {
             console.log(error)
