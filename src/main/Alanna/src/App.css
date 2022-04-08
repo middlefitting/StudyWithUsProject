@@ -1,0 +1,160 @@
+
+.container{
+    margin-top: 30px;
+    display: flex;
+    height: auto;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+
+
+.Header{
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    color: black;
+    background-color: paleturquoise;
+    align-items:center;
+    justify-content:center;
+    font-size: 20px;
+
+}
+.mid_container{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+
+.TabContents{
+    width:100%;
+    display: flex;
+    left: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.Tab_Name{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    overflow: hidden;
+    font-size: 35px;
+}
+
+#w_button{
+    margin: 20px 30px 0px 0px;
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+    border: 0 none;
+    background-color: rgb(242, 150, 97);
+    color: white;
+    font-size: 16px;
+    font-weight: 100;
+    cursor: pointer;
+    transition: 300ms;
+
+}
+
+
+
+#w_button:hover{
+    opacity: 0.7;
+}
+
+
+.cont_container{
+    display: flex;
+    min-height: 100vh;
+    width: calc(100% - 80px);
+
+    color: black;
+    overflow: hidden;
+    justify-content: flex-start;
+        padding: 10px 40px;
+
+
+}
+
+
+
+#main_board{
+    height: auto;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#board_head{
+    background-color: rgb(242, 150, 97);
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    border: none;
+}
+
+#board_body{
+    background-color: white;
+    border: solid 1px #d9d2d2;
+    border-left: none;
+    border-right: none;
+}
+
+#tbody_body:hover{
+    cursor: pointer;
+}
+
+
+.footer {
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    color: black;
+    background-color: paleturquoise;
+    align-items:center;
+    justify-content:center;
+    font-size: 20px;
+
+}
+
+.link{
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.notice_nav, .board_nav, .study_nav, .class_nav{
+    margin: 5px 70px 0px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+
+
+@media screen and (min-width: 1200px) {
+    .page_name{
+        font-size: 35px;
+    }
+
+}
+
+
+

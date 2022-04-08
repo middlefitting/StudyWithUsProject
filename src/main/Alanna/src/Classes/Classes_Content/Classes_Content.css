@@ -1,0 +1,102 @@
+.box_cont{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 1250px;
+    height: auto;
+}
+.boxes{
+    background-color: white;
+    height: 270px;
+    width: 300px;
+    margin: 20px 20px 20px 20px;
+    border-radius: 20px;
+    box-shadow: 1px 3px 10px rgba(155, 154, 154, 0.55);
+    padding: 30px;
+}
+.boxes:hover{
+    transform: scale(1.02, 1.02);
+    transition: 0.4s ease;
+}
+
+.boxes_content{
+    width: 100%;
+    /*    overflow-x: hidden;*/
+}
+
+.boxes_content span{
+    background-color: rgb(242, 150, 97);
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 0.5rem 0.75rem;
+    border-radius: 1rem;
+    text-transform: uppercase;
+}
+
+.boxes_courseName {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 2rem 0 0.5rem 0;
+}
+
+.boxes_content p{
+    height: 90px;
+    width: 100%;
+    font-size: 14px;
+    overflow: auto;
+    line-height: 2.0;
+}
+
+.classes_date{
+    font-size: 10px;
+    color: gray;
+    margin: 5px;
+}
+
+.boxes_content hr{
+    border: 0;
+    height: 1px;
+
+}
+
+.add_classes{
+    height: 45px;
+    width: 100%;
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(242, 150, 97);
+    cursor: pointer;
+    color: white;
+    margin-top: 10px;
+    box-shadow: 1px 9px 10px rgba(155, 154, 154, 0.55);
+
+}
+.add_classes:hover{
+    transform: scale(1.02, 1.02);
+    opacity: 0.9;
+    transition: 0.4s ease;
+}
+
+
+.add_classes:active{
+    position: relative;
+    box-shadow: 1px 5px 10px rgba(155, 154, 154, 0.55);
+    top: 2px;
+}
+
+
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    /*    background: #f1f1f1;*/
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    /*    background: rgb(162, 166, 239);*/
+    background: transparent;
+}
+

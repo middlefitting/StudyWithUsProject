@@ -16,6 +16,7 @@ import java.time.LocalDate;
 @Entity
 @Getter @Setter
 public class Member {
+
     @Id
     @GeneratedValue
 //    @Column(name = "mem_id")
