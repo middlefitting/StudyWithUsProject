@@ -173,6 +173,7 @@ public class MemberController {
             return new SuccessResult("", "회원 비밀번호 변경 완료", "success");
         }
         return new SuccessResult("", "회원 비밀번호 변경 실패", "failed");
+
     }
 
 
