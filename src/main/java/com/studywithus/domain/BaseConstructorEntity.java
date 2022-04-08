@@ -12,7 +12,7 @@ import javax.persistence.MappedSuperclass;
 @EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
 @Getter
-public class BaseConstructorEntity extends BaseEntity{
+public class BaseConstructorEntity extends BaseEntity {
     @CreatedBy
     @Column(updatable = false)
     private String createdBy;
