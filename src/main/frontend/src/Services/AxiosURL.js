@@ -12,15 +12,15 @@ class CommunityService {
         return axios.post(baseURL + "/board/register", data)
     }
 
-    getNoticeList(data) {
-        return axios.post(baseURL + "/board/notice", data)
+    getNoticeList() {
+        return axios.get(baseURL + "/board/notice")
     }
-    getFreeList(data) {
-        return axios.post(baseURL + "/board/free", data)
-    }
-    getQuestionList(data) {
-        return axios.post(baseURL + "/board/question", data)
-    }
+    // getFreeList(data) {
+    //     return axios.post(baseURL + "/board/free", data)
+    // }
+    // getQuestionList(data) {
+    //     return axios.post(baseURL + "/board/question", data)
+    // }
 
     /*loginMember(data) {
         return axios.post(baseURL + "/login", data)

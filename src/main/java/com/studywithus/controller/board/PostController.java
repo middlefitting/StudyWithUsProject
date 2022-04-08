@@ -2,6 +2,7 @@ package com.studywithus.controller.board;
 
 import com.studywithus.controller.board.dto.CreatePostResponseDto;
 import com.studywithus.controller.board.dto.PageRequestDTO;
+import com.studywithus.controller.board.dto.PageResultDTO;
 import com.studywithus.controller.board.dto.PostDto;
 import com.studywithus.service.board.PostService;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 
 //@RequestMapping("/board/")
 @RestController
@@ -26,8 +28,11 @@ public class PostController {
     }
 
     @PostMapping("/board/notice")
-    public void postList(@RequestParam PageRequestDTO pageRequestDTO, Model model) {
-        model.addAttribute("result", postService.getList("notice", pageRequestDTO));
+    public ArrayList<PostDto> postList(@RequestParam PageRequestDTO pageRequestDTO) {
+        PageResultDTO<PostDto, Object[]> result = postService.getList("notice", pageRequestDTO);
+        ArrayList<PostDto> arr = new ArrayList<PostDto>(result.getDtoList());
+
+        return arr;
     }
 
 

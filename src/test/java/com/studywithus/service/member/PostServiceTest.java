@@ -1,5 +1,7 @@
 package com.studywithus.service.member;
 
+import com.studywithus.controller.board.dto.PageRequestDTO;
+import com.studywithus.controller.board.dto.PageResultDTO;
 import com.studywithus.controller.board.dto.PostDto;
 import com.studywithus.domain.board.Category;
 import com.studywithus.domain.member.Member;
@@ -42,51 +44,47 @@ public class PostServiceTest {
         System.out.println(result);
     }
 
-    // 조회
-    @Test
-    public void testList() {
-        IntStream.rangeClosed(1, 10).forEach(i -> {
-            Member member = Member.builder()
-                    .nickname("Test User" + i)
-                    .email("test"+i+"@aaa.com")
-                    .build();
-
-            PostDto dto = PostDto.builder()
-                    .title("test" + i)
-                    .content(i+" Test Test Test")
-                    .category(Category.notice)
-                    .writer_nickname(member.getNickname())
-                    .build();
-
-            Long post_id = postService.register(dto);
-            }
-        );
-        IntStream.rangeClosed(11, 20).forEach(i -> {
-                    Member member = Member.builder()
-                            .nickname("Test User" + i)
-                            .email("test"+i+"@aaa.com")
-                            .build();
-
-                    PostDto dto = PostDto.builder()
-                            .title("test" + i)
-                            .content(i+" Test Test Test")
-                            .category(Category.free)
-                            .writer_nickname(member.getNickname())
-                            .build();
-
-                    Long post_id = postService.register(dto);
-                }
-        );
+//    // 조회
+//    @Test
+//    public void testList() {
+//        IntStream.rangeClosed(1, 10).forEach(i -> {
+//            Member member = Member.builder()
+//                    .nickname("Test User" + i)
+//                    .email("test"+i+"@aaa.com")
+//                    .build();
+//
+//            PostDto dto = PostDto.builder()
+//                    .title("test" + i)
+//                    .content(i+" Test Test Test")
+//                    .category(Category.notice)
+//                    .writer_nickname(member.getNickname())
+//                    .build();
+//
+//            Long post_id = postService.register(dto);
+//            }
+//        );
+//        IntStream.rangeClosed(11, 20).forEach(i -> {
+//                    Member member = Member.builder()
+//                            .nickname("TestUser" + i)
+//                            .email("test"+i+"@aaa.com")
+//                            .build();
+//
+//                    PostDto dto = PostDto.builder()
+//                            .title("test" + i)
+//                            .content(i+" Test Test Test")
+//                            .category(Category.free)
+//                            .writer_id(member.getId())
+//                            .build();
+//
+//                    Long post_id = postService.register(dto);
+//                }
+//        );
 
 //        PageRequestDTO pageRequestDTO = new PageRequestDTO();
-//        PageResultDTO<PostDto, Object[]> result = postService.getList(pageRequestDTO);
-//
+//        PageResultDTO<PostDto, Object[]> result = postService.getList("notice", pageRequestDTO);
+
 //        for (PostDto postDto : result.getDtoList()) {
 //            System.out.println(postDto);
 //        }
-        String category = "notice";
-//        PostDto result = postService.get(category);
-
-//        System.out.println(result);
-    }
+//    }
 }
