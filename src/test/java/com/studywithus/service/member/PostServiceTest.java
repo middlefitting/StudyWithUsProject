@@ -79,10 +79,10 @@ public class PostServiceTest {
 //                    Long post_id = postService.register(dto);
 //                }
 //        );
-
+//
 //        PageRequestDTO pageRequestDTO = new PageRequestDTO();
 //        PageResultDTO<PostDto, Object[]> result = postService.getList("notice", pageRequestDTO);
-
+//
 //        for (PostDto postDto : result.getDtoList()) {
 //            System.out.println(postDto);
 //        }

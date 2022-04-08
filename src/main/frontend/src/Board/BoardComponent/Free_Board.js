@@ -2,20 +2,29 @@ import {Link, useHistory} from "react-router-dom";
 import React, {useEffect, useRef, useState} from "react";
 import  "../../App.css";
 import {useForm} from "react-hook-form";
+import AxiosURL from "../../Services/AxiosURL";
 
 
 function  Free_Board(){
 
     useEffect(() => {
-        if(localStorage.getItem('user-info'))
-        {
-            history.push("/")
-        }
+        AxiosURL.getNoticeList()
+            .then((response) => {
+                console.log(response.data) // array
+                let result = response.data
+            //     alert(JSON.stringify(" 글 등록이 완료되었습니다. ")) // 나중에 모달창으로 교체예정
+            //     history.push("/BoardList")
+            //     window.location.reload()
+            // }).catch(error => {
+            // console.log(error)
+            // alert(JSON.stringify(" 정보를 다시 입력해주세요. ")) // 나중에 모달창으로 교체예정
+        })
     }, []);
 
     const { watch, register, formState: {errors}, setError, handleSubmit } = useForm({mode:"onChange"});
     const history = useHistory();
     // const post = JSON.parse(localStorage.getItem('post-info'));
+    const posts = JSON.parse(localStorage.getItem('posts'));
 
 
     return(

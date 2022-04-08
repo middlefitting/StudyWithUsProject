@@ -27,11 +27,11 @@ public class PostController {
         return responseDto;
     }
 
-    @PostMapping("/board/notice")
-    public ArrayList<PostDto> postList(@RequestParam PageRequestDTO pageRequestDTO) {
+    @GetMapping("/board/notice")
+    public ArrayList<PostDto> postList(PageRequestDTO pageRequestDTO) {
         PageResultDTO<PostDto, Object[]> result = postService.getList("notice", pageRequestDTO);
         ArrayList<PostDto> arr = new ArrayList<PostDto>(result.getDtoList());
-
+        System.out.println(arr);
         return arr;
     }
 
