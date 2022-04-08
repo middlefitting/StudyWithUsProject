@@ -1,16 +1,14 @@
-[수정]
-1. import 회색 삭제
-2. 코드 형태 통일(@순서 / Entity field 순서 / 주석 제거)
-3. Post - mem_id : @JoinColumn 추가
-4. Post - category : enum Category 추가
-
 [할 일]
 (Entity 제약 조건)
 1. Comment - content : 길이
 2. Study - study_name : 길이 / study_explanation : 길이
 3. Post - title : 길이 / content : 길이
 
-(ManyToOne fetch type : EAGER / LAZY)
+(dto)
+1. 설계
+
+(repository)
+1. 구현
 
 [아이디어]
-1. 게시글 작성 시 카테고리 추가 기능?
+1. 게시글 작성 시 카테고리 추가로 생성 가능

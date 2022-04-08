@@ -18,11 +18,11 @@ public class MemStudy extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long memStudy_id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "study_id")
     private Study study_id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mem_id")
     private Member mem_id;
 }
