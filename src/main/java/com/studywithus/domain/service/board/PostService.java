@@ -11,7 +11,7 @@ public interface PostService {
     Long register(PostDto dto);
     PostDto get(@Param("post_id") Long post_id);
 
-    PageResultDTO<PostDto, Object[]> getList(@Param("category") String category, PageRequestDTO pageRequestDTO);
+    PageResultDTO<PostDto, Object[]> getList(PageRequestDTO pageRequestDTO);
 
     void remove(Long post_id);
 

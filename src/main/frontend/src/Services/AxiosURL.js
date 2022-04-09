@@ -13,7 +13,7 @@ class CommunityService {
     }
 
     getNoticeList() {
-        return axios.get(baseURL + "/board/notice")
+        return axios.get(baseURL + "/board")
     }
     // getFreeList(data) {
     //     return axios.post(baseURL + "/board/free", data)

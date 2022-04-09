@@ -111,7 +111,7 @@ public class PostServiceTest {
 
         PageRequestDTO pageRequestDTO = new PageRequestDTO();
 //        PageRequestDTO pageRequestDTO = PageRequestDTO.builder().page(2).size(10).build();
-        PageResultDTO<PostDto, Object[]> result = postService.getList("notice", pageRequestDTO);
+        PageResultDTO<PostDto, Object[]> result = postService.getList(pageRequestDTO);
 
         for (PostDto postDto : result.getDtoList()) {
             System.out.println(postDto);

@@ -12,14 +12,11 @@ import org.springframework.data.domain.Sort;
 @AllArgsConstructor
 @Data
 public class PageRequestDTO {
-    private int page;
-    private int size;
+    private int page = 1;
+    private int size = 10;
     private  String category;
 
-    public PageRequestDTO() {
-        this.page = 1;
-        this.size = 10;
-    }
+    public PageRequestDTO() {}
 
     public Pageable getPageable(Sort sort) {
         return PageRequest.of(page -1, size, sort);

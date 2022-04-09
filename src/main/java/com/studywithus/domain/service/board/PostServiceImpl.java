@@ -19,6 +19,7 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -43,17 +44,22 @@ public class PostServiceImpl implements PostService{
     //캐스팅오류
     @Override
     public PostDto get(Long post_id) {
+//        Optional<Post> post = repository.findById(post_id);
+
         Object result = repository.getPostByPostId(post_id);
         Object[] arr = (Object[]) result;
+//        int cnt = board.getViewCnt();
+//        board.setViewCnt(cnt + 1);
+
         return entityToDto((Post) arr[0], (Member) arr[1]);
     }
 
     @Override
-    public PageResultDTO<PostDto, Object[]> getList(String category, PageRequestDTO pageRequestDTO) {
+    public PageResultDTO<PostDto, Object[]> getList(PageRequestDTO pageRequestDTO) {
         Function<Object[], PostDto> fn = (en -> entityToDto((Post)en[0], (Member) en[1]));
 
         Page<Object[]> result = repository.getPostsByCategory(
-                category,
+                pageRequestDTO.getCategory(),
                 pageRequestDTO.getPageable(Sort.by("regDate").descending())
         );
         System.out.println("==================서비스 result============");
