@@ -3,17 +3,13 @@ import {Link, useHistory} from 'react-router-dom';
 import 'moment/locale/ko';
 import moment from "moment";
 import React, {useState} from "react";
+import {Axios} from "axios";
 
 
-
-
+const user = JSON.parse(localStorage.getItem('user-info'))
 function Free_Detail(props){
 
-/*    let history = useHistory();
 
-    const goBack=()=>{
-        history.push('/NoticeList');
-    };*/
 
     const history= useHistory();
 
@@ -73,6 +69,21 @@ function Free_Detail(props){
     const[num, plusNum] = useState(0);
     const ClickLike=()=>plusNum(num+1);
 
+/*
+    const ClickLike = () => {
+        if (document.getElementById('id') !== undefined && pwd) {
+            Axios
+                .get('url', param)
+                .then(res =>
+                if (res === null || res === undefined) {
+                alert(error)
+            } else {
+                plusNum(num+1);
+            }
+        }
+    }
+*/
+
 
     return(
         <div className="Free_Detail">
@@ -80,11 +91,19 @@ function Free_Detail(props){
             <div className="mid_con">
                 <fieldset className="detail_field">
                     <div className="buttons_field">
-                    <div className="go_back" onClick={()=> history.push('/BoardList')}>자유게시판 > </div>
+                    <div className="go_back" onClick={()=> history.push('/FreeList')}>자유게시판 > </div>
+                        {localStorage.getItem('user-info') ?
+                            <>
+                            <div className="user_only_buttons">
                         <div className="detail_delete">삭제</div>
                         <Link to ="/Update_Detail" className="link">
                             <div className="detail_update">수정</div>
                         </Link>
+                            </div>
+                            </>
+                            :
+                            <></>
+                        }
                     </div>
                     <p className="detail_title">여기는 제목</p>
                     <div className="user_con">
@@ -100,7 +119,7 @@ function Free_Detail(props){
                                 <div className="view_num">조회수</div>
                             </div>
                             <div className="comment_button" onClick={() => scrollTo(ref1)}>
-                                <img className="comm_img" alt="com_img" src="img/comment.png"/>
+                                <img className="comm_img" alt="com_img" src="img/comment.png" />
                                 <div className="comment">댓글</div>
                             </div>
 
@@ -120,7 +139,9 @@ function Free_Detail(props){
                         </div>
                         <div className="heart_img_bottom">
                             <img id="empty_heart" className="heart_bottom" alt="heart"
-                                 src="img/empty_heart.png" onClick={ClickLike}/>
+                                 src="img/empty_heart.png" onClick={() => { ClickLike(); }} />
+{/*
+                           onClick={() => { ClickLike(); func2();}}*/}
                             <div className="like_bottom" >좋아요 {num}</div>
                         </div>
                     </div>

@@ -23,6 +23,8 @@ hr{
 .buttons_field{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+
 }
 
 .go_back{
@@ -31,16 +33,18 @@ hr{
     font-weight: bold;
     padding: 10px;
     cursor: pointer;
-    flex: 2;
+}
+
+.user_only_buttons{
+    display: flex;
 }
 
 .detail_delete, .detail_update{
     font-size: 10px;
     color: rgb(242, 150, 97);
     font-weight: bold;
-    padding: 10px;
     cursor: pointer;
-    margin: 5px;
+    margin: 13px;
 }
 
 .detail_title{

@@ -79,10 +79,12 @@ function Notice_Detail(props){
                 <fieldset className="detail_field">
                     <div className="buttons_field">
                     <div className="go_back" onClick={()=> history.push('/NoticeList')}>공지사항 > </div>
+                        <div className="user_only_buttons">
                         <div className="detail_delete">삭제</div>
                         <Link to ="/Update_Detail" className="link">
                             <div className="detail_update">수정</div>
                         </Link>
+                        </div>
                     </div>
                     <p className="detail_title">여기는 제목</p>
                     <div className="user_con">
