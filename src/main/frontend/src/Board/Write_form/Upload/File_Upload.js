@@ -1,6 +1,6 @@
 import {useState} from "react";
 import '../Write.css';
-import ImageUploading from 'react-images-uploading';
+
 
 
 function File_Upload(){
@@ -17,10 +17,6 @@ function File_Upload(){
         console.log("file", file);
     }
 
-    /*    const upload=(e)=> {
-            e.preventDefault();
-            console.log(file);
-        }*/
 
     const deleteFile=(e)=> {
         const s = file.filter((item, index) => index !== e);

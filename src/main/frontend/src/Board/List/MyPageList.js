@@ -8,6 +8,7 @@ import MyPage_Board from "../BoardComponent/MyPage_Board";
 import TabContents from "../../Tabs/Tab_Contents";
 import {useState} from "react";
 import Tab_Name from "../../Tabs/Tab_Name";
+import User_Side_Tab from "../../Tabs/User_Side_Tab";
 
 const user = JSON.parse(localStorage.getItem('user-info'))
 
@@ -21,21 +22,11 @@ function MyPageList(){
                 <div className="Side_Tab">
                     {localStorage.getItem('user-info') ?
                         <>
-                            <ul className="nav_con">
-                                <Side_Tab title="공지사항" id="tab1" activeTab={activeTab} setActiveTab={setActiveTab}/>
-                                <Side_Tab title="자유게시판" id="tab2" activeTab={activeTab} setActiveTab={setActiveTab}/>
-                                <Side_Tab title="질문게시판" id="tab3" activeTab={activeTab} setActiveTab={setActiveTab}/>
-                                <Side_Tab title="내 글" id="tab4" activeTab={activeTab} setActiveTab={setActiveTab}/>
-                                <Side_Tab title="회원정보수정" id="tab5" activeTab={activeTab} setActiveTab={setActiveTab}/>
-                            </ul>
+                            <User_Side_Tab />
                         </>
                         :
                         <>
-                            <ul className="nav_con">
-                                <Side_Tab title="공지사항" id="tab1" activeTab={activeTab} setActiveTab={setActiveTab}/>
-                                <Side_Tab title="자유게시판" id="tab2" activeTab={activeTab} setActiveTab={setActiveTab}/>
-                                <Side_Tab title="질문게시판" id="tab3" activeTab={activeTab} setActiveTab={setActiveTab}/>
-                            </ul>
+                            <Side_Tab />
                         </>
                     }
                 </div>
@@ -50,7 +41,7 @@ function MyPageList(){
                         <Tab_Name id="tab2" activeTab={activeTab}>
                             <span>자유게시판</span>
                             <button type="submit" id="w_button" value="글씨기">
-                                <Link to='/Free_Write' className="link">글쓰기</Link>
+                                <Link to='/Board_Write' className="link">글쓰기</Link>
                             </button>
                         </Tab_Name>
                         <Tab_Name id="tab3" activeTab={activeTab}>

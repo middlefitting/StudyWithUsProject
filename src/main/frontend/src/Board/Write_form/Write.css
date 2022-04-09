@@ -175,3 +175,19 @@ button:hover{
     width: 40px;
     height: 20px;
 }
+
+.write_type_field{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.board_type_radio{
+    width: 90px;
+    font-size: 12px;
+}
+
+.writer_id{
+    border: none;
+    margin-left: 10px;
+}

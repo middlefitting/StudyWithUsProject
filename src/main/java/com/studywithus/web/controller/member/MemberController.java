@@ -29,6 +29,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api")
 public class MemberController {
     private final MemberService memberService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
