@@ -34,18 +34,22 @@
 
 .studyInfo_box{
     align-self: center;
-    background-color: #f1f1f1;
+    background-color: rgb(242, 150, 97);
     min-width:200px;
     width: 200px;
     height: 150px;
-    border: 2px solid #797070;
-    border-radius: 30px;
+    border: 2px solid rgb(242, 150, 97);
+    border-radius: 50px 50px 50px 50px;
     padding: 10px;
     margin: 0px 50px 0px 10px;
     position: sticky;
     top: 25px;
+    color:snow;
 
 }
+
+
+
 
 .study_go_back{
     font-size: 10px;
@@ -68,6 +72,7 @@
     width: 200px;
     height: 100px;
     align-items: center;
+    margin: 20px 10px 10px 0;
 }
 
 .board_con_top{

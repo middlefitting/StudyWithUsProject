@@ -7,7 +7,7 @@ import  "../../App.css";
 function  Modification_confirm(){
 
     return(
-        <input type="submit">
+        <input type="submit" />
     );
 };
-
+export default Modification_confirm;
