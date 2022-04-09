@@ -33,8 +33,9 @@ public class Post extends BaseEntity {
 
     private Integer views;
 
-    public void updatePost(String title, String content) {
+    public void updatePost(String title, String content, Category category) {
         this.title = title;
         this.content = content;
+        this.category = category;
     }
 }

@@ -30,9 +30,9 @@ public class PostServiceImpl implements PostService{
     private final P_likeRepository p_likeRepository;
 
     @Override
-    public Long register(PostDto dto) {
-        dto.setViews(0); //default 0
-        Post post = dtoToEntity(dto);
+    public Long register(PostDto postDto) {
+        postDto.setViews(0); //default 0
+        Post post = dtoToEntity(postDto);
         repository.save(post);
 
         return post.getPost_id();
@@ -44,6 +44,10 @@ public class PostServiceImpl implements PostService{
         List arr = result.stream().map(t -> t.toArray()).collect(Collectors.toList());
         Function<Object[], PostDto> fn = (en -> entityToDto((Post)en[0], (Member) en[1]));
         List<PostDto> dto = (List<PostDto>) arr.stream().map(fn).collect(Collectors.toList());
+
+        // 조회수 처리
+        int cnt = dto.get(0).getViews();
+        dto.get(0).setViews(cnt + 1);
 
         return dto;
     }
@@ -63,21 +67,23 @@ public class PostServiceImpl implements PostService{
 
     @Transactional
     @Override
-    public void remove(Long post_id) {
+    public Long remove(Long post_id) {
         //댓글삭제
 //        commentRepository.deleteByPostId(post_id);
         //좋아요삭제
         //글삭제
         repository.deleteByPostId(post_id);
+        return post_id;
     }
 
     @Transactional
     @Override
-    public void modify(PostDto postDto) {
+    public Long modify(PostDto postDto) {
         Post post = repository.getById(postDto.getPost_id());
 
-        post.updatePost(postDto.getTitle(), postDto.getContent());
+        post.updatePost(postDto.getTitle(), postDto.getContent(), postDto.getCategory());
         repository.save(post);
+        return post.getPost_id();
     }
 
 
