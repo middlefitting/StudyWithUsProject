@@ -35,11 +35,11 @@ public class PostController {
 //        return arr;
 //    }
     @GetMapping("/board/notice")
-    public void postList(PageRequestDTO pageRequestDTO, Model model) {
+    public void postList(PageRequestDTO pageRequestDTO, @RequestParam("model") Model model) {
         model.addAttribute("result", postService.getList("notice", pageRequestDTO));
-        System.out.println("================컨트롤러 postService.getList=================");
-        System.out.println(postService.getList("notice", pageRequestDTO));
-        System.out.println("=================================");
+        System.out.println("================컨트롤러 postService.getList=================");///////////////
+        System.out.println(postService.getList("notice", pageRequestDTO));////////////////
+        System.out.println("=================================");////////////////
     }
 
 

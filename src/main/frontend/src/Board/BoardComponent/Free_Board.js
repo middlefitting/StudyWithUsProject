@@ -12,6 +12,7 @@ function  Free_Board(){
             .then((response) => {
                 console.log(response.data) // array
                 let result = response.data
+                localStorage.setItem("result",JSON.stringify(result))
             //     alert(JSON.stringify(" 글 등록이 완료되었습니다. ")) // 나중에 모달창으로 교체예정
             //     history.push("/BoardList")
             //     window.location.reload()

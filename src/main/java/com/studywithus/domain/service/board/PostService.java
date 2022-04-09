@@ -9,9 +9,13 @@ import org.springframework.data.repository.query.Param;
 
 public interface PostService {
     Long register(PostDto dto);
-    PostDto get(Long post_id);
+    PostDto get(@Param("post_id") Long post_id);
 
     PageResultDTO<PostDto, Object[]> getList(@Param("category") String category, PageRequestDTO pageRequestDTO);
+
+    void remove(Long post_id);
+
+    void modify(PostDto postDto);
 
     default Post dtoToEntity(PostDto dto) {
         Member member = Member.builder().id(dto.getWriter_id()).build();

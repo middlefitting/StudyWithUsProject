@@ -5,6 +5,8 @@ import com.querydsl.core.types.Order;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.PathBuilder;
 import com.querydsl.jpa.JPQLQuery;
+import com.querydsl.jpa.impl.JPAQuery;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.studywithus.domain.entity.board.Category;
 import com.studywithus.domain.entity.board.Post;
 
@@ -16,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
+import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -91,5 +94,10 @@ public class PostRepositoryImpl extends QuerydslRepositorySupport implements Pos
                 pageable,
                 jpqlQuery.fetchCount()
         );
+    }
+
+    @Override
+    public void deleteByPostId(Long post_id) {
+        delete(post).where(post.post_id.eq(post_id)).execute();
     }
 }

@@ -18,11 +18,11 @@ public class P_like extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long like_id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "post_id")
     private Post post_id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "mem_id")
     private Member mem_id;
 }

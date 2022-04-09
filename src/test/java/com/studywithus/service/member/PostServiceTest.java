@@ -44,6 +44,7 @@ public class PostServiceTest {
 //        System.out.println("===========================");
 //        System.out.println(result);
 //    }
+//
 //    // 게시글 번호로 조회
 //    @Test
 //    public void testGet() {
@@ -117,5 +118,59 @@ public class PostServiceTest {
         }
         System.out.println("======================");
         System.out.println(result.isNext());
+    }
+
+    //수정
+    @Test
+    public void testUpdate() {
+        IntStream.rangeClosed(1, 30).forEach(i -> {
+                    Member member = Member.builder()
+                            .nickname("User" + i)
+                            .email("test" + i + "@aaa.com")
+                            .build();
+
+                    PostDto dto = PostDto.builder()
+                            .title("test" + i)
+                            .content(i + " Test Test Test")
+                            .category(Category.notice)
+                            .writer_id(member.getId())
+                            .writer_nickname(member.getNickname())
+                            .build();
+
+                    Long post_id = postService.register(dto);
+                }
+        );
+
+        PostDto dto = PostDto.builder()
+                .post_id(3L)
+                .title("test수정")
+                .content("testtest수정")
+                .build();
+        postService.modify(dto);
+    }
+
+    //삭제
+    @Test
+    public void testDelete() {
+        IntStream.rangeClosed(1, 30).forEach(i -> {
+                    Member member = Member.builder()
+                            .nickname("User" + i)
+                            .email("test" + i + "@aaa.com")
+                            .build();
+
+                    PostDto dto = PostDto.builder()
+                            .title("test" + i)
+                            .content(i + " Test Test Test")
+                            .category(Category.notice)
+                            .writer_id(member.getId())
+                            .writer_nickname(member.getNickname())
+                            .build();
+
+                    Long post_id = postService.register(dto);
+                }
+        );
+
+        Long pno = 3L;
+        postService.remove(pno);
     }
 }

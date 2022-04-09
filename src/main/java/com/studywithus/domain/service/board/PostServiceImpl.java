@@ -1,6 +1,8 @@
 package com.studywithus.domain.service.board;
 
 import com.querydsl.core.Tuple;
+import com.studywithus.domain.repository.board.Comment.CommentRepository;
+import com.studywithus.domain.repository.board.P_like.P_likeRepository;
 import com.studywithus.web.controller.board.dto.PageRequestDTO;
 import com.studywithus.web.controller.board.dto.PageResultDTO;
 import com.studywithus.web.controller.board.dto.PostDto;
@@ -13,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -25,6 +28,8 @@ import java.util.stream.Collectors;
 public class PostServiceImpl implements PostService{
 
     private final PostRepository repository;
+    private final CommentRepository commentRepository;
+    private final P_likeRepository p_likeRepository;
 
     @Override
     public Long register(PostDto dto) {
@@ -35,6 +40,7 @@ public class PostServiceImpl implements PostService{
         return post.getPost_id();
     }
 
+    //캐스팅오류
     @Override
     public PostDto get(Long post_id) {
         Object result = repository.getPostByPostId(post_id);
@@ -54,4 +60,25 @@ public class PostServiceImpl implements PostService{
         System.out.println(result);
         return new PageResultDTO<>(result, fn);
     }
+
+    @Transactional
+    @Override
+    public void remove(Long post_id) {
+        //댓글삭제
+//        commentRepository.deleteByPostId(post_id);
+        //좋아요삭제
+        //글삭제
+        repository.deleteByPostId(post_id);
+    }
+
+    @Transactional
+    @Override
+    public void modify(PostDto postDto) {
+        Post post = repository.getById(postDto.getPost_id());
+
+        post.updatePost(postDto.getTitle(), postDto.getContent());
+        repository.save(post);
+    }
+
+
 }

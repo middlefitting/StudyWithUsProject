@@ -32,4 +32,9 @@ public class Post extends BaseEntity {
     private String file_dir;
 
     private Integer views;
+
+    public void updatePost(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 }
