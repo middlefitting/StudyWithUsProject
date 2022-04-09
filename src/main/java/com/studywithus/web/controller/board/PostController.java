@@ -15,7 +15,7 @@ import java.util.ArrayList;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
+//@RequestMapping("/api")
 public class PostController {
 
     private final PostService postService;

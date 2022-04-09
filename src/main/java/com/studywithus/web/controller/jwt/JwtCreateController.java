@@ -19,7 +19,7 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
+//@RequestMapping("/api")
 public class JwtCreateController {
 
     private final JwtMemberRepository jwtMemberRepository;

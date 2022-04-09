@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const baseURL = '/api'
+// const baseURL = '/api'
+const baseURL = ''
+
 
 class CommunityService {
 

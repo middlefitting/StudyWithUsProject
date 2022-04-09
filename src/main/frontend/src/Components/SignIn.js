@@ -54,7 +54,7 @@ const SignIn = () => {
                 {errors.password && errors.password.type === "minLength" && <p>비밀번호는 8글자 이상으로 가능합니다.</p>}*/}
 
 
-                <input type="submit" onClick={()=> {history.push("/")}} className="signInput"></input>
+                <input type="submit" className="signInput"></input>
             </form>
 
         </div>
