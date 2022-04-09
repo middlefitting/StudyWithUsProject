@@ -56,7 +56,6 @@ const SignIn = () => {
 
                 <input type="submit" className="signInput"></input>
             </form>
-
         </div>
     );
 };

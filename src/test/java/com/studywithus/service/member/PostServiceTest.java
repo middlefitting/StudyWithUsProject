@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
 @SpringBootTest
@@ -22,54 +23,54 @@ public class PostServiceTest {
     @Autowired
     private PostRepository postRepository;
 
-//    // 등록
-//    @Test
-//    public void testRegister() {
-//        Member member = Member.builder()
-//                .nickname("Test User")
-//                .email("test@aaa.com")
-//                .build();
-//
-//        PostDto dto = PostDto.builder()
-//                .title("test.")
-//                .content("Test Test Test")
-//                .writer_nickname(member.getNickname())
-//                .build();
-//
-//        Long post_id = postService.register(dto);
-//        System.out.println("===========================");
-//        System.out.println(post_id);
-//
-//        Object result = postRepository.getPostByPostId(post_id);
-//        System.out.println("===========================");
-//        System.out.println(result);
-//    }
-//
-//    // 게시글 번호로 조회
-//    @Test
-//    public void testGet() {
-//        IntStream.rangeClosed(1, 30).forEach(i -> {
-//                    Member member = Member.builder()
-//                            .nickname("User" + i)
-//                            .email("test"+i+"@aaa.com")
-//                            .build();
-//
-//                    PostDto dto = PostDto.builder()
-//                            .title("test" + i)
-//                            .content(i+" Test Test Test")
-//                            .category(Category.notice)
-//                            .writer_id(member.getId())
-//                            .writer_nickname(member.getNickname())
-//                            .build();
-//
-//                    Long post_id = postService.register(dto);
-//                }
-//        );
-//
-//        Long post_id = 23L;
-//        PostDto postDto = postService.get(post_id);
-//        System.out.println(postDto);
-//    }
+    // 등록
+    @Test
+    public void testRegister() {
+        Member member = Member.builder()
+                .nickname("Test User")
+                .email("test@aaa.com")
+                .build();
+
+        PostDto dto = PostDto.builder()
+                .title("test.")
+                .content("Test Test Test")
+                .writer_nickname(member.getNickname())
+                .build();
+
+        Long post_id = postService.register(dto);
+        System.out.println("===========================");
+        System.out.println(post_id);
+
+        Object result = postRepository.getPostByPostId(post_id);
+        System.out.println("===========================");
+        System.out.println(result);
+    }
+
+    // 게시글 번호로 조회
+    @Test
+    public void testGet() {
+        IntStream.rangeClosed(1, 30).forEach(i -> {
+                    Member member = Member.builder()
+                            .nickname("User" + i)
+                            .email("test"+i+"@aaa.com")
+                            .build();
+
+                    PostDto dto = PostDto.builder()
+                            .title("test" + i)
+                            .content(i+" Test Test Test")
+                            .category(Category.notice)
+                            .writer_id(member.getId())
+                            .writer_nickname(member.getNickname())
+                            .build();
+
+                    Long post_id = postService.register(dto);
+                }
+        );
+
+        Long post_id = 23L;
+        List<PostDto> postDto = postService.get(post_id);
+        System.out.println(postDto);
+    }
 
     // 전체 조회
     @Test

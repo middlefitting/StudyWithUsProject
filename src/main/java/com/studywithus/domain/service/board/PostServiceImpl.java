@@ -16,10 +16,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -41,17 +38,14 @@ public class PostServiceImpl implements PostService{
         return post.getPost_id();
     }
 
-    //캐스팅오류
     @Override
-    public PostDto get(Long post_id) {
-//        Optional<Post> post = repository.findById(post_id);
+    public List<PostDto> get(Long post_id) {
+        List<Tuple> result = repository.getPostByPostId(post_id);
+        List arr = result.stream().map(t -> t.toArray()).collect(Collectors.toList());
+        Function<Object[], PostDto> fn = (en -> entityToDto((Post)en[0], (Member) en[1]));
+        List<PostDto> dto = (List<PostDto>) arr.stream().map(fn).collect(Collectors.toList());
 
-        Object result = repository.getPostByPostId(post_id);
-        Object[] arr = (Object[]) result;
-//        int cnt = board.getViewCnt();
-//        board.setViewCnt(cnt + 1);
-
-        return entityToDto((Post) arr[0], (Member) arr[1]);
+        return dto;
     }
 
     @Override
