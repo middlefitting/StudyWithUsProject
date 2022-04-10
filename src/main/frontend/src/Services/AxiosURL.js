@@ -14,16 +14,38 @@ class CommunityService {
         return axios.post(baseURL + "/board/register", data)
     }
 
-    getNoticeList() {
-        return axios.get(baseURL + "/board")
+
+
+    //page 숫자는 추후 수정
+    getFreeList(){
+        return axios.get(baseURL+"/board",{ params: { 'category' :'free', 'page':1 } });
+
+    }
+
+    getNoticeList(){
+        return axios.get(baseURL+"/board",{ params: { 'category' :'notice', 'page':1 } });
+
+    }
+
+    getQNAList(){
+        return axios.get(baseURL+"/board",{ params: { 'category' :'question', 'page':1 } });
+
     }
 
     getEdit() {
         return axios.get(baseURL + "/board/edit")
     }
+
     postEdit(data) {
         return axios.post(baseURL + "/board/edit", data)
     }
+
+
+    /*    getNoticeList() {
+            return axios.get(baseURL + "/board")
+        }*/
+
+
     // getFreeList(data) {
     //     return axios.post(baseURL + "/board/free", data)
     // }
