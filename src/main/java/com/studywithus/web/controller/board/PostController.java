@@ -3,10 +3,9 @@ package com.studywithus.web.controller.board;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.studywithus.config.jwt.JwtProperties;
-import com.studywithus.web.controller.board.dto.CreatePostResponseDto;
-import com.studywithus.web.controller.board.dto.PageRequestDTO;
-import com.studywithus.web.controller.board.dto.PageResultDTO;
-import com.studywithus.web.controller.board.dto.PostDto;
+import com.studywithus.domain.entity.board.Comment;
+import com.studywithus.domain.service.board.CommentService;
+import com.studywithus.web.controller.board.dto.*;
 import com.studywithus.domain.service.board.PostService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -26,6 +26,7 @@ import java.util.Objects;
 public class PostController {
 
     private final PostService postService;
+    private final CommentService commentService;
 
     // 1. Create
     // 글 등록
@@ -51,10 +52,22 @@ public class PostController {
         return postService.getList(pageRequestDTO);
     }
 
+//    // 세부 게시글 조회
+//    @GetMapping("/board/{post_id}")
+//    public List<PostDto> getPostDetail(@PathVariable("post_id") Long post_id) {
+//       return postService.get(post_id);
+//    }
+
     // 세부 게시글 조회
     @GetMapping("/board/{post_id}")
-    public List<PostDto> getPostDetail(@PathVariable("post_id") Long post_id) {
-       return postService.get(post_id);
+    public PostAndCommentListDTO getPostDetail(@PathVariable("post_id") Long post_id) {
+        ArrayList<PostDto> postDto = postService.get(post_id);
+        ArrayList<CommentDto> commentsList = commentService.getList(post_id);
+        return new PostAndCommentListDTO(postDto, commentsList);
+//        ArrayList arr = new ArrayList();
+//        arr.add(postDto);
+//        arr.add(commentsList);
+//        return arr;
     }
 
     // 3. Update
