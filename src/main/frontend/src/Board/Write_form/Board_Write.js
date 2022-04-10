@@ -20,7 +20,7 @@ function Board_Write(){
                 let result = response.data
                 localStorage.setItem("post-info",JSON.stringify(result))
                 alert(JSON.stringify(" 글 등록이 완료되었습니다. ")) // 나중에 모달창으로 교체예정
-                history.goBack() ////==>선택 카테고리로 이동
+                history.goBack() ////
                 window.location.reload()
             }).catch(error => {
             console.log(error)

@@ -2,7 +2,7 @@ import axios from "axios";
 
 // const baseURL = '/api'
 const baseURL = ''
-
+/*const obj = {category: '123', page: 1};*/
 
 class CommunityService {
 
@@ -14,9 +14,31 @@ class CommunityService {
         return axios.post(baseURL + "/board/register", data)
     }
 
-    getNoticeList() {
-        return axios.get(baseURL + "/board")
+
+
+    //page 숫자는 추후 수정
+    getFreeList(){
+        return axios.get(baseURL+"/board",{ params: { 'category' :'free', 'page':1 } });
+
     }
+
+    getNoticeList(){
+        return axios.get(baseURL+"/board",{ params: { 'category' :'notice', 'page':1 } });
+
+    }
+
+    getQNAList(){
+        return axios.get(baseURL+"/board",{ params: { 'category' :'question', 'page':1 } });
+
+    }
+
+
+
+    /*    getNoticeList() {
+            return axios.get(baseURL + "/board")
+        }*/
+
+
     // getFreeList(data) {
     //     return axios.post(baseURL + "/board/free", data)
     // }
