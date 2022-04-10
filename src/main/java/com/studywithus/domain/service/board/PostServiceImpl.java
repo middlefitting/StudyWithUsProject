@@ -39,11 +39,11 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public List<PostDto> get(Long post_id) {
+    public ArrayList<PostDto> get(Long post_id) {
         List<Tuple> result = repository.getPostByPostId(post_id);
         List arr = result.stream().map(t -> t.toArray()).collect(Collectors.toList());
         Function<Object[], PostDto> fn = (en -> entityToDto((Post)en[0], (Member) en[1]));
-        List<PostDto> dto = (List<PostDto>) arr.stream().map(fn).collect(Collectors.toList());
+        ArrayList<PostDto> dto = (ArrayList<PostDto>) arr.stream().map(fn).collect(Collectors.toList());
 
         // 조회수 처리
         int cnt = dto.get(0).getViews();
@@ -82,6 +82,7 @@ public class PostServiceImpl implements PostService{
         Post post = repository.getById(postDto.getPost_id());
 
         post.updatePost(postDto.getTitle(), postDto.getContent(), postDto.getCategory());
+
         repository.save(post);
         return post.getPost_id();
     }

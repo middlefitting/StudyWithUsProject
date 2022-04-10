@@ -7,11 +7,12 @@ import com.studywithus.domain.entity.board.Post;
 import com.studywithus.domain.entity.member.Member;
 import org.springframework.data.repository.query.Param;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface PostService {
     Long register(PostDto postDto);
-    List<PostDto> get(@Param("post_id") Long post_id);
+    ArrayList<PostDto> get(@Param("post_id") Long post_id);
 
     PageResultDTO<PostDto, Object[]> getList(PageRequestDTO pageRequestDTO);
 
