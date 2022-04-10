@@ -2,7 +2,7 @@ import axios from "axios";
 
 // const baseURL = '/api'
 const baseURL = ''
-/*const obj = {category: '123', page: 1};*/
+
 
 class CommunityService {
 
@@ -32,6 +32,13 @@ class CommunityService {
 
     }
 
+    getEdit() {
+        return axios.get(baseURL + "/board/edit")
+    }
+
+    postEdit(data) {
+        return axios.post(baseURL + "/board/edit", data)
+    }
 
 
 /*

@@ -20,6 +20,7 @@ import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport
 
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -48,11 +49,11 @@ public class PostRepositoryImpl extends QuerydslRepositorySupport implements Pos
     }
 
     @Override
-    public Object getPostByPostId(Long post_id) {
+    public List<Tuple> getPostByPostId(Long post_id) {
         JPQLQuery<Post> jpqlQuery = from(post);
         jpqlQuery.leftJoin(member).on(post.writer.eq(member));
         JPQLQuery<Tuple> tuple = jpqlQuery.select(post, member).where(post.post_id.eq(post_id));
-        Object result = tuple.fetch();
+        List<Tuple> result = tuple.fetch();
 
         return result;
     }

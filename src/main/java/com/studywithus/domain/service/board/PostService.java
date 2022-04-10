@@ -7,15 +7,17 @@ import com.studywithus.domain.entity.board.Post;
 import com.studywithus.domain.entity.member.Member;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface PostService {
-    Long register(PostDto dto);
-    PostDto get(@Param("post_id") Long post_id);
+    Long register(PostDto postDto);
+    List<PostDto> get(@Param("post_id") Long post_id);
 
     PageResultDTO<PostDto, Object[]> getList(PageRequestDTO pageRequestDTO);
 
-    void remove(Long post_id);
+    Long remove(Long post_id);
 
-    void modify(PostDto postDto);
+    Long modify(PostDto postDto);
 
     default Post dtoToEntity(PostDto dto) {
         Member member = Member.builder().id(dto.getWriter_id()).build();
