@@ -39,10 +39,10 @@ function App() {
                 <Route path="/QNAList" component={QNAList} exact />
                 <Route path="/MyPageList" component={MyPageList} exact />
 
-                <Route path="/Free_Detail:post_id" component={Free_Detail} exact />
-                <Route path="/Notice_Detail:post_id" component={Notice_Detail} exact />
+                <Route path="/Free_Detail/:post_id" component={Free_Detail} exact />
+                <Route path="/Notice_Detail/:post_id" component={Notice_Detail} exact />
                 <Route path="/Update_Detail" component={Update_Detail} exact />
-                <Route path="/QNA_Detail:post_id" component={QNA_Detail} exact />
+                <Route path="/QNA_Detail/:post_id" component={QNA_Detail} exact />
 
                 <Route path="/Board_Write" component={Board_Write} exact/>
 

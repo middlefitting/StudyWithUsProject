@@ -1,53 +1,77 @@
 import './Details.css';
-import {Link, useHistory} from 'react-router-dom';
+import {Link, useHistory, useParams} from 'react-router-dom';
 import 'moment/locale/ko';
 import moment from "moment";
 import React, {useEffect, useState} from "react";
 import axios, {Axios} from "axios";
-const baseURL = ''
+import AxiosURL from "../../Services/AxiosURL";
+
 
 const user = JSON.parse(localStorage.getItem('user-info'))
-function Free_Detail({match}){
 
 
+
+
+function Free_Detail(props){
+
+/*    const post_id = props.match.params.post_id;*/
+
+    const { post_id } = useParams();
+
+/*    const [freeLists, setFreeLists] = useState({});*/
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const [nickname, setNickname] = useState('')
     const [date, setDate] = useState('')
     const [view, setView] = useState('')
 
-    const post_id = match.params;
+
     console.log('post_id :: ', post_id);
 
-    useEffect(async ()=>{
-        try{
-            const res = await axios.get(baseURL+ '/FreeDetail',{
-                params:{
-                    'post_id' : post_id
-                }
+    useEffect( (data)=> {
+       AxiosURL.getBoardDetail(data)
+
+        .then((res) => {
+                setTitle(res.data[0].title)
+                setContent(res.data[0].content)
+                setNickname(res.data[0].writer_nickname)
+                setDate(res.data[0].regDate.substr(0, 10))
+                setView(res.data[0].views)
+      /*      setFreeLists(res.data);*/
+            }).catch((e) => {
+                console.error(e.message)
             })
-            setTitle(res.data[0].title)
-            setContent(res.data[0].content)
-            setNickname(res.data[0].writer_nickname)
-            setDate(res.data[0].regDate.substr(0, 10))
-            setView(res.data[0].views)
-        } catch (e){
-            console.error(e.message)
-        }
+
     },[])
 
 
+/*
+
+    const [detail, getDetail] = useState('');
+
+    const baseURL ='';
 
 
- /*   getBoardDetail(){
-        return axios.get(baseURL+"/board",{ params: {  'post_id': post_id} });
 
-    }*/
+    useEffect(()=> {
+        getAllDetails();
+    },[]);
+
+
+    const getAllDetails = () =>{
+        axios.get(baseURL+"/board/{post_id}")
+            .then((response)=>{
+                const allDetails = response.data.detail.allDetails;
+            })
+            .catch(error=> console.error('Error: ${error}'));
+    }
+
+
+*/
 
     const history= useHistory();
 
-    //현재 날짜와 시간
-    const nowTime = moment().format('YYYY/MM/DD');
+
 
 
     //답변 위치로 스크롤
@@ -210,7 +234,7 @@ function Free_Detail({match}){
                                         <div className="comment_division">
                                             <div className="comment_id">{post.id}</div>
                                             <div className="comment_txt">{post.content}</div>
-                                            <div className="comment_time">{nowTime}</div>
+                                            <div className="comment_time">{post.date}</div>
                                             <hr />
                                         </div>
                                     </div>
