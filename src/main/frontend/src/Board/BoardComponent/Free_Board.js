@@ -48,7 +48,7 @@ function  Free_Board(){
         return (
             <>
                 {loading &&
-                <div> loading ...</div>
+                <></>
                 }
 
                 <table id="main_board">

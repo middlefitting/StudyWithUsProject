@@ -2,14 +2,47 @@ import './Details.css';
 import {Link, useHistory} from 'react-router-dom';
 import 'moment/locale/ko';
 import moment from "moment";
-import React, {useState} from "react";
-import {Axios} from "axios";
-
+import React, {useEffect, useState} from "react";
+import axios, {Axios} from "axios";
+const baseURL = ''
 
 const user = JSON.parse(localStorage.getItem('user-info'))
-function Free_Detail(props){
+function Free_Detail({match}){
 
 
+    const [title, setTitle] = useState('')
+    const [content, setContent] = useState('')
+    const [nickname, setNickname] = useState('')
+    const [date, setDate] = useState('')
+    const [view, setView] = useState('')
+
+    const post_id = match.params;
+    console.log('post_id :: ', post_id);
+
+    useEffect(async ()=>{
+        try{
+            const res = await axios.get(baseURL+ '/FreeDetail',{
+                params:{
+                    'post_id' : post_id
+                }
+            })
+            setTitle(res.data[0].title)
+            setContent(res.data[0].content)
+            setNickname(res.data[0].writer_nickname)
+            setDate(res.data[0].regDate.substr(0, 10))
+            setView(res.data[0].views)
+        } catch (e){
+            console.error(e.message)
+        }
+    },[])
+
+
+
+
+ /*   getBoardDetail(){
+        return axios.get(baseURL+"/board",{ params: {  'post_id': post_id} });
+
+    }*/
 
     const history= useHistory();
 
@@ -105,18 +138,18 @@ function Free_Detail(props){
                             <></>
                         }
                     </div>
-                    <p className="detail_title">여기는 제목</p>
+                    <p className="detail_title">{title}</p>
                     <div className="user_con">
                         <span className="circle">
                              <img className="default_img" alt="default" src="img/default.png" />
                         </span>
                         <div className="user_info">
-                            <div className="detail_id">여기는 아이디</div>
-                            <div className="detail_time">{nowTime}</div>
+                            <div className="detail_id">{nickname}</div>
+                            <div className="detail_time">{date}</div>
                         </div>
                         <div className="user_right">
                             <div className="views">
-                                <div className="view_num">조회수</div>
+                                <div className="view_num">{view}</div>
                             </div>
                             <div className="comment_button" onClick={() => scrollTo(ref1)}>
                                 <img className="comm_img" alt="com_img" src="img/comment.png" />
@@ -129,7 +162,7 @@ function Free_Detail(props){
                     <hr />
 
                     <div className="content_field">
-                        여기는 본문
+                        {content}
                     </div>
 
                     <div className="user_bottom">

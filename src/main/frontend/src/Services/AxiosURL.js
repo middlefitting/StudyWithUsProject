@@ -34,9 +34,12 @@ class CommunityService {
 
 
 
-    /*    getNoticeList() {
-            return axios.get(baseURL + "/board")
-        }*/
+/*
+
+        getNoticeList() {
+            return axios.get(baseURL + "/board",{params: post_id})
+        }
+*/
 
 
     // getFreeList(data) {
