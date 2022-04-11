@@ -1,15 +1,16 @@
 package com.studywithus.domain.entity.member;
 
 import com.studywithus.domain.entity.BaseConstructorEntity;
+import com.studywithus.domain.entity.study.MemberStudy;
+import com.studywithus.domain.entity.study.Study;
+import com.studywithus.domain.entity.study.StudyBoard;
+import com.studywithus.domain.entity.study.StudyBoardComment;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,6 +18,7 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
+@Table(name="member")
 public class Member extends BaseConstructorEntity {
     @Id
     @GeneratedValue
@@ -37,10 +39,25 @@ public class Member extends BaseConstructorEntity {
     @CreationTimestamp //로그인 될 때마다 초기화?
     private Timestamp lastLoginDate;
 
+    @OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
+    private Study study;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<MemberStudy> memberStudies = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<StudyBoardComment> studyBoardComments = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<StudyBoard> studyBoards = new ArrayList<>();
+
+    //신고수 누적은 삭제되지 않게 한다.
+
 
 //    @DateTimeFormat(pattern = "yyyy-MM-dd")
 //    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
     private String bornDate;
+
 
     public Member() {
     }
@@ -59,6 +76,14 @@ public class Member extends BaseConstructorEntity {
         this.nickname = nickname;
         this.password = password;
         this.bornDate = bornDate;
+    }
+
+    public Member(String email, String nickname, String password, String bornDate, String roles) {
+        this.email = email;
+        this.nickname = nickname;
+        this.password = password;
+        this.bornDate = bornDate;
+        this.roles = roles;
     }
 
     @Builder
