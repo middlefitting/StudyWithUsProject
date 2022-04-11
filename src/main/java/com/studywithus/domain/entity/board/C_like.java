@@ -23,6 +23,6 @@ public class C_like extends BaseEntity {
     private Comment comment_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "mem_id")
+    @JoinColumn(name = "member_id")
     private Member mem_id;
 }

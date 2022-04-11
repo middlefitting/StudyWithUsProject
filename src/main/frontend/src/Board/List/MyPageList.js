@@ -9,12 +9,11 @@ import TabContents from "../../Tabs/Tab_Contents";
 import {useState} from "react";
 import Tab_Name from "../../Tabs/Tab_Name";
 import User_Side_Tab from "../../Tabs/User_Side_Tab";
+import Modification_confirm from "../BoardComponent/Modification";
 
-const user = JSON.parse(localStorage.getItem('user-info'))
+// const user = JSON.parse(localStorage.getItem('user-info'))
 
 function MyPageList(){
-
-    const [activeTab, setActiveTab] = useState("tab4");
 
     return(
         <div className="container">
@@ -32,44 +31,11 @@ function MyPageList(){
                 </div>
                 <div className="mid_container">
                     <div className="page_name">
-                        <Tab_Name id="tab1" activeTab={activeTab}>
-                            <span>공지사항</span>
-                            <button type="submit" id="w_button" value="글씨기" >
-                                <Link to='/Notice_Write'className="link">글쓰기</Link>
-                            </button>
-                        </Tab_Name>
-                        <Tab_Name id="tab2" activeTab={activeTab}>
-                            <span>자유게시판</span>
-                            <button type="submit" id="w_button" value="글씨기">
-                                <Link to='/Board_Write' className="link">글쓰기</Link>
-                            </button>
-                        </Tab_Name>
-                        <Tab_Name id="tab3" activeTab={activeTab}>
-                            <span>질문게시판</span>
-                            <button type="submit" id="w_button" value="글씨기">
-                                <Link to='/QNA_Write' className="link">글쓰기</Link>
-                            </button>
-                        </Tab_Name>
-                        <Tab_Name id="tab4" activeTab={activeTab}>
-                            <span>{user}님의 글</span>
-                        </Tab_Name>
-                        <Tab_Name id="tab5" activeTab={activeTab}>
-                            <span>회원정보수정</span>
-                        </Tab_Name>
+                        <span>누구누구의 글</span>
+
                     </div>
                     <div className="mid_container">
-                        <TabContents id="tab1" activeTab={activeTab}>
-                            <Notice_Board />
-                        </TabContents>
-                        <TabContents id="tab2" activeTab={activeTab}>
-                            <Free_Board />
-                        </TabContents>
-                        <TabContents id="tab3" activeTab={activeTab}>
-                            <QNA_Board />
-                        </TabContents>
-                        <TabContents id="tab4" activeTab={activeTab}>
-                            <MyPage_Board />
-                        </TabContents>
+                        <MyPage_Board />
                     </div>
                 </div>
 

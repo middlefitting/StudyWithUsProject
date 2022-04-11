@@ -1,0 +1,4 @@
+package com.studywithus.domain.service.study.studyboardcommentrecommend;
+
+public class StudyBoardCommentRecommendServiceImpl implements StudyBoardCommentRecommendService{
+}

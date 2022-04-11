@@ -12,7 +12,7 @@ const SignIn = () => {
         }
     }, []);
 
-    const { watch, register, formState: {errors}, handleSubmit } = useForm({mode:"onChange"});
+    const { register, formState: {errors}, handleSubmit } = useForm({mode:"onChange"});
 
 
     // 페이지 이동 submit
@@ -20,11 +20,32 @@ const SignIn = () => {
 
     // axios DB 연동
     const onSubmit = (data) => {
-        // console.log('data',data);
-        AxiosURL.loginMember(data).then(res => {
-            localStorage.setItem('user-info', JSON.stringify(res.data))
-        })
 
+        AxiosURL.loginMember(data)
+            .then((response) => {
+                console.log(response)
+                let user = JSON.stringify(response.data.data) // 유저 닉네임
+                localStorage.setItem("user-nickname", user)
+                localStorage.setItem("user-info", JSON.stringify(response.headers))
+
+                // // 유저 데이터 정보 가져오기
+                // AxiosURL.getMember({authorization: response.headers.authorization})
+                //     .then(res => {
+                //         localStorage.setItem("user-data",JSON.stringify(res.data.data))
+                //         // 로그인 성공시 초기화면으로
+                //         history.push("/")
+                //         window.location.reload()
+                //     }).catch(error => {
+                //         console.log("getMember error")
+                // })
+
+                history.push("/")
+                window.location.reload()
+
+            }).catch(error => {
+            console.log(error)
+            alert(JSON.stringify("추후 에러 수정")) // 나중에 모달창으로 교체예정
+        })
     }
 
 

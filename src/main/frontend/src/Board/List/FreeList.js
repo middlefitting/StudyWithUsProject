@@ -6,7 +6,8 @@ import User_Side_Tab from "../../Tabs/User_Side_Tab";
 import Pagination_Component from "../Page/Pagination_Component";
 
 
-const user = JSON.parse(localStorage.getItem('user-info'))
+// const user = JSON.parse(localStorage.getItem('user-info'))
+
 function FreeList(){
 
     return(
