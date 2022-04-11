@@ -49,7 +49,7 @@ function  QNA_Board(){
                         <tr id="board_body" key={idx}>
                             <td width="10%" className="listTableNum">{qna.post_id}</td>
                             <td width="50%" className="listTableTitle">
-                                <Link to="/Free_Detail/${qna.post_id}" className="link">
+                                <Link to={`/Board_Detail/${qna.post_id}`} className="link">
                                     {qna.title}
                                 </Link>
                             </td>

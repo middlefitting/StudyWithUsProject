@@ -12,10 +12,12 @@ const user = JSON.parse(localStorage.getItem('user-info'))
 
 
 
-function Free_Detail(){
+function Board_Detail(){
 
     const {post_id} = useParams();
+/*
     console.log(post_id);
+*/
 
 
 
@@ -23,11 +25,12 @@ const [boardDetail, setBoardDetail] = useState({});
 const [postDto, setPostDto] = useState({});
 
 
+
 useEffect( () => {
         async function fetchData() {
             await AxiosURL.getBoardDetail(post_id)
                 .then((res) => {
-                    console.log('res : ', res.data)
+                    /*console.log('res : ', res.data)*/
                     setBoardDetail(res.data);
                     setPostDto(res.data.postDto)
                 });
@@ -122,7 +125,7 @@ useEffect( () => {
             <div className="mid_con">
                 <fieldset className="detail_field">
                     <div className="buttons_field">
-                    <div className="go_back" onClick={()=> history.push('/FreeList')}>자유게시판 > </div>
+                    <div className="go_back" onClick={()=> history.goBack()}>뒤로가기 > </div>
                         {localStorage.getItem('user-info') ?
                             <>
                             <div className="user_only_buttons">
@@ -136,18 +139,21 @@ useEffect( () => {
                             <></>
                         }
                     </div>
-                    <p className="detail_title">제목</p>
+
+                        { postDto.map && postDto.map((detail,idx) => (
+                            <div key={idx}>
+                    <p className="detail_title" >{detail.title}</p>
                     <div className="user_con">
                         <span className="circle">
                              <img className="default_img" alt="default" src="img/default.png" />
                         </span>
                         <div className="user_info">
-                            <div className="detail_id">닉네임</div>
-                            <div className="detail_time">작성시간</div>
+                            <div className="detail_id">{detail.writer_nickname}</div>
+                            <div className="detail_time">{detail.regdate}</div>
                         </div>
                         <div className="user_right">
                             <div className="views">
-                                <div className="view_num">조회수</div>
+                                <div className="view_num">조회수 : {detail.views}</div>
                             </div>
                             <div className="comment_button" onClick={() => scrollTo(ref1)}>
                                 <img className="comm_img" alt="com_img" src="img/comment.png" />
@@ -160,8 +166,10 @@ useEffect( () => {
                     <hr />
 
                     <div className="content_field">
-                       여기는 본문
+                        {detail.content}
                     </div>
+                            </div>
+                        ))}
 
                     <div className="user_bottom">
                         <div className="comment_button_bottom" >
@@ -230,4 +238,4 @@ useEffect( () => {
     );
 }
 
-export default Free_Detail;
+export default Board_Detail;
