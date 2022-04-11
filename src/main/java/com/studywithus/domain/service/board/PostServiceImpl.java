@@ -1,6 +1,7 @@
 package com.studywithus.domain.service.board;
 
 import com.querydsl.core.Tuple;
+import com.studywithus.domain.repository.board.C_like.C_likeRepository;
 import com.studywithus.domain.repository.board.Comment.CommentRepository;
 import com.studywithus.domain.repository.board.P_like.P_likeRepository;
 import com.studywithus.web.controller.board.dto.PageRequestDTO;
@@ -28,6 +29,7 @@ public class PostServiceImpl implements PostService{
     private final PostRepository repository;
     private final CommentRepository commentRepository;
     private final P_likeRepository p_likeRepository;
+    private final C_likeRepository c_likeRepository;
 
     @Override
     public Long register(PostDto postDto) {
@@ -68,9 +70,11 @@ public class PostServiceImpl implements PostService{
     @Transactional
     @Override
     public Long remove(Long post_id) {
+        //좋아요삭제
+        c_likeRepository.deleteByCLikeId(post_id);
+        p_likeRepository.deleteByPLikeId(post_id);
         //댓글삭제
 //        commentRepository.deleteByPostId(post_id);
-        //좋아요삭제
         //글삭제
         repository.deleteByPostId(post_id);
         return post_id;

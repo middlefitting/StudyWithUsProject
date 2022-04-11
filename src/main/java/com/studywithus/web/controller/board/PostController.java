@@ -5,6 +5,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.studywithus.config.jwt.JwtProperties;
 import com.studywithus.domain.entity.board.Comment;
 import com.studywithus.domain.service.board.CommentService;
+import com.studywithus.domain.service.board.P_likeService;
 import com.studywithus.web.controller.board.dto.*;
 import com.studywithus.domain.service.board.PostService;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +29,7 @@ public class PostController {
 
     private final PostService postService;
     private final CommentService commentService;
+    private final P_likeService p_likeService;
 
     // 1. Create
     // 글 등록
@@ -64,7 +66,17 @@ public class PostController {
     public PostAndCommentListDTO getPostDetail(@PathVariable("post_id") Long post_id) {
         ArrayList<PostDto> postDto = postService.get(post_id);
         ArrayList<CommentDto> commentsList = commentService.getList(post_id);
-        return new PostAndCommentListDTO(postDto, commentsList);
+
+        ArrayList<Object> likeInfo = p_likeService.getListAndCount(post_id);
+        ArrayList<P_likeDto> likesList = (ArrayList<P_likeDto>) likeInfo.get(0);
+        int likeCnt = (int) likeInfo.get(1);
+        System.out.println("컨트롤러");
+        for (Object tmp : likeInfo) {
+            System.out.println(tmp);
+        }
+        System.out.println("===============");
+        PostAndCommentListDTO aa = new PostAndCommentListDTO(postDto, commentsList, likesList, likeCnt);
+        return new PostAndCommentListDTO(postDto, commentsList, likesList, likeCnt);
 //        ArrayList arr = new ArrayList();
 //        arr.add(postDto);
 //        arr.add(commentsList);

@@ -16,4 +16,7 @@ public class PostAndCommentListDTO {
 
     private ArrayList<CommentDto> commentsList;
 
+    private ArrayList<P_likeDto> likesList;
+
+    private Integer likeCnt;
 }
