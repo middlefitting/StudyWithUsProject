@@ -42,7 +42,7 @@ class CommunityService {
 
 
         getBoardDetail(post_id){
-            return axios.get(baseURL+"/board/"+post_id)
+            return axios.get(baseURL+`/board/${post_id}`);
         }
 
     // getFreeList(data) {

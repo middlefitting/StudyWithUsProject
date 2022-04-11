@@ -12,63 +12,37 @@ const user = JSON.parse(localStorage.getItem('user-info'))
 
 
 
-function Free_Detail(props){
+function Free_Detail(){
 
-/*    const post_id = props.match.params.post_id;*/
-
-    const { post_id } = useParams();
-
-/*    const [freeLists, setFreeLists] = useState({});*/
-    const [title, setTitle] = useState('')
-    const [content, setContent] = useState('')
-    const [nickname, setNickname] = useState('')
-    const [date, setDate] = useState('')
-    const [view, setView] = useState('')
-
-
-    console.log('post_id :: ', post_id);
-
-    useEffect( (data)=> {
-       AxiosURL.getBoardDetail(data)
-
-        .then((res) => {
-                setTitle(res.data[0].title)
-                setContent(res.data[0].content)
-                setNickname(res.data[0].writer_nickname)
-                setDate(res.data[0].regDate.substr(0, 10))
-                setView(res.data[0].views)
-      /*      setFreeLists(res.data);*/
-            }).catch((e) => {
-                console.error(e.message)
-            })
-
-    },[])
-
-
-/*
-
-    const [detail, getDetail] = useState('');
-
-    const baseURL ='';
+    const {post_id} = useParams();
+    console.log(post_id);
 
 
 
-    useEffect(()=> {
-        getAllDetails();
-    },[]);
+const [boardDetail, setBoardDetail] = useState({});
+const [postDto, setPostDto] = useState({});
 
 
-    const getAllDetails = () =>{
-        axios.get(baseURL+"/board/{post_id}")
-            .then((response)=>{
-                const allDetails = response.data.detail.allDetails;
-            })
-            .catch(error=> console.error('Error: ${error}'));
-    }
+useEffect( () => {
+        async function fetchData() {
+            await AxiosURL.getBoardDetail(post_id)
+                .then((res) => {
+                    console.log('res : ', res.data)
+                    setBoardDetail(res.data);
+                    setPostDto(res.data.postDto)
+                });
+                }
+                fetchData();
+            },[]);
+            console.log(boardDetail);
 
 
-*/
 
+
+
+
+
+//==============================================================
     const history= useHistory();
 
 
@@ -162,18 +136,18 @@ function Free_Detail(props){
                             <></>
                         }
                     </div>
-                    <p className="detail_title">{title}</p>
+                    <p className="detail_title">제목</p>
                     <div className="user_con">
                         <span className="circle">
                              <img className="default_img" alt="default" src="img/default.png" />
                         </span>
                         <div className="user_info">
-                            <div className="detail_id">{nickname}</div>
-                            <div className="detail_time">{date}</div>
+                            <div className="detail_id">닉네임</div>
+                            <div className="detail_time">작성시간</div>
                         </div>
                         <div className="user_right">
                             <div className="views">
-                                <div className="view_num">{view}</div>
+                                <div className="view_num">조회수</div>
                             </div>
                             <div className="comment_button" onClick={() => scrollTo(ref1)}>
                                 <img className="comm_img" alt="com_img" src="img/comment.png" />
@@ -186,7 +160,7 @@ function Free_Detail(props){
                     <hr />
 
                     <div className="content_field">
-                        {content}
+                       여기는 본문
                     </div>
 
                     <div className="user_bottom">
@@ -197,8 +171,8 @@ function Free_Detail(props){
                         <div className="heart_img_bottom">
                             <img id="empty_heart" className="heart_bottom" alt="heart"
                                  src="img/empty_heart.png" onClick={() => { ClickLike(); }} />
-{/*
-                           onClick={() => { ClickLike(); func2();}}*/}
+
+                           onClick={() => { ClickLike();}}
                             <div className="like_bottom" >좋아요 {num}</div>
                         </div>
                     </div>
@@ -226,7 +200,7 @@ function Free_Detail(props){
                             <div className="comment_area" key={idx}>
                                 <div className="comment_img">
                                     <span className="circle">
-                                        <img className="default_img" alt="default" src="img/default.png" />
+                                        <img className="default_img" alt="default" src="/img/default.png" />
                                      </span>
                                 </div>
 
