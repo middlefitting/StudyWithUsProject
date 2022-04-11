@@ -13,7 +13,8 @@ function  QNA_Board(){
     useEffect( () => {
         async function fetchData() {
             setLoading(true);
-            const response = await AxiosURL.getQNAList();
+            // page 수정
+            const response = await AxiosURL.getList('question', 1);
             if (Object.keys(response).length > 0) {
                 setQnaLists(response.data);
                 setDtoList(response.data.dtoList)

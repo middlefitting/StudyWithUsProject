@@ -6,6 +6,13 @@ const baseURL = ''
 
 class CommunityService {
 
+
+     // function(page) {
+     //     const URLSearch = new URLSearchParams(location.search);
+     //     URLSearch.set('page', String(page));
+     //     const newParam = URLSearch.toString();
+     // }
+
     saveMember(data) {
         return axios.post(baseURL + "/join", data)
     }
@@ -19,20 +26,28 @@ class CommunityService {
     }
 
     //page 숫자는 추후 수정
-    getFreeList(){
-        return axios.get(baseURL+"/board",{ params: { 'category' :'free', 'page':1 } });
+    getList(category, page) {
+         const data = {
+             category: category,
+             page: page
+         }
 
+         return axios.get(baseURL + "/board", {params: data});
     }
-
-    getNoticeList(){
-        return axios.get(baseURL+"/board",{ params: { 'category' :'notice', 'page':1 } });
-
-    }
-
-    getQNAList(){
-        return axios.get(baseURL+"/board",{ params: { 'category' :'question', 'page':1 } });
-
-    }
+    // getFreeList(){
+    //     return axios.get(baseURL+"/board",{ params: { category :'free',page: 1 } });
+    //
+    // }
+    //
+    // getNoticeList(){
+    //     return axios.get(baseURL+"/board",{ params: { category :'notice', page:1 } });
+    //
+    // }
+    //
+    // getQNAList(){
+    //     return axios.get(baseURL+"/board",{ params: { category :'question', page:1 } });
+    //
+    // }
 
     getEdit() {
         return axios.get(baseURL + "/board/edit")

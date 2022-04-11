@@ -31,7 +31,8 @@ function  Free_Board(){
     useEffect( () => {
         async function fetchData() {
             setLoading(true);
-            const response = await AxiosURL.getFreeList();
+            // page 수정
+            const response = await AxiosURL.getList('free', 1);
             if (Object.keys(response).length > 0) {
                 setFreeLists(response.data);
                 setDtoList(response.data.dtoList)
