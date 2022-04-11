@@ -3,11 +3,14 @@ import axios from "axios";
 // const baseURL = '/api'
 const baseURL = ''
 
+const ls_id = localStorage.getItem('user-nickname')
+const idus = JSON.parse(ls_id)
+const id = idus.id
 
 class CommunityService {
 
     saveMember(data) {
-        return axios.post(baseURL + "/join", data)
+        return axios.post(baseURL + "/join/members", data)
     }
 
     loginMember(data) {
@@ -15,7 +18,8 @@ class CommunityService {
     }
 
     getMember(data) {
-        return axios.get(baseURL + "/member", {headers: data})
+        console.log(id)
+        return axios.get(baseURL + `/member/${id}`, {headers: data})
     }
 
     ModificationNick(data, token) {

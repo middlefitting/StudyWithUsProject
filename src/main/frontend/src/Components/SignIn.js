@@ -23,21 +23,24 @@ const SignIn = () => {
 
         AxiosURL.loginMember(data)
             .then((response) => {
-
-                let user = JSON.stringify(response.data.nickname) // 유저 닉네임
+                console.log(response)
+                let user = JSON.stringify(response.data.data) // 유저 닉네임
                 localStorage.setItem("user-nickname", user)
                 localStorage.setItem("user-info", JSON.stringify(response.headers))
 
-                // 유저 데이터 정보 가져오기
-                AxiosURL.getMember({authorization: response.headers.authorization})
-                    .then(res => {
-                        localStorage.setItem("user-data",JSON.stringify(res.data.data))
-                        // 로그인 성공시 초기화면으로
-                        history.push("/")
-                        window.location.reload()
-                    }).catch(error => {
-                        console.log("getMember error")
-                })
+                // // 유저 데이터 정보 가져오기
+                // AxiosURL.getMember({authorization: response.headers.authorization})
+                //     .then(res => {
+                //         localStorage.setItem("user-data",JSON.stringify(res.data.data))
+                //         // 로그인 성공시 초기화면으로
+                //         history.push("/")
+                //         window.location.reload()
+                //     }).catch(error => {
+                //         console.log("getMember error")
+                // })
+
+                history.push("/")
+                window.location.reload()
 
             }).catch(error => {
             console.log(error)
