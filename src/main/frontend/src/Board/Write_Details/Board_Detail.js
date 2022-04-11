@@ -1,7 +1,6 @@
 import './Details.css';
 import {Link, useHistory, useParams} from 'react-router-dom';
 import 'moment/locale/ko';
-import moment from "moment";
 import React, {useEffect, useState} from "react";
 import axios, {Axios} from "axios";
 import AxiosURL from "../../Services/AxiosURL";
@@ -23,6 +22,7 @@ function Board_Detail(){
 
 const [boardDetail, setBoardDetail] = useState({});
 const [postDto, setPostDto] = useState({});
+const [commentsList, setCommentList] = useState({});
 
 
 
@@ -32,7 +32,8 @@ useEffect( () => {
                 .then((res) => {
                     /*console.log('res : ', res.data)*/
                     setBoardDetail(res.data);
-                    setPostDto(res.data.postDto)
+                    setPostDto(res.data.postDto);
+                    setCommentList(res.data.commentsList);
                 });
                 }
                 fetchData();
@@ -93,8 +94,8 @@ useEffect( () => {
             [e.target.name]:e.target.value,
         });
     }
-    const handleDelete =(id)=>{
-        setPosts(posts.filter((post)=>post.id !==id));
+    const handleDelete =(comment_id)=>{
+        setPosts(posts.filter((post)=>post.comment_id !==comment_id));
     };
 
 
@@ -145,18 +146,18 @@ useEffect( () => {
                     <p className="detail_title" >{detail.title}</p>
                     <div className="user_con">
                         <span className="circle">
-                             <img className="default_img" alt="default" src="img/default.png" />
+                             <img className="default_img" alt="default" src={'/img/default.png'} />
                         </span>
                         <div className="user_info">
                             <div className="detail_id">{detail.writer_nickname}</div>
-                            <div className="detail_time">{detail.regdate}</div>
+                            <div className="detail_time">{detail.regDate.substr(0, 10)}</div>
                         </div>
                         <div className="user_right">
                             <div className="views">
                                 <div className="view_num">조회수 : {detail.views}</div>
                             </div>
                             <div className="comment_button" onClick={() => scrollTo(ref1)}>
-                                <img className="comm_img" alt="com_img" src="img/comment.png" />
+                                <img className="comm_img" alt="com_img" src={'/img/comment.png'} />
                                 <div className="comment">댓글</div>
                             </div>
 
@@ -173,14 +174,12 @@ useEffect( () => {
 
                     <div className="user_bottom">
                         <div className="comment_button_bottom" >
-                            <img className="comm_img_bottom" alt="com_img" src="img/comment.png"/>
+                            <img className="comm_img_bottom" alt="com_img" src={'/img/comment.png'}/>
                             <div className="comment_bottom">댓글 수</div>
                         </div>
                         <div className="heart_img_bottom">
                             <img id="empty_heart" className="heart_bottom" alt="heart"
-                                 src="img/empty_heart.png" onClick={() => { ClickLike(); }} />
-
-                           onClick={() => { ClickLike();}}
+                                 src={'/img/empty_heart.png'}onClick={() => { ClickLike(); }} />
                             <div className="like_bottom" >좋아요 {num}</div>
                         </div>
                     </div>
@@ -204,23 +203,23 @@ useEffect( () => {
                     </div>
                     <ul className="comment_list">
                         <li className="comment_view">
-                            {posts.map((post,idx)=>(
+                            {commentsList.map && commentsList.map((comment,idx)=>(
                             <div className="comment_area" key={idx}>
                                 <div className="comment_img">
                                     <span className="circle">
-                                        <img className="default_img" alt="default" src="/img/default.png" />
+                                        <img className="default_img" alt="default" src={'/img/default.png'} />
                                      </span>
                                 </div>
 
                                     <div className="comment_box">
                                         <div className="comment_division">
-                                            <div className="comment_id">{post.id}</div>
-                                            <div className="comment_txt">{post.content}</div>
-                                            <div className="comment_time">{post.date}</div>
+                                            <div className="comment_id">{comment.writer_nickname}</div>
+                                            <div className="comment_txt">{comment.content}</div>
+                                            <div className="comment_time">{comment.regDate.substr(0, 10)}</div>
                                             <hr />
                                         </div>
                                     </div>
-                                <div className="x_sign" onClick={()=>handleDelete(post.id)}>
+                                <div className="x_sign" onClick={()=>handleDelete(comment.comment_id)}>
                                     x
                                 </div>
 
