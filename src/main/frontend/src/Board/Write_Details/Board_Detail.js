@@ -1,24 +1,55 @@
 import './Details.css';
-import {Link, useHistory} from 'react-router-dom';
+import {Link, useHistory, useParams} from 'react-router-dom';
 import 'moment/locale/ko';
-import moment from "moment";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import axios, {Axios} from "axios";
+import AxiosURL from "../../Services/AxiosURL";
+
+
+const user = JSON.parse(localStorage.getItem('user-info'))
 
 
 
 
-function QNA_Detail(props){
+function Board_Detail(){
 
-/*    let history = useHistory();
+    const {post_id} = useParams();
+/*
+    console.log(post_id);
+*/
 
-    const goBack=()=>{
-        history.push('/NoticeList');
-    };*/
 
+
+const [boardDetail, setBoardDetail] = useState({});
+const [postDto, setPostDto] = useState({});
+const [commentsList, setCommentList] = useState({});
+
+
+
+useEffect( () => {
+        async function fetchData() {
+            await AxiosURL.getBoardDetail(post_id)
+                .then((res) => {
+                    /*console.log('res : ', res.data)*/
+                    setBoardDetail(res.data);
+                    setPostDto(res.data.postDto);
+                    setCommentList(res.data.commentsList);
+                });
+                }
+                fetchData();
+            },[]);
+            console.log(boardDetail);
+
+
+
+
+
+
+
+//==============================================================
     const history= useHistory();
 
-    //현재 날짜와 시간
-    const nowTime = moment().format('YYYY/MM/DD');
+
 
 
     //답변 위치로 스크롤
@@ -41,7 +72,7 @@ function QNA_Detail(props){
     })
 
     const[posts, setPosts]= useState([
-        {id:1, content:"질문있어요~"}
+        {id:1, content:"나는 첫번째 댓글~"}
     ]);
 
     const handleWrite = () => {
@@ -63,14 +94,30 @@ function QNA_Detail(props){
             [e.target.name]:e.target.value,
         });
     }
-    const handleDelete =(id)=>{
-        setPosts(posts.filter((post)=>post.id !==id));
+    const handleDelete =(comment_id)=>{
+        setPosts(posts.filter((post)=>post.comment_id !==comment_id));
     };
+
+
 
     //좋아요 누르기(추후에 수정해야함)
     const[num, plusNum] = useState(0);
     const ClickLike=()=>plusNum(num+1);
 
+/*
+    const ClickLike = () => {
+        if (document.getElementById('id') !== undefined && pwd) {
+            Axios
+                .get('url', param)
+                .then(res =>
+                if (res === null || res === undefined) {
+                alert(error)
+            } else {
+                plusNum(num+1);
+            }
+        }
+    }
+*/
 
 
     return(
@@ -79,30 +126,38 @@ function QNA_Detail(props){
             <div className="mid_con">
                 <fieldset className="detail_field">
                     <div className="buttons_field">
-                    <div className="go_back" onClick={()=> history.push('/QNAList')}>질문게시판 > </div>
-                        <div className="user_only_buttons">
-                            <div className="detail_delete">삭제</div>
-                            <Link to ="/Update_Detail" className="link">
-                                <div className="detail_update">수정</div>
-                            </Link>
-                        </div>
-
+                    <div className="go_back" onClick={()=> history.goBack()}>뒤로가기 > </div>
+                        {localStorage.getItem('user-info') ?
+                            <>
+                            <div className="user_only_buttons">
+                        <div className="detail_delete">삭제</div>
+                        <Link to ="/Update_Detail" className="link">
+                            <div className="detail_update">수정</div>
+                        </Link>
+                            </div>
+                            </>
+                            :
+                            <></>
+                        }
                     </div>
-                    <p className="detail_title">여기는 질문하기 제목</p>
+
+                        { postDto.map && postDto.map((detail,idx) => (
+                            <div key={idx}>
+                    <p className="detail_title" >{detail.title}</p>
                     <div className="user_con">
                         <span className="circle">
-                             <img className="default_img" alt="default" src="img/default.png" />
+                             <img className="default_img" alt="default" src={'/img/default.png'} />
                         </span>
                         <div className="user_info">
-                            <div className="detail_id">여기는 아이디</div>
-                            <div className="detail_time">{nowTime}</div>
+                            <div className="detail_id">{detail.writer_nickname}</div>
+                            <div className="detail_time">{detail.regDate.substr(0, 10)}</div>
                         </div>
                         <div className="user_right">
                             <div className="views">
-                                <div className="view_num">조회수</div>
+                                <div className="view_num">조회수 : {detail.views}</div>
                             </div>
                             <div className="comment_button" onClick={() => scrollTo(ref1)}>
-                                <img className="comm_img" alt="com_img" src="img/comment.png"/>
+                                <img className="comm_img" alt="com_img" src={'/img/comment.png'} />
                                 <div className="comment">댓글</div>
                             </div>
 
@@ -112,24 +167,22 @@ function QNA_Detail(props){
                     <hr />
 
                     <div className="content_field">
-                        여기는 질문하기 본문
+                        {detail.content}
                     </div>
-
+                            </div>
+                        ))}
 
                     <div className="user_bottom">
                         <div className="comment_button_bottom" >
-                            <img className="comm_img_bottom" alt="com_img" src="img/comment.png"/>
+                            <img className="comm_img_bottom" alt="com_img" src={'/img/comment.png'}/>
                             <div className="comment_bottom">댓글 수</div>
                         </div>
                         <div className="heart_img_bottom">
                             <img id="empty_heart" className="heart_bottom" alt="heart"
-                                 src="img/empty_heart.png" onClick={ClickLike}/>
+                                 src={'/img/empty_heart.png'}onClick={() => { ClickLike(); }} />
                             <div className="like_bottom" >좋아요 {num}</div>
                         </div>
-
-
                     </div>
-
 
 
                     <hr />
@@ -150,23 +203,23 @@ function QNA_Detail(props){
                     </div>
                     <ul className="comment_list">
                         <li className="comment_view">
-                            {posts.map((post,idx)=>(
+                            {commentsList.map && commentsList.map((comment,idx)=>(
                             <div className="comment_area" key={idx}>
                                 <div className="comment_img">
                                     <span className="circle">
-                                        <img className="default_img" alt="default" src="img/default.png" />
+                                        <img className="default_img" alt="default" src={'/img/default.png'} />
                                      </span>
                                 </div>
 
                                     <div className="comment_box">
                                         <div className="comment_division">
-                                            <div className="comment_id">{post.id}</div>
-                                            <div className="comment_txt">{post.content}</div>
-                                            <div className="comment_time">{nowTime}</div>
+                                            <div className="comment_id">{comment.writer_nickname}</div>
+                                            <div className="comment_txt">{comment.content}</div>
+                                            <div className="comment_time">{comment.regDate.substr(0, 10)}</div>
                                             <hr />
                                         </div>
                                     </div>
-                                <div className="x_sign" onClick={()=>handleDelete(post.id)}>
+                                <div className="x_sign" onClick={()=>handleDelete(comment.comment_id)}>
                                     x
                                 </div>
 
@@ -184,4 +237,4 @@ function QNA_Detail(props){
     );
 }
 
-export default QNA_Detail;
+export default Board_Detail;

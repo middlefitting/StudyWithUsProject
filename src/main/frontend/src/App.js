@@ -6,11 +6,10 @@ import SignUp from "./Components/SignUp";
 import './App.css';
 import NoticeList from "./Board/List/NoticeList";
 
-import Notice_Detail from "./Board/Write_Details/Notice_Detail";
+
+import Board_Detail from "./Board/Write_Details/Board_Detail";
 import Board_Write from "./Board/Write_form/Board_Write";
 import Update_Detail from "./Board/Update/Update_Detail";
-import Free_Detail from "./Board/Write_Details/Free_Detail";
-import QNA_Detail from "./Board/Write_Details/QNA_Detail";
 
 import FreeList from "./Board/List/FreeList";
 import QNAList from "./Board/List/QNAList";
@@ -39,10 +38,8 @@ function App() {
                 <Route path="/QNAList" component={QNAList} exact />
                 <Route path="/MyPageList" component={MyPageList} exact />
 
-                <Route path="/Free_Detail" component={Free_Detail} exact />
-                <Route path="/Notice_Detail" component={Notice_Detail} exact />
+                <Route path="/Board_Detail/:post_id" component={Board_Detail} exact />
                 <Route path="/Update_Detail" component={Update_Detail} exact />
-                <Route path="/QNA_Detail" component={QNA_Detail} exact />
 
                 <Route path="/Board_Write" component={Board_Write} exact/>
 
