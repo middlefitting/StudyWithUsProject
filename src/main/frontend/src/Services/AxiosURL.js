@@ -43,10 +43,13 @@ class CommunityService {
     }
 
 
-        getBoardDetail(post_id){
-            return axios.get(baseURL+`/board/${post_id}`);
-        }
+    getBoardDetail(post_id){
+        return axios.get(baseURL+`/board/${post_id}`);
+    }
 
+    deleteComment(data) {
+        return axios.post(baseURL + `/comment/delete/${data}`)
+    }
     // getFreeList(data) {
     //     return axios.post(baseURL + "/board/free", data)
     // }
