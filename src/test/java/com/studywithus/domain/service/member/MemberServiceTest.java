@@ -1,3 +1,4 @@
+/*
 //package com.studywithus.domain.service.member;
 //
 //import com.studywithus.domain.entity.member.Member;
@@ -157,4 +158,4 @@
 //        return  requestDto;
 //    }
 //
-//}
+//}*/

@@ -6,62 +6,35 @@ const baseURL = ''
 
 class CommunityService {
 
-
-     // function(page) {
-     //     const URLSearch = new URLSearchParams(location.search);
-     //     URLSearch.set('page', String(page));
-     //     const newParam = URLSearch.toString();
-     // }
-
     saveMember(data) {
         return axios.post(baseURL + "/join", data)
+    }
+
+    loginMember(data) {
+        return axios.post(baseURL + "/login", data)
+    }
+
+    getMember(data) {
+        return axios.get(baseURL + "/member", {headers: data})
+    }
+
+    ModificationNick(data, token) {
+        return axios.put(baseURL + "/member", data, {headers: {authorization: token}})
+    }
+
+    deleteUser(token, data){
+        console.log(token)
+        console.log(data)
+        return axios.delete(baseURL + "/member", {headers: {authorization: token}})
     }
 
     savePost(data) {
         return axios.post(baseURL + "/board/register", data)
     }
 
-    saveComment(data) {
-        return axios.post(baseURL + "/comment/register", data)
+    getNoticeList() {
+        return axios.get(baseURL + "/board")
     }
-
-    //page 숫자는 추후 수정
-    getList(category, page) {
-         const data = {
-             category: category,
-             page: page
-         }
-
-         return axios.get(baseURL + "/board", {params: data});
-    }
-    // getFreeList(){
-    //     return axios.get(baseURL+"/board",{ params: { category :'free',page: 1 } });
-    //
-    // }
-    //
-    // getNoticeList(){
-    //     return axios.get(baseURL+"/board",{ params: { category :'notice', page:1 } });
-    //
-    // }
-    //
-    // getQNAList(){
-    //     return axios.get(baseURL+"/board",{ params: { category :'question', page:1 } });
-    //
-    // }
-
-    getEdit() {
-        return axios.get(baseURL + "/board/edit")
-    }
-
-    postEdit(data) {
-        return axios.post(baseURL + "/board/edit", data)
-    }
-
-
-        getBoardDetail(post_id){
-            return axios.get(baseURL+`/board/${post_id}`);
-        }
-
     // getFreeList(data) {
     //     return axios.post(baseURL + "/board/free", data)
     // }

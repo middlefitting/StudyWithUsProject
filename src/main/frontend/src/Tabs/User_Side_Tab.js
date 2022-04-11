@@ -9,7 +9,7 @@ function User_Side_Tab(){
         {name:'자유게시판',link:'/FreeList'},
         {name:'질문게시판',link:'/QNAList'},
         {name:'내글',link:'/MyPageList'},
-        {name:'회원정보 수정',link:'/'}
+        {name:'회원정보 수정',link:'/ModificationList'}
     ]
 
 

@@ -1,3 +1,4 @@
+/*
 //package com.studywithus.domain.repository.member;
 //
 //import com.studywithus.domain.entity.member.Member;
@@ -110,4 +111,4 @@
 //        memberRepository.save(member);
 //        memberRepository.save(member2);
 //    }
-//}
+//}*/

@@ -4,8 +4,6 @@ import '../styles/css/SignUp.css'
 import {useEffect, useRef, useState} from "react";
 import AxiosURL from "../Services/AxiosURL";
 import {Link, useHistory} from "react-router-dom";
-import bcrypt from 'bcryptjs';
-import {responsivePropType} from "react-bootstrap/createUtilityClasses";
 
 // react Hook From 사용
 // 로딩속도 개선 + 유효성 검사하기 쉬움
@@ -14,6 +12,7 @@ import {responsivePropType} from "react-bootstrap/createUtilityClasses";
 // 3) yarn add redux react-redux redux-actions immer redux-devtools-extension
 // 4) yarn add react-modal (모달창 아직 미구현이라 나중에 해도 됨)
 // reacthookform 예제에서 확인가능
+
 const SignUp = () => {
 
     useEffect(() => {
@@ -30,11 +29,10 @@ const SignUp = () => {
     } // 성공적으로 Submit 됬는지 Check
     console.log(watch("emailexample")); //*/
 
-    const { watch, register, formState: {errors}, setError, handleSubmit } = useForm({mode:"onChange"});
+    const { watch, register, formState: {errors}, handleSubmit } = useForm({mode:"onChange"});
 
     const checkPassword = useRef(); // 비밀번호 확인을 위해 useRef hook을 사용해 password 함수를 만들었음
     checkPassword.current = watch("password"); // 우리가 입력한 password_confirm이 들어온다.
-
 
     // 회원가입 submit
     const history = useHistory();
@@ -45,28 +43,16 @@ const SignUp = () => {
 
         AxiosURL.saveMember(data)
             .then((response) => {
-                // console.log(response.data) // id
-                // let result = response.data
-                // localStorage.setItem("user-info",JSON.stringify(result))
                 if (response.data.status === 'success') {
                     alert(JSON.stringify(" 회원가입이 완료되었습니다. ")) // 나중에 모달창으로 교체예정
                     history.push("/signin")
                 }
-                // window.location.reload()
             }).catch(error => {
-            console.log(error)
-            alert(JSON.stringify(" 정보를 다시 입력해주세요. ")) // 나중에 모달창으로 교체예정
+            console.log(error.response.data.message)
+            const errorMessage = JSON.stringify(error.response.data.message)
+            alert(errorMessage) // 나중에 모달창으로 교체예정
         })
-
     }
-
-    //onClick={()=> {history.push("/signin")}}
-
-
-
-    //console.log(watch("email"));
-    //console.log(watch("password"));
-    //console.log(watch("password_confirm")); // 정확값이 적히고 있는지 눈으로 볼려고 넣어둔 것
 
 
     return (
