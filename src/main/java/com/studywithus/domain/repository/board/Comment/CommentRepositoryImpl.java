@@ -3,9 +3,7 @@ package com.studywithus.domain.repository.board.Comment;
 import com.querydsl.core.Tuple;
 import com.querydsl.jpa.JPQLQuery;
 import com.studywithus.domain.entity.board.Comment;
-import com.studywithus.domain.entity.board.Post;
 import com.studywithus.domain.entity.board.QComment;
-import com.studywithus.domain.entity.board.QPost;
 import com.studywithus.domain.entity.member.QMember;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
@@ -18,7 +16,6 @@ public class CommentRepositoryImpl extends QuerydslRepositorySupport implements 
     }
 
     QComment comment = QComment.comment;
-    QPost post = QPost.post;
     QMember member = QMember.member;
 
 //    @Override
