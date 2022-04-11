@@ -1,5 +1,8 @@
 package com.studywithus.domain.repository.board.C_like;
 
+import org.springframework.data.repository.query.Param;
+
 public interface C_likeRepositoryCustom {
-    // 구현할 메서드 명세 작성
+    // Delete
+    void deleteByCLikeId(@Param("like_id") Long like_id);
 }

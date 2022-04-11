@@ -31,7 +31,7 @@ function  Notice_Board(){
     return (
         <>
             {loading &&
-            <div> loading ...</div>
+            <></>
             }
 
             <table id="main_board">
@@ -50,7 +50,7 @@ function  Notice_Board(){
                         <tr id="board_body" key={idx}>
                             <td width="10%" className="listTableNum">{notice.post_id}</td>
                             <td width="50%" className="listTableTitle">
-                                <Link to="/Free_Detail/${notice.post_id}" className="link">
+                                <Link to={`/Board_Detail/${notice.post_id}`} className="link">
                                     {notice.title}
                                 </Link>
                             </td>
