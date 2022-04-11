@@ -6,7 +6,7 @@ import React, {useState} from "react";
 import {Axios} from "axios";
 
 
-const user = JSON.parse(localStorage.getItem('user-info'))
+//const user = JSON.parse(localStorage.getItem('user-info'))
 function Free_Detail(props){
 
 

@@ -1,3 +1,4 @@
+/*
 package com.studywithus.service.member;
 
 
@@ -174,3 +175,4 @@ public class PostServiceTest {
         postService.remove(pno);
     }
 }
+*/

@@ -5,7 +5,8 @@ import QNA_Board from "../BoardComponent/QNA_Board";
 import User_Side_Tab from "../../Tabs/User_Side_Tab";
 
 
-const user = JSON.parse(localStorage.getItem('user-info'))
+// const user = JSON.parse(localStorage.getItem('user-info'))
+
 function QNAList(){
 
     return(

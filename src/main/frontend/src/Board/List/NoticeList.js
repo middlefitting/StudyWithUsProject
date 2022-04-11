@@ -11,13 +11,9 @@ import MyPage_Board from "../BoardComponent/MyPage_Board";
 import User_Side_Tab from "../../Tabs/User_Side_Tab";
 
 
-const user = JSON.parse(localStorage.getItem('user-info'))
+//const user = JSON.parse(localStorage.getItem('user-info'))
+
 function NoticeList(){
-
-
-
-
-
 
 
     return(

@@ -1,3 +1,4 @@
+/*
 package com.studywithus.repository;
 
 import com.querydsl.core.Tuple;
@@ -173,3 +174,4 @@ public class PostRepositoryTest {
 }
 
 
+*/

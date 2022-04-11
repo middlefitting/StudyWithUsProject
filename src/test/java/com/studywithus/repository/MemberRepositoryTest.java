@@ -1,3 +1,4 @@
+/*
 package com.studywithus.repository;
 
 
@@ -34,3 +35,4 @@ public class MemberRepositoryTest {
 //        System.out.println(result);
     }
 }
+*/

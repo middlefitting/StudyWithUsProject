@@ -1,3 +1,4 @@
+/*
 package com.studywithus.repository;
 
 import com.studywithus.domain.entity.board.Category;
@@ -47,3 +48,4 @@ public class CommentRepositoryTest {
         });
     }
 }
+*/

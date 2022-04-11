@@ -52,6 +52,16 @@
     font-size: 35px;
 }
 
+.page_name_modi{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+    overflow: hidden;
+    font-size: 35px;
+}
+
 #w_button{
     margin: 20px 30px 0px 0px;
     width: 70px;
