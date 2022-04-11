@@ -28,6 +28,13 @@
     padding: 10px 20px;
     width: 100%;
 }
+.table_mid_container{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    width: 100%;
+    margin-top: 10px;
+}
 
 
 .TabContents{
@@ -99,6 +106,7 @@
 }
 
 #board_head{
+    height: 50px;
     background-color: rgb(242, 150, 97);
     font-weight: bold;
     font-size: 20px;
@@ -107,6 +115,7 @@
 }
 
 #board_body{
+    height: 40px;
     background-color: white;
     border: solid 1px #d9d2d2;
     border-left: none;

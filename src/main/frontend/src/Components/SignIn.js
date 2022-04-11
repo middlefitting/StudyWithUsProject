@@ -20,7 +20,10 @@ const SignIn = () => {
 
     // axios DB 연동
     const onSubmit = (data) => {
-        console.log('data',data);
+        // console.log('data',data);
+        AxiosURL.loginMember(data).then(res => {
+            localStorage.setItem('user-info', JSON.stringify(res.data))
+        })
 
     }
 

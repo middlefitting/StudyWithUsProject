@@ -1,4 +1,4 @@
-import {Link, useHistory} from "react-router-dom";
+import {Link, useHistory, useParams} from "react-router-dom";
 import React, {useEffect, useRef, useState} from "react";
 import  "../../App.css";
 import {useForm} from "react-hook-form";
@@ -22,11 +22,12 @@ function  Free_Board(){
         })
     }, []);*/
 
+
+
     const [dtoList, setDtoList] = useState({});
     const [freeLists, setFreeLists] = useState({});
     const [loading, setLoading] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage, setPostsPerPage] = useState(10);
+
 
     useEffect( () => {
         async function fetchData() {
@@ -51,7 +52,6 @@ function  Free_Board(){
                 {loading &&
                 <></>
                 }
-
                 <table id="main_board">
                     <thead>
                     <tr id="board_head">
@@ -85,6 +85,8 @@ function  Free_Board(){
                     }
                     </tbody>
                 </table>
+
+
 
             </>
         );

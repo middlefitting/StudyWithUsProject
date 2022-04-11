@@ -3,6 +3,7 @@ import  "../../App.css";
 import Side_Tab from "../../Tabs/Side_Tab";
 import Free_Board from "../BoardComponent/Free_Board";
 import User_Side_Tab from "../../Tabs/User_Side_Tab";
+import Pagination_Component from "../Page/Pagination_Component";
 
 
 const user = JSON.parse(localStorage.getItem('user-info'))
@@ -29,9 +30,12 @@ function FreeList(){
                                     <Link to='/Board_Write' className="link">글쓰기</Link>
                                 </button>
                         </div>
-                      <div className="mid_container">
+                      <div className="table_mid_container">
                             <Free_Board />
                     </div>
+
+
+
                 </div>
 
             </div>

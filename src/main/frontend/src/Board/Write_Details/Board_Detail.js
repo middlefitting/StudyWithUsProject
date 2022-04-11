@@ -4,6 +4,7 @@ import 'moment/locale/ko';
 import React, {useEffect, useState} from "react";
 import axios, {Axios} from "axios";
 import AxiosURL from "../../Services/AxiosURL";
+import Comments from "./Comments";
 
 
 const user = JSON.parse(localStorage.getItem('user-info'))
@@ -22,7 +23,7 @@ function Board_Detail(){
 
 const [boardDetail, setBoardDetail] = useState({});
 const [postDto, setPostDto] = useState({});
-const [commentsList, setCommentList] = useState({});
+
 
 
 
@@ -33,7 +34,6 @@ useEffect( () => {
                     /*console.log('res : ', res.data)*/
                     setBoardDetail(res.data);
                     setPostDto(res.data.postDto);
-                    setCommentList(res.data.commentsList);
                 });
                 }
                 fetchData();
@@ -64,39 +64,7 @@ useEffect( () => {
 
 
 //===============================================================
-    const [no, setNo] =useState(2);
 
-    const [post, setPost] =useState({
-        id:no,
-        content:'',
-    })
-
-    const[posts, setPosts]= useState([
-        {id:1, content:"나는 첫번째 댓글~"}
-    ]);
-
-    const handleWrite = () => {
-        setPosts([...posts, { ...post, id: no }]);
-        setNo(no + 1);
-        post.content=''
-
-    };
-
-    const handleForm=(e)=>{
-/*
-        console.log(e.target.name);
-        console.log(e.target.value);
-*/
-
-        //computed property names 문법 (키값 동적할당)
-        setPost({
-            ...post,
-            [e.target.name]:e.target.value,
-        });
-    }
-    const handleDelete =(comment_id)=>{
-        setPosts(posts.filter((post)=>post.comment_id !==comment_id));
-    };
 
 
 
@@ -185,49 +153,8 @@ useEffect( () => {
                     </div>
 
 
-                    <hr />
-                    <div className="reply_input" ref={ref1}>
-                        <div className="reply_id">
-                            여기는 아이디
-                        </div>
-                        <textarea className="reply_textarea" placeholder="댓글을 남겨 보세요" value={post.content}
-                        onChange={handleForm} name="content"
-                          onKeyPress={event => {
-                              if (event.code === "Enter") {
-                                  event.preventDefault();
-                                  handleWrite();}
-                          }}
-                        />
-                        <button type="button" className="reply_enter" onClick={handleWrite}> 등록 </button>
-
-                    </div>
-                    <ul className="comment_list">
-                        <li className="comment_view">
-                            {commentsList.map && commentsList.map((comment,idx)=>(
-                            <div className="comment_area" key={idx}>
-                                <div className="comment_img">
-                                    <span className="circle">
-                                        <img className="default_img" alt="default" src={'/img/default.png'} />
-                                     </span>
-                                </div>
-
-                                    <div className="comment_box">
-                                        <div className="comment_division">
-                                            <div className="comment_id">{comment.writer_nickname}</div>
-                                            <div className="comment_txt">{comment.content}</div>
-                                            <div className="comment_time">{comment.regDate.substr(0, 10)}</div>
-                                            <hr />
-                                        </div>
-                                    </div>
-                                <div className="x_sign" onClick={()=>handleDelete(comment.comment_id)}>
-                                    x
-                                </div>
-
-
-                            </div>
-                            ))}
-                        </li>
-                    </ul>
+                    <hr ref={ref1} />
+                <Comments />
 
                 </fieldset>
 

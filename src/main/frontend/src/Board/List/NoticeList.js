@@ -41,7 +41,7 @@ function NoticeList(){
                                 <Link to='/Board_Write'className="link">글쓰기</Link>
                             </button>
                     </div>
-                    <div className="mid_container">
+                    <div className="table_mid_container">
                             <Notice_Board />
                     </div>
                 </div>

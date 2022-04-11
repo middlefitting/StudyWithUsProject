@@ -72,7 +72,7 @@ public class PostServiceImpl implements PostService{
     public Long remove(Long post_id) {
         //좋아요삭제
         c_likeRepository.deleteByCLikeId(post_id);
-        p_likeRepository.deleteByPLikeId(post_id);
+/*        p_likeRepository.deleteByPLikeId(post_id);*/
         //댓글삭제
 //        commentRepository.deleteByPostId(post_id);
         //글삭제

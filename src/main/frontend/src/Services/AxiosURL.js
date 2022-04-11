@@ -62,6 +62,11 @@ class CommunityService {
             return axios.get(baseURL+`/board/${post_id}`);
         }
 
+
+
+    deleteComment(data) {
+        return axios.post(baseURL + `/comment/delete/${data}`)
+    }
     // getFreeList(data) {
     //     return axios.post(baseURL + "/board/free", data)
     // }
@@ -69,13 +74,13 @@ class CommunityService {
     //     return axios.post(baseURL + "/board/question", data)
     // }
 
-    /*loginMember(data) {
+    loginMember(data) {
         return axios.post(baseURL + "/login", data)
     }
 
-    userSession(config) {
-        return axios.get(baseURL + "/user", config)
-    }*/
+    // userSession(config) {
+    //     return axios.get(baseURL + "/user", config)
+    // }
 
 }
 
