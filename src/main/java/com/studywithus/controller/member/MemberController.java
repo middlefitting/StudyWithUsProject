@@ -1,7 +1,7 @@
 package com.studywithus.controller.member;
 import com.studywithus.dto.member.CreateMemberRequestDto;
 import com.studywithus.dto.member.CreateMemberResponseDto;
-import com.studywithus.repository.member.MemberJpaRepository;
+import com.studywithus.domain.repository.member.MemberJpaRepository;
 import com.studywithus.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;

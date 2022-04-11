@@ -1,9 +1,10 @@
-package com.studywithus.repository.board.post;
+package com.studywithus.domain.repository.board.post;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.studywithus.domain.board.Post;
 
+import com.studywithus.domain.entity.board.Post;
 import com.studywithus.domain.board.QPost;
+
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
 import java.util.List;

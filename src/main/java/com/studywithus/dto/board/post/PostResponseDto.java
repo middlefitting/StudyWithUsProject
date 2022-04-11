@@ -1,11 +1,10 @@
 package com.studywithus.dto.board.post;
 
-import com.studywithus.domain.board.Category;
-import com.studywithus.domain.board.Post;
-
-import lombok.Getter;
+import com.studywithus.domain.enums.Category;
+import com.studywithus.domain.entity.board.Post;
 
 import java.time.LocalDateTime;
+import lombok.Getter;
 
 @Getter
 public class PostResponseDto {

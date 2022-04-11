@@ -1,8 +1,7 @@
 package com.studywithus.controller.member;
 
-import com.studywithus.domain.member.Member;
 import com.studywithus.dto.member.CreateMemberRequestDto;
-import com.studywithus.repository.member.MemberJpaRepository;
+import com.studywithus.domain.repository.member.MemberJpaRepository;
 import com.studywithus.service.member.MemberService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

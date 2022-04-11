@@ -1,4 +1,4 @@
-package com.studywithus.domain;
+package com.studywithus.domain.entity;
 /* 자동 시간처리를 위한 클래스 */
 
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.studywithus.domain.study;
+package com.studywithus.domain.entity.study;
 
 import lombok.*;
 

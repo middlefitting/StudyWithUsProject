@@ -1,7 +1,7 @@
-package com.studywithus.domain.study;
+package com.studywithus.domain.entity.board;
 
-import com.studywithus.domain.BaseEntity;
-import com.studywithus.domain.member.Member;
+import com.studywithus.domain.entity.BaseEntity;
+import com.studywithus.domain.entity.member.Member;
 
 import lombok.*;
 
@@ -13,16 +13,18 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class MemStudy extends BaseEntity {
+public class Comment extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long memStudy_id;
+    private Long comment_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "study_id")
-    private Study study_id;
+    @JoinColumn(name = "post_id")
+    private Post post_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mem_id")
     private Member mem_id;
+
+    private String content;
 }

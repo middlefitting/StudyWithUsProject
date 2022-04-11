@@ -1,24 +1,39 @@
 package com.studywithus.controller.board;
 
-import com.studywithus.domain.board.Post;
-import com.studywithus.service.board.BoardService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.studywithus.domain.entity.board.Post;
+import com.studywithus.dto.board.post.PostSaveRequestDto;
+import com.studywithus.service.board.PostService;
 
 import java.util.List;
+
+import lombok.RequiredArgsConstructor;
+
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/board")
+@RequiredArgsConstructor
 public class BoardController {
-    @Autowired
-    private BoardService boardService;
+    private final PostService postService;
 
-    @GetMapping("/list")
-    public List<Post> getAllPosts() {
-        return boardService.getAllPost();
+    // C
+    @PostMapping("/post")
+    public Long createPost(@RequestBody PostSaveRequestDto postSaveRequestDto) {
+        return postService.createPost(postSaveRequestDto);
     }
+
+    // R - One - Nickname
+
+    // R - Each - Title
+
+    // R - All
+    @GetMapping("/post")
+    public List<Post> getAllPosts() {
+        return postService.getAllPost();
+    }
+
+    // U
+
+    // D
 }

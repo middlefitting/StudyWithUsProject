@@ -1,6 +1,6 @@
 package com.studywithus.dto.board.post;
 
-import com.studywithus.domain.board.Category;
+import com.studywithus.domain.enums.Category;
 
 import lombok.Builder;
 import lombok.Getter;

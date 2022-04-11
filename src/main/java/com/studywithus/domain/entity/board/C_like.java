@@ -1,7 +1,7 @@
-package com.studywithus.domain.board;
+package com.studywithus.domain.entity.board;
 
-import com.studywithus.domain.BaseEntity;
-import com.studywithus.domain.member.Member;
+import com.studywithus.domain.entity.BaseEntity;
+import com.studywithus.domain.entity.member.Member;
 
 import lombok.*;
 

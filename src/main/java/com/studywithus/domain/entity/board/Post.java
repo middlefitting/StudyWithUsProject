@@ -1,7 +1,8 @@
-package com.studywithus.domain.board;
+package com.studywithus.domain.entity.board;
 
-import com.studywithus.domain.BaseEntity;
-import com.studywithus.domain.member.Member;
+import com.studywithus.domain.entity.BaseEntity;
+import com.studywithus.domain.enums.Category;
+import com.studywithus.domain.entity.member.Member;
 
 import lombok.*;
 
@@ -19,7 +20,7 @@ public class Post extends BaseEntity {
     private Long post_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "mem_id")
+    @JoinColumn(name = "mem_id", referencedColumnName = "mem_id")
     private Member mem_id;
 
     @Enumerated(EnumType.STRING)

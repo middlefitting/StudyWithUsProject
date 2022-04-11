@@ -1,15 +1,15 @@
 package com.studywithus.dto.board.post;
 
-import com.studywithus.domain.board.Category;
-import com.studywithus.domain.board.Post;
-import com.studywithus.domain.member.Member;
+import com.studywithus.domain.enums.Category;
+import com.studywithus.domain.entity.board.Post;
+import com.studywithus.domain.entity.member.Member;
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Getter
 @NoArgsConstructor
+@Getter
 public class PostSaveRequestDto {
     private Member mem_id;
     private Category category;
