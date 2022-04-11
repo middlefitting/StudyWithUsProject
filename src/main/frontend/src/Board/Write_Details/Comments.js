@@ -34,6 +34,8 @@ function Comments(props) {
     //시간 되면 모달창 디자인
     const handleDelete = (comment_id, nickname)=>{
         if (user.nickname === '0000') {
+            //0000은 채영's db 안에 닉네임중 하나(바꿔야함)
+            //아직 로그인 직접해서 삭제는 안해봄
             //   let appendedCommentList = commentsList;
             AxiosURL.deleteComment(comment_id);
             if(window.confirm("정말 삭제하시겠습니까?")){
