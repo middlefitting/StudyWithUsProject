@@ -14,7 +14,7 @@ class CommunityService {
      // }
 
     saveMember(data) {
-        return axios.post(baseURL + "/join", data)
+        return axios.post(baseURL + "/join/members", data)
     }
 
     savePost(data) {
