@@ -28,7 +28,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-//        System.out.println("JwtAuthenticationFilter : 로그인 시도중");
 
         try {
             ObjectMapper om = new ObjectMapper();
@@ -41,11 +40,20 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
             //로그인 시 아이디 닉네임 반환해줌
+            response.setContentType("application/json;charset=UTF-8");
             HashMap<String, String> hashMap = new HashMap<>();
-            hashMap.put("username", principalDetails.getMember().getEmail());
+            hashMap.put("id", String.valueOf(principalDetails.getMember().getId()));
+            hashMap.put("email", principalDetails.getMember().getEmail());
             hashMap.put("nickname", principalDetails.getMember().getNickname());
-            JSONObject responseJson = new JSONObject(hashMap);
+//            JSONObject responseJson = new JSONObject(hashMap);
+//            response.getWriter().print(responseJson);
+            //Recompile with -Xlint:unchecked for details.
+            JSONObject responseJson = new JSONObject();
+            responseJson.put("data", hashMap);
+            responseJson.put("message", "login success");
+            responseJson.put("status", "success");
             response.getWriter().print(responseJson);
+
 
             return authentication;
 
@@ -61,7 +69,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
                                             Authentication authResult) throws IOException, ServletException {
-        System.out.println("successfulAuthentication 실행: 인증이 완료");
         PrincipalDetails principalDetails = (PrincipalDetails) authResult.getPrincipal(); //이걸 통해 토큰을 만든다 //authResult:authentication 객체
 
         //Hash 암호화 방식
@@ -69,15 +76,16 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withSubject("cos")
 //                .withIssuedAt(new Date()) //내가 추가함
                 .withExpiresAt(new Date(System.currentTimeMillis() + JwtProperties.EXPIRATION_TIME)) //만료시간 //10분
-//                .withClaim("id", principalDetails.getMember().getId())
+                .withClaim("id", principalDetails.getMember().getId())
                 .withClaim("email", principalDetails.getMember().getEmail())
                 .sign(Algorithm.HMAC512(JwtProperties.SECRET)); //secret 값
+
 
         String jwtRefreshToken = JWT.create()
                 .withSubject("refresh")
                 .withIssuedAt(new Date())
                 .withExpiresAt(new Date(System.currentTimeMillis() + JwtProperties.EXPIRATION_TIME*6))
-//                .withClaim("id", principalDetails.getMember().getId())
+                .withClaim("id", principalDetails.getMember().getId())
                 .withClaim("email", principalDetails.getMember().getEmail())
                 .sign(Algorithm.HMAC512(JwtProperties.SECRET));
 

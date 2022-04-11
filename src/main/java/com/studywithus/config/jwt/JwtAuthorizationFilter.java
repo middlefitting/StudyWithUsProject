@@ -36,7 +36,6 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
                                     FilterChain chain) throws IOException, ServletException {
 
         String jwtHeader = request.getHeader("Authorization");
-        System.out.println("jwtHeader: = " + jwtHeader);
 
         if(jwtHeader == null|| !jwtHeader.startsWith("Bearer ")){
             request.setAttribute("exception", AlgorithmMismatch.code);
@@ -71,14 +70,11 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         } catch (IllegalArgumentException e) {
             request.setAttribute("exception", IllegalArgument.code);
         } catch (Exception e) {
-            log.error("================================================");
-            log.error("JwtFilter - doFilterInternal() 오류발생");
             log.error("token : {}", jwtToken);
-            log.error("Exception Message : {}", e.getMessage());
+            log.error(" JwtFilter - doFilterInternal() InternalUnknownException  - Exception Message : {}", e.getMessage());
             log.error("Exception StackTrace : {");
             e.printStackTrace();
             log.error("}");
-            log.error("================================================");
             request.setAttribute("exception", UNKNOWN_ERROR.code);
         }
         chain.doFilter(request,response);
