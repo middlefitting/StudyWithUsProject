@@ -14,7 +14,8 @@ function  Notice_Board(){
     useEffect( () => {
         async function fetchData() {
             setLoading(true);
-            const response = await AxiosURL.getNoticeList();
+            // page 수정
+            const response = await AxiosURL.getList('notice', 1);
             if (Object.keys(response).length > 0) {
                 setNoticeLists(response.data);
                 setDtoList(response.data.dtoList)
