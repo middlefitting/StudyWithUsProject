@@ -31,10 +31,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtAuthenticationFilter(authenticationManager())) // 로그인 필터를 달아준다//AuthenticationManger를 넘겨줘야 함
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), jwtMemberRepository)) //권한 체크 필터?
                 .authorizeRequests()
-                .antMatchers("/member/**").access("hasRole('ROLE_USER')")
+                .antMatchers("/members/**").access("hasRole('ROLE_USER')")
                 .antMatchers("/manager/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_MANAGER')")
                 .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/join/**").permitAll()
 //                .usernameParameter("email")
+//                .antMatchers("/authenticate").permitAll()
                 .anyRequest().permitAll()
                 .and()
                 .exceptionHandling()

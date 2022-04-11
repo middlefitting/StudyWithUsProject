@@ -1,0 +1,4 @@
+package com.studywithus.domain.repository.study.studyboardcommentreport;
+
+public class StudyBoardCommentReportRepositoryImpl implements StudyBoardCommentReportRepositoryCustom{
+}
