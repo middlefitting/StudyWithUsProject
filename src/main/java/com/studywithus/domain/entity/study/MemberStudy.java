@@ -13,6 +13,8 @@ import javax.persistence.*;
 @Setter
 @Table(name="member_study")
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class MemberStudy extends BaseConstructorEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,4 +33,6 @@ public class MemberStudy extends BaseConstructorEntity {
         this.study = study;
         this.member = member;
     }
+
+
 }

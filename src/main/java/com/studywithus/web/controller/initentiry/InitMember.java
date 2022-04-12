@@ -1,5 +1,7 @@
 package com.studywithus.web.controller.initentiry;
 
+import com.studywithus.domain.entity.board.Category;
+import com.studywithus.domain.entity.board.Post;
 import com.studywithus.domain.entity.member.Member;
 import com.studywithus.domain.entity.study.*;
 import lombok.RequiredArgsConstructor;
@@ -34,6 +36,28 @@ public class InitMember {
                 Member member = new Member("memberTest" + i+ "@naver.com","nicknameTest" + i, "@1234567890", "2000-01-01", "ROLE_USER");
                 em.persist(member);
                 memberList.add(member);
+            }
+
+            //Post
+            List<Post> postList = new ArrayList<>();
+            for(int i=0; i<10; i++){
+                for(int j=0; j<10; j++){
+                    if(j%4==0){
+                        Post post = new Post(memberList.get(i*10+j), Category.free, "Free Post Title" + i, "Free Post Content" + i, 0);
+                        em.persist(post);
+                        postList.add(post);
+                    }
+                    if(j%4==1){
+                        Post post = new Post(memberList.get(i*10+j), Category.notice, "Notice Post Title" + i, "Notice Post Content" + i, 0);
+                        em.persist(post);
+                        postList.add(post);
+                    }
+                    if(j%4==2){
+                        Post post = new Post(memberList.get(i*10+j), Category.question, "Question Post Title" + i, "Question Post Content" + i, 0);
+                        em.persist(post);
+                        postList.add(post);
+                    }
+                }
             }
 
             //Study
@@ -96,6 +120,17 @@ public class InitMember {
                     studyBoardCommentList.add(studyBoardComment);
                 }
             }
+            em.persist(new StudyBoardComment("댓글테스트추가",studyBoardList.get(0), memberList.get(0)));
+            em.persist(new StudyBoardComment("댓글테스트추가",studyBoardList.get(0), memberList.get(0)));
+            em.persist(new StudyBoardComment("댓글테스트추가",studyBoardList.get(0), memberList.get(0)));
+            em.persist(new StudyBoardComment("댓글테스트추가",studyBoardList.get(0), memberList.get(0)));
+            em.persist(new StudyBoardComment("댓글테스트추가",studyBoardList.get(1), memberList.get(2)));
+            em.persist(new StudyBoardComment("댓글테스트추가",studyBoardList.get(1), memberList.get(3)));
+            em.persist(new StudyBoardComment("댓글테스트추가",studyBoardList.get(1), memberList.get(4)));
+            em.persist(new StudyBoardComment("댓글테스트추가",studyBoardList.get(1), memberList.get(7)));
+            em.persist(new StudyBoardComment("댓글테스트추가",studyBoardList.get(2), memberList.get(7)));
+            em.persist(new StudyBoardComment("댓글테스트추가",studyBoardList.get(2), memberList.get(6)));
+
 
             //StudyBoardCommentRecommend
             List<StudyBoardCommentRecommend> studyBoardCommentRecommendList = new ArrayList<>();

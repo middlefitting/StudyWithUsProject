@@ -6,6 +6,7 @@ import com.studywithus.web.controller.board.dto.PageResultDTO;
 import com.studywithus.web.controller.board.dto.PostDto;
 import com.studywithus.domain.entity.board.Post;
 import com.studywithus.domain.entity.member.Member;
+import com.studywithus.web.controller.board.dto.SearchPageRequestDTO;
 import org.springframework.data.repository.query.Param;
 
 import java.util.ArrayList;
@@ -16,6 +17,8 @@ public interface PostService {
     ArrayList<PostDto> get(@Param("post_id") Long post_id);
 
     PageResultDTO<PostDto, Object[]> getList(PageRequestDTO pageRequestDTO);
+
+    PageResultDTO<PostDto, Object[]> getSearchList(SearchPageRequestDTO pageRequestDTO);
 
     Long remove(Long post_id);
 

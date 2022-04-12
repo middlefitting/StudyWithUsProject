@@ -39,7 +39,7 @@ public class Member extends BaseConstructorEntity {
     @CreationTimestamp //로그인 될 때마다 초기화?
     private Timestamp lastLoginDate;
 
-    @OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
     private Study study;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)

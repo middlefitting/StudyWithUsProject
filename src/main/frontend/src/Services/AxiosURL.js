@@ -74,7 +74,10 @@ class CommunityService {
         return axios.post(baseURL + "/board/register", data)
     }
 
-    //page 숫자는 추후 수정
+    saveComment(data) {
+        return axios.post(baseURL + "/comment/register", data)
+    }
+
     //page 숫자는 추후 수정
     getList(category, page) {
         const data = {
@@ -82,6 +85,37 @@ class CommunityService {
             page: page
         }
         return axios.get(baseURL + "/board", {params: data});
+    }
+
+    getSearchList(type, keyword) {
+        const data = {
+            type: type,
+            keyword: keyword
+        }
+        return axios.get(baseURL+`/board/search/${keyword}`);
+    }
+
+    // getFreeList(){
+    //     return axios.get(baseURL+"/board",{ params: { category :'free',page: 1 } });
+    //
+    // }
+    //
+    // getNoticeList(){
+    //     return axios.get(baseURL+"/board",{ params: { category :'notice', page:1 } });
+    //
+    // }
+    //
+    // getQNAList(){
+    //     return axios.get(baseURL+"/board",{ params: { category :'question', page:1 } });
+    //
+    // }
+
+    getEdit() {
+        return axios.get(baseURL + "/board/edit")
+    }
+
+    postEdit(data) {
+        return axios.post(baseURL + "/board/edit", data)
     }
 
 

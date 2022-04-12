@@ -4,7 +4,6 @@ import com.querydsl.core.Tuple;
 import com.studywithus.domain.repository.board.C_like.C_likeRepository;
 import com.studywithus.domain.repository.board.Comment.CommentRepository;
 import com.studywithus.domain.repository.board.P_like.P_likeRepository;
-import com.studywithus.domain.repository.member.MemberRepository;
 import com.studywithus.web.controller.board.dto.PageRequestDTO;
 import com.studywithus.web.controller.board.dto.PageResultDTO;
 import com.studywithus.web.controller.board.dto.PostDto;
@@ -68,8 +67,20 @@ public class PostServiceImpl implements PostService{
                 pageRequestDTO.getCategory(),
                 pageRequestDTO.getPageable(Sort.by("regDate").descending())
         );
-        System.out.println("==================서비스 result============");
-        System.out.println(result);
+//        System.out.println("==================서비스 result============");
+//        System.out.println(result);
+        return new PageResultDTO<>(result, fn);
+    }
+
+    @Override
+    public PageResultDTO<PostDto, Object[]> getSearchList(SearchPageRequestDTO pageRequestDTO) {
+        Function<Object[], PostDto> fn = (en -> entityToDto((Post)en[0], (Member) en[1]));
+
+        Page<Object[]> result = searchRepository.searchPage(
+                pageRequestDTO.getType(),
+                pageRequestDTO.getKeyword(),
+                pageRequestDTO.getPageable(Sort.by("regDate").descending())
+        );
         return new PageResultDTO<>(result, fn);
     }
 
