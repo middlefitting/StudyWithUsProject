@@ -1,24 +1,16 @@
-package com.studywithus.domain.repository.study.study;
+package com.studywithus.domain.repository.study.Study;
 
-import com.querydsl.core.BooleanBuilder;
-import com.querydsl.core.types.Expression;
 import com.querydsl.core.types.Order;
 import com.querydsl.core.types.OrderSpecifier;
-import com.querydsl.core.types.Predicate;
-import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.studywithus.domain.entity.study.Study;
-import com.studywithus.domain.repository.study.study.dto.QStudyDto;
-import com.studywithus.domain.repository.study.study.dto.StudyDto;
-import com.studywithus.domain.repository.study.study.dto.StudyPageSearchCondition;
+import com.studywithus.domain.repository.study.Study.dto.QStudyDto;
+import com.studywithus.domain.repository.study.Study.dto.StudyDto;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 import org.springframework.data.support.PageableExecutionUtils;
-import org.springframework.data.web.PageableDefault;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -37,7 +29,6 @@ public class StudyRepositoryImpl implements StudyRepositoryCustom {
     public StudyRepositoryImpl(EntityManager em) {
         this.queryFactory = new JPAQueryFactory(em);
     }
-
 
     private OrderSpecifier<?> studySort(Pageable pageable) {
         if (!pageable.getSort().isEmpty()) {
@@ -58,7 +49,6 @@ public class StudyRepositoryImpl implements StudyRepositoryCustom {
 
 
     public Page<StudyDto> searchStudyPage(Pageable pageable) {
-
         List<StudyDto> content = queryFactory
                 .select(new QStudyDto(study.id, study.regDate, study.studyName, study.studyExplanation, study.member.nickname, study.studyMemberCount))
                 .from(study)

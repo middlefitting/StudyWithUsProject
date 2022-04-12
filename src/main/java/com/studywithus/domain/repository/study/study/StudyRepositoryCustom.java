@@ -1,7 +1,7 @@
-package com.studywithus.domain.repository.study.study;
+package com.studywithus.domain.repository.study.Study;
 
 import com.querydsl.core.types.OrderSpecifier;
-import com.studywithus.domain.repository.study.study.dto.StudyDto;
+import com.studywithus.domain.repository.study.Study.dto.StudyDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
