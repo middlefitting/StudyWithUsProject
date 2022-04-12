@@ -1,5 +1,6 @@
 package com.studywithus.domain.service.board;
 
+import com.studywithus.domain.repository.member.MemberRepository;
 import com.studywithus.web.controller.board.dto.PageRequestDTO;
 import com.studywithus.web.controller.board.dto.PageResultDTO;
 import com.studywithus.web.controller.board.dto.PostDto;
@@ -20,18 +21,10 @@ public interface PostService {
 
     Long modify(PostDto postDto);
 
-    default Post dtoToEntity(PostDto dto) {
-        Member member = Member.builder().id(dto.getWriter_id()).build();
-        Post post = Post.builder()
-                .post_id(dto.getPost_id())
-                .title(dto.getTitle())
-                .content(dto.getContent())
-                .writer(member)
-                .category(dto.getCategory())
-                .views(dto.getViews())
-                .build();
-        return post;
-    }
+    Post dtoToEntity(PostDto dto);
+
+/*    Post dtoToEntity(PostDto dto);
+    PostDto entityToDto(Post post, Member member);*/
 
     default PostDto entityToDto(Post post, Member member) {
         PostDto postDto = PostDto.builder()
@@ -47,4 +40,8 @@ public interface PostService {
                 .build();
         return postDto;
     }
+
+
+
+
 }
