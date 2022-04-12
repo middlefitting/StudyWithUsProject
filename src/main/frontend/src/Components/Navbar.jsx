@@ -9,7 +9,7 @@ const Contents = () => {
 
   const history = useHistory();
   // const user_info = JSON.parse(localStorage.getItem('user-info'));
-  const user_nickname = JSON.parse(localStorage.getItem('user-nickname'))
+  const user = JSON.parse(localStorage.getItem('user-data'))
   const post = JSON.parse(localStorage.getItem('post-info'));
 
   // Function For Logout
@@ -27,7 +27,7 @@ const Contents = () => {
       <Link to='/Classes_All' className='nav_content'>강좌</Link>
       {localStorage.getItem('user-info') ?
         <>
-          <Link to='/MyPageList' className='nav_btn green'>{user_nickname}</Link>
+          <Link to='/MyPageList' className='nav_btn green'>{user.nickname}</Link>
           <div className='nav_btn red' onClick={() => _handleLogOut()}>LOGOUT</div>
         </>
         :
