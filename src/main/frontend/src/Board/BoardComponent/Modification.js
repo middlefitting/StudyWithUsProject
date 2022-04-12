@@ -33,33 +33,53 @@ function Modification(){
 
         AxiosURL.ModificationNick( updateUserForm, token.authorization )
             .then(res => {
-                console.log(res.headers)
-
-                let user = JSON.stringify(res.data.data.nickname)
 
                 localStorage.setItem('user-data', JSON.stringify(res.data.data))
-                localStorage.setItem('user-nickname', user)
-            })
+
+                window.location.reload()
+            }).catch(error => {
+                alert(error.response.data.message)
+        })
+    }
+
+    // 비밀번호 수정
+    const _pwdHandelr = (e) => {
+        e.preventDefault()
+        const password = document.getElementsByName('password')[0].value;
+        const newPassword = document.getElementsByName('newPassword')[0].value;
+
+        const pwdForm = {
+            email : user.email,
+            password : password,
+            newPassword : newPassword
+        }
+
+        AxiosURL.updatePwd(pwdForm, token.authorization)
+            .then(res => {
+                window.location.reload()
+            }).catch(error => {
+                alert(error.response.data.message)
+        })
+
     }
 
     // 회원탈퇴
     const _delHandler = (e) => {
         e.preventDefault()
         const delPassword = document.getElementsByName('delPassword')[0].value;
-        console.log(token.authorization)
-        console.log(delPassword)
         const deleteForm = {
             email : user.email,
             password : delPassword
         }
 
-        AxiosURL.deleteUser(token.authorization, deleteForm)
+        AxiosURL.deleteUser(deleteForm, token.authorization)
             .then(res => {
-                    console.log(res)
                     localStorage.clear();
                     history.push("/");
                     window.location.reload();
-            })
+            }).catch(error => {
+                alert(error.response.data.message)
+        })
     }
 
     return(
@@ -80,11 +100,15 @@ function Modification(){
                 <input readOnly={true} defaultValue={user.email} className="ModiInput"></input>
                 <input placeholder='현재 비밀번호를 입력해주세요'
                        name="password"
+                       type="password"
                        className="ModiNickInput"></input>
                 <input placeholder='새 비밀번호를 입력해주세요'
                        name='newPassword'
+                       type="password"
                        className="ModiNickInput"></input>
-                <button className="ModiButton">비밀번호 변경</button>
+                <button className="ModiButton"
+                        onClick={(e) => _pwdHandelr(e)}
+                >비밀번호 변경</button>
 
                 <br/>
                 <br/>
