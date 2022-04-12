@@ -4,6 +4,7 @@ import com.querydsl.core.Tuple;
 import com.studywithus.domain.repository.board.C_like.C_likeRepository;
 import com.studywithus.domain.repository.board.Comment.CommentRepository;
 import com.studywithus.domain.repository.board.P_like.P_likeRepository;
+import com.studywithus.domain.repository.member.MemberRepository;
 import com.studywithus.domain.repository.search.SearchRepository;
 import com.studywithus.web.controller.board.dto.PageRequestDTO;
 import com.studywithus.web.controller.board.dto.PageResultDTO;
@@ -33,6 +34,8 @@ public class PostServiceImpl implements PostService{
     private final P_likeRepository p_likeRepository;
     private final C_likeRepository c_likeRepository;
     private final SearchRepository searchRepository;
+    private final MemberRepository memberRepository;
+
 
     @Override
     public Long register(PostDto postDto) {
@@ -106,5 +109,39 @@ public class PostServiceImpl implements PostService{
         return post.getPost_id();
     }
 
+
+    public Post dtoToEntity(PostDto dto) {
+//        Member member = Member.builder().id(dto.getWriter_id()).build();
+        Optional<Member> memberOptional = memberRepository.findById(dto.getWriter_id());
+        Member member = memberOptional.orElseGet(Member::new);
+        if(member.getId()!=null){
+            Post post = Post.builder()
+                    .post_id(dto.getPost_id())
+                    .title(dto.getTitle())
+                    .content(dto.getContent())
+                    .writer(member)
+                    .category(dto.getCategory())
+                    .views(dto.getViews())
+                    .build();
+            return post;
+        }
+
+        throw new RuntimeException();
+    }
+
+    public PostDto entityToDto(Post post, Member member) {
+        PostDto postDto = PostDto.builder()
+                .post_id(post.getPost_id())
+                .title(post.getTitle())
+                .content(post.getContent())
+                .writer_id(member.getId())
+                .writer_nickname(member.getNickname())
+                .category(post.getCategory())
+                .views(post.getViews())
+                .modDate(post.getModDate())
+                .regDate(post.getRegDate())
+                .build();
+        return postDto;
+    }
 
 }
