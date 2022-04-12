@@ -33,6 +33,14 @@ public class Post extends BaseEntity {
 
     private Integer views;
 
+    public Post(Member writer, Category category, String title, String content, Integer views) {
+        this.writer = writer;
+        this.category = category;
+        this.title = title;
+        this.content = content;
+        this.views = views;
+    }
+
     public void updatePost(String title, String content, Category category) {
         this.title = title;
         this.content = content;

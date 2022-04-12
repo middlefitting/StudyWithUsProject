@@ -3,9 +3,9 @@ import axios from "axios";
 // const baseURL = '/api'
 const baseURL = ''
 
-const ls_id = localStorage.getItem('user-nickname')
-const idus = JSON.parse(ls_id)
-const id = idus.id
+// const ls_id = localStorage.getItem('user-nickname')
+// const idus = JSON.parse(ls_id)
+// const id = idus.id
 
 class CommunityService {
 
@@ -49,6 +49,15 @@ class CommunityService {
 
          return axios.get(baseURL + "/board", {params: data});
     }
+
+    getSearchList(type, keyword) {
+        const data = {
+            type: type,
+            keyword: keyword
+        }
+        return axios.get(baseURL+`/board/search/${keyword}`);
+    }
+
     // getFreeList(){
     //     return axios.get(baseURL+"/board",{ params: { category :'free',page: 1 } });
     //
@@ -73,9 +82,9 @@ class CommunityService {
     }
 
 
-        getBoardDetail(post_id){
-            return axios.get(baseURL+`/board/${post_id}`);
-        }
+    getBoardDetail(post_id){
+        return axios.get(baseURL+`/board/${post_id}`);
+    }
 
 
 
