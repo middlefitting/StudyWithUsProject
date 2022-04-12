@@ -36,8 +36,10 @@ public class PostController {
     // 글 등록
     @PostMapping("/board/register")
     public CreatePostResponseDto registerPost(@RequestBody @Valid PostDto requestDto){
+        System.out.println("hello" + requestDto.getCategory());
         Long id = postService.register(requestDto);
         CreatePostResponseDto responseDto = new CreatePostResponseDto(id);
+
         return responseDto;
     }
 

@@ -41,9 +41,13 @@ public class PostServiceImpl implements PostService{
     public Long register(PostDto postDto) {
         postDto.setViews(0); //default 0
         Post post = dtoToEntity(postDto);
-        repository.save(post);
+        if (post != null) {
+            repository.save(post);
+            return post.getPost_id();
+        } else {
+            return Long.parseLong("-1");
+        }
 
-        return post.getPost_id();
     }
 
     @Override
@@ -109,8 +113,32 @@ public class PostServiceImpl implements PostService{
         return post.getPost_id();
     }
 
-
+    @Override
     public Post dtoToEntity(PostDto dto) {
+
+        Member member = memberRepository.findById(dto.getWriter_id()).orElse(null);
+        Post post = new Post();
+
+        if (member != null) {
+//            Post post = Post.builder()
+//                .post_id(dto.getPost_id())
+//                .title(dto.getTitle())
+//                .content(dto.getContent())
+//                .writer(member)
+//                .category(dto.getCategory())
+//                .views(dto.getViews())
+//                .build();
+            post.setTitle(dto.getTitle());
+            post.setContent(dto.getContent());
+            post.setWriter(member);
+            post.setCategory(dto.getCategory());
+            post.setViews(dto.getViews());
+            repository.save(post);
+        }
+        return post;
+    }
+
+ /*   public Post dtoToEntity(PostDto dto) {
 //        Member member = Member.builder().id(dto.getWriter_id()).build();
         Optional<Member> memberOptional = memberRepository.findById(dto.getWriter_id());
         Member member = memberOptional.orElseGet(Member::new);
@@ -142,6 +170,7 @@ public class PostServiceImpl implements PostService{
                 .regDate(post.getRegDate())
                 .build();
         return postDto;
-    }
+    }*/
+
 
 }

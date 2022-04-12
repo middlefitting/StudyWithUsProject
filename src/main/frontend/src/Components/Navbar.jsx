@@ -9,7 +9,7 @@ const Contents = () => {
 
   const history = useHistory();
   // const user_info = JSON.parse(localStorage.getItem('user-info'));
-  const user = JSON.parse(localStorage.getItem('user-data'))
+  const user = JSON.parse(localStorage.getItem('user-data'));
   const post = JSON.parse(localStorage.getItem('post-info'));
 
   // Function For Logout
@@ -20,23 +20,23 @@ const Contents = () => {
   };
 
   return (
-    <>
-      <Link to='/NoticeList' className='nav_content'>공지사항</Link>
-      <Link to='/FreeList' className='nav_content'>게시판</Link>
-      <Link to='/Study_List' className='nav_content'>스터디</Link>
-      <Link to='/Classes_All' className='nav_content'>강좌</Link>
-      {localStorage.getItem('user-info') ?
-        <>
-          <Link to='/MyPageList' className='nav_btn green'>{user.nickname}</Link>
-          <div className='nav_btn red' onClick={() => _handleLogOut()}>LOGOUT</div>
-        </>
-        :
-        <>
-          <Link to='/signin' className='nav_btn green'>LOGIN</Link>
-          <Link to='/signup' className='nav_btn red'>SIGNUP</Link>
-        </>
-      }
-    </>
+      <>
+        <Link to='/NoticeList' className='nav_content'>공지사항</Link>
+        <Link to='/FreeList' className='nav_content'>게시판</Link>
+        <Link to='/Study_List' className='nav_content'>스터디</Link>
+        <Link to='/Classes_All' className='nav_content'>강좌</Link>
+        {user ?
+            <>
+              <Link to='/MyPageList' className='nav_btn green'>{user.nickname}</Link>
+              <div className='nav_btn red' onClick={() => _handleLogOut()}>LOGOUT</div>
+            </>
+            :
+            <>
+              <Link to='/signin' className='nav_btn green'>LOGIN</Link>
+              <Link to='/signup' className='nav_btn red'>SIGNUP</Link>
+            </>
+        }
+      </>
   );
 };
 
@@ -83,24 +83,24 @@ const Component = () => {
   }, []);
 
   return (
-    <>
-      <div className='nav_container'>
-        <Link to='/' className='nav_title'>StudyWithUs</Link>
-        {width > 1199 ?
-          <div className={'nav_contents_wrapper'}><Contents /></div>
-          :
-          <>
-            <div className='nav_toggle' onClick={() => _handleSideBar()}>
-              <div className='rotatory_line' />
-              <div className='horizontal_line' />
-              <div className='rotatory_line' />
-            </div>
-            <div className={'sidebar_container'}><Contents /></div>
-          </>
-        }
-      </div>
-      <div style={{ width: '100%', height: '80px' }} />
-    </>
+      <>
+        <div className='nav_container'>
+          <Link to='/' className='nav_title'>StudyWithUs</Link>
+          {width > 1199 ?
+              <div className={'nav_contents_wrapper'}><Contents /></div>
+              :
+              <>
+                <div className='nav_toggle' onClick={() => _handleSideBar()}>
+                  <div className='rotatory_line' />
+                  <div className='horizontal_line' />
+                  <div className='rotatory_line' />
+                </div>
+                <div className={'sidebar_container'}><Contents /></div>
+              </>
+          }
+        </div>
+        <div style={{ width: '100%', height: '80px' }} />
+      </>
   );
 };
 
