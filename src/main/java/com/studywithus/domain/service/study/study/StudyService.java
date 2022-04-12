@@ -1,6 +1,6 @@
 package com.studywithus.domain.service.study.study;
 
-import com.studywithus.domain.repository.study.study.dto.StudyDto;
+import com.studywithus.domain.repository.study.Study.dto.StudyDto;
 import com.studywithus.domain.service.study.study.dto.CreateStudyDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

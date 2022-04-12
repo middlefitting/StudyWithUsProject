@@ -1,6 +1,5 @@
 package com.studywithus.web.controller.study.study;
 
-import com.studywithus.domain.repository.study.study.dto.StudyDto;
 import com.studywithus.web.controller.common.SuccessResult;
 import com.studywithus.web.controller.study.study.form.CreateStudyForm;
 import org.springframework.data.domain.Page;

@@ -4,9 +4,10 @@ import com.studywithus.domain.entity.member.Member;
 import com.studywithus.domain.entity.study.MemberStudy;
 import com.studywithus.domain.entity.study.Study;
 import com.studywithus.domain.repository.member.MemberRepository;
+import com.studywithus.domain.repository.study.Study.StudyRepository;
+import com.studywithus.domain.repository.study.Study.dto.StudyDto;
 import com.studywithus.domain.repository.study.memberstudy.MemberStudyRepository;
-import com.studywithus.domain.repository.study.study.StudyRepository;
-import com.studywithus.domain.repository.study.study.dto.StudyDto;
+
 import com.studywithus.domain.service.study.study.dto.CreateStudyDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
