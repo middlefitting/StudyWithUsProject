@@ -96,6 +96,17 @@ public class InitMember {
                     studyBoardCommentList.add(studyBoardComment);
                 }
             }
+            em.persist(new StudyBoardComment("댓글테스트추가",studyBoardList.get(0), memberList.get(0)));
+            em.persist(new StudyBoardComment("댓글테스트추가",studyBoardList.get(0), memberList.get(0)));
+            em.persist(new StudyBoardComment("댓글테스트추가",studyBoardList.get(0), memberList.get(0)));
+            em.persist(new StudyBoardComment("댓글테스트추가",studyBoardList.get(0), memberList.get(0)));
+            em.persist(new StudyBoardComment("댓글테스트추가",studyBoardList.get(1), memberList.get(2)));
+            em.persist(new StudyBoardComment("댓글테스트추가",studyBoardList.get(1), memberList.get(3)));
+            em.persist(new StudyBoardComment("댓글테스트추가",studyBoardList.get(1), memberList.get(4)));
+            em.persist(new StudyBoardComment("댓글테스트추가",studyBoardList.get(1), memberList.get(7)));
+            em.persist(new StudyBoardComment("댓글테스트추가",studyBoardList.get(2), memberList.get(7)));
+            em.persist(new StudyBoardComment("댓글테스트추가",studyBoardList.get(2), memberList.get(6)));
+
 
             //StudyBoardCommentRecommend
             List<StudyBoardCommentRecommend> studyBoardCommentRecommendList = new ArrayList<>();

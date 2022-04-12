@@ -20,6 +20,8 @@ public class StudyBoardComment extends BaseConstructorEntity {
     private Long id;
 
     private String content;
+    private Long StudyBoardCommentRecommendCount = 0L;
+    private Long StudyBoardCommentReportCount = 0L;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="study_board_id")
