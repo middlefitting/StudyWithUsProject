@@ -32,6 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), jwtMemberRepository)) //권한 체크 필터?
                 .authorizeRequests()
                 .antMatchers("/members/**").access("hasRole('ROLE_USER')")
+                .antMatchers("/studies/**").access("hasRole('ROLE_USER')")
+                .antMatchers("/join/studies/**").access("hasRole('ROLE_USER')")
                 .antMatchers("/manager/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_MANAGER')")
                 .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/join/**").permitAll()

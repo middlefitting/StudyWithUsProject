@@ -1,19 +1,17 @@
 package com.studywithus.web.controller.member;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.studywithus.config.jwt.JwtProperties;
 import com.studywithus.web.controller.common.SuccessResult;
-import com.studywithus.web.controller.member.form.CreateMemberForm;
 import com.studywithus.web.controller.member.dto.SelectMemberResponseDto;
-import com.studywithus.web.controller.member.dto.SelectMembersDto;
-import com.studywithus.domain.entity.member.Member;
-import com.studywithus.domain.service.member.dto.CreateMemberRequestDto;
-import com.studywithus.domain.service.member.MemberService;
+import com.studywithus.web.controller.member.form.CreateMemberForm;
 import com.studywithus.web.controller.member.form.DeleteMemberForm;
 import com.studywithus.web.controller.member.form.UpdateMemberForm;
 import com.studywithus.web.controller.member.form.UpdateMemberPasswordForm;
+import com.studywithus.domain.entity.member.Member;
+import com.studywithus.domain.service.member.dto.CreateMemberRequestDto;
+import com.studywithus.domain.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,10 +20,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Slf4j
 @RestController
@@ -73,9 +69,6 @@ public class MemberControllerImpl implements MemberController{
         String jwtToken = request.getHeader("Authorization").replace("Bearer ","");
         DecodedJWT verify = JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(jwtToken);
         Long verifyId = verify.getClaim("id").asLong();
-        System.out.println("============" + verifyId);
-        System.out.println("============" + id);
-        System.out.println(verifyId.equals(id));
 
         if (!verifyId.equals(id)) {
             throw new RuntimeException();
