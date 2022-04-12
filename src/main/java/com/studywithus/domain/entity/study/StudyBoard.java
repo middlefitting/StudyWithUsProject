@@ -21,6 +21,10 @@ public class StudyBoard extends BaseConstructorEntity {
 
     private String title;
     private String content;
+    private Long StudyBoardCommentCount = 0L;
+    private Long StudyBoardRecommendCount = 0L;
+    private Long StudyBoardReportCount = 0L;
+    private Long StudyBoardViewCount = 0L;
 
     @Enumerated(EnumType.STRING)
     private StudyBoardCategory studyBoardCategory; //notice, study, free
