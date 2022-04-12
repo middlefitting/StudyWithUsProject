@@ -70,6 +70,11 @@ class CommunityService {
         }
     }
 
+    // 구글 소셜 로그인
+    googleLogin(data) {
+        return axios.post(baseURL + `/oauth/jwt/google`, data)
+    }
+
     savePost(data) {
         return axios.post(baseURL + "/board/register", data)
     }
