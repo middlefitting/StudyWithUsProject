@@ -36,9 +36,9 @@ class CommunityService {
         return axios.post(baseURL + "/board/register", data)
     }
 
-/*    getNoticeList() {
-        return axios.get(baseURL + "/board")
-    }*/
+    saveComment(data) {
+        return axios.post(baseURL + "/comment/register", data)
+    }
 
     //page 숫자는 추후 수정
     getList(category, page) {
