@@ -85,9 +85,6 @@ function  Free_Board(){
                     }
                     </tbody>
                 </table>
-
-
-
             </>
         );
 

@@ -75,6 +75,10 @@ class CommunityService {
         return axios.post(baseURL + `/oauth/jwt/google`, data)
     }
 
+    studyList(token) {
+        return axios.get(baseURL + `/studies`, {headers: {authorization: token}})
+    }
+
     savePost(data) {
         return axios.post(baseURL + "/board/register", data)
     }

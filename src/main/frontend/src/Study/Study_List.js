@@ -1,11 +1,28 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import '../App.css';
 import './Css/Study_List.css';
 import {Link} from "react-router-dom";
-
-
+import AxiosURL from "../Services/AxiosURL";
 
 function StudyList(){
+
+    const [study, setStudy] = useState('');
+
+    useEffect(() => {
+
+            const token = JSON.parse(localStorage.getItem('user-info'))
+            console.log(token.authorization)
+
+            AxiosURL.studyList(token.authorization)
+                .then(response => {
+                    console.log(response.data.data.content[0])
+                    setStudy(response.data.data.content[0])
+
+                }).catch(error => {
+                console.log(error)
+            })
+    }, [])
+
     return (
 
             <div className="container">
@@ -14,6 +31,7 @@ function StudyList(){
                         <div className="studyPage_name">
                         스터디
                         </div>
+
                         <button type="submit" id="make" value="만들기">
                             <Link to='/Study_Make' className="link">Study 만들기</Link>
                         </button>
