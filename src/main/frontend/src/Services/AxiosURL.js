@@ -86,8 +86,6 @@ class CommunityService {
         return axios.get(baseURL+`/board/${post_id}`);
     }
 
-
-
     deleteComment(data) {
         return axios.post(baseURL + `/comment/delete/${data}`)
     }
