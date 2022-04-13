@@ -4,6 +4,7 @@ import com.querydsl.core.types.Order;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.studywithus.domain.entity.member.QMember;
 import com.studywithus.domain.entity.study.QStudyBoard;
 import com.studywithus.domain.entity.study.QStudyBoardComment;
 import com.studywithus.domain.entity.study.StudyBoard;
@@ -22,6 +23,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
+import static com.studywithus.domain.entity.member.QMember.*;
 import static com.studywithus.domain.entity.study.QStudyBoard.studyBoard;
 import static com.studywithus.domain.entity.study.QStudyBoardComment.*;
 
@@ -70,12 +72,16 @@ public class StudyBoardCommentRepositoryImpl implements StudyBoardCommentReposit
         return PageableExecutionUtils.getPage(content, pageable, () -> countQuery.fetch().size());
     }
 
-    public Optional<String> searchStudyBoardCommentSingleContent(Long memberId, Long studyBoardCommentId){
+
+    public Optional<StudyBoardComment> searchStudyBoardCommentSingle(Long memberId, Long studyBoardCommentId){
         return Optional.ofNullable(queryFactory
-                .select(studyBoardComment.content)
+                .select(studyBoardComment)
                 .from(studyBoardComment)
-                .where(studyBoardComment.id.eq(studyBoardCommentId).and(studyBoardComment.member.id.eq(memberId)))
+                .join(studyBoardComment.member, member).fetchJoin()
+                .join(studyBoardComment.studyBoard, studyBoard).fetchJoin()
+                .where(studyBoardComment.id.eq(studyBoardCommentId).and(member.id.eq(memberId)))
                 .fetchOne());
+
     }
 
 

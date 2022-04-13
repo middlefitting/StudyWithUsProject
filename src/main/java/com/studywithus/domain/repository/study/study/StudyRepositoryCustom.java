@@ -1,6 +1,7 @@
 package com.studywithus.domain.repository.study.study;
 
 import com.querydsl.core.types.OrderSpecifier;
+import com.studywithus.domain.entity.study.Study;
 import com.studywithus.domain.repository.study.Study.dto.StudyDto;
 import com.studywithus.domain.repository.study.Study.dto.StudyPageSearchCondition;
 import org.springframework.data.domain.Page;
@@ -16,4 +17,6 @@ public interface StudyRepositoryCustom {
     Page<StudyDto> searchStudyPage(Pageable pageable, StudyPageSearchCondition condition);
 
     Optional<Long> searchStudyByMember(Long memberId);
+
+    Optional<Study> searchStudyByIdFetch(Long studyId);
 }
