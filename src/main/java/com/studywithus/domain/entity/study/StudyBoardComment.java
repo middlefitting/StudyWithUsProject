@@ -13,6 +13,8 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class StudyBoardComment extends BaseConstructorEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,8 +22,8 @@ public class StudyBoardComment extends BaseConstructorEntity {
     private Long id;
 
     private String content;
-    private Long StudyBoardCommentRecommendCount = 0L;
-    private Long StudyBoardCommentReportCount = 0L;
+    private Long studyBoardCommentRecommendCount = 0L;
+    private Long studyBoardCommentReportCount = 0L;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="study_board_id")

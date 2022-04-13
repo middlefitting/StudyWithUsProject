@@ -62,7 +62,7 @@ public class StudyBoardControllerImpl implements StudyBoardController{
             throw new IllegalArgumentException("입력 값이 잘못되었습니다!");
         }
 
-        if(!requestForm.getStudyBoardCategory().equals("notice") && !requestForm.getStudyBoardCategory().equals("study") && !requestForm.getStudyBoardCategory().equals("free")){
+        if(!requestForm.getStudyBoardCategory().equals("notice") && !requestForm.getStudyBoardCategory().equals("study") && !requestForm.getStudyBoardCategory().equals("free") && !requestForm.getStudyBoardCategory().equals("all")){
             throw new IllegalArgumentException("카테고리 값이 잘못되었습니다!");
         }
 

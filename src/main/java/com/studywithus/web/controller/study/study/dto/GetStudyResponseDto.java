@@ -10,9 +10,11 @@ public class GetStudyResponseDto {
 
     private String studyName;
     private String studyExplanation;
+    private Long studyMemberCount;
 
-    public GetStudyResponseDto(String studyName, String studyExplanation) {
+    public GetStudyResponseDto(String studyName, String studyExplanation, Long studyMemberCount) {
         this.studyName = studyName;
         this.studyExplanation = studyExplanation;
+        this.studyMemberCount = studyMemberCount;
     }
 }

@@ -47,9 +47,9 @@ public class StudyServiceImpl implements StudyService{
     }
 
 
-    public Optional<Study> getStudy(Long studyId, Long memberId){
+    public Optional<Study> getStudy(Long studyId){
         Optional<Study> study = studyRepository.findById(studyId);
-        if(study.orElseGet(Study::new).getMember().getId().equals(memberId)){
+        if(study.orElseGet(Study::new).getId().equals(studyId)){
             return study;
         }
         throw new RuntimeException();
