@@ -3,6 +3,7 @@ import {useForm} from "react-hook-form";
 import {useHistory} from "react-router-dom";
 import AxiosURL from "../Services/AxiosURL";
 import GoogleLogin from "react-google-login";
+import {alignPropType} from "react-bootstrap/types";
 
 
 const SignIn = () => {
