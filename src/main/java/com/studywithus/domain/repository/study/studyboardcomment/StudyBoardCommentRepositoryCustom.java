@@ -1,6 +1,7 @@
 package com.studywithus.domain.repository.study.studyboardcomment;
 
 import com.querydsl.core.types.OrderSpecifier;
+import com.studywithus.domain.entity.study.StudyBoardComment;
 import com.studywithus.domain.repository.study.studyboardcomment.dto.StudyBoardCommentDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,5 +16,5 @@ public interface StudyBoardCommentRepositoryCustom {
 
     Page<StudyBoardCommentDto> searchStudyBoardComment(Pageable pageable, Long studyBoardId);
 
-    Optional<String> searchStudyBoardCommentSingleContent(Long memberId, Long studyBoardCommentId);
+    Optional<StudyBoardComment> searchStudyBoardCommentSingle(Long memberId, Long studyBoardCommentId);
 }

@@ -45,4 +45,8 @@ public class StudyBoardComment extends BaseConstructorEntity {
         this.studyBoard = studyBoard;
         this.member = member;
     }
+
+    public void updateComment(String content){
+        this.content = content;
+    }
 }

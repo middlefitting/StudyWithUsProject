@@ -47,8 +47,17 @@ public class StudyServiceImpl implements StudyService{
     }
 
 
+//    public Optional<Study> getStudy(Long studyId){
+//        Optional<Study> study = studyRepository.findById(studyId);
+//        if(study.orElseGet(Study::new).getId().equals(studyId)){
+//            return study;
+//        }
+//        throw new RuntimeException();
+//    }
+
+
     public Optional<Study> getStudy(Long studyId){
-        Optional<Study> study = studyRepository.findById(studyId);
+        Optional<Study> study = studyRepository.searchStudyByIdFetch(studyId);
         if(study.orElseGet(Study::new).getId().equals(studyId)){
             return study;
         }

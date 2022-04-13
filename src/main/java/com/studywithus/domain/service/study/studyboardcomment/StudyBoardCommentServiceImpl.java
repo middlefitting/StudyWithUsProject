@@ -54,15 +54,31 @@ public class StudyBoardCommentServiceImpl implements StudyBoardCommentService {
     }
 
 
-    public Optional<String> selectStudyBoardCommentSingle(Long memberId, Long studyBoardCommentId){
-        return studyBoardCommentRepository.searchStudyBoardCommentSingleContent(memberId, studyBoardCommentId);
+    public Optional<StudyBoardComment> selectStudyBoardCommentSingle(Long memberId, Long studyBoardCommentId){
+        return studyBoardCommentRepository.searchStudyBoardCommentSingle(memberId, studyBoardCommentId);
     }
 
 
-//    public Long updateStudyBoardComment(UpdateStudyBoardCommentDto requestDto){
-//        Optional<StudyBoard> studyBoard = studyBoardRepository.findById(requestDto.getStudyBoardId());
-//    }
+    public Long updateStudyBoardComment(UpdateStudyBoardCommentDto requestDto){
+        Optional<StudyBoardComment> studyBoardComment = studyBoardCommentRepository.findById(requestDto.getStudyBoardCommentId());
+        if(studyBoardComment.orElseGet(StudyBoardComment::new).getMember().getId().equals(requestDto.getMemberId())){
+            studyBoardComment.get().updateComment(requestDto.getContent());
+            return studyBoardCommentRepository.save(studyBoardComment.get()).getId();
+        }
+        return 0L;
+    }
 
+
+    public Long deleteStudyBoardComment(Long memberId, Long studyBoardCommentId){
+        Optional<StudyBoardComment> studyBoardComment = studyBoardCommentRepository.findById(studyBoardCommentId);
+        if(studyBoardComment.orElseGet(StudyBoardComment::new).getId()!=null){
+            if (studyBoardComment.orElseGet(StudyBoardComment::new).getMember().getId().equals(memberId)){
+                studyBoardCommentRepository.delete(studyBoardComment.get());
+                return -1L;
+            }
+        }
+        return 0L;
+    }
 
 
 

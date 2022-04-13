@@ -5,6 +5,7 @@ import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.studywithus.domain.entity.member.QMember;
 import com.studywithus.domain.entity.study.Study;
 import com.studywithus.domain.repository.study.Study.dto.QStudyDto;
 import com.studywithus.domain.repository.study.Study.dto.StudyDto;
@@ -19,6 +20,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
+import static com.studywithus.domain.entity.member.QMember.*;
 import static com.studywithus.domain.entity.study.QStudy.study;
 import static org.springframework.util.StringUtils.hasText;
 
@@ -74,6 +76,16 @@ public class StudyRepositoryImpl implements StudyRepositoryCustom {
                 .select(study.member.id)
                 .from(study)
                 .where(study.member.id.eq(memberId))
+                .fetchOne());
+    }
+
+
+    public Optional<Study> searchStudyByIdFetch(Long studyId){
+        return Optional.ofNullable(queryFactory
+                .select(study)
+                .from(study)
+                .join(study.member, member).fetchJoin()
+                .where(study.id.eq(studyId))
                 .fetchOne());
     }
 
