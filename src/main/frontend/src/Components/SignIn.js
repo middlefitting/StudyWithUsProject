@@ -40,7 +40,7 @@ const SignIn = () => {
                         history.push("/")
                         window.location.reload()
                     }).catch(error => {
-                        console.log("getMember error")
+                    console.log("getMember error")
                 })
 
             }).catch(error => {
@@ -78,22 +78,22 @@ const SignIn = () => {
                     &nbsp;
                     <label>Email</label>
                     <input
-                           className="signInput"
-                           name="email"
-                           type="email"
-                           {...register("email",
-                               {required:true, pattern: /^\S+@\S+$/i})}
+                        className="signInput"
+                        name="email"
+                        type="email"
+                        {...register("email",
+                            {required:true, pattern: /^\S+@\S+$/i})}
                     />
                     {/*{errors.email && <p>ex) studywithus@gmail.com</p>}*/}
 
 
                     <label>Password</label>
                     <input
-                           className="signInput"
-                           name="password"
-                           type="password"
-                           {...register("password",
-                               {required: true, minLength: 8})}/>
+                        className="signInput"
+                        name="password"
+                        type="password"
+                        {...register("password",
+                            {required: true, minLength: 8})}/>
                     {/*{errors.password && errors.password.type === "required" && <p>비밀번호를 입력해주세요.</p>}
                     {errors.password && errors.password.type === "minLength" && <p>비밀번호는 8글자 이상으로 가능합니다.</p>}*/}
 

@@ -11,7 +11,6 @@ import com.studywithus.domain.service.study.study.StudyService;
 import com.studywithus.domain.service.study.study.dto.CreateStudyDto;
 import com.studywithus.domain.service.study.study.dto.UpdateStudyDto;
 import com.studywithus.web.controller.common.SuccessResult;
-import com.studywithus.web.controller.member.form.CreateMemberForm;
 import com.studywithus.web.controller.study.study.dto.GetStudyResponseDto;
 import com.studywithus.web.controller.study.study.form.CreateStudyForm;
 import com.studywithus.web.controller.study.study.form.UpdateStudyForm;
@@ -74,10 +73,10 @@ public class StudyControllerImpl implements StudyController{
         Long verifyId = verify.getClaim("id").asLong();
 
         //전부다 RuntimeException이 뜨는데 수정이 필요할듯
-        Optional<Study> study = studyService.getStudy(studyId, verifyId);
-        GetStudyResponseDto responseDto = new GetStudyResponseDto(study.orElseGet(Study::new).getStudyName(), study.orElseGet(Study::new).getStudyExplanation());
+        Optional<Study> study = studyService.getStudy(studyId);
+        GetStudyResponseDto responseDto = new GetStudyResponseDto(study.orElseGet(Study::new).getStudyName(), study.orElseGet(Study::new).getStudyExplanation(), study.orElseGet(Study::new).getStudyMemberCount());
 
-        return new SuccessResult(responseDto, "스터디 삭제 완료", "success");
+        return new SuccessResult(responseDto, "스터디 정보 반환 완료", "success");
     }
 
 

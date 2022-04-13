@@ -5,7 +5,6 @@ import com.studywithus.domain.repository.study.Study.dto.StudyPageSearchConditio
 import com.studywithus.web.controller.common.SuccessResult;
 import com.studywithus.web.controller.study.study.form.CreateStudyForm;
 import com.studywithus.web.controller.study.study.form.UpdateStudyForm;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;

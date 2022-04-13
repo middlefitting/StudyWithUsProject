@@ -6,7 +6,6 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.studywithus.domain.entity.study.Study;
-
 import com.studywithus.domain.repository.study.Study.dto.QStudyDto;
 import com.studywithus.domain.repository.study.Study.dto.StudyDto;
 import com.studywithus.domain.repository.study.Study.dto.StudyPageSearchCondition;

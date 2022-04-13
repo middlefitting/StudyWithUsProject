@@ -1,13 +1,10 @@
 package com.studywithus.domain.service.study.study;
 
 import com.studywithus.domain.entity.member.Member;
-import com.studywithus.domain.entity.study.MemberStudy;
 import com.studywithus.domain.entity.study.Study;
 import com.studywithus.domain.repository.member.MemberRepository;
-
 import com.studywithus.domain.repository.study.Study.dto.StudyDto;
 import com.studywithus.domain.repository.study.Study.dto.StudyPageSearchCondition;
-import com.studywithus.domain.repository.study.memberstudy.MemberStudyRepository;
 import com.studywithus.domain.repository.study.study.StudyRepository;
 import com.studywithus.domain.service.study.study.dto.CreateStudyDto;
 import com.studywithus.domain.service.study.study.dto.UpdateStudyDto;
@@ -50,9 +47,9 @@ public class StudyServiceImpl implements StudyService{
     }
 
 
-    public Optional<Study> getStudy(Long studyId, Long memberId){
+    public Optional<Study> getStudy(Long studyId){
         Optional<Study> study = studyRepository.findById(studyId);
-        if(study.orElseGet(Study::new).getMember().getId().equals(memberId)){
+        if(study.orElseGet(Study::new).getId().equals(studyId)){
             return study;
         }
         throw new RuntimeException();

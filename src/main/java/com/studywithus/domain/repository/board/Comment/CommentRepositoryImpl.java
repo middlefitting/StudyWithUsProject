@@ -7,6 +7,7 @@ import com.studywithus.domain.entity.board.QComment;
 import com.studywithus.domain.entity.member.QMember;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 public class CommentRepositoryImpl extends QuerydslRepositorySupport implements CommentRepositoryCustom {
@@ -33,5 +34,11 @@ public class CommentRepositoryImpl extends QuerydslRepositorySupport implements 
         tuple.orderBy(comment.regDate.desc());
 
         return tuple.fetch();
+    }
+
+    @Transactional
+    @Override
+    public void deleteByCommentId(Long comment_id) {
+        delete(comment).where(comment.comment_id.eq(comment_id)).execute();
     }
 }
