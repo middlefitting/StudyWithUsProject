@@ -35,6 +35,7 @@ function  Free_Board(){
             // page 수정
             const response = await AxiosURL.getList('free', 1);
             if (Object.keys(response).length > 0) {
+                console.log(Object.keys(response))
                 setFreeLists(response.data);
                 setDtoList(response.data.dtoList)
             }
@@ -43,7 +44,7 @@ function  Free_Board(){
         fetchData();
     },[]);
     console.log(freeLists);
-    // console.log(dtoList)
+    //console.log(dtoList)
 
 
 

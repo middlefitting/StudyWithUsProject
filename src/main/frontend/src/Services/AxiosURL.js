@@ -75,8 +75,14 @@ class CommunityService {
         return axios.post(baseURL + `/oauth/jwt/google`, data)
     }
 
+    // 스터디 List 불러오기
     studyList(token) {
         return axios.get(baseURL + `/studies`, {headers: {authorization: token}})
+    }
+
+    // 스터디 생성
+    studyCreate(data, token) {
+        return axios.post(baseURL + `/join/studies`, data ,{headers: {authorization: token}})
     }
 
     savePost(data) {
