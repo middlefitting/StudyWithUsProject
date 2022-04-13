@@ -53,8 +53,10 @@ public class MemberStudyControllerImpl implements MemberStudyController{
             throw new RuntimeException();
         }
         else if(result.equals(-1L)){
-            return new SuccessResult("", "스터디 탈퇴 완료", "success");
+            ResponseIsStudyMemberDto isStudyMember = new ResponseIsStudyMemberDto(false);
+            return new SuccessResult(isStudyMember, "스터디 탈퇴 완료", "success");
         }
-        return new SuccessResult("", "스터디 가입 완료", "success");
+        ResponseIsStudyMemberDto isStudyMember = new ResponseIsStudyMemberDto(true);
+        return new SuccessResult(isStudyMember, "스터디 가입 완료", "success");
     }
 }

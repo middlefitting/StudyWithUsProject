@@ -11,6 +11,8 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class StudyBoardCommentReport extends BaseConstructorEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

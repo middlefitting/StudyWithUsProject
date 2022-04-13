@@ -11,6 +11,8 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class StudyBoardRecommend extends BaseConstructorEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

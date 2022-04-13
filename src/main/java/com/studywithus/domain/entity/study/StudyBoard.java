@@ -65,4 +65,23 @@ public class StudyBoard extends BaseConstructorEntity {
         this.content = content;
         this.studyBoardCategory = studyBoardCategory;
     }
+
+    public void studyBoardCommentCountPlus(){
+        this.studyBoardCommentCount +=1;
+    }
+    public void studyBoardCommentCountMinus(){
+        this.studyBoardCommentCount -=1;
+    }
+    public void studyBoardRecommendCountPlus(){
+        this.studyBoardRecommendCount +=1;
+    }
+    public void studyBoardRecommendCountMinus(){
+        this.studyBoardRecommendCount -=1;
+    }
+    public void studyBoardReportCountPlus(){
+        this.studyBoardReportCount +=1;
+    }
+    public void studyBoardViewCountPlus(){
+        this.studyBoardViewCount +=1;
+    }
 }
