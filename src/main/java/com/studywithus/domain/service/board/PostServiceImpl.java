@@ -4,12 +4,15 @@ import com.querydsl.core.Tuple;
 import com.studywithus.domain.repository.board.C_like.C_likeRepository;
 import com.studywithus.domain.repository.board.Comment.CommentRepository;
 import com.studywithus.domain.repository.board.P_like.P_likeRepository;
+import com.studywithus.domain.repository.member.MemberRepository;
+import com.studywithus.domain.repository.search.SearchRepository;
 import com.studywithus.web.controller.board.dto.PageRequestDTO;
 import com.studywithus.web.controller.board.dto.PageResultDTO;
 import com.studywithus.web.controller.board.dto.PostDto;
 import com.studywithus.domain.entity.board.Post;
 import com.studywithus.domain.entity.member.Member;
 import com.studywithus.domain.repository.board.Post.PostRepository;
+import com.studywithus.web.controller.board.dto.SearchPageRequestDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
@@ -31,6 +34,7 @@ public class PostServiceImpl implements PostService{
     private final P_likeRepository p_likeRepository;
     private final C_likeRepository c_likeRepository;
     private final MemberRepository memberRepository;
+    private final SearchRepository searchRepository;
 
     @Override
     public Long register(PostDto postDto) {
