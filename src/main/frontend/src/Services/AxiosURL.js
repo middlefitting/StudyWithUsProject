@@ -95,20 +95,6 @@ class CommunityService {
         return axios.get(baseURL+"/board/search", {params: data});
     }
 
-    // getFreeList(){
-    //     return axios.get(baseURL+"/board",{ params: { category :'free',page: 1 } });
-    //
-    // }
-    //
-    // getNoticeList(){
-    //     return axios.get(baseURL+"/board",{ params: { category :'notice', page:1 } });
-    //
-    // }
-    //
-    // getQNAList(){
-    //     return axios.get(baseURL+"/board",{ params: { category :'question', page:1 } });
-    //
-    // }
 
     getEdit() {
         return axios.get(baseURL + "/board/edit")

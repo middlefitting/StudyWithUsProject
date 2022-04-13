@@ -97,6 +97,8 @@ function Board_Detail(){
     /*   const post_writer_nickname =  postDto.map &&postDto.map(row=>row.writer_nickname);
      console.log('안녕 : ' + post_writer_nickname);
      console.log('드디어: ' + user_nickname);
+
+
      let result;
      if(post_writer_nickname == user_nickname){
         result = "true";
@@ -175,7 +177,7 @@ function Board_Detail(){
                     <div className="user_bottom">
                         <div className="comment_button_bottom" >
                             <img className="comm_img_bottom" alt="com_img" src={'/img/comment.png'}/>
-                            <div className="comment_bottom">댓글</div>
+                            <div className="comment_bottom">댓글 수</div>
                         </div>
                         <div className="heart_img_bottom">
                             <img id="empty_heart" className="heart_bottom" alt="heart"

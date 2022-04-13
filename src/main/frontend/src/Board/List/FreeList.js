@@ -35,6 +35,7 @@ function FreeList(){
                         </div>
                       <div className="table_mid_container">
                             <Free_Board />
+
                             <Search_Component/>
 
                     </div>

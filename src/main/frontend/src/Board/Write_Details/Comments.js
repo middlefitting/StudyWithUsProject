@@ -5,13 +5,43 @@ import {useParams} from "react-router-dom";
 
 
 const user = JSON.parse(localStorage.getItem('user-info'))
-const user_info_id = JSON.parse(localStorage.getItem('user')).id;
+const user_info_id = JSON.parse(localStorage.getItem('user'));
 
 
 
 function Comments(props) {
     const {post_id} = useParams();
-    const [commentsList, setCommentList] = useState([]);
+    const [commentsList, setCommentList] = useState({});
+
+
+
+
+    const onSubmit =(e)=>{
+        e.preventDefault();
+
+        let comment_data ={
+            writer_nickname:user_info_id.nickname,
+            writer_id: parseInt(user_info_id.id),
+            post_id : parseInt(post_id),
+            content: document.getElementsByName('comment_content')[0].value
+        }
+
+        AxiosURL.saveComment(comment_data)
+            .then((response)=>{
+                comment_data.comment_id = response.data;
+                comment_data.modDate = new Date().toISOString();
+                comment_data.regDate = new Date().toISOString();
+
+                let appendedCommentsList = commentsList;
+                appendedCommentsList.push(comment_data);
+
+                setCommentList(appendedCommentsList);
+
+                document.getElementsByName('comment_content')[0].value = '';
+            }).catch (error=>{
+            console.log(error)
+        })
+    }
 
 
 
@@ -23,39 +53,16 @@ function Comments(props) {
                 });
         }
         fetchData();
-    },[]);
-
-    const onSubmit =(e)=>{
-        e.preventDefault();
-
-        const comment_data ={
-            writer_nickname:user.nickname,
-            post_id : post_id,
-            comment_id : user_info_id,
-            content: document.getElementsByName('comment_content')[0].value
-
-
-        }
-
-
-        AxiosURL.saveComment(comment_data)
-            .then((response)=>{
-                let result = response.data
-                console.log('안녕하슈: ' + result)
-
-            }).then(error=>{
-            console.log(error)
-        })
-    }
+    },[commentsList]);
 
 
 
 
-    /*    AxiosURL.saveComment(data)
-            .then((response) =>{
-               let result = response.data
-                /!*localStorage*!/
-            })*/
+/*    AxiosURL.saveComment(data)
+        .then((response) =>{
+           let result = response.data
+            /!*localStorage*!/
+        })*/
 
 
     //===========================================
@@ -101,7 +108,7 @@ function Comments(props) {
 
 
                 <button type="button" className="reply_enter" onClick={e => onSubmit(e)}> 등록 </button>
-
+       {/*         <button type="button" className="reply_enter" > 등록 </button>*/}
             </div>
             <ul className="comment_list">
                 <li className="comment_view">
