@@ -18,6 +18,9 @@ public class PageResultDTO<DTO, EN> {
     //총 페이지 번호
     private int totalPage;
 
+    //총 게시글 갯수
+    private int totalPost;
+
     //현재 페이지 번호
     private int page;
     //목록 사이즈
@@ -35,6 +38,7 @@ public class PageResultDTO<DTO, EN> {
     public PageResultDTO(Page<EN> result, Function<EN, DTO> fn) {
         dtoList = result.stream().map(fn).collect(Collectors.toList());
         totalPage = result.getTotalPages();
+        totalPost = (int) result.getTotalElements();
         makePageList(result.getPageable());
     }
 

@@ -35,8 +35,6 @@ public class PostServiceImpl implements PostService{
     private final C_likeRepository c_likeRepository;
     private final SearchRepository searchRepository;
     private final MemberRepository memberRepository;
-    private final SearchRepository searchRepository;
-
 
     @Override
     public Long register(PostDto postDto) {
