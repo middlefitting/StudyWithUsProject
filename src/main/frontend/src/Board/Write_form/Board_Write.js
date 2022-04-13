@@ -128,8 +128,8 @@ const _handleEnter = () => {
 
                             </li>
                         </ul>
-                        <input type="text" className="writer_id" name="writer_id" readOnly={true} defaultValue={user_info_id}
-                            {...register("writer_id", {required: true})}/>
+                       {/* <input type="text" className="writer_id" name="writer_id" readOnly={true} defaultValue={user_info_id}
+                            {...register("writer_id", {required: true})}/>*/}
                         <File_Upload />
 
                         <div className="button_section">
