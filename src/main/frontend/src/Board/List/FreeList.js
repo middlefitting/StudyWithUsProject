@@ -4,6 +4,7 @@ import Side_Tab from "../../Tabs/Side_Tab";
 import Free_Board from "../BoardComponent/Free_Board";
 import User_Side_Tab from "../../Tabs/User_Side_Tab";
 import Pagination_Component from "../Page/Pagination_Component";
+import React from "react";
 
 
 // const user = JSON.parse(localStorage.getItem('user-info'))
@@ -24,6 +25,17 @@ function FreeList(){
                     </>
                     }
                 </div>
+                <form action="/board/search?type=${type}&keyword=${keyword}" method="get" name="searchForm">
+                    <select name="type">
+                        <option value="t">제목</option>  {/*보낼 값  = type: t */}
+                        <option value="c">내용</option>
+                        <option value="w">작성자</option>
+                        <option value="tc">제목 + 내용</option>
+                        <option value="tcw">제목 + 내용 + 작성자</option>
+                    </select>
+                    <input type="text" name="keyword"/> {/*보낼 값 key :입력값 */}
+                    <input type="submit" value="검색"/>
+                </form>
                     <div className="mid_container">
                         <div className="page_name">
                                 <span>자유게시판</span>

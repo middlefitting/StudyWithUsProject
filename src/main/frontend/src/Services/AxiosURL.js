@@ -92,7 +92,7 @@ class CommunityService {
             type: type,
             keyword: keyword
         }
-        return axios.get(baseURL+`/board/search/${keyword}`);
+        return axios.get(baseURL+"/board/search", {params: data});
     }
 
     // getFreeList(){

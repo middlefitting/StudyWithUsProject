@@ -59,10 +59,10 @@ public class PostController {
     }
 
     // 검색 게시글 조회
-    @GetMapping("/board/search/{keyword}")
+    @GetMapping("/board/search")
     public PageResultDTO<PostDto, Object[]> getSearchList(
             @RequestParam("type") String type,
-            @PathVariable("keyword") String keyword) {
+            @RequestParam("keyword") String keyword) {
         SearchPageRequestDTO pageRequestDTO = new SearchPageRequestDTO();
         pageRequestDTO.setType(type);
         pageRequestDTO.setKeyword(keyword);
