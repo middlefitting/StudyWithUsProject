@@ -4,24 +4,17 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.studywithus.config.jwt.JwtProperties;
-import com.studywithus.domain.entity.study.Study;
-import com.studywithus.domain.entity.study.StudyBoard;
+
 import com.studywithus.domain.entity.study.StudyBoardCategory;
-import com.studywithus.domain.repository.study.study.dto.StudyDto;
-import com.studywithus.domain.repository.study.study.dto.StudyPageSearchCondition;
+
 import com.studywithus.domain.repository.study.studyboard.dto.StudyBoardDto;
 import com.studywithus.domain.repository.study.studyboard.dto.StudyBoardPageSearchCondition;
 import com.studywithus.domain.repository.study.studyboard.dto.StudyBoardSingleDto;
-import com.studywithus.domain.service.study.study.dto.CreateStudyDto;
-import com.studywithus.domain.service.study.study.dto.UpdateStudyDto;
+
 import com.studywithus.domain.service.study.studyboard.StudyBoardService;
 import com.studywithus.domain.service.study.studyboard.dto.CreateStudyBoardDto;
 import com.studywithus.domain.service.study.studyboard.dto.UpdateStudyBoardDto;
 import com.studywithus.web.controller.common.SuccessResult;
-import com.studywithus.web.controller.study.study.dto.GetStudyResponseDto;
-import com.studywithus.web.controller.study.study.form.CreateStudyForm;
-import com.studywithus.web.controller.study.study.form.UpdateStudyForm;
-import com.studywithus.web.controller.study.studyboard.dto.GetStudyBoardResponseDto;
 import com.studywithus.web.controller.study.studyboard.form.CreateStudyBoardForm;
 import com.studywithus.web.controller.study.studyboard.form.UpdateStudyBoardForm;
 import lombok.RequiredArgsConstructor;

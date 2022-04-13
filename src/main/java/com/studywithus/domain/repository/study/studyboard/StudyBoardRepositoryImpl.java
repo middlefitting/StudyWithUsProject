@@ -6,14 +6,10 @@ import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.studywithus.domain.entity.member.QMember;
-import com.studywithus.domain.entity.study.QStudyBoard;
-import com.studywithus.domain.entity.study.Study;
+
 import com.studywithus.domain.entity.study.StudyBoard;
 import com.studywithus.domain.entity.study.StudyBoardCategory;
-import com.studywithus.domain.repository.study.study.dto.QStudyDto;
-import com.studywithus.domain.repository.study.study.dto.StudyDto;
-import com.studywithus.domain.repository.study.study.dto.StudyPageSearchCondition;
+
 import com.studywithus.domain.repository.study.studyboard.dto.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

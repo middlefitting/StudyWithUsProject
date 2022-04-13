@@ -1,4 +1,4 @@
-package com.studywithus.domain.repository.study.Study;
+package com.studywithus.domain.repository.study.study;
 
 import com.studywithus.domain.entity.study.Study;
 
