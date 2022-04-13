@@ -11,6 +11,8 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
+@Builder
+@AllArgsConstructor
 public class StudyBoardView {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

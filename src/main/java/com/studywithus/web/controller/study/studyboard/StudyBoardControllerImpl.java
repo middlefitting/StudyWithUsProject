@@ -62,7 +62,7 @@ public class StudyBoardControllerImpl implements StudyBoardController{
             throw new IllegalArgumentException("입력 값이 잘못되었습니다!");
         }
 
-        if(!requestForm.getStudyBoardCategory().equals("notice") && !requestForm.getStudyBoardCategory().equals("study") && !requestForm.getStudyBoardCategory().equals("free")){
+        if(!requestForm.getStudyBoardCategory().equals("notice") && !requestForm.getStudyBoardCategory().equals("study") && !requestForm.getStudyBoardCategory().equals("free") && !requestForm.getStudyBoardCategory().equals("all")){
             throw new IllegalArgumentException("카테고리 값이 잘못되었습니다!");
         }
 
@@ -119,7 +119,7 @@ public class StudyBoardControllerImpl implements StudyBoardController{
 
 
     @DeleteMapping("/studies/{studyId}/studyBoard/{studyBoardId}")
-    public SuccessResult deleteStudy(HttpServletRequest request, @PathVariable Long studyId, @PathVariable Long studyBoardId){
+    public SuccessResult deleteStudyBoard(HttpServletRequest request, @PathVariable Long studyId, @PathVariable Long studyBoardId){
         String jwtToken = request.getHeader("Authorization").replace("Bearer ","");
         DecodedJWT verify = JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(jwtToken);
         Long verifyId = verify.getClaim("id").asLong();
@@ -128,7 +128,7 @@ public class StudyBoardControllerImpl implements StudyBoardController{
         if(result.equals(0L)){
             throw new IllegalArgumentException("게시물을 삭제할 수 없습니다");
         }
-        return new SuccessResult("", "스터디 삭제 완료", "success");
+        return new SuccessResult("", "게시물 삭제 완료", "success");
     }
 
 }

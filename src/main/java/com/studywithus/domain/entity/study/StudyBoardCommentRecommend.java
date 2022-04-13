@@ -11,6 +11,8 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class StudyBoardCommentRecommend extends BaseConstructorEntity {
 
     @Id
@@ -25,8 +27,6 @@ public class StudyBoardCommentRecommend extends BaseConstructorEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="study_board_comment_id")
     private StudyBoardComment studyBoardComment;
-
-
 
     public StudyBoardCommentRecommend(Member member, StudyBoardComment studyBoardComment) {
         this.member = member;

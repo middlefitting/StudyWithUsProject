@@ -7,6 +7,7 @@ import com.studywithus.domain.entity.member.Member;
 import com.studywithus.domain.repository.jwt.JwtMemberRepository;
 import com.studywithus.domain.service.auth.oauth.provider.GoogleUser;
 import com.studywithus.domain.service.auth.oauth.provider.OAuthUserInfo;
+import com.studywithus.web.controller.common.SuccessResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -54,7 +55,7 @@ public class JwtCreateController {
                 .withClaim("id", memberEntity.getId())
                 .withClaim("username", memberEntity.getEmail())
                 .sign(Algorithm.HMAC512(JwtProperties.SECRET));
-
+//        SuccessResult(returnDto, "회원정보 조회 완료", "success");
         return jwtToken;
     }
 
