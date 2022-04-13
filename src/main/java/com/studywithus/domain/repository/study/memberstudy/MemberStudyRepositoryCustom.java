@@ -1,5 +1,7 @@
 package com.studywithus.domain.repository.study.memberstudy;
 
+import java.util.Optional;
+
 public interface MemberStudyRepositoryCustom {
-    // 구현할 메서드 명세 작성
+    Optional<Long> findByMemberIdAndStudyId(Long memberId, Long studyId);
 }

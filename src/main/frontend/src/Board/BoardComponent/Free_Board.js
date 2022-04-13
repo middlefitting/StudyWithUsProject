@@ -42,8 +42,9 @@ function  Free_Board(){
         }
         fetchData();
     },[]);
-    console.log(freeLists);
+/*    console.log(freeLists);*/
     // console.log(dtoList)
+
 
 
 
@@ -66,7 +67,7 @@ function  Free_Board(){
                     {Object.keys(dtoList).length ?
                         dtoList.map((free,idx) => (
                                 <tr id="board_body" key={idx}>
-                                    <td width="10%" className="listTableNum">{free.post_id}</td>
+                                    <td width="10%" className="listTableNum">{dtoList.length - idx}</td>
                                     <td width="50%" className="listTableTitle">
                                         <Link to={`/Board_Detail/${free.post_id}`} className="link">
                                             {free.title}

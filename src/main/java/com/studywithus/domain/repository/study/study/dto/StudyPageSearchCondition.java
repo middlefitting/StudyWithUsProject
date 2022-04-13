@@ -4,5 +4,7 @@ import lombok.Data;
 
 @Data
 public class StudyPageSearchCondition {
-    private String orderBy;
+    private String masterNickname;
+    private String studyExplanation;
+    private String studyName;
 }

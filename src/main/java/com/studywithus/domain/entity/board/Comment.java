@@ -23,7 +23,7 @@ public class Comment extends BaseEntity {
 //    private Post post_id;
     private Long post_id;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "member_id")
     private Member mem_id;
 
