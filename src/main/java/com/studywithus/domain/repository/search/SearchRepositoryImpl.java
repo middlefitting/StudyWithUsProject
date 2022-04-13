@@ -7,6 +7,7 @@ import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.PathBuilder;
 import com.querydsl.jpa.JPQLQuery;
+import com.studywithus.domain.entity.board.Category;
 import com.studywithus.domain.entity.board.Post;
 import com.studywithus.domain.entity.board.QPost;
 import com.studywithus.domain.entity.member.QMember;
@@ -31,16 +32,17 @@ public class SearchRepositoryImpl extends QuerydslRepositorySupport implements S
     QMember member = QMember.member;
 
     @Override
-    public Page<Object[]> searchPage(String type, String keyword, Pageable pageable) {
+    public Page<Object[]> searchPage(String type, String keyword, String category, Pageable pageable) {
         JPQLQuery<Post> jpqlQuery = from(post);
         jpqlQuery.leftJoin(member).on(post.writer.eq(member));
         JPQLQuery<Tuple> tuple = jpqlQuery.select(post, member);
 
         // 조건 추가
         BooleanBuilder totalBuilder = new BooleanBuilder();
-        BooleanExpression booleanExpression = post.post_id.gt(0L); // 쿼리 null 일 경우 대비
-
-        totalBuilder.and(booleanExpression);
+        BooleanExpression expression1 = post.post_id.gt(0L); // 쿼리 null 일 경우 대비
+        BooleanExpression expression2 = post.category.eq(Category.valueOf(category));
+        totalBuilder.and(expression1);
+        totalBuilder.and(expression2);
         if(type != null) {
             String[] typeArray = type.split("");
             BooleanBuilder addBuilder = new BooleanBuilder();

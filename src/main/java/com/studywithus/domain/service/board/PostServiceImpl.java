@@ -85,6 +85,7 @@ public class PostServiceImpl implements PostService{
         Page<Object[]> result = searchRepository.searchPage(
                 pageRequestDTO.getType(),
                 pageRequestDTO.getKeyword(),
+                pageRequestDTO.getCategory(),
                 pageRequestDTO.getPageable(Sort.by("regDate").descending())
         );
         return new PageResultDTO<>(result, fn);

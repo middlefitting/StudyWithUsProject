@@ -16,6 +16,7 @@ public class SearchPageRequestDTO {
     private int size = 10;
     private String type;
     private String keyword;
+    private String category;
 
     public SearchPageRequestDTO() {}
 
