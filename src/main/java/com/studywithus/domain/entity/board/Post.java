@@ -9,6 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter
+//@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,7 +19,8 @@ public class Post extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long post_id;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+//    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "member_id")
     private Member writer;
 
@@ -33,9 +35,21 @@ public class Post extends BaseEntity {
 
     private Integer views;
 
+    public Post(Member writer, Category category, String title, String content, Integer views) {
+        this.writer = writer;
+        this.category = category;
+        this.title = title;
+        this.content = content;
+        this.views = views;
+    }
+
     public void updatePost(String title, String content, Category category) {
         this.title = title;
         this.content = content;
         this.category = category;
+    }
+
+    public void updateView(Integer views) {
+        this.views = views;
     }
 }

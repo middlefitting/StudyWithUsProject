@@ -3,9 +3,9 @@ import axios from "axios";
 // const baseURL = '/api'
 const baseURL = ''
 
-const ls_id = localStorage.getItem('user-nickname')
-const idus = JSON.parse(ls_id)
-const id = idus.id
+// const user = localStorage.getItem('user')
+// const before_user = JSON.parse(user)
+// const id = before_user.id
 
 class CommunityService {
 
@@ -18,37 +18,83 @@ class CommunityService {
     }
 
     getMember(data) {
-        console.log(id)
-        return axios.get(baseURL + `/member/${id}`, {headers: data})
-    }
 
+        if (localStorage.getItem('user')) {
+            const user = localStorage.getItem('user')
+            const before_user = JSON.parse(user)
+            const id = before_user.id
+
+            return axios.get(baseURL + `/members/${id}`, {headers: data})
+        }
+
+    }
+    // 닉네임 변경
     ModificationNick(data, token) {
-        return axios.put(baseURL + "/member", data, {headers: {authorization: token}})
+
+        if (localStorage.getItem('user')) {
+            const user = localStorage.getItem('user')
+            const before_user = JSON.parse(user)
+            const id = before_user.id
+
+            return axios.put(baseURL + `/members/${id}`, data, {headers: {authorization: token}})
+        }
+
+
     }
 
-    deleteUser(token, data){
-        console.log(token)
-        console.log(data)
-        return axios.delete(baseURL + "/member", {headers: {authorization: token}})
+    // 비밀번호 변경
+    updatePwd(data, token) {
+
+        if (localStorage.getItem('user')) {
+            const user = localStorage.getItem('user')
+            const before_user = JSON.parse(user)
+            const id = before_user.id
+
+            return axios.patch(baseURL + `/members/${id}`, data, {headers: {authorization: token}})
+        }
+
     }
 
-    savePost(data) {
+    // 회원삭제
+    deleteUser(data, token){
+
+        if (localStorage.getItem('user')) {
+            const user = localStorage.getItem('user')
+            const before_user = JSON.parse(user)
+            const id = before_user.id
+
+            console.log(token)
+            console.log(data)
+            return axios.delete(baseURL + `/members/${id}`, {headers: {authorization: token}, data:data})
+
+        }
+    }
+
+    savePost(data, category) {
         return axios.post(baseURL + "/board/register", data)
     }
 
-/*    getNoticeList() {
-        return axios.get(baseURL + "/board")
-    }*/
+    saveComment(data) {
+        return axios.post(baseURL + "/comment/register", data)
+    }
 
     //page 숫자는 추후 수정
     getList(category, page) {
-         const data = {
-             category: category,
-             page: page
-         }
-
-         return axios.get(baseURL + "/board", {params: data});
+        const data = {
+            category: category,
+            page: page
+        }
+        return axios.get(baseURL + "/board", {params: data});
     }
+
+    getSearchList(type, keyword) {
+        const data = {
+            type: type,
+            keyword: keyword
+        }
+        return axios.get(baseURL+`/board/search/${keyword}`);
+    }
+
     // getFreeList(){
     //     return axios.get(baseURL+"/board",{ params: { category :'free',page: 1 } });
     //
@@ -73,22 +119,14 @@ class CommunityService {
     }
 
 
-        getBoardDetail(post_id){
-            return axios.get(baseURL+`/board/${post_id}`);
-        }
+    getBoardDetail(post_id){
+        return axios.get(baseURL+`/board/${post_id}`);
+    }
 
-
-
+    // 댓글 삭제
     deleteComment(data) {
         return axios.post(baseURL + `/comment/delete/${data}`)
     }
-    // getFreeList(data) {
-    //     return axios.post(baseURL + "/board/free", data)
-    // }
-    // getQuestionList(data) {
-    //     return axios.post(baseURL + "/board/question", data)
-    // }
-
     /*loginMember(data) {
         return axios.post(baseURL + "/login", data)
     }

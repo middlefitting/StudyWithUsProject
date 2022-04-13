@@ -4,6 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.studywithus.config.jwt.JwtProperties;
 import com.studywithus.domain.entity.board.Comment;
+import com.studywithus.domain.repository.search.SearchRepository;
 import com.studywithus.domain.service.board.CommentService;
 import com.studywithus.domain.service.board.P_likeService;
 import com.studywithus.web.controller.board.dto.*;
@@ -35,8 +36,10 @@ public class PostController {
     // 글 등록
     @PostMapping("/board/register")
     public CreatePostResponseDto registerPost(@RequestBody @Valid PostDto requestDto){
+        System.out.println("hello" + requestDto.getCategory());
         Long id = postService.register(requestDto);
         CreatePostResponseDto responseDto = new CreatePostResponseDto(id);
+
         return responseDto;
     }
 
@@ -55,6 +58,18 @@ public class PostController {
         return postService.getList(pageRequestDTO);
     }
 
+    // 검색 게시글 조회
+    @GetMapping("/board/search/{keyword}")
+    public PageResultDTO<PostDto, Object[]> getSearchList(
+            @RequestParam("type") String type,
+            @PathVariable("keyword") String keyword) {
+        SearchPageRequestDTO pageRequestDTO = new SearchPageRequestDTO();
+        pageRequestDTO.setType(type);
+        pageRequestDTO.setKeyword(keyword);
+
+        return postService.getSearchList(pageRequestDTO);
+    }
+
 //    // 세부 게시글 조회
 //    @GetMapping("/board/{post_id}")
 //    public List<PostDto> getPostDetail(@PathVariable("post_id") Long post_id) {
@@ -70,11 +85,7 @@ public class PostController {
         ArrayList<Object> likeInfo = p_likeService.getListAndCount(post_id);
         ArrayList<P_likeDto> likesList = (ArrayList<P_likeDto>) likeInfo.get(0);
         int likeCnt = (int) likeInfo.get(1);
-        System.out.println("컨트롤러");
-        for (Object tmp : likeInfo) {
-            System.out.println(tmp);
-        }
-        System.out.println("===============");
+
         PostAndCommentListDTO aa = new PostAndCommentListDTO(postDto, commentsList, likesList, likeCnt);
         return new PostAndCommentListDTO(postDto, commentsList, likesList, likeCnt);
 //        ArrayList arr = new ArrayList();

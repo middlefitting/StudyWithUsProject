@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.PathBuilder;
 import com.querydsl.jpa.JPQLQuery;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.querydsl.jpa.impl.JPAUpdateClause;
 import com.studywithus.domain.entity.board.Category;
 import com.studywithus.domain.entity.board.Post;
 
@@ -19,6 +20,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -97,6 +99,14 @@ public class PostRepositoryImpl extends QuerydslRepositorySupport implements Pos
         );
     }
 
+
+    @Transactional
+    @Override
+    public void updateViews(Long post_id, int viewplus) {
+        update(post).set(post.views, viewplus).where(post.post_id.eq(post_id)).execute();
+    }
+
+    @Transactional
     @Override
     public void deleteByPostId(Long post_id) {
         delete(post).where(post.post_id.eq(post_id)).execute();

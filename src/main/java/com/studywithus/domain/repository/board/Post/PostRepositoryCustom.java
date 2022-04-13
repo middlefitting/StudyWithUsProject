@@ -15,5 +15,6 @@ public interface PostRepositoryCustom {
     List<Tuple> getPost();
     List<Tuple> getPostByPostId(@Param("post_id") Long post_id);
     Page<Object[]> getPostsByCategory(@Param("category") String category, Pageable pageable);
+    void updateViews(@Param("post_id") Long Post_id, int viewplous);
     void deleteByPostId(@Param("post_id") Long Post_id);
 }
