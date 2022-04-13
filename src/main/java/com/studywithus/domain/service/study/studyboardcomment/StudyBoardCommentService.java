@@ -17,7 +17,7 @@ public interface StudyBoardCommentService {
 
     Optional<StudyBoardComment> selectStudyBoardCommentSingle(Long memberId, Long studyBoardCommentId);
 
-    Long updateStudyBoardComment(UpdateStudyBoardCommentDto requestDto);
+    Optional<StudyBoardComment> updateStudyBoardComment(UpdateStudyBoardCommentDto requestDto);
 
     Long deleteStudyBoardComment(Long memberId, Long studyBoardCommentId);
 

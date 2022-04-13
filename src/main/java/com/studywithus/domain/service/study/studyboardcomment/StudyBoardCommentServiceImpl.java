@@ -59,13 +59,14 @@ public class StudyBoardCommentServiceImpl implements StudyBoardCommentService {
     }
 
 
-    public Long updateStudyBoardComment(UpdateStudyBoardCommentDto requestDto){
-        Optional<StudyBoardComment> studyBoardComment = studyBoardCommentRepository.findById(requestDto.getStudyBoardCommentId());
+    public Optional<StudyBoardComment> updateStudyBoardComment(UpdateStudyBoardCommentDto requestDto){
+        Optional<StudyBoardComment> studyBoardComment = studyBoardCommentRepository.searchStudyBoardCommentSingle(requestDto.getMemberId(), requestDto.getStudyBoardCommentId());
         if(studyBoardComment.orElseGet(StudyBoardComment::new).getMember().getId().equals(requestDto.getMemberId())){
             studyBoardComment.get().updateComment(requestDto.getContent());
-            return studyBoardCommentRepository.save(studyBoardComment.get()).getId();
+            studyBoardCommentRepository.save(studyBoardComment.get()).getId();
+            return studyBoardComment;
         }
-        return 0L;
+        throw new RuntimeException();
     }
 
 

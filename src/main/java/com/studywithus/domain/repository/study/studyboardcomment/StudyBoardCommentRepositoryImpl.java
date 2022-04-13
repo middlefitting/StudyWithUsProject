@@ -81,7 +81,6 @@ public class StudyBoardCommentRepositoryImpl implements StudyBoardCommentReposit
                 .join(studyBoardComment.studyBoard, studyBoard).fetchJoin()
                 .where(studyBoardComment.id.eq(studyBoardCommentId).and(member.id.eq(memberId)))
                 .fetchOne());
-
     }
 
 
