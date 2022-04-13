@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @Slf4j
-@RestControllerAdvice(basePackages = "com.studywithus.web.controller.study.study")
+@RestControllerAdvice(basePackages ="com.studywithus.web.controller.study")
 public class ExControllerStudyAdvice {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)

@@ -4,11 +4,12 @@ import com.studywithus.domain.entity.member.Member;
 import com.studywithus.domain.entity.study.MemberStudy;
 import com.studywithus.domain.entity.study.Study;
 import com.studywithus.domain.repository.member.MemberRepository;
-import com.studywithus.domain.repository.study.Study.StudyRepository;
-import com.studywithus.domain.repository.study.Study.dto.StudyDto;
 import com.studywithus.domain.repository.study.memberstudy.MemberStudyRepository;
-
+import com.studywithus.domain.repository.study.study.StudyRepository;
+import com.studywithus.domain.repository.study.study.dto.StudyDto;
+import com.studywithus.domain.repository.study.study.dto.StudyPageSearchCondition;
 import com.studywithus.domain.service.study.study.dto.CreateStudyDto;
+import com.studywithus.domain.service.study.study.dto.UpdateStudyDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,10 +25,9 @@ public class StudyServiceImpl implements StudyService{
 
     private final StudyRepository studyRepository;
     private final MemberRepository memberRepository;
-    private final MemberStudyRepository memberStudyRepository;
 
-    public Page<StudyDto> selectStudyPage(Pageable pageable){
-        return studyRepository.searchStudyPage(pageable);
+    public Page<StudyDto> selectStudyPage(Pageable pageable, StudyPageSearchCondition condition){
+        return studyRepository.searchStudyPage(pageable, condition);
     }
 
     public Long createStudy(CreateStudyDto requestDto){
@@ -48,33 +48,37 @@ public class StudyServiceImpl implements StudyService{
         return 0L;
     }
 
-    public Long joinDropStudy(Long memberId, Long StudyId){
-        Optional<Member> member = memberRepository.findById(memberId);
-        Optional<Study> study = studyRepository.findById(StudyId);
 
-        if(member.orElseGet(Member::new).getId()!=null && study.orElseGet(Study::new).getId()!=null){
-            Optional<MemberStudy> byMemberAndStudy = memberStudyRepository.findByMemberAndStudy(member.orElseGet(Member::new), study.orElseGet(Study::new));
-
-            if(byMemberAndStudy.orElseGet(MemberStudy::new).getId()==null){
-                MemberStudy memberStudy = MemberStudy.builder()
-                        .study(study.get())
-                        .member(member.get())
-                        .build();
-
-                study.get().studyMemberCountPlus();
-                studyRepository.save(study.get());
-                return memberStudyRepository.save(memberStudy).getId();
-            }
-
-            else {
-                memberStudyRepository.delete(byMemberAndStudy.get());
-                study.get().studyMemberCountMinus();
-                studyRepository.save(study.get());
-                return 0L;
-            }
+    public Optional<Study> getStudy(Long studyId, Long memberId){
+        Optional<Study> study = studyRepository.findById(studyId);
+        if(study.orElseGet(Study::new).getMember().getId().equals(memberId)){
+            return study;
         }
         throw new RuntimeException();
     }
+
+
+    public Long updateStudy(UpdateStudyDto requestDto){
+        Optional<Study> study = studyRepository.findById(requestDto.getStudyId());
+        if(study.orElseGet(Study::new).getMember().getId().equals(requestDto.getMemberId())){
+            study.get().updateStudyEntity(requestDto.getStudyName(), requestDto.getStudyExplanation());
+            return studyRepository.save(study.get()).getId();
+        }
+        throw new RuntimeException();
+    }
+
+
+    public void deleteStudy(Long studyId, Long memberId){
+        Optional<Study> study = studyRepository.findById(studyId);
+        if(study.orElseGet(Study::new).getMember().getId().equals(memberId)){
+            studyRepository.delete(study.get());
+            return;
+        }
+        throw new RuntimeException();
+    }
+
+
+    //updateStudy(requestDto, verifyId)
 
 
 
