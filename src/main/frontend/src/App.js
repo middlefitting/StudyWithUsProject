@@ -23,6 +23,7 @@ import Classes_All from "./Classes/Classes_Index/Classes_All";
 import MyPageList from "./Board/List/MyPageList";
 import Modification from "./Board/BoardComponent/Modification";
 import ModificationList from "./Board/List/ModificationList";
+import MainPage from "./Board/BoardComponent/MainPage";
 
 
 function App() {
@@ -34,7 +35,7 @@ function App() {
           </div>
           <div className="content">
             <Switch>
-                <Route exact path="/" />
+                <Route exact path="/" component={MainPage}/>
                 <Route path="/NoticeList" component={NoticeList} exact/>
                 <Route path="/FreeList" component={FreeList} exact />
                 <Route path="/QNAList" component={QNAList} exact />
