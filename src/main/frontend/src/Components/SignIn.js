@@ -28,6 +28,7 @@ const SignIn = () => {
             .then((response) => {
                 console.log(response)
                 const user = JSON.stringify(response.data.data) // 유저
+
                 localStorage.setItem("user", user)
                 localStorage.setItem("user-info", JSON.stringify(response.headers))
 
@@ -52,10 +53,13 @@ const SignIn = () => {
         console.log(response.profileObj)
         console.log(response)
 
-        AxiosURL.googleLogin(response.profileObj)
-            .then(response => {
-                console.log(response)
-            })
+        // AxiosURL.googleLogin(response)
+        //     .then(response => {
+        //         console.log(response)
+        //         if (response.data) {
+        //             localStorage.getItem('user-info', response.data)
+        //         }
+        //     })
 
 
     }
@@ -103,7 +107,6 @@ const SignIn = () => {
                              cookiePolicy={'single_host_origin'}
                              />
             </div>
-
     );
 };
 

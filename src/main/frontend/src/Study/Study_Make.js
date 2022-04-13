@@ -32,6 +32,7 @@ function Study_Make() {
         AxiosURL.studyCreate(data, token)
             .then((response) => {
                 console.log(response)
+                history.push('/Study_List')
             }).catch(error => {
                 console.log(error)
         })

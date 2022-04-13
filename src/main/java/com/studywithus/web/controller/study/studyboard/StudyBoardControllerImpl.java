@@ -7,8 +7,6 @@ import com.studywithus.config.jwt.JwtProperties;
 import com.studywithus.domain.entity.study.Study;
 import com.studywithus.domain.entity.study.StudyBoard;
 import com.studywithus.domain.entity.study.StudyBoardCategory;
-import com.studywithus.domain.repository.study.study.dto.StudyDto;
-import com.studywithus.domain.repository.study.study.dto.StudyPageSearchCondition;
 import com.studywithus.domain.repository.study.studyboard.dto.StudyBoardDto;
 import com.studywithus.domain.repository.study.studyboard.dto.StudyBoardPageSearchCondition;
 import com.studywithus.domain.repository.study.studyboard.dto.StudyBoardSingleDto;

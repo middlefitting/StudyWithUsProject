@@ -28,7 +28,7 @@ function StudyList(){
                 })
                 setLoading(false);
             }
-
+            console.log(study)
     }, [])
 
 
@@ -70,7 +70,7 @@ function StudyList(){
                                         <tr id="board_body" key={idx}>
                                             <td width="10%">{study.studyId}</td>
                                             <td width="50%">
-                                                <Link to="/Study_Inside"  className="link">
+                                                <Link to={`/studies/${study.studyId}`}  className="link">
                                                     {study.studyName}
                                                 </Link>
                                             </td>

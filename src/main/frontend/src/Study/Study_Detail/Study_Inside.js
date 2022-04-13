@@ -1,12 +1,28 @@
-import React from 'react';
-import {Link, useHistory} from "react-router-dom";
+import React, {useEffect, useState} from 'react';
+import {Link, useHistory, useParams} from "react-router-dom";
 import '../Css/Study_Detail.css';
 import '../../Board/Write_Details/Details.css';
 import '../../App.css';
 import Study_Info from "./Study_Info";
 import StudyBoardDetail from "./Study_Board_Detail";
+import AxiosURL from "../../Services/AxiosURL";
 
 function Study_Inside(){
+
+    useEffect(() => {
+
+        const token = JSON.parse(localStorage.getItem('user-info'))
+
+        let beforeStudyId = String((String(window.location.pathname).toString())).split("/studies/");
+        let studyId = beforeStudyId[1]
+
+        AxiosURL.intoStudy(studyId, token.authorization)
+            .then(response => {
+                console.log(response)
+            }).catch(error => {
+                console.log(error)
+        })
+    })
 
     const history = useHistory();
     return (

@@ -1,8 +1,10 @@
 package com.studywithus.web.controller.study.study;
 
-import com.studywithus.domain.repository.study.study.dto.StudyDto;
+
+import com.studywithus.domain.repository.study.Study.dto.StudyPageSearchCondition;
 import com.studywithus.web.controller.common.SuccessResult;
 import com.studywithus.web.controller.study.study.form.CreateStudyForm;
+import com.studywithus.web.controller.study.study.form.UpdateStudyForm;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;

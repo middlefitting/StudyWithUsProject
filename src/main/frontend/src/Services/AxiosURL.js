@@ -82,7 +82,12 @@ class CommunityService {
 
     // 스터디 생성
     studyCreate(data, token) {
-        return axios.post(baseURL + `/join/studies`, data ,{headers: {authorization: token}})
+        return axios.post(baseURL + `/studies`, data ,{headers: {authorization: token}})
+    }
+
+    // 스터디 들어가기
+    intoStudy(studyId, token) {
+        return axios.get(baseURL + `/studies/${studyId}`, {headers: {authorization: token}})
     }
 
     savePost(data) {
