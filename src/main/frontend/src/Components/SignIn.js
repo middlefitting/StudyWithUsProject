@@ -2,6 +2,9 @@ import React, {useEffect} from 'react';
 import {useForm} from "react-hook-form";
 import {useHistory} from "react-router-dom";
 import AxiosURL from "../Services/AxiosURL";
+import GoogleLogin from "react-google-login";
+import {alignPropType} from "react-bootstrap/types";
+
 
 const SignIn = () => {
 
@@ -18,7 +21,7 @@ const SignIn = () => {
     // 페이지 이동 submit
     const history = useHistory();
 
-    // axios DB 연동
+    // 로그인 axios DB 연동
     const onSubmit = (data) => {
 
         AxiosURL.loginMember(data)
@@ -45,9 +48,24 @@ const SignIn = () => {
         })
     }
 
+    const successGoogle = (response) => {
+        console.log(response.profileObj)
+        console.log(response)
+
+        AxiosURL.googleLogin(response.profileObj)
+            .then(response => {
+                console.log(response)
+            })
+
+
+    }
+
+    const failGoogle = (response) => {
+        console.log(response)
+    }
 
     return (
-        <>
+
             <div>
                 <br/><br/>
                 <form onSubmit={handleSubmit(onSubmit)} >
@@ -78,8 +96,14 @@ const SignIn = () => {
 
                     <input type="submit" className="signInput"></input>
                 </form>
+                <GoogleLogin clientId="704381193446-349afdg31g6ar46i05qlquh7n37hq8ui.apps.googleusercontent.com"
+                             buttonText="Google"
+                             onSuccess={successGoogle}
+                             onFailure={failGoogle}
+                             cookiePolicy={'single_host_origin'}
+                             />
             </div>
-        </>
+
     );
 };
 

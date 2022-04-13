@@ -26,9 +26,16 @@ function QNAList(){
                 <div className="mid_container">
                     <div className="page_name">
                             <span>질문게시판</span>
+                        {localStorage.getItem('user-info') ?
+                            <>
                             <button type="submit" id="w_button" value="글씨기">
                                 <Link to='/Board_Write' className="link">글쓰기</Link>
                             </button>
+                            </>
+                            :
+                            <>
+                            </>
+                            }
                     </div>
                     <div className="table_mid_container">
                             <QNA_Board />

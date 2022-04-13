@@ -15,6 +15,7 @@ const Contents = () => {
   // Function For Logout
   const _handleLogOut = () => {
     localStorage.clear();
+    sessionStorage.clear();
     history.push("/");
     window.location.reload();
   };

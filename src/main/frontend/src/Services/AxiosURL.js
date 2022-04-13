@@ -70,7 +70,22 @@ class CommunityService {
         }
     }
 
-    savePost(data, category) {
+    // 구글 소셜 로그인
+    googleLogin(data) {
+        return axios.post(baseURL + `/oauth/jwt/google`, data)
+    }
+
+    // 스터디 List 불러오기
+    studyList(token) {
+        return axios.get(baseURL + `/studies`, {headers: {authorization: token}})
+    }
+
+    // 스터디 생성
+    studyCreate(data, token) {
+        return axios.post(baseURL + `/join/studies`, data ,{headers: {authorization: token}})
+    }
+
+    savePost(data) {
         return axios.post(baseURL + "/board/register", data)
     }
 
@@ -80,11 +95,12 @@ class CommunityService {
 
     //page 숫자는 추후 수정
     getList(category, page) {
-        const data = {
-            category: category,
-            page: page
-        }
-        return axios.get(baseURL + "/board", {params: data});
+         const data = {
+             category: category,
+             page: page
+         }
+
+         return axios.get(baseURL + "/board", {params: data});
     }
 
     getSearchList(category, type, keyword) {
@@ -124,10 +140,16 @@ class CommunityService {
         return axios.get(baseURL+`/board/${post_id}`);
     }
 
-    // 댓글 삭제
     deleteComment(data) {
         return axios.post(baseURL + `/comment/delete/${data}`)
     }
+    // getFreeList(data) {
+    //     return axios.post(baseURL + "/board/free", data)
+    // }
+    // getQuestionList(data) {
+    //     return axios.post(baseURL + "/board/question", data)
+    // }
+
     /*loginMember(data) {
         return axios.post(baseURL + "/login", data)
     }

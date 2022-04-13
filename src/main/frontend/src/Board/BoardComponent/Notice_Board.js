@@ -49,7 +49,7 @@ function  Notice_Board(){
                 {Object.keys(dtoList).length ?
                     dtoList.map((notice,idx) => (
                         <tr id="board_body" key={idx}>
-                            <td width="10%" className="listTableNum">{notice.post_id}</td>
+                            <td width="10%" className="listTableNum">{dtoList.length - idx}</td>
                             <td width="50%" className="listTableTitle">
                                 <Link to={`/Board_Detail/${notice.post_id}`} className="link">
                                     {notice.title}
