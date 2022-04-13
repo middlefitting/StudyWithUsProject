@@ -27,23 +27,23 @@ public interface PostService {
 
     Post dtoToEntity(PostDto dto);
 
-/*    Post dtoToEntity(PostDto dto);
-    PostDto entityToDto(Post post, Member member);*/
+/*    Post dtoToEntity(PostDto dto);*/
+    PostDto entityToDto(Post post, Member member);
 
-    default PostDto entityToDto(Post post, Member member) {
-        PostDto postDto = PostDto.builder()
-                .post_id(post.getPost_id())
-                .title(post.getTitle())
-                .content(post.getContent())
-                .writer_id(member.getId())
-                .writer_nickname(member.getNickname())
-                .category(post.getCategory())
-                .views(post.getViews())
-                .modDate(post.getModDate())
-                .regDate(post.getRegDate())
-                .build();
-        return postDto;
-    }
+//    default PostDto entityToDto(Post post, Member member) {
+//        PostDto postDto = PostDto.builder()
+//                .post_id(post.getPost_id())
+//                .title(post.getTitle())
+//                .content(post.getContent())
+//                .writer_id(member.getId())
+//                .writer_nickname(member.getNickname())
+//                .category(post.getCategory())
+//                .views(post.getViews())
+//                .modDate(post.getModDate())
+//                .regDate(post.getRegDate())
+//                .build();
+//        return postDto;
+//    }
 
 
 

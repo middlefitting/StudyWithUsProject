@@ -22,7 +22,7 @@ public class P_like extends BaseEntity {
 //    @JoinColumn(name = "post_id")
     private Long post_id;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "member_id")
     private Member mem_id;
 }

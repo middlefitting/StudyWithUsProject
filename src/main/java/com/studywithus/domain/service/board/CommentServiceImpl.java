@@ -4,6 +4,7 @@ import com.querydsl.core.Tuple;
 import com.studywithus.domain.entity.board.Comment;
 import com.studywithus.domain.entity.member.Member;
 import com.studywithus.domain.repository.board.Comment.CommentRepository;
+import com.studywithus.domain.repository.member.MemberRepository;
 import com.studywithus.web.controller.board.dto.CommentDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
 public class CommentServiceImpl implements CommentService {
 
     private final CommentRepository commentRepository;
+    private final MemberRepository memberRepository;
     @Override
     public Long register(CommentDto commentDto) {
         Comment comment = dtoToEntity(commentDto);
@@ -40,6 +42,32 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public void remove(Long comment_id) {
         commentRepository.deleteById(comment_id);
+    }
+
+    @Override
+    public Comment dtoToEntity(CommentDto dto) {
+        Member member = memberRepository.findById(dto.getWriter_id()).orElse(null);
+        Comment comment = Comment.builder()
+                .post_id(dto.getPost_id())
+                .mem_id(member)
+                .content(dto.getContent())
+                .build();
+        commentRepository.save(comment);
+        return comment;
+    }
+
+    @Override
+    public CommentDto entityToDto(Comment comment, Member member) {
+        CommentDto commentDto = CommentDto.builder()
+                .comment_id(comment.getComment_id())
+                .post_id(comment.getPost_id())
+                .writer_id(member.getId())
+                .writer_nickname(member.getNickname())
+                .content(comment.getContent())
+                .modDate(comment.getModDate())
+                .regDate(comment.getRegDate())
+                .build();
+        return commentDto;
     }
 
 
