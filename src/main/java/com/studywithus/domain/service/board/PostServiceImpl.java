@@ -33,8 +33,10 @@ public class PostServiceImpl implements PostService{
     private final CommentRepository commentRepository;
     private final P_likeRepository p_likeRepository;
     private final C_likeRepository c_likeRepository;
+    private final SearchRepository searchRepository;
     private final MemberRepository memberRepository;
     private final SearchRepository searchRepository;
+
 
     @Override
     public Long register(PostDto postDto) {
@@ -51,16 +53,17 @@ public class PostServiceImpl implements PostService{
 
     @Override
     public ArrayList<PostDto> get(Long post_id) {
+        System.out.println("지금 get쓰임");
         List<Tuple> result = repository.getPostByPostId(post_id);
         List arr = result.stream().map(t -> t.toArray()).collect(Collectors.toList());
         Function<Object[], PostDto> fn = (en -> entityToDto((Post)en[0], (Member) en[1]));
-        ArrayList<PostDto> dto = (ArrayList<PostDto>) arr.stream().map(fn).collect(Collectors.toList());
+        ArrayList<PostDto> dtoList = (ArrayList<PostDto>) arr.stream().map(fn).collect(Collectors.toList());
 
         // 조회수 처리
-        int cnt = dto.get(0).getViews();
-        dto.get(0).setViews(cnt + 1);
+        int viewplus = dtoList.get(0).getViews() + 1;
+        repository.updateViews(post_id, viewplus);
 
-        return dto;
+        return dtoList;
     }
 
     @Override
@@ -119,19 +122,19 @@ public class PostServiceImpl implements PostService{
         Post post = new Post();
 
         if (member != null) {
-//            Post post = Post.builder()
+            post = Post.builder()
 //                .post_id(dto.getPost_id())
-//                .title(dto.getTitle())
-//                .content(dto.getContent())
-//                .writer(member)
-//                .category(dto.getCategory())
-//                .views(dto.getViews())
-//                .build();
-            post.setTitle(dto.getTitle());
-            post.setContent(dto.getContent());
-            post.setWriter(member);
-            post.setCategory(dto.getCategory());
-            post.setViews(dto.getViews());
+                .title(dto.getTitle())
+                .content(dto.getContent())
+                .writer(member)
+                .category(dto.getCategory())
+                .views(dto.getViews())
+                .build();
+//            post.setTitle(dto.getTitle());
+//            post.setContent(dto.getContent());
+//            post.setWriter(member);
+//            post.setCategory(dto.getCategory());
+//            post.setViews(dto.getViews());
             repository.save(post);
         }
         return post;
@@ -154,7 +157,7 @@ public class PostServiceImpl implements PostService{
         }
 
         throw new RuntimeException();
-    }
+    }*/
 
     public PostDto entityToDto(Post post, Member member) {
         PostDto postDto = PostDto.builder()
@@ -169,7 +172,7 @@ public class PostServiceImpl implements PostService{
                 .regDate(post.getRegDate())
                 .build();
         return postDto;
-    }*/
+    }
 
 
 }

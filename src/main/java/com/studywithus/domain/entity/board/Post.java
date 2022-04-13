@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@Setter
+//@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -47,5 +47,9 @@ public class Post extends BaseEntity {
         this.title = title;
         this.content = content;
         this.category = category;
+    }
+
+    public void updateView(Integer views) {
+        this.views = views;
     }
 }

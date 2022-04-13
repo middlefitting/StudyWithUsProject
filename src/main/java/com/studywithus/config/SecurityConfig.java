@@ -31,9 +31,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtAuthenticationFilter(authenticationManager())) // 로그인 필터를 달아준다//AuthenticationManger를 넘겨줘야 함
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), jwtMemberRepository)) //권한 체크 필터?
                 .authorizeRequests()
-                .antMatchers("/members/**").access("hasRole('ROLE_USER')")
-                .antMatchers("/studies/**").access("hasRole('ROLE_USER')")
-                .antMatchers("/join/studies/**").access("hasRole('ROLE_USER')")
+                .antMatchers("/members/**").access("hasRole('ROLE_USER')") //db를 거치는게 아쉽지만 민감정보기 때문에
+                .antMatchers("/studies/**").access("hasRole('ROLE_USER')") //시큐리티를 안쓰면 -> 회원이 아니더라도 토큰만 있으면 된다? // 남의 토큰 다른이가 사용해도 된다>?//시큐리티여도?
+//                .antMatchers("/join/studies/**").access("hasRole('ROLE_USER')")
                 .antMatchers("/manager/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_MANAGER')")
                 .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/join/**").permitAll()

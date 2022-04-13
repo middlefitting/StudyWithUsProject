@@ -14,24 +14,26 @@ public interface P_likeService {
     ArrayList<Object> getListAndCount(@Param("post_id") Long post_id);
     void remove(Long like_id);
 
-    default P_like dtoToEntity(P_likeDto dto) {
-        Member member = Member.builder().id(dto.getMember_id()).build();
-        P_like p_like = P_like.builder()
-                .like_id(dto.getLike_id())
-                .post_id(dto.getPost_id())
-                .mem_id(member)
-                .build();
-        return p_like;
-    }
-
-    default P_likeDto entityToDto(P_like p_like, Member member) {
-        P_likeDto p_likeDto = P_likeDto.builder()
-                .like_id(p_like.getLike_id())
-                .member_id(member.getId())
-                .post_id(p_like.getPost_id())
-                .modDate(p_like.getModDate())
-                .regDate(p_like.getRegDate())
-                .build();
-        return p_likeDto;
-    }
+    P_like dtoToEntity(P_likeDto dto);
+    P_likeDto entityToDto(P_like p_like, Member member);
+//    default P_like dtoToEntity(P_likeDto dto) {
+//        Member member = Member.builder().id(dto.getMember_id()).build();
+//        P_like p_like = P_like.builder()
+//                .like_id(dto.getLike_id())
+//                .post_id(dto.getPost_id())
+//                .mem_id(member)
+//                .build();
+//        return p_like;
+//    }
+//
+//    default P_likeDto entityToDto(P_like p_like, Member member) {
+//        P_likeDto p_likeDto = P_likeDto.builder()
+//                .like_id(p_like.getLike_id())
+//                .member_id(member.getId())
+//                .post_id(p_like.getPost_id())
+//                .modDate(p_like.getModDate())
+//                .regDate(p_like.getRegDate())
+//                .build();
+//        return p_likeDto;
+//    }
 }

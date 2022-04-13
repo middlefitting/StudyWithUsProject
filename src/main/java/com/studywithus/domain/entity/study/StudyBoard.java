@@ -13,6 +13,8 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class StudyBoard extends BaseConstructorEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,10 +23,10 @@ public class StudyBoard extends BaseConstructorEntity {
 
     private String title;
     private String content;
-    private Long StudyBoardCommentCount = 0L;
-    private Long StudyBoardRecommendCount = 0L;
-    private Long StudyBoardReportCount = 0L;
-    private Long StudyBoardViewCount = 0L;
+    private Long studyBoardCommentCount = 0L;
+    private Long studyBoardRecommendCount = 0L;
+    private Long studyBoardReportCount = 0L;
+    private Long studyBoardViewCount = 0L;
 
     @Enumerated(EnumType.STRING)
     private StudyBoardCategory studyBoardCategory; //notice, study, free
@@ -56,5 +58,11 @@ public class StudyBoard extends BaseConstructorEntity {
         this.studyBoardCategory = studyBoardCategory;
         this.study = study;
         this.member = member;
+    }
+
+    public void updateStudyBoard(String title, String content, StudyBoardCategory studyBoardCategory){
+        this.title = title;
+        this.content = content;
+        this.studyBoardCategory = studyBoardCategory;
     }
 }

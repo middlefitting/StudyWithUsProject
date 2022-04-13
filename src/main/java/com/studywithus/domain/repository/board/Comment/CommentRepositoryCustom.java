@@ -12,4 +12,5 @@ public interface CommentRepositoryCustom {
 //    @Query("delete from Comment c where c.post_id =:post_id")
 //    void deleteByPostId(Long post_id);
     List<Tuple> getComments(@Param("post_id") Long post_id);
+    void deleteByCommentId(@Param("comment_id") Long comment_id);
 }
