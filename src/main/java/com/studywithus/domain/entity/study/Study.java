@@ -49,10 +49,19 @@ public class Study extends BaseConstructorEntity {
         this.studyExplanation = studyExplanation;
     }
 
+    public Study(String studyName, String studyExplanation) {
+        this.studyName = studyName;
+        this.studyExplanation = studyExplanation;
+    }
+
     public void studyMemberCountPlus(){
         this.studyMemberCount +=1;
     }
     public void studyMemberCountMinus(){
         this.studyMemberCount -=1;
+    }
+    public void updateStudyEntity(String studyName, String studyExplanation){
+        this.studyName = studyName;
+        this.studyExplanation = studyExplanation;
     }
 }
