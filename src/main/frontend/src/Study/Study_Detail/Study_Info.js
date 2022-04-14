@@ -5,22 +5,26 @@ import AxiosURL from "../../Services/AxiosURL";
 function StudyInfo (){
 
     const [study, setStudy] = useState('');
+    const [check, setCheck] = useState('');
+
+    let beforeStudyId = String((String(window.location.pathname).toString())).split("/studies/");
+    let studyId = beforeStudyId[1]
 
     useEffect(() => {
 
         const token = JSON.parse(localStorage.getItem('user-info'))
 
-        let beforeStudyId = String((String(window.location.pathname).toString())).split("/studies/");
-        let studyId = beforeStudyId[1]
-
         AxiosURL.intoStudy(studyId, token.authorization)
             .then(response => {
                 setStudy(response.data.data)
+                setCheck(response.data.data.studyId)
             }).catch(error => {
             console.log(error)
         })
     }, [])
 
+    console.log(check)
+    console.log(studyId)
 
     return (
         <div className="studyInfo_con">
@@ -39,6 +43,12 @@ function StudyInfo (){
                                 <th>멤버수</th>
                                 <td>{study.studyMemberCount}</td>
                             </tr>
+                            {studyId == check ?
+                                <button>수정</button>
+                                :
+                                <></>
+                            }
+
                         </tbody>
                     </table>
                 </div>
