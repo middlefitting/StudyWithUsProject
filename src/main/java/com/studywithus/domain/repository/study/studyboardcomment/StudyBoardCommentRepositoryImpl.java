@@ -4,25 +4,16 @@ import com.querydsl.core.types.Order;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.studywithus.domain.entity.member.QMember;
-import com.studywithus.domain.entity.study.QStudyBoard;
-import com.studywithus.domain.entity.study.QStudyBoardComment;
-import com.studywithus.domain.entity.study.StudyBoard;
 import com.studywithus.domain.entity.study.StudyBoardComment;
-import com.studywithus.domain.repository.study.studyboard.dto.QStudyBoardSingleDto;
 import com.studywithus.domain.repository.study.studyboardcomment.dto.QStudyBoardCommentDto;
 import com.studywithus.domain.repository.study.studyboardcomment.dto.StudyBoardCommentDto;
-import com.studywithus.domain.repository.study.studyboardcomment.dto.StudyBoardCommentSearchCondition;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.support.PageableExecutionUtils;
-
 import javax.persistence.EntityManager;
-
 import java.util.List;
 import java.util.Optional;
-
 import static com.studywithus.domain.entity.member.QMember.*;
 import static com.studywithus.domain.entity.study.QStudyBoard.studyBoard;
 import static com.studywithus.domain.entity.study.QStudyBoardComment.*;

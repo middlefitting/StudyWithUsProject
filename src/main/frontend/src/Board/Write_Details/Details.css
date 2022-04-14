@@ -23,6 +23,16 @@ hr{
     opacity: 0;
     transition: 500ms;
 }
+
+.study_detail_field{
+    width: 900px;
+    height: auto;
+    margin: 0;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
 .buttons_field{
     display: flex;
     flex-direction: row;

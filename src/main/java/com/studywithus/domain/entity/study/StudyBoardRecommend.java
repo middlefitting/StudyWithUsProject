@@ -3,6 +3,8 @@ package com.studywithus.domain.entity.study;
 import com.studywithus.domain.entity.BaseConstructorEntity;
 import com.studywithus.domain.entity.member.Member;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -21,9 +23,11 @@ public class StudyBoardRecommend extends BaseConstructorEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="study_board_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private StudyBoard studyBoard;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="member_id")
     private Member member;
 

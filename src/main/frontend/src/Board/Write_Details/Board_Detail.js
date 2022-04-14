@@ -26,7 +26,7 @@ function Board_Detail() {
     const user_id = JSON.parse(localStorage.getItem('user'));
 
     //답변 위치로 스크롤
-    let ref1 = React.useRef();
+    let ref1 = React.useRef()
 
     function scrollTo(ref1) {
         if (!ref1.current) return;
@@ -41,92 +41,98 @@ function Board_Detail() {
         }
     };
 
-    
 
     useEffect(() => {
-        AxiosURL.getBoardDetail(post_id)
-            .then((res) => {
-                setBoardDetail(res.data);
-                setPostDto(res.data.postDto);
-            });
+        if (user_id === null) {
+            alert('로그인을 해 주세요.');
+            history.push('/signin');
+        } else {
+            AxiosURL.getBoardDetail(post_id)
+                .then((res) => {
+                    setBoardDetail(res.data);
+                    setPostDto(res.data.postDto);
+                });
 
-
-        setTimeout(() => {
-            $('.detail_field').css('opacity', '1');
-        }, 600);
+            setTimeout(() => {
+                $('.detail_field').css('opacity', '1');
+            }, 600);
+        }
     }, []);
 
 
-
     return (
-        <div className="Free_Detail">
-            <div className="mid_con">
-                <fieldset className="detail_field">
-                    <div className="buttons_field">
-                        <div className="go_back" onClick={() => history.goBack()}>뒤로가기 ></div>
-                        {user_id && parseInt(postDto_writer_id) === parseInt(user_id.id) ?
-                            <>
-                                <div className="user_only_buttons">
-                                    <div id="detail_delete" onClick={e => _handleDelete(e)}>삭제</div>
-                                    <Link to={`/Update_Detail/${post_id}`} className="link">
-                                        <div id="detail_update">수정</div>
-                                    </Link>
-                                </div>
-                            </>
-                            :
-                            ''
-                        }
-                    </div>
-                    {postDto.map && postDto.map((detail, idx) => (
-                        <div key={idx}>
-                            <p className="detail_title">{detail.title}</p>
-                            <div className="user_con">
+        <>
+            {user_id !== null ?
+                <div className="Free_Detail">
+                    <div className="mid_con">
+                        <fieldset className="detail_field">
+                            <div className="buttons_field">
+                                <div className="go_back" onClick={() => history.goBack()}>뒤로가기 ></div>
+                                {user_id && parseInt(postDto_writer_id) === parseInt(user_id.id) ?
+                                    <>
+                                        <div className="user_only_buttons">
+                                            <div id="detail_delete" onClick={e => _handleDelete(e)}>삭제</div>
+                                            <Link to={`/Update_Detail/${post_id}`} className="link">
+                                                <div id="detail_update">수정</div>
+                                            </Link>
+                                        </div>
+                                    </>
+                                    :
+                                    ''
+                                }
+                            </div>
+                            {postDto.map && postDto.map((detail, idx) => (
+                                <div key={idx}>
+                                    <p className="detail_title">{detail.title}</p>
+                                    <div className="user_con">
                         <span className="circle">
                              <img className="default_img" alt="default" src={'/img/default.png'}/>
                         </span>
-                                <div className="user_info">
-                                    <div className="detail_id">{detail.writer_nickname}</div>
-                                    <div className="detail_time">{detail.regDate.substr(0, 10)}</div>
-                                </div>
-                                <div className="user_right">
-                                    <div className="views">
-                                        <div className="view_num">조회수 : {detail.views}</div>
-                                    </div>
-                                    <div className="comment_button" onClick={() => scrollTo(ref1)}>
-                                        <img className="comm_img" alt="com_img" src={'/img/comment.png'}/>
-                                        <div className="comment">댓글</div>
+                                        <div className="user_info">
+                                            <div className="detail_id">{detail.writer_nickname}</div>
+                                            <div className="detail_time">{detail.regDate.substr(0, 10)}</div>
+                                        </div>
+                                        <div className="user_right">
+                                            <div className="views">
+                                                <div className="view_num">조회수 : {detail.views}</div>
+                                            </div>
+                                            <div className="comment_button" onClick={() => scrollTo(ref1)}>
+                                                <img className="comm_img" alt="com_img" src={'/img/comment.png'}/>
+                                                <div className="comment">댓글</div>
+                                            </div>
+
+                                        </div>
                                     </div>
 
+                                    <hr/>
+
+                                    <div className="content_field">
+                                        {detail.content}
+                                    </div>
+                                </div>
+                            ))}
+                            <div className="user_bottom">
+                                <div className="comment_button_bottom">
+                                    <img className="comm_img_bottom" alt="com_img" src={'/img/comment.png'}/>
+                                    <div className="comment_bottom">댓글</div>
+                                </div>
+                                <div className="heart_img_bottom">
+                                    <img id="empty_heart" className="heart_bottom" alt="heart"
+                                         src={'/img/empty_heart.png'} onClick={() => {
+                                        ClickLike();
+                                    }}/>
+                                    <div className="like_bottom">좋아요 {num}</div>
                                 </div>
                             </div>
-
-                            <hr/>
-
-                            <div className="content_field">
-                                {detail.content}
-                            </div>
-                        </div>
-                    ))}
-                    <div className="user_bottom">
-                        <div className="comment_button_bottom">
-                            <img className="comm_img_bottom" alt="com_img" src={'/img/comment.png'}/>
-                            <div className="comment_bottom">댓글</div>
-                        </div>
-                        <div className="heart_img_bottom">
-                            <img id="empty_heart" className="heart_bottom" alt="heart"
-                                 src={'/img/empty_heart.png'} onClick={() => {
-                                ClickLike();
-                            }}/>
-                            <div className="like_bottom">좋아요 {num}</div>
-                        </div>
+                            <hr ref={ref1}/>
+                            <Comments/>
+                        </fieldset>
                     </div>
-                    <hr ref={ref1}/>
-                    <Comments/>
-                </fieldset>
-
-            </div>
-
-        </div>
+                </div>
+                :
+                ''
+            }
+        </>
     );
 }
 

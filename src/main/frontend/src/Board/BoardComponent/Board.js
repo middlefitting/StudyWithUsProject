@@ -32,6 +32,7 @@ function Board({category}) {
         }, 340);
     };
 
+
     useEffect(() => {
         AxiosURL.getList(category, pageList[0])
             .then(res => {

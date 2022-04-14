@@ -5,8 +5,8 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.studywithus.config.jwt.JwtProperties;
 import com.studywithus.domain.entity.study.Study;
-import com.studywithus.domain.repository.study.Study.dto.StudyDto;
-import com.studywithus.domain.repository.study.Study.dto.StudyPageSearchCondition;
+import com.studywithus.domain.repository.study.study.dto.StudyDto;
+import com.studywithus.domain.repository.study.study.dto.StudyPageSearchCondition;
 import com.studywithus.domain.service.study.study.StudyService;
 import com.studywithus.domain.service.study.study.dto.CreateStudyDto;
 import com.studywithus.domain.service.study.study.dto.UpdateStudyDto;
@@ -89,6 +89,7 @@ public class StudyControllerImpl implements StudyController{
     }
 
 
+    //스터디 정보 수정
     @PutMapping("/studies/{studyId}")
     public SuccessResult updateStudy(HttpServletRequest request, @PathVariable Long studyId, @RequestBody @Validated UpdateStudyForm requestForm, BindingResult bindingResult){
         String jwtToken = request.getHeader("Authorization").replace("Bearer ","");

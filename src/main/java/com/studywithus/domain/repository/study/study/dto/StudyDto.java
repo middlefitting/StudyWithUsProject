@@ -1,4 +1,4 @@
-package com.studywithus.domain.repository.study.Study.dto;
+package com.studywithus.domain.repository.study.study.dto;
 
 import lombok.Data;
 

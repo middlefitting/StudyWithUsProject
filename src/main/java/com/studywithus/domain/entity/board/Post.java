@@ -25,6 +25,7 @@ public class Post extends BaseEntity {
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "member_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Member writer;
 
     private Category category;

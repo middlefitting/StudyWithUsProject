@@ -2,6 +2,8 @@ package com.studywithus.domain.entity.study;
 
 import com.studywithus.domain.entity.BaseConstructorEntity;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -20,5 +22,6 @@ public class StudyBoardFileDir extends BaseConstructorEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="study_board_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private StudyBoard studyBoard;
 }

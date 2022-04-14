@@ -3,6 +3,8 @@ package com.studywithus.domain.entity.study;
 import com.studywithus.domain.entity.BaseConstructorEntity;
 import com.studywithus.domain.entity.member.Member;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
@@ -30,6 +32,7 @@ public class Study extends BaseConstructorEntity {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="member_id", unique = true)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Member member;
 
 

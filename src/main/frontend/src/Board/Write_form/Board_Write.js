@@ -32,9 +32,9 @@ function Board_Write() {
                     let result = response.data
                     let nextUrl;
 
-                    if (data.category === 'notice') nextUrl = '/NoticeList';
-                    else if (data.category === 'free') nextUrl = '/FreeList';
-                    else if (data.category === 'question') nextUrl = '/QNAList';
+                    if (data.category === 'notice') nextUrl = '/BoardList/notice';
+                    else if (data.category === 'free') nextUrl = '/BoardList/free';
+                    else if (data.category === 'question') nextUrl = '/BoardList/question';
 
                     localStorage.setItem("post-info", JSON.stringify(result))
                     alert(JSON.stringify(" 글 등록이 완료되었습니다. ")) // 나중에 모달창으로 교체예정

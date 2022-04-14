@@ -103,9 +103,11 @@ const MainPage = () => {
                                 </p>
 
                                 <hr/>
+                                <Link to={`/studies/${study.studyId}`} className="link">
                                 <button type="button" className="add_classes">
                                     함께하기
                                 </button>
+                                </Link>
                             </div>
                         </div>
                     ))
