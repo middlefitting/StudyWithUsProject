@@ -17,9 +17,9 @@ function Board_Detail() {
     const [boardDetail, setBoardDetail] = useState({});
     const [postDto, setPostDto] = useState({});
 
-    //좋아요 누르기(추후에 수정해야함)
-    const [num, plusNum] = useState(0);
-    const ClickLike = () => plusNum(num + 1);
+    // //좋아요 누르기(추후에 수정해야함)
+    // const [num, plusNum] = useState(0);
+    // const ClickLike = () => plusNum(num + 1);
 
     //현재 게시물을 작성했던 사람의 아이디 값 추출
     const postDto_writer_id = postDto.map && postDto.map(row => row.writer_id);
@@ -116,13 +116,13 @@ function Board_Detail() {
                                     <img className="comm_img_bottom" alt="com_img" src={'/img/comment.png'}/>
                                     <div className="comment_bottom">댓글</div>
                                 </div>
-                                <div className="heart_img_bottom">
-                                    <img id="empty_heart" className="heart_bottom" alt="heart"
-                                         src={'/img/empty_heart.png'} onClick={() => {
-                                        ClickLike();
-                                    }}/>
-                                    <div className="like_bottom">좋아요 {num}</div>
-                                </div>
+                                {/*<div className="heart_img_bottom">*/}
+                                {/*    <img id="empty_heart" className="heart_bottom" alt="heart"*/}
+                                {/*         src={'/img/empty_heart.png'} onClick={() => {*/}
+                                {/*        ClickLike();*/}
+                                {/*    }}/>*/}
+                                {/*    <div className="like_bottom">좋아요 {num}</div>*/}
+                                {/*</div>*/}
                             </div>
                             <hr ref={ref1}/>
                             <Comments/>

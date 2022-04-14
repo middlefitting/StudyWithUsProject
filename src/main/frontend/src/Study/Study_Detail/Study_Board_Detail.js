@@ -32,9 +32,9 @@ function Study_Board_Detail() {
 
     let ref1 = React.useRef();
 
-    const ClickLike = () => {
-        plusNum(num + 1);
-    };
+    // const ClickLike = () => {
+    //     plusNum(num + 1);
+    // };
 
     const scrollTo = (ref1) => {
         if (!ref1.current) return;
@@ -159,11 +159,11 @@ function Study_Board_Detail() {
                                     <img className="comm_img_bottom" alt="com_img" src={ImgComment}/>
                                     <div className="comment_bottom">댓글 수 {boardDto.studyBoardCommentCount}</div>
                                 </div>
-                                <div className="heart_img_bottom">
-                                    <img id="empty_heart" className="heart_bottom" alt="heart"
-                                         src={ImgHeart} onClick={ClickLike}/>
-                                    <div className="like_bottom">좋아요 {boardDto.studyBoardRecommendCount}</div>
-                                </div>
+                                {/*<div className="heart_img_bottom">*/}
+                                {/*    <img id="empty_heart" className="heart_bottom" alt="heart"*/}
+                                {/*         src={ImgHeart} onClick={ClickLike}/>*/}
+                                {/*    <div className="like_bottom">좋아요 {boardDto.studyBoardRecommendCount}</div>*/}
+                                {/*</div>*/}
                             </div>
                             <hr/>
                             <div className="reply_input" ref={ref1}>
