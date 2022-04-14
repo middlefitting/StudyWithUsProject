@@ -18,14 +18,27 @@ public class PrincipalDetails implements UserDetails {
     }
 
     //이거 뭐하는 건지 좀 더 알아보자
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+//        member.getRoleList().forEach(r->{
+//            authorities.add(()->{ return r;});
+//        });
+//        return authorities;
+//    }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        member.getRoleList().forEach(r->{
-            authorities.add(()->{ return r;});
+        Collection<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new GrantedAuthority() {
+            @Override
+            public String getAuthority() {
+                return member.getRoles();
+            }
         });
         return authorities;
     }
+
+
 
     @Override
     public String getPassword() {
