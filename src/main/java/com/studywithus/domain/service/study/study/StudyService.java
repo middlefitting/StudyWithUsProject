@@ -15,7 +15,7 @@ public interface StudyService {
 
     Long createStudy(CreateStudyDto requestDto);
 
-    Optional<Study> getStudy(Long studyId, Long memberId);
+    Optional<Study> getStudy(Long studyId);
 
     Long updateStudy(UpdateStudyDto requestDto);
 

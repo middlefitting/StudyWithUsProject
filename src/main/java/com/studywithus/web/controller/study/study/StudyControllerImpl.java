@@ -73,10 +73,19 @@ public class StudyControllerImpl implements StudyController{
         Long verifyId = verify.getClaim("id").asLong();
 
         //전부다 RuntimeException이 뜨는데 수정이 필요할듯
-        Optional<Study> study = studyService.getStudy(studyId, verifyId);
-        GetStudyResponseDto responseDto = new GetStudyResponseDto(study.orElseGet(Study::new).getStudyName(), study.orElseGet(Study::new).getStudyExplanation());
+        Optional<Study> studyOptional = studyService.getStudy(studyId);
+        Study study = studyOptional.get();
+        GetStudyResponseDto responseDto = GetStudyResponseDto.builder()
+                .studyId(study.getId())
+                .studyMasterId(study.getMember().getId())
+                .studyName(study.getStudyName())
+                .studyExplanation(study.getStudyExplanation())
+                .studyMemberCount(study.getStudyMemberCount())
+                .studyMasterNickname(study.getMember().getNickname())
+                .regDate(study.getRegDate())
+                .build();
 
-        return new SuccessResult(responseDto, "스터디 삭제 완료", "success");
+        return new SuccessResult(responseDto, "스터디 정보 반환 완료", "success");
     }
 
 

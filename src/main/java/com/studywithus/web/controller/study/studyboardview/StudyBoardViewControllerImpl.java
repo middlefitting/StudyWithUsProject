@@ -22,28 +22,16 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class StudyBoardViewControllerImpl implements StudyBoardViewController {
     private final StudyBoardViewService studyBoardViewService;
-    private final StudyBoardViewRepository studyBoardViewRepository;
 
-    @GetMapping("studies/{studyId}/studyBoards/{studyBoardId}/{studyBoardCategory}/Views") //jwt 토큰 기반으로 찾음
-    public List<StudyBoardView> getViews(HttpServletRequest request, @PathVariable Long studyId, @PathVariable Long studyBoardId, @PathVariable String studyBoardCategory) {
-        System.out.println(studyBoardId);
-//        List<StudyBoardView> views = studyBoardViewRepository.findStudyBoardViews(studyBoardId);
-//        List<StudyBoardView> studyBoardViews = studyBoardViewRepository.findStudyBoardViews(studyBoardId);
-        List<StudyBoardView> studyBoardViews = studyBoardViewService.selectStudyBoardViews(studyBoardId);
-        System.out.println(studyBoardViews);
-
-        return studyBoardViews;
-    }
-
-
-    @PostMapping("studies/{studyId}/studyBoards/{studyBoardId}/{studyBoardCategory}/Views") //jwt 토큰 기반으로 찾음
-    public SuccessResult postViews(HttpServletRequest request, @PathVariable Long studyId, @PathVariable Long studyBoardId, @PathVariable String studyBoardCategory) {
+    @GetMapping("studies/{studyId}/studyBoards/{studyBoardId}/Views")
+    public SuccessResult getViews(HttpServletRequest request, @PathVariable Long studyId, @PathVariable Long studyBoardId) {
         String jwtToken = request.getHeader("Authorization").replace("Bearer ","");
         DecodedJWT verify = JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(jwtToken);
-        Long memberId = verify.getClaim("id").asLong();
+        Long verifyId = verify.getClaim("id").asLong();
 
+        studyBoardViewService.appendStudyBoardViews(verifyId, studyBoardId);
 
-        return null;
+        return new SuccessResult("", "게시물 조회수 갱신 정상 실행", "success");
     }
 }
 
