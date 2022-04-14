@@ -6,25 +6,58 @@ import '../../App.css';
 import Study_Info from "./Study_Info";
 import StudyBoardDetail from "./Study_Board_Detail";
 import AxiosURL from "../../Services/AxiosURL";
+import $ from 'jquery';
 
 function Study_Inside(){
 
+    const token = JSON.parse(localStorage.getItem('user-info'))
+
+    let beforeStudyId = String((String(window.location.pathname).toString())).split("/studies/");
+    let studyId = beforeStudyId[1]
+
+
     useEffect(() => {
 
-        const token = JSON.parse(localStorage.getItem('user-info'))
-
-        let beforeStudyId = String((String(window.location.pathname).toString())).split("/studies/");
-        let studyId = beforeStudyId[1]
-
-        AxiosURL.intoStudy(studyId, token.authorization)
-            .then(response => {
+        AxiosURL.isMember(studyId, token.authorization)
+            .then((response) => {
                 console.log(response)
             }).catch(error => {
                 console.log(error)
         })
-    })
 
-    const history = useHistory();
+        AxiosURL.pullBoard(studyId, token.authorization)
+            .then((response) => {
+                console.log(response)
+            }).catch(error => {
+                console.log(error)
+        })
+
+        setTimeout(() => {
+            $('.study_inside_container').css('opacity', '1');
+        }, 300);
+
+        },[])
+
+    const _handleSubmit = e => {
+        e.preventDefault();
+
+        $('.study_inside_container').css('opacity','0');
+
+        setTimeout(() => {
+            AxiosURL.joinMember(studyId, token.authorization)
+                .then((response) => {
+                    console.log(response)
+                    window.location.reload()
+                }).catch(error => {
+                console.log(error)
+            })
+        });
+    }
+
+
+
+
+const history = useHistory();
     return (
         <div className="Study_Detail">
             <div className="study_inside_container">
@@ -35,8 +68,13 @@ function Study_Inside(){
                         <div className="top_txt">
                             게시글
                         </div>
-                        <button type="submit" id="study_write" value="글씨기">
-                            <Link to='/Study_Write' className="link">
+                        <button type="submit" id="study_write_input"
+                                onClick={(e) => _handleSubmit(e)}
+                        >
+                            가입
+                        </button>
+                        <button type="submit" id="study_write_input" value="글씨기">
+                            <Link to={`/Study_Write/${studyId}`} className="link">
                                 글쓰기
                             </Link>
                         </button>

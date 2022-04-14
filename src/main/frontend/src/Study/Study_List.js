@@ -3,6 +3,7 @@ import '../App.css';
 import './Css/Study_List.css';
 import {Link} from "react-router-dom";
 import AxiosURL from "../Services/AxiosURL";
+import $ from "jquery";
 
 function StudyList(){
 
@@ -19,17 +20,22 @@ function StudyList(){
 
                 const token = JSON.parse(localStorage.getItem('user-info'))
 
-                AxiosURL.studyList(token.authorization)
-                    .then(response => {
-                        setPage(response.data.data.pageable)
-                        setStudy(response.data.data.content)
-                    }).catch(error => {
-                    console.log(error)
-                })
-                setLoading(false);
+                    AxiosURL.studyList(token.authorization)
+                        .then(response => {
+                            setPage(response.data.data.pageable)
+                            setStudy(response.data.data.content)
+                        }).catch(error => {
+                        console.log(error)
+                    })
+                    setLoading(false);
             }
-            console.log(study)
+            setTimeout(() => {
+            $('.study_mid_container_s').css('opacity', '1');
+        }, 300);
     }, [])
+
+    console.log(study)
+    console.log(page)
 
 
     return (
@@ -53,7 +59,7 @@ function StudyList(){
 
                     </div>
                     <div className="study_cont_container">
-                            <div className="study_mid_container">
+                            <div className="study_mid_container_s">
                                 <table id="study_board">
                                     <thead>
                                         <tr id="board_head">

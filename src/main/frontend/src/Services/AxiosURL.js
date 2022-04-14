@@ -90,6 +90,26 @@ class CommunityService {
         return axios.get(baseURL + `/studies/${studyId}`, {headers: {authorization: token}})
     }
 
+    // 스터디 들어가기 - 회원조회
+    isMember(studyId, token){
+        return axios.get(baseURL + `/studies/${studyId}/memberStudies`, {headers: {authorization: token}})
+    }
+
+    // 스터디 들어가기 - 스터티 가입
+    joinMember(studyId, token) {
+        return axios.post(baseURL + `/studies/${studyId}/memberStudies`, {}, {headers: {authorization: token}})
+    }
+
+    // 스터디 게시글 만들기
+    boardCreate(studyId, data, token) {
+        return axios.post(baseURL + `/studies/${studyId}/studyBoards`, data, {headers: {authorization: token}})
+    }
+
+    // 스터디 게시글 가져오기
+    pullBoard(studyId, token) {
+        return axios.get(baseURL + `/studies/${studyId}/studyBoards/free`, {headers: {authorization: token}})
+    }
+
     savePost(data) {
         return axios.post(baseURL + "/board/register", data)
     }

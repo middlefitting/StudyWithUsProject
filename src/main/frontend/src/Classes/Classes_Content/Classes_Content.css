@@ -23,6 +23,19 @@
     border-radius: 20px;
     box-shadow: 1px 3px 10px rgba(155, 154, 154, 0.55);
     padding: 30px;
+
+    opacity: 0;
+    transition: 500ms;
+}
+
+.boxes_k{
+    background-color: white;
+    height: 270px;
+    width: 300px;
+    margin: 20px 20px 20px 20px;
+    border-radius: 20px;
+    box-shadow: 1px 3px 10px rgba(155, 154, 154, 0.55);
+    padding: 30px;
 }
 .boxes:hover{
     transform: scale(1.02, 1.02);

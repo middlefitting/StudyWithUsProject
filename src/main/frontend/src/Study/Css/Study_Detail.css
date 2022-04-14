@@ -14,6 +14,9 @@
     color: black;
     overflow: hidden;
     justify-content: flex-start;
+
+    opacity: 0;
+    transition: 300ms;
 }
 
 .study_inside_container_right{
@@ -91,6 +94,21 @@
 #study_write{
     right: 0;
     margin-bottom: 10px;
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+    border: 0 none;
+    background-color: rgb(242, 150, 97);
+    color: white;
+    font-size: 16px;
+    font-weight: 100;
+    cursor: pointer;
+    transition: opacity, color 0.1s ease-in
+}
+
+#study_write_input{
+    right: 0;
+    margin: 10px;
     width: 70px;
     height: 30px;
     border-radius: 10px;

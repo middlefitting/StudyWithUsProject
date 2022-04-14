@@ -68,7 +68,6 @@ public class StudyBoardControllerImpl implements StudyBoardController{
 
         CreateStudyBoardDto requestDto = new CreateStudyBoardDto(verifyId, studyId, requestForm.getTitle(), requestForm.getContent(), StudyBoardCategory.valueOf(requestForm.getStudyBoardCategory()));
 
-
         Long StudyBoardId = studyBoardService.createStudyBoard(requestDto);
         if (StudyBoardId.equals(0L)){
             throw new IllegalArgumentException("게시물을 생성할 수 없습니다");

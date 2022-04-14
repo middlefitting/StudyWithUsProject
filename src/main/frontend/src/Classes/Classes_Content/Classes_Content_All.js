@@ -87,7 +87,7 @@ function Classes_Content_All(){
     return (
         <div className="box_cont">
             {boxes.map((box, key)=>(
-                <div className="boxes" key={key}>
+                <div className="boxes_k" key={key}>
                     <div className="boxes_content">
                         <span>{box.topic}</span>
                         <div className="boxes_courseName">{box.courseName}</div>

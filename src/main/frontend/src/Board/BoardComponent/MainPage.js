@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import AxiosURL from "../../Services/AxiosURL";
 import {Link} from "react-router-dom";
+import $ from "jquery";
 
 const MainPage = () => {
 
@@ -11,6 +12,8 @@ const MainPage = () => {
     const [study, setStudy] = useState({});
     const [user, setUser] = useState('');
 
+    $('.boxes').css('opacity','0');
+
     useEffect(() => {
         if (localStorage.getItem('user-info')) {
 
@@ -18,14 +21,17 @@ const MainPage = () => {
             setUser(localStorage.getItem('user-info'))
             const token = JSON.parse(localStorage.getItem('user-info'))
 
-            AxiosURL.studyList(token.authorization)
-                .then(response => {
-                    setStudy(response.data.data.content)
-                }).catch(error => {
+                AxiosURL.studyList(token.authorization)
+                    .then(response => {
+                        setStudy(response.data.data.content)
+                    }).catch(error => {
                     console.log(error)
-            })
-            setLoading(false);
+                })
+                setLoading(false);
         }
+        setTimeout(() => {
+            $('.boxes').css('opacity','1');
+        }, 300);
     }, [])
 
 
