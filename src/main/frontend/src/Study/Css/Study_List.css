@@ -15,6 +15,17 @@
 
 }
 
+.study_mid_container_s{
+    display: flex;
+    flex-direction: column;
+    padding: 1px 10px;
+    width: 100%;
+
+    opacity: 0;
+    transition: 300ms;
+
+}
+
 .study_cont_container{
     display: flex;
     min-height: 100vh;

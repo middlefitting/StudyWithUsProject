@@ -23,7 +23,6 @@ import ModificationList from "./Board/List/ModificationList";
 import MainPage from "./Board/BoardComponent/MainPage";
 import SearchList from "./Board/List/SearchList";
 
-
 import './App.css';
 
 
@@ -49,10 +48,11 @@ function App() {
 
                 <Route path="/Study_List" component={Study_List} exact />
                 <Route path="/Study_Make" component={Study_Make} exact />
+                <Route path="/studies/:studyId" component={Study_Inside} exact />
                 <Route path="/Study_Inside" component={Study_Inside} exact />
                 <Route path="/Study_Board_Detail" component={Study_Board_Detail} exact/>
                 <Route path="/Study_Board_Update" component={Study_Board_Update} exact />
-                <Route path="/Study_Write" component={Study_Write} exact />
+                <Route path="/Study_Write/:studyId/" component={Study_Write} exact />
 
                 <Route path="/Classes_All" component={Classes_All} exact />
 
@@ -62,12 +62,7 @@ function App() {
                 <Route path="/signin" component={SignIn} />
                 <Route path="/signup" component={SignUp} />
 
-                {/*<Route path="/SearchList?category=:category?type=:type?keyword=:keyword" component={SearchList} exact />*/}
-
                 <Route path="/SearchList/:category/:type/:keyword" component={SearchList}/>
-
-                {/*<Route path="/SearchList?:type&:keyword&:category" component={Search_Board} exact />*/}
-
             </Switch>
           </div>
       </Router>
