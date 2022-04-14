@@ -19,12 +19,6 @@ public class CommentRepositoryImpl extends QuerydslRepositorySupport implements 
     QComment comment = QComment.comment;
     QMember member = QMember.member;
 
-//    @Override
-//    public void deleteByPostId(Long post_id) {
-//        delete(comment).where(comment.post_id.eq(post_id)).execute();
-//    }
-
-    // 댓글 조회
     @Override
     public List<Tuple> getComments(Long post_id) {
         JPQLQuery<Comment> jpqlQuery = from(comment);

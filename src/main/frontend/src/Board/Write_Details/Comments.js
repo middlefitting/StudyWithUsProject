@@ -5,14 +5,13 @@ import {useParams} from "react-router-dom";
 
 
 const user = JSON.parse(localStorage.getItem('user-info'))
+const user_info_id = JSON.parse(localStorage.getItem('user')).id;
 
 
 
 function Comments(props) {
     const {post_id} = useParams();
     const [commentsList, setCommentList] = useState([]);
-
-
 
 
 
@@ -26,6 +25,37 @@ function Comments(props) {
         fetchData();
     },[]);
 
+//     const onSubmit =(e)=>{
+//         e.preventDefault();
+//
+//             const comment_data ={
+//                 writer_nickname:user.nickname,
+//                 post_id : post_id,
+//                 comment_id : user_info_id,
+//                 content: document.getElementsByName('comment_content')[0].value
+//
+//
+//             }
+//
+//
+//             AxiosURL.saveComment(comment_data)
+//                 .then((response)=>{
+//                     let result = response.data
+//                 console.log('안녕하슈: ' + result)
+//
+//                 }).then(error=>{
+//                     console.log(error)
+//             })
+//     }
+//
+//
+//
+//
+// /*    AxiosURL.saveComment(data)
+//         .then((response) =>{
+//            let result = response.data
+//             /!*localStorage*!/
+//         })*/
 
 
     //===========================================
@@ -55,7 +85,10 @@ function Comments(props) {
             <div className="reply_id">
                 여기는 아이디
             </div>
-            <textarea className="reply_textarea" placeholder="댓글을 남겨 보세요" />
+            <textarea
+                className="reply_textarea"
+                name="comment_content"
+                placeholder="댓글을 남겨 보세요" />
 
 {/*            <textarea className="reply_textarea" placeholder="댓글을 남겨 보세요" value={post.content}
                       onChange={handleForm} name="content"
@@ -67,8 +100,8 @@ function Comments(props) {
 
 
 
+            {/*<button type="button" className="reply_enter" onClick={e => onSubmit(e)}> 등록 </button>*/}
             <button type="button" className="reply_enter" > 등록 </button>
-
         </div>
     <ul className="comment_list">
         <li className="comment_view">
