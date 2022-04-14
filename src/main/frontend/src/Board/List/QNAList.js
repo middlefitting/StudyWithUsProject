@@ -3,7 +3,6 @@ import  "../../App.css";
 import Side_Tab from "../../Tabs/Side_Tab";
 import QNA_Board from "../BoardComponent/QNA_Board";
 import User_Side_Tab from "../../Tabs/User_Side_Tab";
-import Search_Component from "./Components/Search_Component";
 import React from "react";
 
 
@@ -41,7 +40,8 @@ function QNAList(){
                     </div>
                     <div className="table_mid_container">
                             <QNA_Board />
-                        <Search_Component/>
+
+
                     </div>
                 </div>
             </div>

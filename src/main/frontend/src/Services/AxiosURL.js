@@ -120,6 +120,9 @@ class CommunityService {
     }
 
 
+
+
+
     getEdit(post_id) {
         return axios.get(baseURL + `/board/edit/${post_id}`)
     }

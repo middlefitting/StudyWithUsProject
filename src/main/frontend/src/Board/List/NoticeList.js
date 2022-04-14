@@ -1,4 +1,4 @@
-import {Link, useParams} from "react-router-dom";
+import {Link} from "react-router-dom";
 import  "../../App.css";
 import Side_Tab from "../../Tabs/Side_Tab";
 import Notice_Board from "../BoardComponent/Notice_Board";

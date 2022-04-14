@@ -7,6 +7,7 @@ import './App.css';
 import NoticeList from "./Board/List/NoticeList";
 
 
+
 import Board_Detail from "./Board/Write_Details/Board_Detail";
 import Board_Write from "./Board/Write_form/Board_Write";
 import Update_Detail from "./Board/Update/Update_Detail";
@@ -59,6 +60,7 @@ function App() {
                 <Route path="/Classes_All" component={Classes_All} exact />
 
                 <Route path="/Modification" component={Modification} exact />
+
 
                 <Route path="/signin" component={SignIn} />
                 <Route path="/signup" component={SignUp} />
