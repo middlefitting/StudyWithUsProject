@@ -51,13 +51,7 @@ public class Member extends BaseConstructorEntity {
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<StudyBoard> studyBoards = new ArrayList<>();
 
-    //신고수 누적은 삭제되지 않게 한다.
-
-
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
-//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
     private String bornDate;
-
 
     public Member() {
     }

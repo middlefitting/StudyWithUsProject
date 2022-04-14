@@ -49,14 +49,16 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         try {
             String email = JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(jwtToken).getClaim("email").asString();
 
-            if(email!=null){
-                Optional<Member> memberOptional = jwtMemberRepository.findByEmail(email);
-                Member memberEntity = Optional.of(memberOptional.orElseGet(Member::new)).get();
-                PrincipalDetails principalDetails = new PrincipalDetails(memberEntity);
-                Authentication authentication = new UsernamePasswordAuthenticationToken(principalDetails, null, principalDetails.getAuthorities());
-                //강제로 시큐리티의 세션에 접근하여 Authentication 객체를 저장
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-            }
+//            if(email!=null){
+//            if(email.equals("manager") || email.equals("admin")){
+//                Optional<Member> memberOptional = jwtMemberRepository.findByEmail(email);
+//                Member memberEntity = Optional.of(memberOptional.orElseGet(Member::new)).get();
+//                PrincipalDetails principalDetails = new PrincipalDetails(memberEntity);
+//                //강제로 시큐리티의 세션에 접근하여 Authentication 객체를 저장
+//                Authentication authentication = new UsernamePasswordAuthenticationToken(principalDetails, null, principalDetails.getAuthorities());
+//                SecurityContextHolder.getContext().setAuthentication(authentication);
+//            }
+
         } catch (AlgorithmMismatchException e) {
         request.setAttribute("exception", AlgorithmMismatch.code);
         } catch (TokenExpiredException e) {

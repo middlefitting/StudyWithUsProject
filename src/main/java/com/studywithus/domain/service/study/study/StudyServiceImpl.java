@@ -1,11 +1,14 @@
 package com.studywithus.domain.service.study.study;
 
 import com.studywithus.domain.entity.member.Member;
+import com.studywithus.domain.entity.study.MemberStudy;
 import com.studywithus.domain.entity.study.Study;
 import com.studywithus.domain.repository.member.MemberRepository;
 import com.studywithus.domain.repository.study.Study.dto.StudyDto;
 import com.studywithus.domain.repository.study.Study.dto.StudyPageSearchCondition;
+import com.studywithus.domain.repository.study.memberstudy.MemberStudyRepository;
 import com.studywithus.domain.repository.study.study.StudyRepository;
+import com.studywithus.domain.service.member.MemberService;
 import com.studywithus.domain.service.study.study.dto.CreateStudyDto;
 import com.studywithus.domain.service.study.study.dto.UpdateStudyDto;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +26,7 @@ public class StudyServiceImpl implements StudyService{
 
     private final StudyRepository studyRepository;
     private final MemberRepository memberRepository;
+    private final MemberStudyRepository memberStudyRepository;
 
     public Page<StudyDto> selectStudyPage(Pageable pageable, StudyPageSearchCondition condition){
         return studyRepository.searchStudyPage(pageable, condition);
@@ -41,7 +45,20 @@ public class StudyServiceImpl implements StudyService{
                     .member(member.get())
                     .studyMemberCount(1L)
                     .build();
-            return studyRepository.save(study).getId();
+
+            Long result = studyRepository.save(study).getId();
+
+            MemberStudy memberStudy = MemberStudy.builder()
+                    .member(member.get())
+                    .study(study)
+                    .build();
+
+            memberStudyRepository.save(memberStudy);
+
+//            return studyRepository.save(study).getId();
+            return result;
+
+
         }
         return 0L;
     }
