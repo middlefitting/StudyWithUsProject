@@ -74,11 +74,14 @@ class CommunityService {
         return axios.post(baseURL + "/board/register", data)
     }
 
+    deletePost(post_id) {
+        return axios.post(baseURL + `/board/delete/${post_id}`)
+    }
+
     saveComment(data) {
         return axios.post(baseURL + "/comment/register", data)
     }
 
-    //page 숫자는 추후 수정
     getList(category, page) {
         const data = {
             category: category,
@@ -96,12 +99,12 @@ class CommunityService {
     }
 
 
-    getEdit() {
-        return axios.get(baseURL + "/board/edit")
+    getEdit(post_id) {
+        return axios.get(baseURL + `/board/edit/${post_id}`)
     }
 
-    postEdit(data) {
-        return axios.post(baseURL + "/board/edit", data)
+    postEdit(post_id, token, data) {
+        return axios.post(baseURL + `/board/edit/${post_id}`, data, {headers: {authorization: token}})
     }
 
 

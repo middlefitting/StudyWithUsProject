@@ -2,6 +2,7 @@ package com.studywithus.web.controller.board;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.studywithus.config.jwt.JwtProperties;
 import com.studywithus.domain.entity.board.Comment;
 import com.studywithus.domain.repository.search.SearchRepository;
@@ -105,13 +106,18 @@ public class PostController {
     @PostMapping("/board/edit/{post_id}")
     public Long modifyPostDetail(
             HttpServletRequest request,
-            @PathVariable("post_id") Long post_id,
+//            @PathVariable("post_id") Long post_id,
             @RequestBody @Valid PostDto requestDto) {
+
         String jwtToken = request.getHeader("Authorization").replace("Bearer ","");
-        String id = JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(jwtToken).getClaim("id").asString();
+        DecodedJWT verify = JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(jwtToken);
+        Long id = verify.getClaim("id").asLong();
 
         // 작성자가 아니면 exception 발생
-        if(!Objects.equals(id, String.valueOf(requestDto.getWriter_id()))){
+//        if(!Objects.equals(id, String.valueOf(requestDto.getWriter_id()))){
+//            throw new RuntimeException();
+//        }
+        if (!requestDto.getWriter_id().equals(id)) {
             throw new RuntimeException();
         }
         return postService.modify(requestDto);
