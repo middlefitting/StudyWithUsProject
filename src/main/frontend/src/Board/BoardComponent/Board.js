@@ -6,7 +6,7 @@ import AxiosURL from "../../Services/AxiosURL";
 import "../../App.css";
 
 
-function Free_Board() {
+function Board({category}) {
 
     const [dtoList, setDtoList] = useState({});
     const [pageList, setPageList] = useState([1]);
@@ -17,7 +17,7 @@ function Free_Board() {
         $('.table_mid_container').css('opacity', '0');
 
         setTimeout(() => {
-            AxiosURL.getList('free', page).then(res => {
+            AxiosURL.getList(category, page).then(res => {
                 if (Object.keys(res.data).length > 0) {
                     setDtoList(res.data.dtoList);
                     setPageList(res.data.pageList);
@@ -33,7 +33,7 @@ function Free_Board() {
     };
 
     useEffect(() => {
-        AxiosURL.getList('free', pageList[0])
+        AxiosURL.getList(category, pageList[0])
             .then(res => {
                 if (Object.keys(res).length > 0) {
                     setDtoList(res.data.dtoList);
@@ -46,7 +46,7 @@ function Free_Board() {
         setTimeout(() => {
             $('.table_mid_container').css('opacity', '1');
         }, 500);
-    }, []);
+    }, [category]);
 
     return (
         <>
@@ -62,17 +62,17 @@ function Free_Board() {
                 </thead>
                 <tbody>
                 {dtoList.length ?
-                    dtoList.map((free, idx) => (
+                    dtoList.map((list, idx) => (
                         <tr id="board_body" key={idx}>
                             <td width="10%" className="listTableNum">{dtoList.length - idx}</td>
                             <td width="50%" className="listTableTitle">
-                                <Link to={`/Board_Detail/${free.post_id}`} className="link">
-                                    {free.title}
+                                <Link to={`/Board_Detail/${list.post_id}`} className="link">
+                                    {list.title}
                                 </Link>
                             </td>
-                            <td width="15%" className="listTableAuthor">{free.writer_nickname}</td>
-                            <td width="15%" className="listTableDate">{free.regDate.substr(0, 10)}</td>
-                            <td width="10%" className="listTableViews">{free.views}</td>
+                            <td width="15%" className="listTableAuthor">{list.writer_nickname}</td>
+                            <td width="15%" className="listTableDate">{list.regDate.substr(0, 10)}</td>
+                            <td width="10%" className="listTableViews">{list.views}</td>
                         </tr>
                     ))
                     :
@@ -94,4 +94,4 @@ function Free_Board() {
     );
 }
 
-export default Free_Board;
+export default Board;

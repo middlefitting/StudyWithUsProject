@@ -16,6 +16,8 @@ function Board_Write() {
     const onSubmit = (e) => {
         e.preventDefault();
 
+        const  _black = /^\s+|\s+$/g;
+
         const data = {
             writer_id: user_info_id,
             writer_nickname: user.nickname,
@@ -24,25 +26,28 @@ function Board_Write() {
             category: document.querySelector(`input[name='category']:checked`).value,
         };
 
-        console.log(data.title)
+        if (data.title.replace(_black, '') !== '' && data.content.replace(_black, '') !== '') {
+            AxiosURL.savePost(data)
+                .then((response) => {
+                    let result = response.data
+                    let nextUrl;
 
-        AxiosURL.savePost(data)
-            .then((response) => {
-                let result = response.data
-                let nextUrl;
+                    if (data.category === 'notice') nextUrl = '/NoticeList';
+                    else if (data.category === 'free') nextUrl = '/FreeList';
+                    else if (data.category === 'question') nextUrl = '/QNAList';
 
-                if (data.category === 'notice') nextUrl = '/NoticeList';
-                else if (data.category === 'free') nextUrl = '/FreeList';
-                else if (data.category === 'question') nextUrl = '/QNAList';
+                    localStorage.setItem("post-info", JSON.stringify(result))
+                    alert(JSON.stringify(" 글 등록이 완료되었습니다. ")) // 나중에 모달창으로 교체예정
 
-                localStorage.setItem("post-info", JSON.stringify(result))
-                alert(JSON.stringify(" 글 등록이 완료되었습니다. ")) // 나중에 모달창으로 교체예정
+                    history.push(nextUrl);
+                }).catch(error => {
+                console.log(error);
+                alert(" 정보를 다시 입력해주세요. "); // 나중에 모달창으로 교체예정
+            });
+        } else {
+            alert('입력된 값이 없습니다.');
+        }
 
-                history.push(nextUrl);
-            }).catch(error => {
-            console.log(error);
-            alert(" 정보를 다시 입력해주세요. "); // 나중에 모달창으로 교체예정
-        });
     }
 
     const boardsKind = [

@@ -5,9 +5,9 @@ import {Link} from "react-router-dom";
 function User_Side_Tab(){
 
     const sideTab = [
-        {name:'공지사항',link:'/NoticeList'},
-        {name:'자유게시판',link:'/FreeList'},
-        {name:'질문게시판',link:'/QNAList'},
+        {name:'공지사항',link:'/BoardList/notice'},
+        {name:'자유게시판',link:'/BoardList/free'},
+        {name:'질문게시판',link:'/BoardList/question'},
         {name:'내글',link:'/MyPageList'},
         {name:'회원정보 수정',link:'/ModificationList'}
     ]

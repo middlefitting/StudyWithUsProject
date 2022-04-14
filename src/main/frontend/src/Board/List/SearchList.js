@@ -1,15 +1,17 @@
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import  "../../App.css";
 import Side_Tab from "../../Tabs/Side_Tab";
-import Free_Board from "../BoardComponent/Free_Board";
+import Search_Board from "../BoardComponent/Search_Board";
 import User_Side_Tab from "../../Tabs/User_Side_Tab";
 import React from "react";
-import Search_Component from "./Components/Search_Component";
+
 
 
 // const user = JSON.parse(localStorage.getItem('user-info'))
 
-function FreeList(){
+function SearchList(){
+
+    const {category, type, keyword} = useParams();
 
     return(
         <div className="container">
@@ -27,23 +29,10 @@ function FreeList(){
                 </div>
                     <div className="mid_container">
                         <div className="page_name">
-                                <span>자유게시판</span>
-                            {localStorage.getItem('user-info') ?
-                            <>
-                                <button type="submit" id="w_button" value="글씨기">
-                                    <Link to='/Board_Write' className="link">글쓰기</Link>
-                                </button>
-                            </>
-                                :
-                            <>
-                            </>
-                            }
-
+                                <span>검색결과</span>
                         </div>
                       <div className="table_mid_container">
-                            <Free_Board />
-
-                            <Search_Component/>
+                            <Search_Board category={category} type={type} keyword={keyword} />
 
                     </div>
 
@@ -59,4 +48,4 @@ function FreeList(){
 
     );
 }
-export default FreeList;
+export default SearchList;

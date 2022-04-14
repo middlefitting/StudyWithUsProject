@@ -3,17 +3,13 @@ import {BrowserRouter as Router, Route, Switch, NavLink, Link} from "react-route
 import Navbar from "./Components/Navbar";
 import SignIn from "./Components/SignIn";
 import SignUp from "./Components/SignUp";
-import './App.css';
-import NoticeList from "./Board/List/NoticeList";
-
-
 
 import Board_Detail from "./Board/Write_Details/Board_Detail";
 import Board_Write from "./Board/Write_form/Board_Write";
 import Update_Detail from "./Board/Update/Update_Detail";
 
-import FreeList from "./Board/List/FreeList";
-import QNAList from "./Board/List/QNAList";
+import BoardList from "./Board/List/BoardList";
+
 import Study_List from "./Study/Study_List";
 import Study_Make from "./Study/Study_Make";
 import Study_Inside from "./Study/Study_Detail/Study_Inside";
@@ -30,6 +26,8 @@ import SearchList from "./Board/List/SearchList";
 */
 
 
+import './App.css';
+
 
 function App() {
 
@@ -41,9 +39,8 @@ function App() {
           <div className="content">
             <Switch>
                 <Route exact path="/" component={MainPage}/>
-                <Route path="/NoticeList" component={NoticeList} exact/>
-                <Route path="/FreeList" component={FreeList} exact />
-                <Route path="/QNAList" component={QNAList} exact />
+
+                <Route path='/BoardList/:category' component={BoardList} exact />
                 <Route path="/MyPageList" component={MyPageList} exact />
                 <Route path="/ModificationList" component={ModificationList} exact />
 
