@@ -4,10 +4,11 @@ import com.studywithus.domain.entity.member.Member;
 import com.studywithus.domain.entity.study.MemberStudy;
 import com.studywithus.domain.entity.study.Study;
 import com.studywithus.domain.repository.member.MemberRepository;
-import com.studywithus.domain.repository.study.Study.dto.StudyDto;
-import com.studywithus.domain.repository.study.Study.dto.StudyPageSearchCondition;
+
 import com.studywithus.domain.repository.study.memberstudy.MemberStudyRepository;
 import com.studywithus.domain.repository.study.study.StudyRepository;
+import com.studywithus.domain.repository.study.study.dto.StudyDto;
+import com.studywithus.domain.repository.study.study.dto.StudyPageSearchCondition;
 import com.studywithus.domain.service.member.MemberService;
 import com.studywithus.domain.service.study.study.dto.CreateStudyDto;
 import com.studywithus.domain.service.study.study.dto.UpdateStudyDto;

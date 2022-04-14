@@ -39,7 +39,7 @@ function Study_Inside() {
 
     }, [])
 
-    const _handleSubmit = e => {
+    const _handleSubmit = (e, val) => {
         e.preventDefault();
 
         $('.study_inside_container').css('opacity', '0');
@@ -47,7 +47,11 @@ function Study_Inside() {
         setTimeout(() => {
             AxiosURL.joinMember(studyId, token.authorization)
                 .then((response) => {
-                    window.location.reload()
+                    if (val) {
+                        history.push('/Study_List');
+                    } else {
+                        window.location.reload()
+                    }
                 }).catch(error => {
                 console.log(error)
             })
@@ -67,13 +71,13 @@ function Study_Inside() {
                         </div>
                         {message === "스터디 멤버입니다." ?
                             <button type="submit" id="study_write_input"
-                                    onClick={(e) => _handleSubmit(e)}
+                                    onClick={(e) => _handleSubmit(e, true)}
                             >
                                 탈퇴
                             </button>
                             :
                             <button type="submit" id="study_write_input"
-                                    onClick={(e) => _handleSubmit(e)}
+                                    onClick={(e) => _handleSubmit(e, false)}
                             >
                                 가입
                             </button>

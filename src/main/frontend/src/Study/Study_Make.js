@@ -23,18 +23,26 @@ function Study_Make() {
     const _handleSubmit = e => {
         e.preventDefault();
 
-        const data = {
-            studyName: document.getElementsByName('studyName')[0].value,
-            studyExplanation: document.getElementsByName('studyExplanation')[0].value
+        const studyName = document.getElementsByName('studyName')[0].value;
+        const studyExplanation = document.getElementsByName('studyExplanation')[0].value;
+
+        if (studyName.length > 4 && studyExplanation.length < 21 && studyExplanation.length > 9) {
+            const data = {
+                studyName: studyName,
+                studyExplanation: studyExplanation
+            };
+
+            AxiosURL.studyCreate(data, token)
+                .then((response) => {
+                    console.log(response)
+                    history.push('/Study_List')
+                }).catch(error => {
+                console.log(error.response)
+            });
+        } else {
+            alert('스터디명은 5자 이상, 설명은 10 - 20 자로 부탁드립니다.')
         }
 
-        AxiosURL.studyCreate(data, token)
-            .then((response) => {
-                console.log(response)
-                history.push('/Study_List')
-            }).catch(error => {
-            console.log(error.response)
-        })
     };
 
     return (

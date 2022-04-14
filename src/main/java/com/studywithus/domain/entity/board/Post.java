@@ -23,7 +23,6 @@ public class Post extends BaseEntity {
 
 //    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "member_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Member writer;
