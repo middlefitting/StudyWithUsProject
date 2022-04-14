@@ -13,9 +13,17 @@ function Comments(props) {
     const {post_id} = useParams();
     const [commentsList, setCommentList] = useState({});
 
+    const onEnterPress=(e)=>{
+        if(e.key ==='Enter'){
+           onSubmit(e);
+        }
+    }
+
 
     const onSubmit = (e) => {
         e.preventDefault();
+
+        const  _black = /^\s+|\s+$/g;
 
         let comment_data = {
             writer_nickname: user_info_id.nickname,
@@ -24,22 +32,26 @@ function Comments(props) {
             content: document.getElementsByName('comment_content')[0].value
         }
 
-        AxiosURL.saveComment(comment_data)
-            .then((response) => {
-                comment_data.comment_id = response.data;
-                comment_data.modDate = new Date().toISOString();
-                comment_data.regDate = new Date().toISOString();
+        if (comment_data.content.replace(_black, '') !== '') {
+            AxiosURL.saveComment(comment_data)
+                .then((response) => {
+                    comment_data.comment_id = response.data;
+                    comment_data.modDate = new Date().toISOString();
+                    comment_data.regDate = new Date().toISOString();
 
-                let appendedCommentsList = commentsList;
-                appendedCommentsList.push(comment_data);
+                    let appendedCommentsList = commentsList;
+                    appendedCommentsList.push(comment_data);
 
-                setCommentList(appendedCommentsList);
+                    setCommentList(appendedCommentsList);
 
-                document.getElementsByName('comment_content')[0].value = '';
-                window.location.reload();
-            }).catch(error => {
-            console.log(error)
-        })
+                    document.getElementsByName('comment_content')[0].value = '';
+                    window.location.reload();
+                }).catch(error => {
+                console.log(error)
+            });
+        }else{
+            alert('댓글을 입력해주세요');
+        }
 
 
 
@@ -67,6 +79,7 @@ function Comments(props) {
         }
     };
 
+
     return (
         <>
             <div className="reply_input">
@@ -76,33 +89,36 @@ function Comments(props) {
                 <textarea
                     className="reply_textarea"
                     name="comment_content"
-                    placeholder="댓글을 남겨 보세요"/>
+                    placeholder="댓글을 남겨 보세요"
+                    onKeyPress={onEnterPress}
+                />
                 <button type="button" className="reply_enter" onClick={e => onSubmit(e)}> 등록</button>
             </div>
-            <ul className="comment_list">
-                <li className="comment_view">
-                    {commentsList.map && commentsList.map((comment, idx) => (
-                        <div className="comment_area" key={idx}>
-                            <div className="comment_img">
+                <ul className="comment_list">
+                    <li className="comment_view">
+                        {commentsList.map && commentsList.map((comment, idx) => (
+                            <div className="comment_area" key={idx}>
+                                <div className="comment_img">
                                     <span className="circle">
                                         <img className="default_img" alt="default" src={'/img/default.png'}/>
                                      </span>
-                            </div>
-                            <div className="comment_box">
-                                <div className="comment_division">
-                                    <div className="comment_id">{comment.writer_nickname}</div>
-                                    <div className="comment_txt">{comment.content}</div>
-                                    <div className="comment_time">{comment.regDate.substr(0, 10)}</div>
-                                    <hr/>
+                                </div>
+                                <div className="comment_box">
+                                    <div className="comment_division">
+                                        <div className="comment_id">{comment.writer_nickname}</div>
+                                        <div className="comment_txt">{comment.content}</div>
+                                        <div className="comment_time">{comment.regDate.substr(0, 10)}</div>
+                                        <hr/>
+                                    </div>
+                                </div>
+                                <div className="x_sign"
+                                     onClick={() => handleDelete(comment.comment_id, comment.writer_id)}>
+                                    x
                                 </div>
                             </div>
-                            <div className="x_sign" onClick={() => handleDelete(comment.comment_id,comment.writer_id)}>
-                                x
-                            </div>
-                        </div>
-                    ))}
-                </li>
-            </ul>
+                        ))}
+                    </li>
+                </ul>
         </>
     );
 }
