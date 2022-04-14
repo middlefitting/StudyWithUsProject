@@ -4,6 +4,7 @@ import {useHistory} from "react-router-dom";
 import AxiosURL from "../Services/AxiosURL";
 import GoogleLogin from "react-google-login";
 import {alignPropType} from "react-bootstrap/types";
+import '../App.css';
 
 
 const SignIn = () => {
@@ -79,7 +80,7 @@ const SignIn = () => {
                     {...register("email",
                         {required: true, pattern: /^\S+@\S+$/i})}
                 />
-                {/*{errors.email && <p>ex) studywithus@gmail.com</p>}*/}
+                {errors.email && <p className='error'>ex) studywithus@gmail.com</p>}
 
 
                 <label>Password</label>
@@ -89,8 +90,8 @@ const SignIn = () => {
                     type="password"
                     {...register("password",
                         {required: true, minLength: 8})}/>
-                {/*{errors.password && errors.password.type === "required" && <p>비밀번호를 입력해주세요.</p>}
-                    {errors.password && errors.password.type === "minLength" && <p>비밀번호는 8글자 이상으로 가능합니다.</p>}*/}
+                {errors.password && errors.password.type === "required" && <p className="error">비밀번호를 입력해주세요.</p>}
+                    {errors.password && errors.password.type === "minLength" && <p className="error">비밀번호는 8글자 이상으로 가능합니다.</p>}
 
 
                 <div>

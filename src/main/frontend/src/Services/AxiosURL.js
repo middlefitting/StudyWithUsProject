@@ -63,9 +63,10 @@ class CommunityService {
             const before_user = JSON.parse(user)
             const id = before_user.id
 
-            console.log(token)
-            console.log(data)
-            return axios.delete(baseURL + `/members/${id}`, {headers: {authorization: token}, data:data})
+            console.log('데이터'+ data)
+            console.log('토큰 ' + token)
+            console.log('아이디' + id)
+            return axios.delete(baseURL + `/members/${id}`,{headers: {authorization: token} , data:data})
 
         }
     }
@@ -84,6 +85,23 @@ class CommunityService {
     studyCreate(data, token) {
         return axios.post(baseURL + `/studies`, data ,{headers: {authorization: token}})
     }
+
+    //스터디 정보 수정
+    studyEdit(studyId,token) {
+        return axios.get(baseURL + `/studies/${studyId}`,{headers:{authorization: token}})
+    }
+    putStudyEdit(studyId, data, token) {
+        return axios.put(baseURL + `/studies/${studyId}`,data, {headers: {authorization: token}})
+    }
+
+
+    //스터디 삭제
+    StudyDelete(studyId,token){
+        return axios.delete(baseURL+ `/studies/${studyId}`,{headers:{authorization: token}})
+    }
+
+
+
 
     // 스터디 들어가기
     intoStudy(studyId, token) {
@@ -125,7 +143,7 @@ class CommunityService {
         return axios.post(baseURL + "/comment/register", data)
     }
 
-    //page 숫자는 추후 수정
+
     getList(category, page) {
          const data = {
              category: category,

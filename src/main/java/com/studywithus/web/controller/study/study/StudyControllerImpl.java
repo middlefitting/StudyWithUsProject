@@ -89,6 +89,7 @@ public class StudyControllerImpl implements StudyController{
     }
 
 
+    //스터디 정보 수정
     @PutMapping("/studies/{studyId}")
     public SuccessResult updateStudy(HttpServletRequest request, @PathVariable Long studyId, @RequestBody @Validated UpdateStudyForm requestForm, BindingResult bindingResult){
         String jwtToken = request.getHeader("Authorization").replace("Bearer ","");

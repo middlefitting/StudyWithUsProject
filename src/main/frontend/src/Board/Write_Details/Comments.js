@@ -4,7 +4,7 @@ import AxiosURL from "../../Services/AxiosURL";
 import {useParams} from "react-router-dom";
 
 
-const user = JSON.parse(localStorage.getItem('user-info'))
+const user_data = JSON.parse(localStorage.getItem('user-data'))
 const user_info_id = JSON.parse(localStorage.getItem('user'));
 const user_id = JSON.parse(localStorage.getItem('user'));
 
@@ -84,7 +84,7 @@ function Comments(props) {
         <>
             <div className="reply_input">
                 <div className="reply_id">
-                    {user_id.nickname}
+                    {user_data.nickname}
                 </div>
                 <textarea
                     className="reply_textarea"

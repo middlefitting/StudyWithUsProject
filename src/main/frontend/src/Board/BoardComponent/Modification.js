@@ -71,7 +71,7 @@ function Modification() {
         }
 
         AxiosURL.deleteUser(deleteForm, token.authorization)
-            .then(res => {
+            .then((res) => {
                 localStorage.clear();
                 history.push("/");
                 window.location.reload();

@@ -12,6 +12,7 @@ import BoardList from "./Board/List/BoardList";
 
 import Study_List from "./Study/Study_List";
 import Study_Make from "./Study/Study_Make";
+import Study_Make_Update from "./Study/Study_Make_Update";
 import Study_Inside from "./Study/Study_Detail/Study_Inside";
 import Study_Board_Detail from "./Study/Study_Detail/Study_Board_Detail";
 import Study_Board_Update from "./Study/Study_Detail/Study_Board_Update";
@@ -48,6 +49,8 @@ function App() {
 
                 <Route path="/Study_List" component={Study_List} exact />
                 <Route path="/Study_Make" component={Study_Make} exact />
+                <Route path="/Study_Make_Update/:studyId" component={Study_Make_Update} exact />
+
                 <Route path="/studies/:studyId" component={Study_Inside} exact />
                 <Route path="/Study_Inside" component={Study_Inside} exact />
                 <Route path="/Study_Board_Detail" component={Study_Board_Detail} exact/>

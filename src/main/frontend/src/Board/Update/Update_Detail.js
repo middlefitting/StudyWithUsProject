@@ -19,6 +19,8 @@ function Update_Detail() {
 
         e.preventDefault();
 
+        const  _black = /^\s+|\s+$/g;
+
         const title = document.getElementsByName('title')[0].value;
         const content = document.getElementsByName('content')[0].value;
         console.log(postDto)
@@ -33,11 +35,17 @@ function Update_Detail() {
                 views: postDto.views
             };
 
-            AxiosURL.postEdit(post_id, token.authorization, data).then(res => {
-                history.goBack();
-            }).catch(err => {
-                console.log(err);
-            })
+
+            if (data.title.replace(_black, '') !== '' && data.content.replace(_black, '') !== '') {
+                AxiosURL.postEdit(post_id, token.authorization, data)
+                    .then(res => {
+                        history.goBack();
+                    }).catch(err => {
+                    console.log(err);
+                })
+            } else{
+                alert('입력된 값을 확인해 주세요.');
+            }
         }
     }
 

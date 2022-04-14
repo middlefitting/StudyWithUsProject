@@ -17,6 +17,7 @@ function Study_Inside() {
     const [board, setBoard] = useState({});
     const [message, setMessage] = useState('');
 
+    console.log(board);
     useEffect(() => {
 
         AxiosURL.isMember(studyId, token.authorization)
@@ -105,7 +106,7 @@ function Study_Inside() {
                                         <td width="10%" className="listTableNum">{board.studyBoardId}</td>
                                         <td width="50%" className="listTableTitle">
                                             <Link to="/Study_Board_Detail" className="link">
-                                                {board.content}
+                                                {board.title}
                                             </Link>
                                         </td>
                                         <td width="15%" className="listTableAuthor">{board.nickname}</td>

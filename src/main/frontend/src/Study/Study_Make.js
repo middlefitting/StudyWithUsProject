@@ -25,7 +25,6 @@ function Study_Make() {
 
         const data = {
             studyName: document.getElementsByName('studyName')[0].value,
-            studyType: document.querySelector(`input[name='radio']:checked`).value,
             studyExplanation: document.getElementsByName('studyExplanation')[0].value
         }
 
@@ -50,16 +49,6 @@ function Study_Make() {
                                 <input type="text" className="inputTitle" placeholder="스터디명을 입력하세요" required
                                        name='studyName'
                                 />
-                            </li>
-                            <li>
-                                <label htmlFor="study_type">스터디 성격</label>
-                                <div className="type_field">
-                                    <input type="radio" className="study_radio" value={true} name="radio"
-                                           defaultChecked={true}/>
-                                    <span>공개</span>
-                                    <input type="radio" className="study_radio" value={false} name="radio"/>
-                                    <span>비공개</span>
-                                </div>
                             </li>
                             <li>
                                 <label htmlFor="context_txt">스터디 설명</label>
