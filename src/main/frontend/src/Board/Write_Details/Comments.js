@@ -62,6 +62,8 @@ function Comments(props) {
                 setCommentList(commentsList.filter((comment) => comment.comment_id !== comment_id));
             }
 
+        }else{
+            alert('본인이 작성한 댓글만 삭제 가능합니다');
         }
     };
 

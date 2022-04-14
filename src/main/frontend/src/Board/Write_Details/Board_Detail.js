@@ -5,6 +5,7 @@ import Comments from "./Comments";
 import AxiosURL from "../../Services/AxiosURL";
 
 import './Details.css';
+import $ from "jquery";
 
 // const user = JSON.parse(localStorage.getItem('user-info'))
 
@@ -34,10 +35,13 @@ function Board_Detail() {
 
     const _handleDelete = (e) => {
         e.preventDefault();
-
-        AxiosURL.deletePost(post_id);
-        history.goBack();
+        if (window.confirm("정말 삭제하시겠습니까?")) {
+            AxiosURL.deletePost(post_id);
+            history.goBack();
+        }
     };
+
+    
 
     useEffect(() => {
         AxiosURL.getBoardDetail(post_id)
@@ -45,7 +49,14 @@ function Board_Detail() {
                 setBoardDetail(res.data);
                 setPostDto(res.data.postDto);
             });
+
+
+        setTimeout(() => {
+            $('.detail_field').css('opacity', '1');
+        }, 600);
     }, []);
+
+
 
     return (
         <div className="Free_Detail">

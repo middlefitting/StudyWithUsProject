@@ -20,7 +20,8 @@ hr{
     border-radius: 5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
 
-
+    opacity: 0;
+    transition: 500ms;
 }
 .buttons_field{
     display: flex;
