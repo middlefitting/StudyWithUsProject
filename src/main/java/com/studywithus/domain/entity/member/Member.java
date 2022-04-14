@@ -1,5 +1,6 @@
 package com.studywithus.domain.entity.member;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.studywithus.domain.entity.BaseConstructorEntity;
 import com.studywithus.domain.entity.study.MemberStudy;
 import com.studywithus.domain.entity.study.Study;
@@ -39,7 +40,8 @@ public class Member extends BaseConstructorEntity {
     @CreationTimestamp //로그인 될 때마다 초기화?
     private Timestamp lastLoginDate;
 
-    @OneToOne(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Study study;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)

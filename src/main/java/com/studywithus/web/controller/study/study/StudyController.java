@@ -1,7 +1,7 @@
 package com.studywithus.web.controller.study.study;
 
 
-import com.studywithus.domain.repository.study.Study.dto.StudyPageSearchCondition;
+import com.studywithus.domain.repository.study.study.dto.StudyPageSearchCondition;
 import com.studywithus.web.controller.common.SuccessResult;
 import com.studywithus.web.controller.study.study.form.CreateStudyForm;
 import com.studywithus.web.controller.study.study.form.UpdateStudyForm;
