@@ -2,6 +2,11 @@ import React from 'react';
 import '../../../App.css';
 
 function Search_Component(props) {
+
+
+
+
+
     return (
         <div className="search_con">
             <form action="/board/search?type=${type}&keyword=${keyword}" method="get" name="searchForm">
@@ -14,6 +19,7 @@ function Search_Component(props) {
                 </select>
                 <input type="text" name="keyword"/> {/*보낼 값 key :입력값 */}
                 <input className="search_button" type="submit" value="검색"/>
+
             </form>
         </div>
     );

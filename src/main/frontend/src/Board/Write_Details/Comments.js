@@ -6,7 +6,7 @@ import {useParams} from "react-router-dom";
 
 const user = JSON.parse(localStorage.getItem('user-info'))
 const user_info_id = JSON.parse(localStorage.getItem('user'));
-
+const user_id = JSON.parse(localStorage.getItem('user'));
 
 function Comments(props) {
 
@@ -40,7 +40,11 @@ function Comments(props) {
             }).catch(error => {
             console.log(error)
         })
+
+
+
     }
+
 
     useEffect(() => {
             AxiosURL.getBoardDetail(post_id)
@@ -50,16 +54,14 @@ function Comments(props) {
     }, []);
 
 
-    //시간 되면 모달창 디자인
-    const handleDelete = (comment_id, nickname) => {
-        if (user.nickname === '0000') {
-            //0000은 채영's db 안에 닉네임중 하나(바꿔야함)
-            //아직 로그인 직접해서 삭제는 안해봄
-            //   let appendedCommentList = commentsList;
+
+    const handleDelete = (comment_id, writer_id) => {
+        if (parseInt(user_id.id) === parseInt(writer_id)) {
             AxiosURL.deleteComment(comment_id);
             if (window.confirm("정말 삭제하시겠습니까?")) {
                 setCommentList(commentsList.filter((comment) => comment.comment_id !== comment_id));
             }
+
         }
     };
 
@@ -92,7 +94,7 @@ function Comments(props) {
                                     <hr/>
                                 </div>
                             </div>
-                            <div className="x_sign" onClick={() => handleDelete(comment.comment_id, comment.nickname)}>
+                            <div className="x_sign" onClick={() => handleDelete(comment.comment_id,comment.writer_id)}>
                                 x
                             </div>
                         </div>

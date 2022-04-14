@@ -76,10 +76,12 @@ function Study_Board_Detail(){
                 <fieldset className="detail_field">
                     <div className="buttons_field">
                         <div className="go_back" onClick={()=> history.goBack()}> 스터디로 돌아가기 > </div>
-                        <div className="detail_delete">삭제</div>
+                        <div className="user_only_buttons">
+                        <div id="detail_delete">삭제</div>
                         <Link to ="/Study_Board_Update" className="link">
-                            <div className="detail_update">수정</div>
+                            <div id="detail_update">수정</div>
                         </Link>
+                        </div>
                     </div>
                     <p className="detail_title">여기는 스터디 게시판 제목</p>
                     <div className="user_con">
