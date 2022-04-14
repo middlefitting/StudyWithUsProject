@@ -47,7 +47,7 @@ function BoardList() {
                     </div>
                     <div className="table_mid_container">
                         <Board category={category}/>
-                        <Search_Component category={'notice'}/>
+                        <Search_Component category={category}/>
                     </div>
                 </div>
 
