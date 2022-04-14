@@ -24,6 +24,8 @@ import MyPageList from "./Board/List/MyPageList";
 import Modification from "./Board/BoardComponent/Modification";
 import ModificationList from "./Board/List/ModificationList";
 import MainPage from "./Board/BoardComponent/MainPage";
+import SearchList from "./Board/List/SearchList";
+import Search_Board from "./Board/BoardComponent/Search_Board";
 
 
 function App() {
@@ -60,6 +62,10 @@ function App() {
 
                 <Route path="/signin" component={SignIn} />
                 <Route path="/signup" component={SignUp} />
+
+                {/*<Route path="/SearchList?category=:category?type=:type?keyword=:keyword" component={SearchList} exact />*/}
+                <Route path="/SearchList/:category/:type/:keyword" component={SearchList}/>
+                {/*<Route path="/SearchList?:type&:keyword&:category" component={Search_Board} exact />*/}
 
             </Switch>
           </div>

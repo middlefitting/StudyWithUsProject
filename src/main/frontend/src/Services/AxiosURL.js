@@ -89,6 +89,9 @@ class CommunityService {
         return axios.post(baseURL + "/board/register", data)
     }
 
+    // getSearchOption(data) {
+    //     return axios.post(baseURL + "/board/search")
+    // }
     deletePost(post_id) {
         return axios.post(baseURL + `/board/delete/${post_id}`)
     }

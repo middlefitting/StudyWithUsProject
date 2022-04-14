@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import  "../../App.css";
 import Side_Tab from "../../Tabs/Side_Tab";
 import Notice_Board from "../BoardComponent/Notice_Board";
@@ -9,6 +9,7 @@ import React, {useState} from "react";
 import Tab_Name from "../../Tabs/Tab_Name";
 import MyPage_Board from "../BoardComponent/MyPage_Board";
 import User_Side_Tab from "../../Tabs/User_Side_Tab";
+import Notice_Search_Component from "./Components/Notice_Search_Component";
 import Search_Component from "./Components/Search_Component";
 
 
@@ -47,7 +48,7 @@ function NoticeList(){
                     </div>
                     <div className="table_mid_container">
                             <Notice_Board />
-                        <Search_Component/>
+                        <Search_Component category={'notice'}/>
                     </div>
                 </div>
 
