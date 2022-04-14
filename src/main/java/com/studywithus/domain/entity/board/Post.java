@@ -4,6 +4,8 @@ import com.studywithus.domain.entity.BaseEntity;
 import com.studywithus.domain.entity.member.Member;
 
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -21,6 +23,7 @@ public class Post extends BaseEntity {
 
 //    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "member_id")
     private Member writer;
 

@@ -4,6 +4,8 @@ import com.studywithus.domain.entity.BaseEntity;
 import com.studywithus.domain.entity.member.Member;
 
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -23,6 +25,7 @@ public class P_like extends BaseEntity {
     private Long post_id;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "member_id")
     private Member mem_id;
 }
