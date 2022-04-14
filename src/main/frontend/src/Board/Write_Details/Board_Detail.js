@@ -7,8 +7,8 @@ import AxiosURL from "../../Services/AxiosURL";
 import Comments from "./Comments";
 
 
-const user = JSON.parse(localStorage.getItem('user-info'))
 
+// const user = JSON.parse(localStorage.getItem('user-info'))
 
 
 
@@ -19,7 +19,7 @@ function Board_Detail(){
     console.log(post_id);
 */
 
-
+;
 
 const [boardDetail, setBoardDetail] = useState({});
 const [postDto, setPostDto] = useState({});
@@ -32,15 +32,20 @@ useEffect( () => {
             await AxiosURL.getBoardDetail(post_id)
                 .then((res) => {
                     /*console.log('res : ', res.data)*/
+
                     setBoardDetail(res.data);
+
+                    console.log('첫번째');
+
                     setPostDto(res.data.postDto);
+
+                    console.log('두번째');
+
                 });
                 }
                 fetchData();
             },[]);
             console.log(boardDetail);
-
-
 
 
 
@@ -88,6 +93,33 @@ useEffect( () => {
 */
 
 
+//현재 게시물을 작성했던 사람의 닉네임 값
+/*   const post_writer_nickname =  postDto.map &&postDto.map(row=>row.writer_nickname);
+ console.log('안녕 : ' + post_writer_nickname);
+ console.log('드디어: ' + user_nickname);
+
+
+ let result;
+ if(post_writer_nickname == user_nickname){
+    result = "true";
+ }else{
+     result="false"
+ }
+    console.log(result);*/
+
+
+
+    //현재 게시물을 작성했던 사람의 아이디 값 추출
+    const postDto_writer_id =  postDto.map &&postDto.map(row=>row.writer_id);
+
+
+
+    const user_id = JSON.parse(localStorage.getItem('user'));
+
+
+
+
+
     return(
         <div className="Free_Detail">
 
@@ -95,17 +127,19 @@ useEffect( () => {
                 <fieldset className="detail_field">
                     <div className="buttons_field">
                     <div className="go_back" onClick={()=> history.goBack()}>뒤로가기 > </div>
-                        {localStorage.getItem('user-info') ?
+
+
+                        {user_id && parseInt(postDto_writer_id) === parseInt(user_id.id) ?
                             <>
-                            <div className="user_only_buttons">
-                        <div className="detail_delete">삭제</div>
-                        <Link to ="/Update_Detail" className="link">
-                            <div className="detail_update">수정</div>
-                        </Link>
-                            </div>
+                                <div className="user_only_buttons">
+                                    <div id="detail_delete">삭제</div>
+                                    <Link to ="/Update_Detail" className="link">
+                                        <div id="detail_update">수정</div>
+                                    </Link>
+                                </div>
                             </>
-                            :
-                            <></>
+                           :
+                           ''
                         }
                     </div>
 
@@ -162,6 +196,9 @@ useEffect( () => {
 
         </div>
     );
+
+
+
 }
 
 export default Board_Detail;

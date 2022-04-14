@@ -36,7 +36,6 @@ public class PostServiceImpl implements PostService{
     private final SearchRepository searchRepository;
     private final MemberRepository memberRepository;
 
-
     @Override
     public Long register(PostDto postDto) {
         postDto.setViews(0); //default 0
@@ -85,6 +84,7 @@ public class PostServiceImpl implements PostService{
         Page<Object[]> result = searchRepository.searchPage(
                 pageRequestDTO.getType(),
                 pageRequestDTO.getKeyword(),
+                pageRequestDTO.getCategory(),
                 pageRequestDTO.getPageable(Sort.by("regDate").descending())
         );
         return new PageResultDTO<>(result, fn);

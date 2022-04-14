@@ -49,4 +49,14 @@ public class StudyBoardComment extends BaseConstructorEntity {
     public void updateComment(String content){
         this.content = content;
     }
+
+    public void studyBoardCommentRecommendCountPlus(){
+        this.studyBoardCommentRecommendCount +=1;
+    }
+    public void studyBoardCommentRecommendCountMinus(){
+        this.studyBoardCommentRecommendCount -=1;
+    }
+    public void studyBoardCommentReportCountPlus(){
+        this.studyBoardCommentReportCount +=1;
+    }
 }

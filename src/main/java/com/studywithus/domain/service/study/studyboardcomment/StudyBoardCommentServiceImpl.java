@@ -40,6 +40,8 @@ public class StudyBoardCommentServiceImpl implements StudyBoardCommentService {
         if (!isMember.orElseGet(() -> 0L).equals(0L)) {
             Optional<Member> member = memberRepository.findById(requestDto.getMemberId());
             Optional<StudyBoard> studyBoard = studyBoardRepository.findById(requestDto.getStudyBoardId());
+            studyBoard.get().studyBoardCommentCountPlus();
+            studyBoardRepository.save(studyBoard.get());
 
             StudyBoardComment studyBoardComment = StudyBoardComment.builder()
                     .member(member.orElseGet(Member::new))
@@ -59,13 +61,14 @@ public class StudyBoardCommentServiceImpl implements StudyBoardCommentService {
     }
 
 
-    public Long updateStudyBoardComment(UpdateStudyBoardCommentDto requestDto){
-        Optional<StudyBoardComment> studyBoardComment = studyBoardCommentRepository.findById(requestDto.getStudyBoardCommentId());
+    public Optional<StudyBoardComment> updateStudyBoardComment(UpdateStudyBoardCommentDto requestDto){
+        Optional<StudyBoardComment> studyBoardComment = studyBoardCommentRepository.searchStudyBoardCommentSingle(requestDto.getMemberId(), requestDto.getStudyBoardCommentId());
         if(studyBoardComment.orElseGet(StudyBoardComment::new).getMember().getId().equals(requestDto.getMemberId())){
             studyBoardComment.get().updateComment(requestDto.getContent());
-            return studyBoardCommentRepository.save(studyBoardComment.get()).getId();
+            studyBoardCommentRepository.save(studyBoardComment.get()).getId();
+            return studyBoardComment;
         }
-        return 0L;
+        throw new RuntimeException();
     }
 
 
@@ -73,6 +76,10 @@ public class StudyBoardCommentServiceImpl implements StudyBoardCommentService {
         Optional<StudyBoardComment> studyBoardComment = studyBoardCommentRepository.findById(studyBoardCommentId);
         if(studyBoardComment.orElseGet(StudyBoardComment::new).getId()!=null){
             if (studyBoardComment.orElseGet(StudyBoardComment::new).getMember().getId().equals(memberId)){
+                Optional<StudyBoard> studyBoard = studyBoardRepository.findById(studyBoardComment.get().getStudyBoard().getId());
+                studyBoard.get().studyBoardCommentCountMinus();
+                studyBoardRepository.save(studyBoard.get());
+
                 studyBoardCommentRepository.delete(studyBoardComment.get());
                 return -1L;
             }

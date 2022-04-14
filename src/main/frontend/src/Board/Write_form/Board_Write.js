@@ -37,19 +37,6 @@ function Board_Write(){
         })
     }
 
-    // private Long post_id;
-    // private String title;
-    // private String content;
-    // private Long writer_id;
-    // private String writer_nickname;
-    // private Category category;
-    // private Integer views;
-    // private LocalDateTime regDate;
-    // private LocalDateTime modDate;
-
-//    axios call board type
-
-
     const boardsKind = [
         {name:'공지게시판', value:'notice'},
         {name:'자유게시판', value: 'free'},
@@ -128,8 +115,8 @@ const _handleEnter = () => {
 
                             </li>
                         </ul>
-                        <input type="text" className="writer_id" name="writer_id" readOnly={true} defaultValue={user_info_id}
-                            {...register("writer_id", {required: true})}/>
+{/*                        <input type="text" className="writer_id" name="writer_id" readOnly={true} defaultValue={user_info_id}
+                            {...register("writer_id", {required: true})}/>*/}
                         <File_Upload />
 
                         <div className="button_section">

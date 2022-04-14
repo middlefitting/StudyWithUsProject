@@ -39,7 +39,7 @@ hr{
     display: flex;
 }
 
-.detail_delete, .detail_update{
+#detail_delete, #detail_update{
     font-size: 10px;
     color: rgb(242, 150, 97);
     font-weight: bold;

@@ -24,5 +24,5 @@ public interface StudyBoardController {
 
     SuccessResult updateStudyBoard(HttpServletRequest request, @PathVariable Long studyId, @RequestBody @Validated UpdateStudyBoardForm requestForm, BindingResult bindingResult, @PathVariable Long studyBoardId);
 
-    SuccessResult deleteStudy(HttpServletRequest request, @PathVariable Long studyId, @PathVariable Long studyBoardId);
+    SuccessResult deleteStudyBoard(HttpServletRequest request, @PathVariable Long studyId, @PathVariable Long studyBoardId);
 }
