@@ -81,7 +81,7 @@ public class StudyBoardRepositoryImpl implements StudyBoardRepositoryCustom{
     public Optional<StudyBoardSingleDto> searchStudyBoardSingle(Long id) {
 
         return Optional.ofNullable(queryFactory
-                .select(new QStudyBoardSingleDto(studyBoard.id, studyBoard.content, studyBoard.title, studyBoard.member.nickname, studyBoard.regDate,
+                .select(new QStudyBoardSingleDto(studyBoard.id, studyBoard.content, studyBoard.title, studyBoard.studyBoardCategory, studyBoard.member.nickname, studyBoard.regDate,
                         studyBoard.studyBoardCommentCount, studyBoard.studyBoardRecommendCount, studyBoard.studyBoardReportCount, studyBoard.studyBoardViewCount))
                 .from(studyBoard)
                 .where(studyBoard.id.eq(id))

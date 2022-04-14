@@ -49,9 +49,8 @@ function App() {
                 <Route path="/Study_List" component={Study_List} exact />
                 <Route path="/Study_Make" component={Study_Make} exact />
                 <Route path="/studies/:studyId" component={Study_Inside} exact />
-                <Route path="/Study_Inside" component={Study_Inside} exact />
-                <Route path="/Study_Board_Detail" component={Study_Board_Detail} exact/>
-                <Route path="/Study_Board_Update" component={Study_Board_Update} exact />
+                <Route path="/Study_Board_Detail/:studyId/:boardId" component={Study_Board_Detail} exact/>
+                <Route path="/Study_Board_Update/:studyId/:boardId" component={Study_Board_Update} exact />
                 <Route path="/Study_Write/:studyId/" component={Study_Write} exact />
 
                 <Route path="/Classes_All" component={Classes_All} exact />

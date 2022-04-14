@@ -16,22 +16,30 @@ function Study_Write() {
     const _handleSubmit = e => {
         e.preventDefault();
 
+        const _black = /^\s+|\s+$/g;
         const data = {
             title: document.getElementsByName('title')[0].value,
             content: document.getElementsByName('content')[0].value,
             studyBoardCategory: document.querySelector(`input[name='radio']:checked`).value,
         }
 
-        console.log(token)
-
-        AxiosURL.boardCreate(studyId, data, token.authorization)
-            .then((response) => {
-                console.log(response)
-                history.push(`/studies/${studyId}`)
-            }).catch(error => {
-            console.log(error.response)
-            alert(error.response.data.message + "\n" + "가입 후 글 등록이 가능합니다.")
-        })
+        if (!(data.title.length < 5 || data.title.length > 20) &&
+            !(data.content.length < 10 || data.content.length > 1000) &&
+            data.title.replace(_black, '') !== '' && data.content.replace(_black, '') !== ''
+        ) {
+            AxiosURL.boardCreate(studyId, data, token.authorization)
+                .then((response) => {
+                    console.log(response)
+                    history.push(`/studies/${studyId}`)
+                }).catch(error => {
+                console.log(error.response)
+                alert(error.response.data.message + "\n" + "가입 후 글 등록이 가능합니다.")
+            })
+        } else if (data.title.replace(_black, '') === '' || data.content.replace(_black, '') === '') {
+            alert('공백으로만 이루어진 값은 입력할 수 없습니다.');
+        } else {
+            alert('제목은 5 - 20 자, 내용은 10 - 1000자 까지 입력 가능합니다.');
+        }
     }
 
     return (

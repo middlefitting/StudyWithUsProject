@@ -110,6 +110,31 @@ class CommunityService {
         return axios.get(baseURL + `/studies/${studyId}/studyBoards/all`, {headers: {authorization: token}})
     }
 
+    // 스터디 보드 디테일의 게시글 가져오기
+    getStudyBoardDetail(studyId, boardId, token) {
+        return axios.get(baseURL + `/studies/${studyId}/studyBoard/${boardId}`, {headers: {authorization: token}})
+    }
+
+    putStudyBoardDetail(studyId, data, token) {
+        return axios.put(baseURL + `/studies/${studyId}/studyBoard/${data.studyBoardId}`, data, {headers: {authorization: token}})
+    }
+
+    deleteStudyBoardDetail(studyId, boardId, token) {
+        return axios.delete(baseURL + `/studies/${studyId}/studyBoard/${boardId}`, {headers: {authorization: token}})
+    }
+
+    getStudyBoardDetailComment(studyId, boardId, token) {
+        return axios.get(baseURL + `/studies/${studyId}/studyBoard/${boardId}/studyBoardComments`, {headers: {authorization: token}})
+    }
+
+    postStudyBoardDetailComment(studyId, boardId, data, token) {
+        return axios.post(baseURL + `/studies/${studyId}/studyBoards/${boardId}/studyBoardComments`, data, {headers: {authorization: token}})
+    }
+
+    deleteStudyBoardDetailComment(studyId, boardId, commentId, token) {
+        return axios.delete(baseURL + `/studies/${studyId}/studyBoard/${boardId}/studyBoardComments/${commentId}`, {headers: {authorization: token}})
+    }
+
     savePost(data) {
         return axios.post(baseURL + "/board/register", data)
     }

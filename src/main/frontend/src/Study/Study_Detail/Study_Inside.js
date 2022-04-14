@@ -9,7 +9,7 @@ import $ from 'jquery';
 
 function Study_Inside() {
 
-    const token = JSON.parse(localStorage.getItem('user-info'))
+    const token = JSON.parse(localStorage.getItem('user-info'));
 
     let beforeStudyId = String((String(window.location.pathname).toString())).split("/studies/");
     let studyId = beforeStudyId[1]
@@ -21,7 +21,6 @@ function Study_Inside() {
 
         AxiosURL.isMember(studyId, token.authorization)
             .then((response) => {
-                console.log(response)
                 setMessage(response.data.message)
             }).catch(error => {
             console.log(error)
@@ -29,7 +28,6 @@ function Study_Inside() {
 
         AxiosURL.pullBoard(studyId, token.authorization)
             .then((response) => {
-                console.log(response)
                 setBoard(response.data.data.content)
             }).catch(error => {
             console.log(error)
@@ -49,7 +47,6 @@ function Study_Inside() {
         setTimeout(() => {
             AxiosURL.joinMember(studyId, token.authorization)
                 .then((response) => {
-                    console.log(response)
                     window.location.reload()
                 }).catch(error => {
                 console.log(error)
@@ -104,7 +101,7 @@ function Study_Inside() {
                                     <tr id="board_body" key={idx}>
                                         <td width="10%" className="listTableNum">{board.studyBoardId}</td>
                                         <td width="50%" className="listTableTitle">
-                                            <Link to="/Study_Board_Detail" className="link">
+                                            <Link to={`/Study_Board_Detail/${studyId}/${board.studyBoardId}`} className="link">
                                                 {board.content}
                                             </Link>
                                         </td>
