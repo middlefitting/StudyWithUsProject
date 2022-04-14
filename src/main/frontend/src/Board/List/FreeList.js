@@ -4,7 +4,7 @@ import Side_Tab from "../../Tabs/Side_Tab";
 import Free_Board from "../BoardComponent/Free_Board";
 import User_Side_Tab from "../../Tabs/User_Side_Tab";
 import React from "react";
-import Search_Component from "./Components/Search_Component";
+
 
 
 // const user = JSON.parse(localStorage.getItem('user-info'))
@@ -35,7 +35,6 @@ function FreeList(){
                     <div className="table_mid_container">
                         <Free_Board />
 
-                        <Search_Component/>
 
                     </div>
 

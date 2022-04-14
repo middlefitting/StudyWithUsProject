@@ -9,7 +9,7 @@ import React, {useState} from "react";
 import Tab_Name from "../../Tabs/Tab_Name";
 import MyPage_Board from "../BoardComponent/MyPage_Board";
 import User_Side_Tab from "../../Tabs/User_Side_Tab";
-import Search_Component from "./Components/Search_Component";
+
 
 
 //const user = JSON.parse(localStorage.getItem('user-info'))
@@ -40,7 +40,7 @@ function NoticeList(){
                     </div>
                     <div className="table_mid_container">
                             <Notice_Board />
-                        <Search_Component/>
+
                     </div>
                 </div>
 
