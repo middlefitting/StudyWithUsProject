@@ -115,7 +115,6 @@ public class StudyControllerImpl implements StudyController{
         DecodedJWT verify = JWT.require(Algorithm.HMAC512(JwtProperties.SECRET)).build().verify(jwtToken);
         Long verifyId = verify.getClaim("id").asLong();
 
-        //전부다 RuntimeException이 뜨는데 수정이 필요할듯
         studyService.deleteStudy(studyId, verifyId);
 
         return new SuccessResult("", "스터디 삭제 완료", "success");

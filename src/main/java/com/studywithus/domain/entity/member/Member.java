@@ -39,8 +39,8 @@ public class Member extends BaseConstructorEntity {
     @CreationTimestamp //로그인 될 때마다 초기화?
     private Timestamp lastLoginDate;
 
-//    @OneToOne(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private Study study;
+    @OneToOne(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Study study;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<MemberStudy> memberStudies = new ArrayList<>();
@@ -51,13 +51,7 @@ public class Member extends BaseConstructorEntity {
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<StudyBoard> studyBoards = new ArrayList<>();
 
-    //신고수 누적은 삭제되지 않게 한다.
-
-
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
-//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
     private String bornDate;
-
 
     public Member() {
     }
