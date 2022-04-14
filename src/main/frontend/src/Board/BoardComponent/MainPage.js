@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import AxiosURL from "../../Services/AxiosURL";
 import {Link} from "react-router-dom";
+import $ from "jquery";
 
 const MainPage = () => {
 
@@ -10,6 +11,8 @@ const MainPage = () => {
     const [loading, setLoading] = useState(false);
     const [study, setStudy] = useState({});
     const [user, setUser] = useState('');
+
+    $('.boxes').css('opacity','0');
 
     useEffect(() => {
         if (localStorage.getItem('user-info')) {
@@ -22,10 +25,13 @@ const MainPage = () => {
                 .then(response => {
                     setStudy(response.data.data.content)
                 }).catch(error => {
-                    console.log(error)
+                console.log(error)
             })
             setLoading(false);
         }
+        setTimeout(() => {
+            $('.boxes').css('opacity','1');
+        }, 300);
     }, [])
 
 
@@ -62,7 +68,7 @@ const MainPage = () => {
             duration:' 2022-04-13T17:24:10.81523',
             description:'웹 개발을 하고 싶다면 무조건 필수로 들어야 하는 수업! ' +
                 'JavaScript 언어에 대한 개요, 기초 문법, 제공라이브러리까지 JavaScript에 대한 전반적인 내용 학습 가능!'},
-        
+
         {
             topic:'강채윤/손채영',
             courseName:'너무 쉬운 HTML/CSS 입문',
@@ -74,7 +80,7 @@ const MainPage = () => {
             duration:'2022-04-13T17:24:10.81523',
             description:'안드로이드 앱을 만들어 보자!'}
     ]
-    
+
 
     return (
         <>
@@ -83,52 +89,52 @@ const MainPage = () => {
             }
             <br/>
             <br/>
-                <div className="box_cont_main">
-                    {study.length ?
-                        study.map((study, key) => (
+            <div className="box_cont_main">
+                {study.length ?
+                    study.map((study, key) => (
+                        <div className="boxes" key={key}>
+                            <div className="boxes_content">
+                                <span>{study.nickName}</span>
+                                <div className="boxes_courseName">{study.studyName}</div>
+                                <div className="classes_date">
+                                    {study.regDate}
+                                </div>
+                                <p>{study.studyExplanation}
+                                </p>
+
+                                <hr/>
+                                <button type="button" className="add_classes">
+                                    함께하기
+                                </button>
+                            </div>
+                        </div>
+                    ))
+                    :
+                    <div className="box_cont_main" >
+                        {boxes.map((box, key)=>(
                             <div className="boxes" key={key}>
                                 <div className="boxes_content">
-                                    <span>{study.nickName}</span>
-                                    <div className="boxes_courseName">{study.studyName}</div>
+                                    <span>{box.topic}</span>
+                                    <div className="boxes_courseName">{box.courseName}</div>
                                     <div className="classes_date">
-                                        {study.regDate}
+                                        {box.duration}
                                     </div>
-                                    <p>{study.studyExplanation}
+                                    <p>{box.description}
                                     </p>
 
-                                    <hr/>
-                                    <button type="button" className="add_classes">
-                                        함께하기
-                                    </button>
-                                </div>
-                            </div>
-                        ))
-                        :
-                        <div className="box_cont_main" >
-                            {boxes.map((box, key)=>(
-                                <div className="boxes" key={key}>
-                                    <div className="boxes_content">
-                                        <span>{box.topic}</span>
-                                        <div className="boxes_courseName">{box.courseName}</div>
-                                        <div className="classes_date">
-                                            {box.duration}
-                                        </div>
-                                        <p>{box.description}
-                                        </p>
-
-                                        <hr />
-                                        <Link to = '/signup'>
+                                    <hr />
+                                    <Link to = '/signup'>
                                         <button type="button" className="add_classes">
                                             회원가입 후 함께하세요
                                         </button>
-                                        </Link>
-                                    </div>
+                                    </Link>
                                 </div>
-                            ))}
+                            </div>
+                        ))}
 
-                        </div>
-                    }
-                </div>
+                    </div>
+                }
+            </div>
         </>
     );
 };

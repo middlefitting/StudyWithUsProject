@@ -14,18 +14,21 @@
     color: black;
     overflow: hidden;
     justify-content: flex-start;
+
+    opacity: 0;
+    transition: 300ms;
 }
 
 .study_inside_container_right{
-/*    display: flex;
-    flex-direction: column;*/
-/*    padding: 10px 40px;*/
+    /*    display: flex;
+        flex-direction: column;*/
+    /*    padding: 10px 40px;*/
     width: calc(100% - 80px);
 
 }
 
 .study_board_container{
-        display: flex;
+    display: flex;
     flex-direction: column;
     padding: 10px 40px;
     width: calc(100% - 80px);
@@ -49,9 +52,8 @@
 }
 
 
-
-
 .study_go_back{
+    width: 60px;
     font-size: 10px;
     color: rgb(242, 150, 97);
     font-weight: bold;
@@ -103,6 +105,21 @@
     transition: opacity, color 0.1s ease-in
 }
 
+#study_write_input{
+    right: 0;
+    margin: 10px;
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+    border: 0 none;
+    background-color: rgb(242, 150, 97);
+    color: white;
+    font-size: 16px;
+    font-weight: 100;
+    cursor: pointer;
+    transition: opacity, color 0.1s ease-in
+}
+
 .study_board{
     height: auto;
     width: 100%;
@@ -111,4 +128,3 @@
     border-radius: 4px;
     overflow: hidden;
 }
-
