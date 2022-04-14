@@ -89,6 +89,10 @@ class CommunityService {
         return axios.post(baseURL + "/board/register", data)
     }
 
+    deletePost(post_id) {
+        return axios.post(baseURL + `/board/delete/${post_id}`)
+    }
+
     saveComment(data) {
         return axios.post(baseURL + "/comment/register", data)
     }
@@ -113,12 +117,12 @@ class CommunityService {
     }
 
 
-    getEdit() {
-        return axios.get(baseURL + "/board/edit")
+    getEdit(post_id) {
+        return axios.get(baseURL + `/board/edit/${post_id}`)
     }
 
-    postEdit(data) {
-        return axios.post(baseURL + "/board/edit", data)
+    postEdit(post_id, token, data) {
+        return axios.post(baseURL + `/board/edit/${post_id}`, data, {headers: {authorization: token}})
     }
 
 
@@ -126,16 +130,10 @@ class CommunityService {
         return axios.get(baseURL+`/board/${post_id}`);
     }
 
+    // 댓글 삭제
     deleteComment(data) {
         return axios.post(baseURL + `/comment/delete/${data}`)
     }
-    // getFreeList(data) {
-    //     return axios.post(baseURL + "/board/free", data)
-    // }
-    // getQuestionList(data) {
-    //     return axios.post(baseURL + "/board/question", data)
-    // }
-
     /*loginMember(data) {
         return axios.post(baseURL + "/login", data)
     }

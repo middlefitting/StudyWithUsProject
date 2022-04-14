@@ -43,7 +43,7 @@ function App() {
                 <Route path="/ModificationList" component={ModificationList} exact />
 
                 <Route path="/Board_Detail/:post_id" component={Board_Detail} exact />
-                <Route path="/Update_Detail" component={Update_Detail} exact />
+                <Route path="/Update_Detail/:post_id" component={Update_Detail} exact />
 
                 <Route path="/Board_Write" component={Board_Write} exact/>
 

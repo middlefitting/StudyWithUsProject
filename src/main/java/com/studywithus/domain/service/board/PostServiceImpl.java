@@ -106,6 +106,7 @@ public class PostServiceImpl implements PostService{
     @Transactional
     @Override
     public Long modify(PostDto postDto) {
+        System.out.println("hihihihihi");
         Post post = repository.getById(postDto.getPost_id());
 
         post.updatePost(postDto.getTitle(), postDto.getContent(), postDto.getCategory());

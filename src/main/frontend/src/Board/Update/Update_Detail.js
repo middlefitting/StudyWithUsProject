@@ -1,16 +1,53 @@
-import '../Write_form/Write.css'
-import '../../App.css';
-import {Link, useHistory} from "react-router-dom";
-import {useState} from "react";
+import React, {useState, useEffect} from 'react';
+import {useHistory, useParams} from "react-router-dom";
 import File_Upload from "../Write_form/Upload/File_Upload";
+import AxiosURL from "../../Services/AxiosURL";
 
+import '../../App.css';
+import '../Write_form/Write.css';
 
-function Update_Detail(){
+function Update_Detail() {
 
     //뒤로가기 설정
-    let history = useHistory();
+    const history = useHistory();
+    const {post_id} = useParams();
+    const [postDto, setPostDto] = useState({});
 
-    return(
+    const token = JSON.parse(localStorage.getItem('user-info'));
+
+    const _handlePost = (e) => {
+
+        e.preventDefault();
+
+        const title = document.getElementsByName('title')[0].value;
+        const content = document.getElementsByName('content')[0].value;
+        console.log(postDto)
+        if (postDto.title !== title || postDto.content !== content) {
+            const data = {
+                category: postDto.category,
+                post_id: postDto.post_id,
+                writer_id: postDto.writer_id,
+                writer_nickname: postDto.writer_nickname,
+                title: title,
+                content: content,
+                views: postDto.views
+            };
+
+            AxiosURL.postEdit(post_id, token.authorization, data).then(res => {
+                history.goBack();
+            }).catch(err => {
+                console.log(err);
+            })
+        }
+    }
+
+    useEffect(() => {
+        AxiosURL.getEdit(post_id).then(res => {
+                setPostDto(res.data[0]);
+        });
+    }, []);
+
+    return (
         <div className="write_form">
             <div className="mid_con">
                 <form>
@@ -19,30 +56,37 @@ function Update_Detail(){
                         <ul>
                             <li>
                                 <label htmlFor="title_txt">제목</label>
-                                <input type="text" className="inputTitle" placeholder="제목을 입력하세요" required />
+                                <input
+                                    type="text"
+                                    name='title'
+                                    className="inputTitle"
+                                    defaultValue={postDto.title}
+                                    required
+                                />
                             </li>
                             <li>
                                 <label htmlFor="context_txt">내용</label>
-                                <textarea className="inputContent" placeholder="내용을 입력하세요" required />
+                                <textarea
+                                    name='content'
+                                    className="inputContent"
+                                    defaultValue={postDto.content}
+                                    required
+                                />
                             </li>
                         </ul>
-                        <File_Upload />
-
+                        <File_Upload/>
                         <div className="button_section">
-                            <button type="submit" id="s_button" >등록하기</button>
-                            <button type="button"  id="c_button" onClick={()=>{
+                            <button type="submit" id="s_button" onClick={e => _handlePost(e)}>등록하기</button>
+                            <button type="button" id="c_button" onClick={() => {
                                 history.goBack();
-                            }}>취소하기</button>
+                            }}>취소하기
+                            </button>
                         </div>
-
                     </fieldset>
                 </form>
             </div>
-
-
-
         </div>
-
     );
 }
+
 export default Update_Detail;
