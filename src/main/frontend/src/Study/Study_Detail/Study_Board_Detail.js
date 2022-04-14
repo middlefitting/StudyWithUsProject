@@ -73,7 +73,7 @@ function Study_Board_Detail(){
         <div className="Study_Detail">
 
             <div className="mid_con">
-                <fieldset className="detail_field">
+                <fieldset className="study_detail_field">
                     <div className="buttons_field">
                         <div className="go_back" onClick={()=> history.goBack()}> 스터디로 돌아가기 > </div>
                         <div className="user_only_buttons">
