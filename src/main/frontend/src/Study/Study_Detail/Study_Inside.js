@@ -15,12 +15,16 @@ function Study_Inside(){
     let beforeStudyId = String((String(window.location.pathname).toString())).split("/studies/");
     let studyId = beforeStudyId[1]
 
+    const [board, setBoard] = useState({});
+    const [message, setMessage] = useState('');
+
 
     useEffect(() => {
 
         AxiosURL.isMember(studyId, token.authorization)
             .then((response) => {
                 console.log(response)
+                setMessage(response.data.message)
             }).catch(error => {
                 console.log(error)
         })
@@ -28,6 +32,7 @@ function Study_Inside(){
         AxiosURL.pullBoard(studyId, token.authorization)
             .then((response) => {
                 console.log(response)
+                setBoard(response.data.data.content)
             }).catch(error => {
                 console.log(error)
         })
@@ -54,9 +59,6 @@ function Study_Inside(){
         });
     }
 
-
-
-
 const history = useHistory();
     return (
         <div className="Study_Detail">
@@ -66,14 +68,22 @@ const history = useHistory();
                     <div className="study_go_back" onClick={()=> history.push('/Study_List')}>스터디목록 > </div>
                     <div className="board_con_top">
                         <div className="top_txt">
-                            게시글
+                            게시글 [{message}]
                         </div>
-                        <button type="submit" id="study_write_input"
-                                onClick={(e) => _handleSubmit(e)}
-                        >
-                            가입
-                        </button>
-                        <button type="submit" id="study_write_input" value="글씨기">
+                        {message === "스터디 멤버입니다." ?
+                            <button type="submit" id="study_write_input"
+                                    onClick={(e) => _handleSubmit(e)}
+                            >
+                                탈퇴
+                            </button>
+                            :
+                            <button type="submit" id="study_write_input"
+                                    onClick={(e) => _handleSubmit(e)}
+                            >
+                                가입
+                            </button>
+                        }
+                        <button type="submit" id="study_write_input">
                             <Link to={`/Study_Write/${studyId}`} className="link">
                                 글쓰기
                             </Link>
@@ -81,29 +91,42 @@ const history = useHistory();
                     </div>
                     <div className="study_board_container">
                         <table className="study_board">
-                            <thead>
-                            <tr id="board_head">
-                                <th width="10%" className="listHeadNum">No.</th>
-                                <th width="50%" className="listHeadTitle">제목</th>
-                                <th width="15%" className="listHeadAuthor">작성자</th>
-                                <th width="15%" className="listHeadDate">작성날짜</th>
-                                <th width="10%" className="listHeadViews">조회</th>
-                            </tr>
-                            </thead>
+                                <thead>
+                                <tr id="board_head">
+                                    <th width="10%" className="listHeadNum">No.</th>
+                                    <th width="50%" className="listHeadTitle">제목</th>
+                                    <th width="15%" className="listHeadAuthor">작성자</th>
+                                    <th width="15%" className="listHeadDate">작성날짜</th>
+                                    <th width="10%" className="listHeadViews">조회</th>
+                                </tr>
+                                </thead>
                             <tbody>
 
-                            <tr id="board_body" >
-
-                                <td width="10%" className="listTableNum">1</td>
-                                <td width="50%" className= "listTableTitle">
-                                    <Link to ="/Study_Board_Detail" className="link">
-                                        가입인사 드립니다
-                                    </Link>
-                                </td>
-                                <td width="15%" className="listTableAuthor">하이</td>
-                                <td width="15%" className="listTableDate">2022-03-25</td>
-                                <td width="10%" className="listTableViews">5</td>
-                            </tr>
+                            {board.length ?
+                                board.map((board,idx) => (
+                                <tr id="board_body" key={idx}>
+                                    <td width="10%" className="listTableNum">{board.studyBoardId}</td>
+                                    <td width="50%" className= "listTableTitle">
+                                        <Link to ="/Study_Board_Detail" className="link">
+                                                {board.content}
+                                        </Link>
+                                    </td>
+                                    <td width="15%" className="listTableAuthor">{board.nickname}</td>
+                                    <td width="15%" className="listTableDate">{board.regDate.substring(0,10)}</td>
+                                    <td width="10%" className="listTableViews">{board.studyBoardViewCount}</td>
+                                </tr>
+                                ))
+                                :
+                                <tr id="board_body" >
+                                    <td width="10%" className="listTableNum">1</td>
+                                    <td width="50%" className= "listTableTitle">
+                                        첫 게시글을 등록해보세요.
+                                    </td>
+                                    <td width="15%" className="listTableAuthor">HelloWorld</td>
+                                    <td width="15%" className="listTableDate">9999-99-99</td>
+                                    <td width="10%" className="listTableViews">0</td>
+                                </tr>
+                            }
 
 
 

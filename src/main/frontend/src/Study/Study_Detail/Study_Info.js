@@ -21,6 +21,7 @@ function StudyInfo (){
         })
     }, [])
 
+
     return (
         <div className="studyInfo_con">
             <div className="studyInfo_box">
@@ -38,7 +39,6 @@ function StudyInfo (){
                                 <th>멤버수</th>
                                 <td>{study.studyMemberCount}</td>
                             </tr>
-
                         </tbody>
                     </table>
                 </div>

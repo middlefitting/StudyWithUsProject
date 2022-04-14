@@ -28,8 +28,10 @@ function Study_Write(){
         AxiosURL.boardCreate(studyId, data, token.authorization)
             .then((response) => {
                 console.log(response)
+                history.push(`/studies/${studyId}`)
             }).catch(error => {
                 console.log(error.response)
+                alert(error.response.data.message + "\n" +"가입 후 글 등록이 가능합니다.")
         })
     }
 
@@ -44,7 +46,6 @@ function Study_Write(){
                                 <label htmlFor="title_txt">제목</label>
                                 <input type="text" className="inputTitle" placeholder="제목을 입력하세요" required
                                        name='title'
-
                                 />
                             </li>
                             <li>
@@ -62,8 +63,6 @@ function Study_Write(){
                                     <span>study</span>
                                     <input type="radio" className="study_radio" value="free" name="radio"/>
                                     <span>free</span>
-                                    <input type="radio" className="study_radio" value="all" name="radio"/>
-                                    <span>all</span>
                                 </div>
                             </li>
                         </ul>

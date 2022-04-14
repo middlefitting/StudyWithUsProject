@@ -107,7 +107,7 @@ class CommunityService {
 
     // 스터디 게시글 가져오기
     pullBoard(studyId, token) {
-        return axios.get(baseURL + `/studies/${studyId}/studyBoards/free`, {headers: {authorization: token}})
+        return axios.get(baseURL + `/studies/${studyId}/studyBoards/all`, {headers: {authorization: token}})
     }
 
     savePost(data) {

@@ -34,7 +34,7 @@ function Study_Make() {
                 console.log(response)
                 history.push('/Study_List')
             }).catch(error => {
-                console.log(error)
+                console.log(error.response)
         })
     };
 
