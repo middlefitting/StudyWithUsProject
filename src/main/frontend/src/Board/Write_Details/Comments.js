@@ -71,7 +71,7 @@ function Comments(props) {
         <>
             <div className="reply_input">
                 <div className="reply_id">
-                    여기는 아이디
+                    {user_id.nickname}
                 </div>
                 <textarea
                     className="reply_textarea"

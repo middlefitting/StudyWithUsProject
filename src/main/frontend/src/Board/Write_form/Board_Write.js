@@ -24,6 +24,8 @@ function Board_Write() {
             category: document.querySelector(`input[name='category']:checked`).value,
         };
 
+        console.log(data.title)
+
         AxiosURL.savePost(data)
             .then((response) => {
                 let result = response.data

@@ -1,7 +1,6 @@
 import {Link} from "react-router-dom";
 import '../../styles/css/SignUp.css'
 import Side_Tab from "../../Tabs/Side_Tab";
-import Free_Board from "../BoardComponent/Free_Board";
 import User_Side_Tab from "../../Tabs/User_Side_Tab";
 import Modification from "../BoardComponent/Modification";
 

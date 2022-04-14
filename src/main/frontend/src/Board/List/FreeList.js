@@ -3,7 +3,6 @@ import  "../../App.css";
 import Side_Tab from "../../Tabs/Side_Tab";
 import Free_Board from "../BoardComponent/Free_Board";
 import User_Side_Tab from "../../Tabs/User_Side_Tab";
-import Pagination_Component from "../Page/Pagination_Component";
 import React from "react";
 import Search_Component from "./Components/Search_Component";
 
