@@ -1,38 +1,237 @@
-.App {
-  text-align: center;
+
+.container{
+    margin-top: 30px;
+    display: flex;
+    height: auto;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+
+.Header{
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    color: black;
+    background-color: paleturquoise;
+    align-items:center;
+    justify-content:center;
+    font-size: 20px;
+
+}
+.mid_container{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    width: 100%;
+}
+.table_mid_container{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    width: 100%;
+    margin-top: 10px;
+
+    opacity: 0;
+    transition: 500ms;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.TabContents{
+    width:100%;
+    display: flex;
+    left: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;;
+    overflow: hidden;
+    margin-top: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.page_name{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    overflow: hidden;
+    font-size: 35px;
 }
 
-.App-link {
-  color: #61dafb;
+.page_name_modi{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+    overflow: hidden;
+    font-size: 35px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#w_button{
+    margin: 20px 30px 0px 0px;
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+    border: 0 none;
+    background-color: rgb(242, 150, 97);
+    color: white;
+    font-size: 16px;
+    font-weight: 100;
+    cursor: pointer;
+    transition: 300ms;
+
+}
+
+
+
+#w_button:hover{
+    opacity: 0.7;
+}
+
+
+.cont_container{
+    display: flex;
+    min-height: 100vh;
+    width: calc(100% - 80px);
+
+    color: black;
+    overflow: hidden;
+    justify-content: flex-start;
+        padding: 10px 40px;
+
+
+}
+
+
+
+#main_board{
+    height: auto;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#board_head{
+    height: 50px;
+    background-color: rgb(242, 150, 97);
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    border: none;
+}
+
+#board_body{
+    height: 40px;
+    background-color: white;
+    border: solid 1px #d9d2d2;
+    border-left: none;
+    border-right: none;
+}
+
+#tbody_body:hover{
+    cursor: pointer;
+}
+
+
+.footer {
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    color: black;
+    background-color: paleturquoise;
+    align-items:center;
+    justify-content:center;
+    font-size: 20px;
+
+}
+
+.link{
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.notice_nav, .board_nav, .study_nav, .class_nav{
+    margin: 5px 70px 0px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+.search_con{
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-evenly;
+}
+
+.search_con select, input{
+    margin:0 7px 0 7px;
+}
+
+.search_button{
+    width: 50px;
+    height: 23px;
+    margin: 2px 10px 0 10px;
+    border-radius: 2px;
+    border: 0 none;
+    background-color: rgb(242, 150, 97);
+    color: white;
+    font-size: 13px;
+    /* font-weight: bold; */
+    cursor: pointer;
+    transition: 300ms
+}
+
+.search_button:hover {
+    opacity: 0.7;
+}
+
+@media screen and (min-width: 1200px) {
+    .page_name{
+        font-size: 35px;
+    }
+
+}
+
+.pagination_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 20px 0;
+}
+
+.pagination_container>.page_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 10px;
+    padding: 8px;
+
+    width: 15px;
+    height: 15px;
+
+    border-radius: 4px;
+
+    color: #FFFFFF;
+    background-color: rgb(242, 150, 97);
+
+    cursor: pointer;
+    transiton: 300ms;
+}
+
+.pagination_container>.page_btn:hover {
+    font-weight: bold;
+    opacity: 0.6;
 }

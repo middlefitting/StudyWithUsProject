@@ -1,0 +1,4 @@
+package com.studywithus.web.controller.study.studyboardcommentrecommend;
+
+public class StudyBoardCommentRecommendControllerImpl implements StudyBoardCommentRecommendController{
+}
