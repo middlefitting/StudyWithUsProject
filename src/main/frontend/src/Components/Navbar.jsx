@@ -22,8 +22,8 @@ const Contents = () => {
 
   return (
       <>
-        <Link to='/NoticeList' className='nav_content'>공지사항</Link>
-        <Link to='/FreeList' className='nav_content'>게시판</Link>
+        <Link to='/BoardList/notice' className='nav_content'>공지사항</Link>
+        <Link to='/BoardList/free' className='nav_content'>게시판</Link>
         <Link to='/Study_List' className='nav_content'>스터디</Link>
         <Link to='/Classes_All' className='nav_content'>강좌</Link>
         {user ?
