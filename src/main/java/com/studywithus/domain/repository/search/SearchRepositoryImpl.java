@@ -19,6 +19,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Log4j2
@@ -43,19 +44,19 @@ public class SearchRepositoryImpl extends QuerydslRepositorySupport implements S
         BooleanExpression expression2 = post.category.eq(Category.valueOf(category));
         totalBuilder.and(expression1);
         totalBuilder.and(expression2);
-        if(type != null) {
+        if (type != null) {
             String[] typeArray = type.split("");
             BooleanBuilder addBuilder = new BooleanBuilder();
             for (String key : typeArray) {
                 switch (key) {
-                    case "t" : //title
-                        addBuilder.or(post.title.contains(keyword));
+                    case "t": //title
+                        addBuilder.or(post.title.toLowerCase().contains(keyword.toLowerCase()));
                         break;
-                    case "w" : //writer
-                        addBuilder.or(member.nickname.contains(keyword));
+                    case "w": //writer
+                        addBuilder.or(member.nickname.toLowerCase().contains(keyword.toLowerCase()));
                         break;
-                    case "c" : //content
-                        addBuilder.or(post.content.contains(keyword));
+                    case "c": //content
+                        addBuilder.or(post.content.toLowerCase().contains(keyword.toLowerCase()));
                         break;
                 }
             }
