@@ -9,6 +9,8 @@ function StudyInfo() {
     const [check, setCheck] = useState('');
     const user_id = JSON.parse(localStorage.getItem('user'));
 
+    console.log(study.studyMasterId);
+    console.log(user_id.id);
 
     let beforeStudyId = String((String(window.location.pathname).toString())).split("/studies/");
     let studyId = beforeStudyId[1]

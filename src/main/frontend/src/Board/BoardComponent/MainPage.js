@@ -12,9 +12,10 @@ const MainPage = () => {
     const [study, setStudy] = useState({});
     const [user, setUser] = useState('');
 
-    $('.boxes').css('opacity','0');
+
 
     useEffect(() => {
+
         if (localStorage.getItem('user-info')) {
 
             setLoading(true);
@@ -31,7 +32,7 @@ const MainPage = () => {
         }
         setTimeout(() => {
             $('.boxes').css('opacity','1');
-        }, 300);
+        }, 500);
     }, [])
 
 
