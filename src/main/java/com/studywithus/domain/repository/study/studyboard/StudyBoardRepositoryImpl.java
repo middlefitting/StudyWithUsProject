@@ -58,8 +58,9 @@ public class StudyBoardRepositoryImpl implements StudyBoardRepositoryCustom{
     public Page<StudyBoardDto> searchStudyBoardPage(Pageable pageable, StudyBoardPageSearchCondition condition) {
 
         List<StudyBoardDto> content = queryFactory
-                .select(new QStudyBoardDto(studyBoard.id, studyBoard.study.id, studyBoard.member.id, studyBoard.regDate, studyBoard.member.nickname, studyBoard.title,
-                        studyBoard.content, studyBoard.studyBoardCategory, studyBoard.studyBoardCommentCount, studyBoard.studyBoardRecommendCount, studyBoard.studyBoardReportCount, studyBoard.studyBoardViewCount))
+                .select(new QStudyBoardDto(studyBoard.id, studyBoard.study.id, studyBoard.member.id, studyBoard.regDate, studyBoard.member.nickname,
+                        studyBoard.title, studyBoard.content, studyBoard.studyBoardCategory, studyBoard.studyBoardCommentCount, studyBoard.studyBoardRecommendCount,
+                        studyBoard.studyBoardReportCount, studyBoard.studyBoardViewCount))
                 .from(studyBoard)
                 .where(studyBoard.id.goe(0L), studyBoardWriterNicknameContains(condition.getStudyBoardWriterNickname()),
                         studyBoardTitleContains(condition.getStudyBoardTitle()), studyBoardContentContains(condition.getStudyBoardContent()),
@@ -81,7 +82,7 @@ public class StudyBoardRepositoryImpl implements StudyBoardRepositoryCustom{
     public Optional<StudyBoardSingleDto> searchStudyBoardSingle(Long id) {
 
         return Optional.ofNullable(queryFactory
-                .select(new QStudyBoardSingleDto(studyBoard.id, studyBoard.content, studyBoard.title, studyBoard.member.nickname, studyBoard.regDate,
+                .select(new QStudyBoardSingleDto(studyBoard.id, studyBoard.content, studyBoard.title, studyBoard.studyBoardCategory, studyBoard.member.nickname, studyBoard.regDate,
                         studyBoard.studyBoardCommentCount, studyBoard.studyBoardRecommendCount, studyBoard.studyBoardReportCount, studyBoard.studyBoardViewCount))
                 .from(studyBoard)
                 .where(studyBoard.id.eq(id))

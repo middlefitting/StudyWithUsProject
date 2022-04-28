@@ -44,7 +44,7 @@ public class ExControllerAdvice {
     @ExceptionHandler(JWTVerificationException.class)
     public ErrorResult jwtDecodeExHandler(JWTVerificationException e) {
         log.error("[exceptionHandler] ex", e);
-        return new ErrorResult("BAD_REQUEST", "인증할 수 없는 토큰", "401");
+        return new ErrorResult("UNAUTHORIZED", "인증할 수 없는 토큰", "401");
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)

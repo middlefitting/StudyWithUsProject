@@ -4,4 +4,6 @@ import java.util.Optional;
 
 public interface MemberStudyRepositoryCustom {
     Optional<Long> findByMemberIdAndStudyId(Long memberId, Long studyId);
+
+    Optional<Long> countMemberStudy(Long studyId);
 }

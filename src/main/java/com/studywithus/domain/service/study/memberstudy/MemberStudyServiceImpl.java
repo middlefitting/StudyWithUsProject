@@ -24,7 +24,7 @@ public class MemberStudyServiceImpl implements MemberStudyService{
         Optional<Member> member = memberRepository.findById(memberId);
         Optional<Study> study = studyRepository.findById(StudyId);
 
-        if(member.orElseGet(Member::new).getId()!=null && study.orElseGet(Study::new).getId()!=null){
+//        if(member.orElseGet(Member::new).getId()!=null && study.orElseGet(Study::new).getId()!=null){
             Optional<MemberStudy> byMemberAndStudy = memberStudyRepository.findByMemberAndStudy(member.orElseGet(Member::new), study.orElseGet(Study::new));
 
             if(byMemberAndStudy.orElseGet(MemberStudy::new).getId()==null){
@@ -39,13 +39,17 @@ public class MemberStudyServiceImpl implements MemberStudyService{
             }
 
             else {
-                memberStudyRepository.delete(byMemberAndStudy.get());
                 study.get().studyMemberCountMinus();
+                if(study.get().getStudyMemberCount().equals(0L)){
+                    studyRepository.delete(study.get());
+                    return -1L;
+                }
+
+                MemberStudy memberStudy = byMemberAndStudy.get();
+                memberStudyRepository.delete(memberStudy);
                 studyRepository.save(study.get());
                 return -1L;
             }
-        }
-        return 0L;
     }
 
 

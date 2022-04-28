@@ -35,7 +35,9 @@ public class StudyBoardCommentRecommendServiceImpl implements StudyBoardCommentR
 
 
     public Long joinDropStudyBoardCommentRecommend(Long memberId, Long studyBoardCommentId){
+
         Optional<StudyBoardCommentRecommend> studyBoardCommentRecommendOptional = studyBoardCommentRecommendRepository.findByMemberIdAndStudyBoardCommentId(memberId, studyBoardCommentId);
+
         if(studyBoardCommentRecommendOptional.orElseGet(StudyBoardCommentRecommend::new).getId() == null){
             Optional<StudyBoardComment> studyBoardComment = studyBoardCommentRepository.findById(studyBoardCommentId);
             Optional<Member> member = memberRepository.findById(memberId);

@@ -3,6 +3,9 @@ package com.studywithus.domain.entity.study;
 import com.studywithus.domain.entity.BaseConstructorEntity;
 import com.studywithus.domain.entity.member.Member;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.data.jpa.repository.EntityGraph;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -33,6 +36,7 @@ public class StudyBoard extends BaseConstructorEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="study_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Study study;
     
     //작성자

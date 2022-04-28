@@ -33,10 +33,10 @@ public class StudyBoardComment extends BaseConstructorEntity {
     @JoinColumn(name="member_id")
     private Member member;
 
-    @OneToMany(mappedBy = "studyBoardComment", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "studyBoardComment", cascade = CascadeType.REMOVE, orphanRemoval=true)
     private List<StudyBoardCommentReport> studyBoardCommentReports = new ArrayList<>();
 
-    @OneToMany(mappedBy = "studyBoardComment", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "studyBoardComment", cascade = CascadeType.REMOVE, orphanRemoval=true)
     private List<StudyBoardCommentRecommend> studyBoardCommentRecommends = new ArrayList<>();
 
 

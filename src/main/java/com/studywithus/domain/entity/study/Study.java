@@ -22,7 +22,7 @@ public class Study extends BaseConstructorEntity {
     @Column(name = "study_id")
     private Long id;
 //    @Column(columnDefinition = "CHAR(1) default '1'")
-    private Long studyMemberCount = 1L;
+    private Long studyMemberCount = 0L;
     private String studyName;
     private String studyExplanation;
     private boolean isPublic;
@@ -34,10 +34,10 @@ public class Study extends BaseConstructorEntity {
 
 
 
-    @OneToMany(mappedBy = "study", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "study", cascade = CascadeType.REMOVE, orphanRemoval=true)
     private List<MemberStudy> memberStudies = new ArrayList<>();
 
-    @OneToMany(mappedBy = "study", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "study", cascade = CascadeType.REMOVE, orphanRemoval=true)
     private List<StudyBoard> studyBoards = new ArrayList<>();
 
 

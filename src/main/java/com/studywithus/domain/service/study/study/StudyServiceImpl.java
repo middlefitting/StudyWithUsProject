@@ -55,9 +55,7 @@ public class StudyServiceImpl implements StudyService{
 
             memberStudyRepository.save(memberStudy);
 
-//            return studyRepository.save(study).getId();
             return result;
-
 
         }
         return 0L;

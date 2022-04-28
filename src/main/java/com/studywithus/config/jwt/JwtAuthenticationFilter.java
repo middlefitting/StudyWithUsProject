@@ -69,16 +69,15 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
                                             Authentication authResult) throws IOException, ServletException {
-        PrincipalDetails principalDetails = (PrincipalDetails) authResult.getPrincipal(); //이걸 통해 토큰을 만든다 //authResult:authentication 객체
+        PrincipalDetails principalDetails = (PrincipalDetails) authResult.getPrincipal();
 
-        //Hash 암호화 방식
+
         String jwtToken = JWT.create()
                 .withSubject("cos")
-//                .withIssuedAt(new Date()) //내가 추가함
-                .withExpiresAt(new Date(System.currentTimeMillis() + JwtProperties.EXPIRATION_TIME)) //만료시간 //10분
+                .withExpiresAt(new Date(System.currentTimeMillis() + JwtProperties.EXPIRATION_TIME))
                 .withClaim("id", principalDetails.getMember().getId())
                 .withClaim("email", principalDetails.getMember().getEmail())
-                .sign(Algorithm.HMAC512(JwtProperties.SECRET)); //secret 값
+                .sign(Algorithm.HMAC512(JwtProperties.SECRET));
 
 
         String jwtRefreshToken = JWT.create()
