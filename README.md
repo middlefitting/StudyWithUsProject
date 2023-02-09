@@ -1,13 +1,28 @@
-프로그램 실행 방법
-1. node.js 설치
-   - https://nodejs.org/en/
-2. h2 데이터베이스 설치 
-   - https://www.h2database.com/html/main.html
-   - h2 데이터베이스 압축해제 후 bin 폴더에서 gitbash 실행
-   - ./h2.bat 입력
-   - 출력된 창에서 JDBC URL: 칸에 
-   jdbc:h2:~/studywithus
-   - 입력으로 데이터베이스 생성
-   - 이후 jdbc:h2:tcp://localhost/~/studywithus 를 입력해서 접속
-3. Gradle -> build -> build 클릭해서 빌드 후 application 파일 실행
-4. 프로젝트 포트 8081
+# 👋 General Info
+- **스터디 기능을 제공하는 웹 사이트**
+- 스터디를 개설하여 게시판 형태로 다른 사람들과의 소통 기능 제공
+- 5인 팀 프로젝트
+<br/><br/>
+
+# 🤚🏻 My Role
+- 백엔드 Member, Study 도메인 담당
+<br/><br/>
+
+# ⚒ Skill
+
+`Java`, `Spring Boot`, `JPA`, `JWT`, `h2`
+<br/><br/>
+
+
+# 🌱 Learned
+- Java/Spring boot를 처음으로 학습해볼 수 있었습니다.
+- REST API를 통한 엔드포인트 구축에 대해 알게 되었습니다.
+</br></br>
+
+
+# ⚡ Achievement
+- BFF 패턴을 통해 프로젝트를 처음으로 개발해볼 수 있었습니다.
+</br></br>
+
+# 🧐 Self Feedback
+- 프로젝트가 배포까지 이루어지지 못한 점에 대해 아쉬움이 많이 남습니다.
